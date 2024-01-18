@@ -1,8 +1,8 @@
 # moonshot
 
-Moonshot (stylised as 'moonshot') is a fictional establishment located on 23A East Street, Newtownards, Northern Ireland.
+Moonshot (stylised in lowercase as 'moonshot') is an web application built for the sharing and discussion around amateur astrological phtography. 
 
-This site has been designed to allow imagined customers the ability to access info regarding and place bookings with the restaurant, as well featuring an administrative area allowing restaurant managers to oversee the bookings of all users so that they can properly run the restaurant.
+This site has been designed to allow imagined users and visitors the ability to view photos uploaded by registered users of the site; registered users will also be able to create a personal profile and upvote/comment on other users posts.
 
 [LIVE LINK TO SITE](LINK TO BE ADDED)<br>
 [Link to API](LINK TO BE ADDED)<br>
@@ -10,15 +10,15 @@ _Note: to open links in a new tab, hold CTRL + Click_
 
 ![Overview](static/images/readme/overview.png)
 
-## Table Of Contents
+## Table Of Contents - !!! TO BE UPDATED !!!
 - [Introduction](#moonshot)
 - [Strategy](#strategy)
-  - [Milestone 1 - API Setup](#milestone-1---initial-setup)
-  - [Milestone 2 - Frontend Setup](#milestone-2---initial-setup)
-  - [Milestone 3 - Main Site Layout](#milestone-3---main-site-pages)
-  - [Milestone 4 - User Access](#milestone-4---booking-site-access)
-  - [Milestone 5 - CRUD Functionality](#milestone-5---crud-functionality)
-  - [Milestone 6 - Additional Coding](#milestone-6---additional-coding)
+  - [Milestone 1 - API & Frontend Setup](#milestone-1---api--frontend-setup)
+  - [Milestone 2 - Site Navigation](#milestone-2---site-navigation)
+  - [Milestone 3 - User Access](#milestone-3---user-access)
+  - [Milestone 4 - Home & Profile Pages](#milestone-4---home--profile-pages)
+  - [Milestone 5 - Individual Posts](#milestone-5---individual-posts)
+  - [Milestone 6 - Community Interaction](#milestone-6---community-interaction)
 - [Scope](#scope)
 - [Structure](#structure)
 - [Skeleton](#skeleton)
@@ -38,45 +38,53 @@ _Note: to open links in a new tab, hold CTRL + Click_
 
 ## UX Design
 
-The site is aimed at helping customers to easily access information regarding the restaurant opening/closing times, menu, and location, as well as providing a simple interface for making, viewing, updating, and deleting bookings made with the restaurant.
-
-The site is also designed with the restaurant manager/site administrator in mind, providing an admin-only area accessible via https://east-street-bc0671035c95.herokuapp.com/admin
+The site is aimed at helping users to easily upload their personal photos of the nightsky alongside inrelevant info such as what the photo shows, where/when it was taken, and what equipment was used. It also aims to give users the ability to view, upvote, and comment on the photos uploaded by other users of the site.
 
 ## Strategy
 
 ### Milestones & User Stories
-This project was developed with 6 milestones (epics) in mind. From each of these milestones a number of dev goals and user stories were created, each one given a prioritisation using the MoSCoW method. The detail of these milestones, goals and stories is outlined below; further detail regarding sprints, MoSCoW designation and acceptance criteria (covered under Structure) are included on the [GitHub Projects Kanban Board](https://github.com/users/ndsurgenor/projects/6) created for the project.
+This project was developed with 6 milestones (epics) in mind. From each of these milestones a number of dev goals and user stories were created, each one given a prioritisation using the MoSCoW method. The detail of these milestones, goals and stories is outlined below; further detail regarding sprints, MoSCoW designation and acceptance criteria (covered under Structure) are included on the [GitHub Projects Kanban Board](LINK TO BE ADDED) created for the project.
 
 ![Kanban](static/images/readme/kanban.png)
 
-#### Milestone 1 - Initial Setup
+#### Milestone 1 - API & Frontend Setup
 - 1.1 - Dev Goal: set up Django REST and its supporting libraries via the IDE in order for API development to begin
-- 1.2 - Dev Goal: set up the Django project and app
-- 1.3 - Dev Goal: create an early Heroku deployment to ensure all is working from the very start and allow continuous testing throughout production
+- 1.2 - Dev Goal: set up the app and models to allow the API to process data
+- 1.3 - Dev Goal: create an early API deployment to Heroku to ensure all is working from the very start and allow continuous testing throughout production
+- 1.4 - Dev Goal: set up ReactJS and its supporting libraries via the IDE in order for frontend development to begin
+- 1.5 - Dev Goal: create an early frontend deployment to Heroku to ensure all is working from the very start and allow continuous testing throughout production
 
-#### Milestone 2 - Main Site Pages
-- 2.1 - User Story: as a Site Visitor/User I want to access info/links from the home page so that I can easily discern information and make a booking
-- 2.2 - User Story: as a Site Visitor/User I want to view the opening times so that I can see when the restaurant is open before I book
-- 2.3 - User Story: as a Site Visitor/User I want to view the restaurant menu so that I can see what food is available before booking
-- 2.4 - User Story: as a Site Visitor/User I want to view the location/address of the restaurant so that I know where the restaurant is located
+#### Milestone 2 - Site Navigation
+- 2.1 - User Story: as a Site Visitor/User I want access to navigation links at the top of every page so I can easily move between different areas of the site
+- 2.2 - User Story: as a Site Visitor I want to easily access a sign up page so I can become a registered user and upload my own content/directly particpate with other users of the site
+- 2.3 - User Story: as a Site User I want to easily access a sign in page so I can use the full functionality of the site
+- 2.4 - Dev Goal: set up 404, 403 and 500 pages to correctly handle any access/server issues encountered by users
 
-#### Milestone 3 - Booking Site Access
-- 3.1 - User Story: as a Site Admin I want to view all customer details/bookings so that I can plan for required table numbers/sizes
-- 3.2 - User Story: as a Site Visitor I want to sign up to the site so that I can make bookings
-- 3.3 - User Story: as a Site User I want to sign in to the site so that I can make/view/adjust/delete bookings
-- 3.4 - User Story: as a Site User I want to be able to log out from the booking area so that no-one can change my details inadvertently or otherwise
+#### Milestone 3 - User Access
+- 3.1 - User Story: as a Site Visitor/User I want have a clear indication as to whether or not I am logged in/logged out so I can easily discern if I need to sign up/sign in before accessing certain pages
+- 3.2 - User Story: as a Site User I want to remain logged in to the site until I choose otherwise so that my experience is not interuppted by having to continously re-enter my username and password
+- 3.3 - User Story: as a Site User I want view additional navigational links so that I can access those areas of the site only available to registered users
+- 3.4 - Dev Goal: write defensive code to prevent visitors/logged-out users from accessing links/pages only intended for registered users of the site who are currently logged in
 
-#### Milestone 4 - CRUD Functionality
-- 4.1 - User Story: as a Site User I want to make an online booking so that I can secure a table for a particular date, time & group size
-- 4.2 - User Story: as a Site User I want to view my booking(s) so that I can see if it has been recorded correctly and remind myself of its details
-- 4.3 - User Story: as a Site User I want to access/adjust my booking(s) so that I can correct an error/make necessary changes
-- 4.4 - User Story: as a Site User I want to cancel my booking(s) so that it/they no longer appear(s) on the system
-- 4.5 - User Story: as a Site Admin I want to have the ability to accept/reject new bookings so that I can manage customer numbers within the restaurant
+#### Milestone 4 - Home & Profile Pages
+- 4.1 - User Story: as a Site Visitor/User I want to view all user posts from the home page so I can see the latest content when first accessing the site
+- 4.2 - User Story: as a Site User I want to be able to continously scroll through posts so that I don't have to navigate between and reload multiple pages
+- 4.3 - User Story: as a Site User I want to be able to search for posts using tags/keywords so I can view content specifically related to those tags/keywords and specific users
+- 4.4 - User Story: as a Site User I want to be able to select an individual post from the feed so I can view details, comments, and upvotes directly associated with that photo
+- 4.5 - User Story: as a Site User I want to be able to access a personalised profile page so that I can add an avatar and personal bio
 
-#### Milestone 5 - Additional Coding
-- 5.1 - User Story: as a Site Admin I want to prevent bookings being made for unavailable dates/times so that bookings are not made when the restaurant is closed
-- 5.2 - User Story: as a Site User I want to have on-screen confirmation during the authorisation/booking process so that I know my input has been recorded correctly
-- 5.3 - Dev Goal: set up 404, 403 and 500 pages to correctly handle access/server issues when the site is in use
+#### Milestone 5 - Individual Posts
+- 5.1 - User Story: as a Site User I want to be able to upload my own astrological photos to the site so that they are shared on the home page and can be commented on/upvoted by other users
+- 5.2 - User Story: as a Site User I want to include specific details such as keywords, date, time, location etc. with my uploaded photos so that those details can be dispalyed alongside the photo for the benefit of other users
+- 5.3 - User Story: as a Site User I want to be able to update the details of any photo I have added so that I can correct mistakes or add new information if required
+- 5.4 - User Story: as a Site User I want to be able to delete any photo I have added so that I can remove my photos from the site if I so desire
+- 5.5 - Dev Goal: write defensive code to prevent anyone from accessing the ability to update/delete posts which were not specifically uploaded by them
+
+#### Milestone 6 - Community Interaction
+- 6.1 User Story: as a Site User I want to be able to upvote other users posts so that I can show my appreciation for their photography
+- 6.2 User Story: as a Site User I want to be able to comment on other users posts so that I can ask questions and/or start a discussion about the photo
+- 6.3 - User Story: as a Site User I want to view a feed of those posts I've upvoted so I have easy access to those posts I've shown a particular interest in
+- 6.4 - User Story: as a Site User I want to view a feed of those posts I've commented on so I have easy access to posts where I am involved in a discussion thread
 
 ## Scope
 
@@ -166,10 +174,10 @@ The [database model](https://dbdiagram.io/d/EastSt-65391438ffbf5169f06e8e51) was
 
 ![Database](static/images/readme/database-diagram.png)
 
-## Surface
+## Surface  !!! TO BE UPDATED !!!
 With wireframe and database models in place, actual features of the site could now be coded using HTML, Bootstrap, CSS, and JavaScript, all according to the criteria listed above.
 
-### Design & Typography
+### Design & Typography  !!! TO BE UPDATED !!!
   - [Libre Baskerville](https://fonts.google.com/specimen/Libre+Baskerville) was chosen as the font for h1 and h2 elements throughout the site to give a refined 'serif' look to major headings
   - All other text on the site is styled using [Noto Sans](https://fonts.google.com/noto/specimen/Noto+Sans) to provide a minimalist contrast to the headings and be clearly legible for larger portions of text
   - The main colours selected for the site were chosen as a variation on a monochromatic scheme thus creating a refined, modern look to reflect the style of the restaurant. Specifically these colours and their hexadecimal codes are:
@@ -184,7 +192,7 @@ With wireframe and database models in place, actual features of the site could n
 
   ![Design](static/images/readme/design-board.png)
 
-### Features Implemented
+### Features Implemented !!! TO BE UPDATED !!!
 
 Each of the following implementations was added in response to the acceptance criteria above, specific details of which are provided below each feature heading for easy reference.
 
@@ -347,18 +355,17 @@ Each of the following implementations was added in response to the acceptance cr
 - The 404 page displays when the user tries to access a non-existent page and provides links back to the main areas of the site
 - The 500 page displays when the there is an error with the site's internal server and provides links back to the main areas of the site
 
-### Features to be implemented
+### Features to be implemented  !!! TO BE UPDATED !!!
 
 The following features have been identified as long-term goals which bring value to the UX; however, they have not been implemented at this stage as they would require a significant time investment, thereby delaying vital other features of the site, or a level of programming knowledge which I haven't yet developed. 
 
-- Admin module for staff/admin to set menu items and prices allowing Menu page to stay up-to-date
-- Blocked out dates/times on calendar when the restaurant is closed/fully booked thereby managing numbers for admin automatically
-- Ability for staff admin to define closing dates/time, min/max group sizes, restaurant capacity etc. to also help manage the booking system
-- Automatic email notifications for admin when customers make bookings and notifications to customers when booking status is updated
+- FEATURE 1
+- FEATURE 2
+- FEATURE 3
 
-### Technology & Resources
+### Technology & Resources  !!! TO BE UPDATED !!!
 
-#### Technologies Used
+#### Technologies Used  !!! TO BE UPDATED !!!
 In order to code and design these featured the following technologies were utilised:
 
 - Python Modules
@@ -393,7 +400,7 @@ In order to code and design these featured the following technologies were utili
 - JavaScript
   - Used to create a timed automatic dismissal of on-screen alerts
 
-#### Packages Used
+#### Packages Used !!! TO BE UPDATED !!!
 - [Gitpod](https://gitpod.io) used to code the site and transfer files between the editor and the repository
 - [GitHub](https://github.com) used to store the files for this project
 - [Cacoo](https://cacoo.com) used to develop the wireframe models for the site design
@@ -405,19 +412,16 @@ In order to code and design these featured the following technologies were utili
 - [Markdown Table Generator](https://jakebathman.github.io/Markdown-Table-Generator/) used to create tables for documentation
 - PowerPoint, MS Paint, and the Windows Photo app used to produce image files for documentation
 
-#### Reference Materials
-- [Django documentation](https://docs.djangoproject.com/en/4.2/ref/class-based-views/generic-editing/) referenced frequently in order to achieve CRUD functionality and associated views
-- [Django-allauth documentation](https://docs.allauth.org/en/latest/) referenced frequently in order to implement its features correctly
+#### Reference Materials  !!! TO BE UPDATED !!!
+- ADD MORE HERE...
 - [Code Institute](https://codeinstitute.net/) course materials and walkthrough projects provided many reference points for implementing features of this project
-- [Codú article](https://www.codu.co/articles/securing-django-views-from-unauthorized-access-npyb3to_) by [Daisy McGirr]() referenced for writing code to protect against unauthorised views
-- Documentation for similar projects by [MattBCoding](https://github.com/MattBCoding/pp4-the-pantry) and [Gareth-McGirr](https://github.com/Gareth-McGirr/Portfolio-Project-4-SizzleAndSteak) referenced frequently when creating the READ.md and TESTING.md files
 - Any other resources used are directly referenced where appropriate
 
-## Testing
+## Testing  !!! TO BE UPDATED !!!
 
 Manual and automated testing undertaken for this project can be viewed in the separate [TESTING.md file](TESTING.md) (_Use CTRL + Click to this or any of the following links in a new tab/window_). You can also navigate to a specific area of the file by selecting one of the headings below:
 
-### Testing Contents
+### Testing Contents  !!! TO BE UPDATED !!!
 - [Introduction](TESTING.md#eastst---testing)
 - [Manual Testing](TESTING.md#manual-testing)
     - [Navigation](TESTING.md#navigation)
@@ -434,7 +438,7 @@ Manual and automated testing undertaken for this project can be viewed in the se
     - [Lighthouse](TESTING.md#lighthouse)
 - [Bugs](TESTING.md#bugs)
 
-## Deployment
+## Deployment  !!! TO BE UPDATED !!!
 
 ### Heroku Deployment
 This site was deployed to and is currently [hosted on the Heroku platform](https://east-street-bc0671035c95.herokuapp.com/). The steps for deploying to Heroku, using ElephantSQL as the database host, are as follows:
@@ -509,9 +513,7 @@ This site was deployed to and is currently [hosted on the Heroku platform](https
 6. Run ```git clone copied-git-url``` in the terminal to finish
 
 ## Credits & Acknowledgements
-- Background restaurant image by [Lisa Fotios](https://www.pexels.com/photo/restaurant-interior-776538/)
-- Landing page 'Open' image by [Analogicus](https://www.pexels.com/photo/wooden-welcome-signage-on-green-wooden-door-5395777/)
+- Background image by...
 - Brand logo, social media, and location page icons by [FontAwesome](https://fontawesome.com)
-- Menu text adapted from dinner menu by [Yugo Belfast](https://yugobelfast.com/wp-content/uploads/2022/07/Yugo_Dinner.pdf)
-- README.md and TESTING.md structure/outline adapted from documentation by [MattBCoding](https://github.com/MattBCoding) and [Gareth-McGirr](https://github.com/Gareth-McGirr)
-- Many thanks to my Code Institute tutor [Graeme Taylor](https://github.com/G-Taylor) for his invaluable guidance and support in building this project
+- README.md and TESTING.md structure/outline adapted from documentation by ...
+- Many thanks to my Code Institute tutor [Daisy McGirr]([https://github.com/G-Taylor](https://www.linkedin.com/in/daisy-mcgirr-4a3671173/)) for her guidance and support in building this project
