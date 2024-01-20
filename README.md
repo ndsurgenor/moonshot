@@ -90,21 +90,20 @@ This project was developed with 6 milestones (epics) in mind. From each of these
 
 Using these milestones, goals, and stories to guide my thinking, the following was planned as the Scope of the project:
 
-- Responsive Design allowing full functionality and appropriate resizing on all devices from 360px upwards
-- Use of Toggle-menu and hidden elements (e.g. home page image) when site is viewed on tablet/mobile devices
-- A main section of the site containing all restaurant information (non-restricted access):
-  - Opening Times
-  - Menu
-  - Location
-- A booking section of the site allowing CRUD functionality for end users (restricted access):
-  - Sign Up/In/Out
-  - Make Bookings
-  - View Bookings
-  - Adjust Bookings
-  - Cancel Bookings
-- An admin backend to the site allowing CRUD functionality for site admin (restricted access):
-  - View All Bookings
-  - Confirm Bookings
+- Responsive Design:
+  - Resizing on all devices from 360px upwards
+  - Toggle menu for navbar links at smaller sizes
+- Home page displaying the latest uploads and links appropriate to logged-out/in status:
+  - Home (available to all users)
+  - Sign Up  (logged-out)
+  - Sign In  (logged-out)
+  - 'MySky' (logged-in; _see below_)
+- Links and features only available to logged-in users of the site:
+  - Infite scroll of feed on home page
+  - Ability to search for photos using tags/keywords
+  - 'MySky' options showing the users' own photos/only photos they have upvoted
+  - Ability to upvote/comment on other users' photos 
+- Stylised error pages which help guie users back to appropriate areas of the site
 
 ## Structure
 
@@ -115,67 +114,76 @@ Hovering over a reference (Ref) number below will display a description of that 
 
 **Milestone**|**Ref**|**Type**|**Acceptance Criteria/Features**
 :-----:|:-----:|:-----:|-----
-Initial Setup|[1.1](#milestone-1---initial-setup "Set up Django and its supporting libraries via the IDE in order for development to begin")|Dev Goal|<ul><li>Install server: django-gunicorn</li><li>Install PostgreSQL library: dj_database_url psycopg2</li><li>Install image host: dj3-cloudinary-storage</li><li>Install sign-up/in/out functionality: django-allauth</li><li>Create requirements.txt file</li></ul>
-Initial Setup|[1.2](#milestone-1---initial-setup "Set up the Django project and app")|Dev Goal|<ul><li>Create Django project: east-street</li><li>Create app: booking-sys</li><li>Update the settings.py file</li><li>Migrate changes</li></ul>
-Initial Setup|[1.3](#milestone-1---initial-setup "Create an early Heroku deployment to ensure all is working from the very start and allow continuous testing throughout production")|Dev Goal|<ul><li>Create app on Heroku</li><li>Set up ElephantSQL</li><li>Set up the env.py file</li><li>Update the settings.py file</li><li>Set config vars and deploy app</li></ul>
-Main Site|[2.1](#milestone-2---main-site-pages "As a Site Visitor/User I want to access info/links from the home page so that I can easily discern information and make a booking")|User Story|<ul><li>A home page displaying opening times of the restaurant</li><li>A home page also displaying a quick link to the booking area of the site</li><li>A navbar providing clear links to menu and location info</li><li>A highlighted link to the booking area in the navbar</li><li>A footer providing summarised info and social links</li></ul>
-Main Site|[2.2](#milestone-2---main-site-pages "As a Site Visitor/User I want to view the opening times so that I can see when the restaurant is open before I book")|User Story|<ul><li>A static page showing the opening day/times of the restaurant</li><li>Elements that display/resize/scroll when viewed on different sized devices</li></ul>
-Main Site|[2.3](#milestone-2---main-site-pages "As a Site Visitor/User I want to view the restaurant menu so that I can see what food is available before booking")|User Story|<ul><li>A static page showing the food and prices within the restaurant</li><li>Elements that display/resize/scroll when viewed on different sized devices</li></ul>
-Main Site|[2.4](#milestone-2---main-site-pages "As a Site Visitor/User I want to view the location/address of the restaurant so that I know where the restaurant is located")|User Story|<ul><li>A static page showing the map location and transport options for the restaurant</li><li>Elements that display/resize/scroll when viewed on different sized devices</li></ul>
-Booking Site |[3.1](#milestone-3---booking-site-access "As a Site Admin I want to view all customer details/bookings so that I can plan for required table numbers/sizes")|User Story|<ul><li>An admin area only allowing access to the site admin/superuser</li><li>A link to the database to clearly display the details of each booking i.e. entry in the database</li></ul>
-Booking Site|[3.2](#milestone-3---booking-site-access "As a Site Visitor I want to sign up to the site so that I can make bookings")|User Story|<ul><li>A sign-up form requiring username and password details</li></ul>
-Booking Site|[3.3](#milestone-3---booking-site-access "As a Site User I want to sign in to the site so that I can make/view/adjust/delete bookings")|User Story|<ul><li>A sign-in form requiring username and password details</li></ul>
-Booking Site|[3.4](#milestone-3---booking-site-access "As a Site User I want to be able to log out from the booking area so that no-one can change my details inadvertently or otherwise")|User Story|<ul><li>A sign-out form requiring the user to confirm that they wish to sign out</li></ul>
-CRUD|[4.1](#milestone-4---crud-functionality "As a Site User I want to make an online booking so that I can secure a table for a particular date, time & group size")|User Story|<ul><li>A booking form with date, time, and group size fields which saves those details to the database</li><li>A navbar link to the form to allow access from a different area of the booking site</li></ul>
-CRUD|[4.2](#milestone-4---crud-functionality "As a Site User I want to view my booking(s) so that I can see if it has been recorded correctly and remind myself of its details")|User Story|<ul><li>A list of bookings particular to that user which displays automatically after they have submitted a valid booking</li><li>A navbar link to the list of bookings to allow access from a different area of the booking site</li></ul>
-CRUD|[4.3](#milestone-4---crud-functionality "As a Site User I want to access/adjust my booking(s) so that I can correct an error/make necessary changes")|User Story|<ul><li>A button beside each entry in the booking list to allow updating of its details</li><li>The displaying of the current details within the booking form when clicking said button</li><li>The option of returning to the list without making changes</li> <li>The updating of these details to the database when the user changes values and clicks 'Confirm'</li></ul>
-CRUD|[4.4](#milestone-4---crud-functionality "As a Site User I want to cancel my booking(s) so that it/they no longer appear(s) on the system")|User Story|<ul><li>A button beside each entry in the booking list to allow for its deletion</li><li>The displaying of the details to be deleted alongside a warning when clicking said button</li><li>The option of returning to the list without making changes</li><li>The deletion of the booking on the database when the user clicks 'Confirm'</li></ul>
-CRUD|[4.5](#milestone-4---crud-functionality "As a Site Admin I want to have the ability to accept/reject new bookings so that I can manage customer numbers within the restaurant")|User Story|<ul><li>A list of all bookings made in the admin area of the site</li><li>A dropdown option for each individual booking allowing for selection of 'Confirmed' or 'Cancelled'</li></ul>
-Additional|[5.1](#milestone-5---additional-coding "As a Site Admin I want to prevent bookings being made for unavailable dates/times so that bookings are not made when the restaurant is closed")|User Story|<ul><li>The option to only select a date beyond that of today</li><li>The option to only select between the days of Wednesday to Sunday inclusive on the booking form</li><li>The option to only select between the hours of 12.30pm and 9.45pm inclusive on the booking form</li><li>The option to only select between the group size of 1 and 12 inclusive on the booking form</li></ul>
-Additional|[5.2](#milestone-5---additional-coding "As a Site User I want to have on-screen confirmation during the authorisation/booking process so that I know my input has been recorded correctly")|User Story|<ul><li>An alert for successfully signing in/out</li><li>An alert for successfully making/updating bookings</li><li>An alert for successfully deleting bookings</li></ul>
-Additional|[5.3](#milestone-5---additional-coding "Set up 404, 403 and 500 pages to correctly handle access/server issues when the site is in use")|Dev Goal|<ul><li>A 403 Error page which provides a link back to a valid area of the site</li><li>A 404 Error page which provides a link back to a valid area of the site</li><li>A 500 Error page which provides a link back to a valid area of the site</li></ul>
+Setup|[1.1](#milestone-1---api--frontend-setup "Set up Django REST and its supporting libraries via the IDE in order for API development to begin")|Dev Goal|<ul><li>Setup a new repository</li><li>Install Django REST</li></ul>
+Setup|[1.2](#milestone-1---api--frontend-setup "Set up the app and models to allow the API to process data")|Dev Goal|<ul><li>Create project 'moonshot'</li><li>Create app 'profile'</li><li>Update the settings.py file</li><li>Migrate changes</li></ul>
+Setup|[1.3](#milestone-1---api--frontend-setup "Create an early API deployment to Heroku to ensure all is working from the very start and allow continuous testing throughout production")|Dev Goal|<ul><li>Create app on Heroku</li><li>Set up ElephantSQL</li><li>Set up the env.py file</li><li>Update the settings.py file</li><li>Set config vars and deploy app</li></ul>
+Setup|[1.4](#milestone-1---api--frontend-setup "Set up ReactJS and its supporting libraries via the IDE in order for frontend development to begin")|Dev Goal|<ul><li>Setup a new repository</li><li>Install modules with npm</li></ul>
+Setup|[1.5](#milestone-1---api--frontend-setup "Create an early frontend deployment to Heroku to ensure all is working from the very start and allow continuous testing throughout production")|Dev Goal|<ul><li>Create app on Heroku</li><li>Update the settings.py file</li><li>Set config vars and deploy app</li></ul>
+Navigation|[2.1](#milestone-2---site-navigation "As a Site Visitor/User I want access to navigation links at the top of every page so I can easily move between different areas of the site")|User Story|<ul><li>Site name and logo</li><li>A top-fixed navbar</li><li>Link to Home page</li><li>Link to Sign Up page</li><li>Link to Sign In page</li></ul>
+Navigation|[2.2](#milestone-2---site-navigation "As a Site Visitor I want to easily access a sign up page so I can become a registered user and upload my own content/directly particpate with other users of the site")|User Story|<ul><li>Sign-up form requiring username and password</li><li>Code written to catch form errors</li></ul>
+Navigation|[2.3](#milestone-2---site-navigation "As a Site User I want to easily access a sign in page so I can use the full functionality of the site")|User Story|<ul><li>Sign-in form requiring username and password</li><li>Code written to catch form errors</li></ul>
+Navigation|[2.4](#milestone-2---site-navigation "Set up 404, 403 and 500 pages to correctly handle any access/server issues encountered by users")|Dev Goal|<ul><li>A 403 Error page which provides a link back to a valid area of the site</li><li>A 404 Error page which provides a link back to a valid area of the site</li><li>A 500 Error page which provides a link back to a valid area of the site</li></ul>
+Access |[3.1](#milestone-3---user-access "As a Site Visitor/User I want have a clear indication as to whether or not I am logged in/logged out so I can easily discern if I need to sign up/sign in before accessing certain pages")|User Story|<ul><li>Text showing 'Logged in as {username}' in the navbar</li><li>Personilised avatar displayed in the navbar</li></ul>
+Access |[3.2](#milestone-3---user-access "As a Site User I want to remain logged in to the site until I choose otherwise so that my experience is not interuppted by having to continously re-enter my username and password")|User Story|<ul><li>Token granting permission for user to remain logged in</li></ul>
+Access |[3.3](#milestone-3---user-access "As a Site User I want view additional navigational links so that I can access those areas of the site only available to registered users")|User Story|<ul><li>Link to personal profile page</li><li>Link to personalised feed of upvoted posts</li></ul>
+Access |[3.4](#milestone-3---user-access "Write defensive code to prevent visitors/logged-out users from accessing links/pages only intended for registered users of the site who are currently logged in")|Dev Goal|<ul><li>A 403 Error page which provides a link back to a valid area of the site</li><li>A 404 Error page which provides a link back to a valid area of the site</li><li>A 500 Error page which provides a link back to a valid area of the site</li></ul>
+Pages|[4.1](#milestone-4---home--profile-pages "As a Site Visitor/User I want to view all user posts from the home page so I can see the latest content when first accessing the site")|User Story|<ul><li>Photos displayed as the main content of the landing page</li><li>Posts sorted by 'newest first'</li></ul>
+Pages|[4.2](#milestone-4---home--profile-pages "As a Site User I want to be able to continously scroll through posts so that I don't have to navigate between and reload multiple pages")|User Story|<ul><li>Infinte scrolling of photo feed</li></ul>
+Pages|[4.3](#milestone-4---home--profile-pages "As a Site User I want to be able to search for posts using tags/keywords so I can view content specifically related to those tags/keywords and specific users")|User Story|<ul><li>Search feature at top of feed</li><li>Content auto-filtered as search field receives input</li><li>Dropdown list to select specific tags</li></ul>
+Pages|[4.4](#milestone-4---home--profile-pages "As a Site User I want to be able to select an individual post from the feed so I can view details, comments, and upvotes directly associated with that photo")|User Story|<ul><li>Link assigned to each post which opens a more detailed view</li><li>Display of comments below the specific photo</li></ul>
+Pages|[4.5](#milestone-4---home--profile-pages "As a Site User I want to be able to access a personalised profile page so that I can add an avatar and personal bio")|User Story|<ul><li>ABility to update avataer/profile photo</li><li>Ability to enter personal details</li></ul>
+Posts|[5.1](#milestone-5---individual-posts "As a Site User I want to be able to upload my own astrological photos to the site so that they are shared on the home page and can be commented on/upvoted by other users")|User Story|<ul><li>Form to upload a photograph</li><li>Code written to prevent the uploading of non-image files</li><li>Code written to prevent the uploading of images which are too large</li></ul>
+Posts|[5.2](#milestone-5---individual-posts "As a Site User I want to include specific details such as keywords, date, time, location etc. with my uploaded photos so that those details can be displayed alongside the photo for the benefit of other users")|User Story|<ul><li>Form which allows for entering of specific details alongside a photo upload</li></ul>
+Posts|[5.3](#milestone-5---individual-posts "As a Site User I want to be able to update the details of any photo I have added so that I can correct mistakes or add new information if required")|User Story|<ul><li>Button alllowing for updating of photo belonging to signed-in user</li><li>Form which allows for the updating of specific details alongside a particular photo upload</li></ul>
+Posts|[5.4](#milestone-5---individual-posts "As a Site User I want to be able to delete any photo I have added so that I can remove my photos from the site if I so desire")|User Story|<ul><li>Button alllowing for deletion of photo belonging to signed-in user</li><li>Confirmation from user before photo and details are deleted</li></ul>
+Posts|[5.5](#milestone-5---individual-posts "Write defensive code to prevent anyone from accessing the ability to update/delete posts which were not specifically uploaded by them")|Dev Goal|<ul><li>A 403 Error page which provides a link back to a valid area of the site</li><li>A 404 Error page which provides a link back to a valid area of the site</li><li>A 500 Error page which provides a link back to a valid area of the site</li></ul>
+Interaction|[6.1](#milestone-6---community-interaction "As a Site User I want to be able to upvote other users posts so that I can show my appreciation for their photography")|User Story|<ul><li>An upvote button associated with every post</li><li>Ability for non-owners to toggle upvote of photo</li><li>Code written to prevent a user from upvoting their own photo</li></ul>
+Interaction|[6.2](#milestone-6---community-interaction "As a Site User I want to be able to comment on other users posts so that I can ask questions and/or start a discussion about the photo")|User Story|<ul><li>Comment form below each photo</li></ul>
+Interaction|[6.3](#milestone-6---community-interaction "As a Site User I want to view a feed of those posts I've upvoted so I have easy access to those posts I've shown a particular interest in")|User Story|<ul><li>Link in navbar to personalised feed of upvoted posts</li></ul>
+Interaction|[6.4](#milestone-6---community-interaction "As a Site User I want to view a feed of those posts I've commented on so I have easy access to posts where I am involved in a discussion thread")|User Story|<ul><li>Link in navbar to personalised feed of commented-on posts</li></ul>
 
 ## Skeleton
 
 Now that specific features had been decided upon, a wireframing tool was used to give guidance as to how these features would look in practice while a database design app helped to image the flow of data within the site before committing it to code.
 
 ### Wireframe Models
-All of the site-design models which follow can be viewed on one page [using the following link](https://cacoo.com/diagrams/V4VlzIhRUc2eQPq5/2A59E)
+All of the site-design models which follow can be viewed on one page [using the following link](!!! TO BE ADDED !!!)
 
-### Main Site Pages
+### Initial Pages
 - Home
-- Menu
-- Location
-
-![Home](static/images/readme/wireframe-home.png)
-![Menu](static/images/readme/wireframe-menu.png)
-![Location](static/images/readme/wireframe-location.png)
-
-### Authorisation Pages
 - Sign Up
 - Sign In
-- Sign Out
 
-![Authorisation](static/images/readme/wireframe-authorisation.png)
+![Home](TO BE ADDED)
+![Sign-Up](TO BE ADDED)
+![Sign-In](TO BE ADDED)
 
-### Booking Pages
-- New/Update Booking
-- Delete Booking
-- Current Bookings
+### User-Only Pages
+- Profile
+- 'MySky'
+- Upvoted
+- Commented-On
 
-![New](static/images/readme/wireframe-new.png)
-![Delete](static/images/readme/wireframe-delete.png)
-![Current](static/images/readme/wireframe-current.png)
+![Profile](TO BE ADDED)
+![MySky](TO BE ADDED)
+![Upvoted](TO BE ADDED)
+![Comment-On](TO BE ADDED)
+
+### Posts
+- Individual Posts
+
+![Post](TO BE ADDED)
 
 
 ### Database Model
+!!! MOVE THIS TO API README !!!
 
-The [database model](https://dbdiagram.io/d/EastSt-65391438ffbf5169f06e8e51) was designed on the basis of django-allauth handling data for authorised users, while the booking model would be coded by myself. The diagram below shows the relationship of various tables within the project, but central to this is the relationship between the 'auth_user' and 'booking_sys_booking' tables; specifically, a one-to-many by connection of the user_id and contact_id fields i.e. a single user can create many bookings, but each booking can only belong to one user.
+The [database model](TO BE ADDED) was designed on the basis of django-allauth handling data for authorised users, while the booking model would be coded by myself. The diagram below shows the relationship of various tables within the project, but central to this is the relationship between the 'auth_user' and 'booking_sys_booking' tables; specifically, a one-to-many by connection of the user_id and contact_id fields i.e. a single user can create many bookings, but each booking can only belong to one user.
 
-![Database](static/images/readme/database-diagram.png)
+![Database](TO BE ADDED)
 
 ## Surface  !!! TO BE UPDATED !!!
-With wireframe and database models in place, actual features of the site could now be coded using HTML, Bootstrap, CSS, and JavaScript, all according to the criteria listed above.
+With wireframe and database models in place, actual features of the site could now be coded using HTML, Bootstrap for ReactJS, CSS, and JavaScript, all according to the criteria listed above.
 
 ### Design & Typography  !!! TO BE UPDATED !!!
   - [Libre Baskerville](https://fonts.google.com/specimen/Libre+Baskerville) was chosen as the font for h1 and h2 elements throughout the site to give a refined 'serif' look to major headings
