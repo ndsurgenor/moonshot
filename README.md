@@ -23,7 +23,6 @@ _Note: to open links in a new tab, hold CTRL + Click_
 - [Structure](#structure)
 - [Skeleton](#skeleton)
   - [Wireframe Models](#wireframe-models)
-  - [Database Model](#database-model)
 - [Surface](#surface)
   - [Design & Typography](#design--typography)
   - [Features Implemented](#features-implemented)
@@ -144,35 +143,28 @@ Interaction|[6.4](#milestone-6---community-interaction "As a Site User I want to
 
 ## Skeleton
 
-Now that specific features had been decided upon, a wireframing tool was used to give guidance as to how these features would look in practice while a database design app helped to image the flow of data within the site before committing it to code.
-
 ### Wireframe Models
-All of the site-design models which follow can be viewed on one page [using the following link](!!! TO BE ADDED !!!)
+Now that specific features had been decided upon, a wireframing tool was used to give guidance as to how these features would look in practice. All of the site-design models which follow can be viewed on one page [using the following link](https://cacoo.com/diagrams/0fnnxvmLc5f5SWHK/D61AD)
 
-### Initial Pages
-- Home
+### Logged-Out Pages
+- Home (logged-out)
 - Sign Up
 - Sign In
 
-![Home](TO BE ADDED)
+![Home-Intial](TO BE ADDED)
 ![Sign-Up](TO BE ADDED)
 ![Sign-In](TO BE ADDED)
 
-### User-Only Pages
+### Logged-In Pages
+- Home (logged-out)
 - Profile
-- 'MySky'
-- Upvoted
-- Commented-On
+- Upload
+- Photo Details
 
+![Home-User](TO BE ADDED)
 ![Profile](TO BE ADDED)
-![MySky](TO BE ADDED)
-![Upvoted](TO BE ADDED)
-![Comment-On](TO BE ADDED)
-
-### Posts
-- Individual Posts
-
-![Post](TO BE ADDED)
+![Upload](TO BE ADDED)
+![Photo-Details](TO BE ADDED)
 
 
 ### Database Model
