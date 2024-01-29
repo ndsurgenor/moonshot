@@ -13,7 +13,7 @@ _Note: to open links in a new tab, hold CTRL + Click_
 ## Table Of Contents - !!! TO BE UPDATED !!!
 - [Introduction](#moonshot)
 - [Strategy](#strategy)
-  - [Milestone 1 - API & Frontend Setup](#milestone-1---api--frontend-setup)
+  - [Milestone 1 - API & Admin Functionality](#milestone-1---api--admin-functionality)
   - [Milestone 2 - Site Navigation](#milestone-2---site-navigation)
   - [Milestone 3 - User Access](#milestone-3---user-access)
   - [Milestone 4 - Home & Profile Pages](#milestone-4---home--profile-pages)
@@ -42,22 +42,27 @@ The site is aimed at helping users to easily upload their personal photos of the
 ## Strategy
 
 ### Milestones & User Stories
-This project was developed with 6 milestones (epics) in mind. From each of these milestones a number of dev goals and user stories were created, each one given a prioritisation using the MoSCoW method. The detail of these milestones, goals and stories is outlined below; further detail regarding sprints, MoSCoW designation and acceptance criteria (covered under Structure) are included on the [GitHub Projects Kanban Board](LINK TO BE ADDED) created for the project.
+This project was developed with 6 milestones (epics) in mind. From each of these milestones a number of dev goals and user stories were created, each one given a prioritisation using the MoSCoW method. The detail of these milestones, goals and stories implemented in the final project is outlined below; further detail regarding sprints, MoSCoW designation and acceptance criteria (covered under Structure) are included on the [GitHub Projects Kanban Board](https://github.com/users/ndsurgenor/projects/9) created for the project.
 
 ![Kanban](static/images/readme/kanban.png)
 
-#### Milestone 1 - API & Frontend Setup
+#### Milestone 1 - API & Admin Functionality
 - 1.1 - Dev Goal: set up Django REST and its supporting libraries via the IDE in order for API development to begin
-- 1.2 - Dev Goal: set up the app and models to allow the API to process data
-- 1.3 - Dev Goal: create an early API deployment to Heroku to ensure all is working from the very start and allow continuous testing throughout production
-- 1.4 - Dev Goal: set up ReactJS and its supporting libraries via the IDE in order for frontend development to begin
-- 1.5 - Dev Goal: create an early frontend deployment to Heroku to ensure all is working from the very start and allow continuous testing throughout production
+- 1.2 - User Story: as a Site Admin I want to be able to create and edit User Profiles so I can control user permissions on the frontend
+- 1.3 - User Story: as a Site Admin I want to be able to review and edit Equipment Profiles for users so I can details on the frontend
+- 1.4 - User Story: as a Site Admin I want to be able to review and edit Photo uploads so I can control images on the frontend
+- 1.5 - User Story: as a Site Admin I want to be able to review and edit Comments for so I can control comments on the frontend
+- 1.6 - User Story: as a Site Admin I want to be able to review and edit Star ratings (likes) by users so I can control ratings on the frontend
+- 1.7 - Dev Goal: create an early API deployment to Heroku to ensure all is working from the very start and allow continuous testing throughout production
+
 
 #### Milestone 2 - Site Navigation
-- 2.1 - User Story: as a Site Visitor/User I want access to navigation links at the top of every page so I can easily move between different areas of the site
-- 2.2 - User Story: as a Site Visitor I want to easily access a sign up page so I can become a registered user and upload my own content/directly particpate with other users of the site
-- 2.3 - User Story: as a Site User I want to easily access a sign in page so I can use the full functionality of the site
-- 2.4 - Dev Goal: set up 404, 403 and 500 pages to correctly handle any access/server issues encountered by users
+- 2.1 - Dev Goal: set up ReactJS and its supporting libraries via the IDE in order for frontend development to begin
+- 2.2 - Dev Goal: create an early frontend deployment to Heroku to ensure all is working from the very start and allow continuous testing throughout production
+- 2.3 - User Story: as a Site Visitor/User I want access to navigation links at the top of every page so I can easily move between different areas of the site
+- 2.4 - User Story: as a Site Visitor I want to easily access a sign up page so I can become a registered user and upload my own content/directly particpate with other users of the site
+- 2.5 - User Story: as a Site User I want to easily access a sign in page so I can use the full functionality of the site
+- 2.6 - Dev Goal: set up 404, 403 and 500 pages to correctly handle any access/server issues encountered by users
 
 #### Milestone 3 - User Access
 - 3.1 - User Story: as a Site Visitor/User I want have a clear indication as to whether or not I am logged in/logged out so I can easily discern if I need to sign up/sign in before accessing certain pages
@@ -113,15 +118,19 @@ Hovering over a reference (Ref) number below will display a description of that 
 
 **Milestone**|**Ref**|**Type**|**Acceptance Criteria/Features**
 :-----:|:-----:|:-----:|-----
-Setup|[1.1](#milestone-1---api--frontend-setup "Set up Django REST and its supporting libraries via the IDE in order for API development to begin")|Dev Goal|<ul><li>Setup a new repository</li><li>Install Django REST</li></ul>
-Setup|[1.2](#milestone-1---api--frontend-setup "Set up the app and models to allow the API to process data")|Dev Goal|<ul><li>Create project 'moonshot'</li><li>Create app 'profile'</li><li>Update the settings.py file</li><li>Migrate changes</li></ul>
-Setup|[1.3](#milestone-1---api--frontend-setup "Create an early API deployment to Heroku to ensure all is working from the very start and allow continuous testing throughout production")|Dev Goal|<ul><li>Create app on Heroku</li><li>Set up ElephantSQL</li><li>Set up the env.py file</li><li>Update the settings.py file</li><li>Set config vars and deploy app</li></ul>
-Setup|[1.4](#milestone-1---api--frontend-setup "Set up ReactJS and its supporting libraries via the IDE in order for frontend development to begin")|Dev Goal|<ul><li>Setup a new repository</li><li>Install modules with npm</li></ul>
-Setup|[1.5](#milestone-1---api--frontend-setup "Create an early frontend deployment to Heroku to ensure all is working from the very start and allow continuous testing throughout production")|Dev Goal|<ul><li>Create app on Heroku</li><li>Update the settings.py file</li><li>Set config vars and deploy app</li></ul>
-Navigation|[2.1](#milestone-2---site-navigation "As a Site Visitor/User I want access to navigation links at the top of every page so I can easily move between different areas of the site")|User Story|<ul><li>Site name and logo</li><li>A top-fixed navbar</li><li>Link to Home page</li><li>Link to Sign Up page</li><li>Link to Sign In page</li></ul>
-Navigation|[2.2](#milestone-2---site-navigation "As a Site Visitor I want to easily access a sign up page so I can become a registered user and upload my own content/directly particpate with other users of the site")|User Story|<ul><li>Sign-up form requiring username and password</li><li>Code written to catch form errors</li></ul>
-Navigation|[2.3](#milestone-2---site-navigation "As a Site User I want to easily access a sign in page so I can use the full functionality of the site")|User Story|<ul><li>Sign-in form requiring username and password</li><li>Code written to catch form errors</li></ul>
-Navigation|[2.4](#milestone-2---site-navigation "Set up 404, 403 and 500 pages to correctly handle any access/server issues encountered by users")|Dev Goal|<ul><li>A 403 Error page which provides a link back to a valid area of the site</li><li>A 404 Error page which provides a link back to a valid area of the site</li><li>A 500 Error page which provides a link back to a valid area of the site</li></ul>
+API|[1.1](#milestone-1---api--frontend-setup "Set up Django REST and its supporting libraries via the IDE in order for API development to begin")|Dev Goal|<ul><li>Setup a new repository</li><li>Install Django REST</li></ul>
+API|[1.2](#milestone-1---api--frontend-setup "As a Site Admin I want to be able to create and edit User Profiles so I can control user permissions on the frontend")|Dev Goal|<ul><li>Create UserProfile model</li><li>Create UserProfile serializer</li><li>Create UserProfile GET and PUT views</li><li>Implement permissions for editing</li></ul>
+API|[1.3](#milestone-1---api--frontend-setup "As a Site Admin I want to be able to review and edit Equipment Profiles for users so I can details on the frontend")|Dev Goal|<ul><li>Create UserProfile model</li><li>Create UserProfile serializer</li><li>Create UserProfile GET and PUT views</li><li>Implement permissions for editing</li></ul>
+API|[1.4](#milestone-1---api--frontend-setup "As a Site Admin I want to be able to review and edit Photo uploads so I can control images on the frontend")|Dev Goal|<ul><li>Create UserProfile model</li><li>Create UserProfile serializer</li><li>Create UserProfile GET and PUT views</li><li>Implement permissions for editing</li></ul>
+API|[1.5](#milestone-1---api--frontend-setup "As a Site Admin I want to be able to review and edit Comments for so I can control comments on the frontend")|Dev Goal|<ul><li>Create UserProfile model</li><li>Create UserProfile serializer</li><li>Create UserProfile GET and PUT views</li><li>Implement permissions for editing</li></ul>
+API|[1.6](#milestone-1---api--frontend-setup "As a Site Admin I want to be able to review and edit Star ratings (likes) by users so I can control ratings on the frontend")|Dev Goal|<ul><li>Create UserProfile model</li><li>Create UserProfile serializer</li><li>Create UserProfile GET and PUT views</li><li>Implement permissions for editing</li></ul>
+API|[1.7](#milestone-1---api--frontend-setup "Create an early API deployment to Heroku to ensure all is working from the very start and allow continuous testing throughout production")|Dev Goal|<ul><li>Create app on Heroku</li><li>Set up ElephantSQL</li><li>Set up the env.py file</li><li>Update the settings.py file</li><li>Set config vars and deploy app</li></ul>
+Navigation|[2.1](#milestone-2---site-navigation "Set up ReactJS and its supporting libraries via the IDE in order for frontend development to begin")|Dev Goal|<ul><li>Setup a new repository</li><li>Install modules with npm</li></ul>
+Navigation|[2.2](#milestone-2---site-navigation "Create an early frontend deployment to Heroku to ensure all is working from the very start and allow continuous testing throughout production")|Dev Goal|<ul><li>Create app on Heroku</li><li>Update the settings.py file</li><li>Set config vars and deploy app</li></ul>
+Navigation|[2.3](#milestone-2---site-navigation "As a Site Visitor/User I want access to navigation links at the top of every page so I can easily move between different areas of the site")|User Story|<ul><li>Site name and logo</li><li>A top-fixed navbar</li><li>Link to Home page</li><li>Link to Sign Up page</li><li>Link to Sign In page</li></ul>
+Navigation|[2.4](#milestone-2---site-navigation "As a Site Visitor I want to easily access a sign up page so I can become a registered user and upload my own content/directly particpate with other users of the site")|User Story|<ul><li>Sign-up form requiring username and password</li><li>Code written to catch form errors</li></ul>
+Navigation|[2.5](#milestone-2---site-navigation "As a Site User I want to easily access a sign in page so I can use the full functionality of the site")|User Story|<ul><li>Sign-in form requiring username and password</li><li>Code written to catch form errors</li></ul>
+Navigation|[2.6](#milestone-2---site-navigation "Set up 404, 403 and 500 pages to correctly handle any access/server issues encountered by users")|Dev Goal|<ul><li>A 403 Error page which provides a link back to a valid area of the site</li><li>A 404 Error page which provides a link back to a valid area of the site</li><li>A 500 Error page which provides a link back to a valid area of the site</li></ul>
 Access |[3.1](#milestone-3---user-access "As a Site Visitor/User I want have a clear indication as to whether or not I am logged in/logged out so I can easily discern if I need to sign up/sign in before accessing certain pages")|User Story|<ul><li>Text showing 'Logged in as {username}' in the navbar</li><li>Personilised avatar displayed in the navbar</li></ul>
 Access |[3.2](#milestone-3---user-access "As a Site User I want to remain logged in to the site until I choose otherwise so that my experience is not interuppted by having to continously re-enter my username and password")|User Story|<ul><li>Token granting permission for user to remain logged in</li></ul>
 Access |[3.3](#milestone-3---user-access "As a Site User I want view additional navigational links so that I can access those areas of the site only available to registered users")|User Story|<ul><li>Link to personal profile page</li><li>Link to personalised feed of upvoted posts</li></ul>
