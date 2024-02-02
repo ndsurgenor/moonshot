@@ -17,7 +17,7 @@ _Note: to open links in a new tab, hold CTRL + Click_
   - [Milestone 2 - Frontend Navigation](#milestone-2---frontend-navigation)
   - [Milestone 3 - User Access](#milestone-3---user-access)
   - [Milestone 4 - Home & Profile Pages](#milestone-4---home--profile-pages)
-  - [Milestone 5 - Individual Posts](#milestone-5---individual-posts)
+  - [Milestone 5 - Photo Pages](#milestone-5---photo-pages)
   - [Milestone 6 - Community Interaction](#milestone-6---community-interaction)
 - [Scope](#scope)
 - [Structure](#structure)
@@ -77,7 +77,7 @@ This project was developed with 6 milestones (epics) in mind. From each of these
 - 4.4 - User Story: as a Site User I want to be able to select an individual post from the feed so I can view details, comments, and upvotes directly associated with that photo
 - 4.5 - User Story: as a Site User I want to be able to access a personalised profile page so that I can add an avatar and personal bio
 
-#### Milestone 5 - Individual Posts
+#### Milestone 5 - Photo Pages
 - 5.1 - User Story: as a Site User I want to be able to upload my own astrological photos to the site so that they are shared on the home page and can be commented on/upvoted by other users
 - 5.2 - User Story: as a Site User I want to include specific details such as keywords, date, time, location etc. with my uploaded photos so that those details can be dispalyed alongside the photo for the benefit of other users
 - 5.3 - User Story: as a Site User I want to be able to update the details of any photo I have added so that I can correct mistakes or add new information if required
