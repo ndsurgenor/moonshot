@@ -14,7 +14,7 @@ _Note: to open links in a new tab, hold CTRL + Click_
 - [Introduction](#moonshot)
 - [Strategy](#strategy)
   - [Milestone 1 - API & Admin Functionality](#milestone-1---api--admin-functionality)
-  - [Milestone 2 - Site Navigation](#milestone-2---site-navigation)
+  - [Milestone 2 - Frontend Navigation](#milestone-2---frontend-navigation)
   - [Milestone 3 - User Access](#milestone-3---user-access)
   - [Milestone 4 - Home & Profile Pages](#milestone-4---home--profile-pages)
   - [Milestone 5 - Individual Posts](#milestone-5---individual-posts)
@@ -57,7 +57,7 @@ This project was developed with 6 milestones (epics) in mind. From each of these
 - 1.8 - Dev Goal: create an early API deployment to Heroku to ensure all is working from the very start and allow continuous testing throughout production
 
 
-#### Milestone 2 - Site Navigation
+#### Milestone 2 - Frontend Navigation
 - 2.1 - Dev Goal: set up ReactJS and its supporting libraries via the IDE and create an early  deployment to Heroku in for frontend development to begin and to ensure all is working from the very start
 - 2.2 - User Story: as a Site Visitor/User I want access to navigation links at the top of every page so I can easily move between different areas of the site
 - 2.3 - User Story: as a Site Visitor I want to easily access a sign up page so I can become a registered user and upload my own content/directly particpate with other users of the site
