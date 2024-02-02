@@ -58,12 +58,11 @@ This project was developed with 6 milestones (epics) in mind. From each of these
 
 
 #### Milestone 2 - Site Navigation
-- 2.1 - Dev Goal: set up ReactJS and its supporting libraries via the IDE in order for frontend development to begin
-- 2.2 - Dev Goal: create an early frontend deployment to Heroku to ensure all is working from the very start and allow continuous testing throughout production
-- 2.3 - User Story: as a Site Visitor/User I want access to navigation links at the top of every page so I can easily move between different areas of the site
-- 2.4 - User Story: as a Site Visitor I want to easily access a sign up page so I can become a registered user and upload my own content/directly particpate with other users of the site
-- 2.5 - User Story: as a Site User I want to easily access a sign in page so I can use the full functionality of the site
-- 2.6 - Dev Goal: set up 404, 403 and 500 pages to correctly handle any access/server issues encountered by users
+- 2.1 - Dev Goal: set up ReactJS and its supporting libraries via the IDE and create an early  deployment to Heroku in for frontend development to begin and to ensure all is working from the very start
+- 2.2 - User Story: as a Site Visitor/User I want access to navigation links at the top of every page so I can easily move between different areas of the site
+- 2.3 - User Story: as a Site Visitor I want to easily access a sign up page so I can become a registered user and upload my own content/directly particpate with other users of the site
+- 2.4 - User Story: as a Site User I want to easily access a sign in page so I can use the full functionality of the site
+- 2.5 - Dev Goal: set up 404, 403 and 500 pages to correctly handle any access/server issues encountered by users
 
 #### Milestone 3 - User Access
 - 3.1 - User Story: as a Site Visitor/User I want have a clear indication as to whether or not I am logged in/logged out so I can easily discern if I need to sign up/sign in before accessing certain pages
