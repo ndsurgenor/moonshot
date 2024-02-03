@@ -23,13 +23,26 @@ const NavBar = () => {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
                     <Nav>
-                        <NavLink className={styles.NavLink} activeClassName={styles.ActiveLink} exact to="/">
+                        <NavLink
+                            className={styles.NavLink}
+                            activeClassName={styles.ActiveLink}
+                            exact
+                            to="/"
+                        >
                             <ImEarth className={styles.NavIcon} />Home
                         </NavLink>
-                        <NavLink className={styles.NavLink} activeClassName={styles.ActiveLink} to="/signup">
+                        <NavLink
+                            className={styles.NavLink}
+                            activeClassName={styles.ActiveLink}
+                            to="/signup"
+                        >
                             <MdOutlineHub className={styles.NavIcon} />Sign Up
                         </NavLink>
-                        <NavLink className={styles.NavLink} activeClassName={styles.ActiveLink} to="/signin">
+                        <NavLink
+                            className={styles.NavLink}
+                            activeClassName={styles.ActiveLink}
+                            to="/signin"
+                        >
                             <FaArrowRightToBracket className={styles.NavIcon} />Sign In
                         </NavLink>
                     </Nav>
