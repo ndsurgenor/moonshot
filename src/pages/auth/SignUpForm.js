@@ -16,12 +16,15 @@ const SignUpForm = () => {
                         <FloatingLabel label="Username" className="mb-3" controlId="username">
                             <Form.Control type="text" placeholder="username" name="username" />
                         </FloatingLabel>
+
                         <FloatingLabel label="Password" className="mb-3" controlId="password">
                             <Form.Control type="password" placeholder="Password" name="password" />
                         </FloatingLabel>
+
                         <FloatingLabel label="Confirm Password" className="mb-3" controlId="password2">
                             <Form.Control type="password" placeholder="Confirm Password" name="password2" />
                         </FloatingLabel>
+                        
                         <Button variant="primary" type="submit">
                             Sign Up
                         </Button>

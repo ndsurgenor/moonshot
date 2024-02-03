@@ -1,3 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+* {
+    font-family: 'Barlow';
+}
+
 .App {
     background-color: whitesmoke;
     min-height: 100vh;
@@ -8,7 +15,14 @@
     padding-top: 5rem;
 }
 
+h1,
+h2 {
+    font-family: 'Poppins';
+    color: #05192e;
+}
+
 a {
+    font-size: 1.1rem;
     text-decoration: none;
     transition: ease-in-out 0.25s;
   }

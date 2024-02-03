@@ -1,5 +1,5 @@
 .NavBar {
-    background-color: #05192e;    
+    background-color: #05192e;
 }
 
 .NavBrand,
@@ -8,7 +8,18 @@
     text-decoration: none; 
 }
 
+.NavBrand {
+    font-family: 'Poppins';
+    font-size: 1.5rem;
+}
+
+.NavBrandIcon {
+    margin-left: -0.2rem;
+    margin-bottom: 1rem;    
+}
+
 .NavLink {
+    text-align: center;
     margin: 0.5rem 0.5rem;
     padding: 0.5rem 0.5rem;
 }
@@ -23,7 +34,7 @@
     text-decoration: underline;
 }
 
-.NavIcon {
+.NavLinkIcon {
     font-size: 1.5rem;
     padding-right: 0.5rem;
 }
