@@ -1,0 +1,28 @@
+.NavBar {
+    background-color: #05192e;    
+}
+
+.NavBrand,
+.NavLink {
+    color: whitesmoke;
+    text-decoration: none; 
+}
+
+.NavBrand {
+    font-size: 1.5rem;     
+}
+
+.NavLink {
+    margin: 0.5rem 0.5rem;
+    padding: 0.5rem 0.5rem;
+}
+
+.NavLink:hover {
+    color: #05192e;
+    background-color: whitesmoke;
+    border-radius: 5rem;
+}
+
+.ActiveLink {
+    text-decoration: underline;
+}

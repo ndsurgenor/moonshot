@@ -1,4 +1,14 @@
 .App {
     background-color: whitesmoke;
     min-height: 100vh;
+    text-decoration: none;
 }
+
+.Main {
+    padding-top: 5rem;
+}
+
+a {
+    text-decoration: none;
+    transition: ease-in-out 0.25s;
+  }
