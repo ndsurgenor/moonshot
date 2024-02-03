@@ -2,6 +2,10 @@ import React from 'react';
 import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
+// NavBar Icons
+import { ImEarth } from "react-icons/im";
+import { MdOutlineHub } from "react-icons/md";
+import { FaArrowRightToBracket } from "react-icons/fa6";
 
 
 const NavBar = () => {
@@ -12,9 +16,9 @@ const NavBar = () => {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
                     <Nav>
-                        <Nav.Link>Home</Nav.Link>
-                        <Nav.Link>Sign Up</Nav.Link>
-                        <Nav.Link>Sign In</Nav.Link>
+                        <Nav.Link><ImEarth /> Home</Nav.Link>
+                        <Nav.Link><MdOutlineHub /> Sign Up</Nav.Link>
+                        <Nav.Link><FaArrowRightToBracket /> Sign In</Nav.Link>
                     </Nav>
                 </Navbar.Collapse >
             </Container >
