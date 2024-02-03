@@ -8,10 +8,6 @@
     text-decoration: none; 
 }
 
-.NavBrand {
-    font-size: 1.5rem;     
-}
-
 .NavLink {
     margin: 0.5rem 0.5rem;
     padding: 0.5rem 0.5rem;
@@ -25,4 +21,9 @@
 
 .ActiveLink {
     text-decoration: underline;
+}
+
+.NavIcon {
+    font-size: 1.5rem;
+    padding-right: 0.5rem;
 }
