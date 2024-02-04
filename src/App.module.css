@@ -1,14 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Barlow&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
+/* General Application Styles */
 * {
     font-family: 'Barlow';
+    box-sizing: border-box;
 }
 
 .App {
     background-color: whitesmoke;
     min-height: 100vh;
-    text-decoration: none;
 }
 
 .Main {
@@ -17,12 +17,47 @@
 
 h1,
 h2 {
-    font-family: 'Poppins';
     color: #05192e;
 }
 
 a {
-    font-size: 1.1rem;
+    transition: ease-in-out 0.2s;
     text-decoration: none;
-    transition: ease-in-out 0.25s;
+  }
+
+/* Component Styles   */
+.Form {
+    width: 50%;
+    justify-content: center;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.FormLink {
+    font-size: 1.1rem;
+    text-decoration: underline;    
+}
+
+.FormLink:hover {
+    color: goldenrod;
+}
+
+.Button {
+    color: whitesmoke;
+    background-color: #0c2a33;
+    border: 1px solid gainsboro;
+}
+
+.Button:hover {
+    color: #05192e;
+    background-color: goldenrod;
+    border: 1px solid #05192e;
+}
+
+
+/* Media Queries */
+@media only screen and (max-width: 767px) {
+    .Form {
+      width: 98%;
+    }
   }

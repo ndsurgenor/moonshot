@@ -26,7 +26,7 @@ const NavBar = () => {
                     <Nav>
                         <NavLink
                             className={styles.NavLink}
-                            activeClassName={styles.ActiveLink}
+                            activeClassName={styles.ActiveNavLink}
                             exact
                             to="/"
                         >
@@ -35,7 +35,7 @@ const NavBar = () => {
                         </NavLink>
                         <NavLink
                             className={styles.NavLink}
-                            activeClassName={styles.ActiveLink}
+                            activeClassName={styles.ActiveNavLink}
                             to="/signup"
                         >
                             {/* <MdOutlineHub className={styles.NavLinkIcon} />Sign Up */}
@@ -43,7 +43,7 @@ const NavBar = () => {
                         </NavLink>
                         <NavLink
                             className={styles.NavLink}
-                            activeClassName={styles.ActiveLink}
+                            activeClassName={styles.ActiveNavLink}
                             to="/signin"
                         >
                             {/* <FaArrowRightToBracket className={styles.NavLinkIcon} />Sign In */}

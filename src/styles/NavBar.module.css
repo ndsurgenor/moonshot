@@ -1,16 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
 .NavBar {
-    background-color: #05192e;
+    background: linear-gradient(100deg, #05192e 0%, #0c2a33 100%);
 }
 
 .NavBrand,
 .NavLink {
     color: whitesmoke;
-    text-decoration: none; 
+    text-decoration: none;
 }
 
 .NavBrand {
     font-family: 'Poppins';
-    font-size: 1.5rem;
+    font-size: 1.6rem;
 }
 
 .NavBrandIcon {
@@ -19,9 +21,12 @@
 }
 
 .NavLink {
+    font-size: 1.1rem;
     text-align: center;
     margin: 0.5rem 0.5rem;
     padding: 0.5rem 0.5rem;
+    border-top: 1px solid #00000000;
+    border-bottom: 1px solid #00000000;
 }
 
 .NavLink:hover {
@@ -30,8 +35,9 @@
     border-radius: 5rem;
 }
 
-.ActiveLink {
-    text-decoration: underline;
+.ActiveNavLink {
+    border-top: 1px solid goldenrod;
+    border-bottom: 1px solid goldenrod;
 }
 
 .NavLinkIcon {
