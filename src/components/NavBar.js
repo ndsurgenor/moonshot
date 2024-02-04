@@ -39,7 +39,7 @@ const NavBar = () => {
                             to="/signup"
                         >
                             {/* <MdOutlineHub className={styles.NavLinkIcon} />Sign Up */}
-                            Sign up
+                            Sign Up
                         </NavLink>
                         <NavLink
                             className={styles.NavLink}
