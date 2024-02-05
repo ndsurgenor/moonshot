@@ -5,10 +5,10 @@ import Nav from 'react-bootstrap/Nav';
 import styles from '../styles/NavBar.module.css'
 import { NavLink } from 'react-router-dom';
 
-// import { WiMoonAltWaxingCrescent3 } from "react-icons/wi";
-// import { ImEarth } from "react-icons/im";
-// import { MdOutlineHub } from "react-icons/md";
-// import { FaArrowRightToBracket } from "react-icons/fa6";
+import { WiMoonAltWaxingCrescent3 } from "react-icons/wi";
+import { ImEarth } from "react-icons/im";
+import { MdOutlineHub } from "react-icons/md";
+import { FaArrowRightToBracket } from "react-icons/fa6";
 
 
 const NavBar = () => {
@@ -17,8 +17,7 @@ const NavBar = () => {
             <Container>
                 <NavLink to="/">
                     <Navbar.Brand className={styles.NavBrand}>
-                        {/* moonshot <WiMoonAltWaxingCrescent3 className={styles.NavBrandIcon} /> */}
-                        moonshot
+                        moonshot <WiMoonAltWaxingCrescent3 className={styles.NavBrandIcon} />
                     </Navbar.Brand>
                 </NavLink>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -30,24 +29,21 @@ const NavBar = () => {
                             exact
                             to="/"
                         >
-                            {/* <ImEarth className={styles.NavLinkIcon} />Home */}
-                            Home
+                            <ImEarth className={styles.NavLinkIcon} />Home
                         </NavLink>
                         <NavLink
                             className={styles.NavLink}
                             activeClassName={styles.ActiveNavLink}
                             to="/signup"
                         >
-                            {/* <MdOutlineHub className={styles.NavLinkIcon} />Sign Up */}
-                            Sign Up
+                            <MdOutlineHub className={styles.NavLinkIcon} />Sign Up
                         </NavLink>
                         <NavLink
                             className={styles.NavLink}
                             activeClassName={styles.ActiveNavLink}
                             to="/signin"
                         >
-                            {/* <FaArrowRightToBracket className={styles.NavLinkIcon} />Sign In */}
-                            Sign In
+                            <FaArrowRightToBracket className={styles.NavLinkIcon} />Sign In
                         </NavLink>
                     </Nav>
                 </Navbar.Collapse >

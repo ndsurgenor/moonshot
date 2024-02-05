@@ -9,35 +9,7 @@ import {
 } from "react-bootstrap";
 
 
-const SignUpForm = () => {
-
-    const [signUpData, setSignUpData] = useState({
-        username: '',
-        password1: '',
-        password2: '',
-    });
-    const { username, password1, password2 } = signUpData;
-
-    const [errors, setErrors] = useState({})
-
-    const history = useHistory();
-
-    const handleChange = (e) => {
-        setSignUpData({
-            ...signUpData,
-            [e.target.name]: e.target.value,
-        })
-    }
-
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        try {
-            await axios.post('/dj-rest-auth/registration/', signUpData)
-            history.push('/')
-        } catch (err) {
-            setErrors(err.response?.data)
-        }
-    };
+const SignInForm = () => {
 
     return (
         <Row>
@@ -108,9 +80,9 @@ const SignUpForm = () => {
                 </Container>
 
                 <Container className={formStyles.Form}>
-                    <h2>Not joined us yet?</h2>
+                    <h2>Already a member?</h2>
                     <Link className={formStyles.FormLink} to="/signin">
-                        Click here to Sign Up
+                        Click here to Sign In
                     </Link>
                 </Container>
 
@@ -119,4 +91,4 @@ const SignUpForm = () => {
     );
 };
 
-export default SignUpForm;
+export default SignInForm;

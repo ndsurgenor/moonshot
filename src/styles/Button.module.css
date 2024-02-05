@@ -1,0 +1,11 @@
+.Button {
+    color: whitesmoke;
+    background-color: #0c2a33;
+    border: 1px solid gainsboro;
+}
+
+.Button:hover {
+    color: #05192e;
+    background-color: goldenrod;
+    border: 1px solid #05192e;
+}
