@@ -21,19 +21,19 @@ const SignUpForm = () => {
 
     const history = useHistory();
 
-    const handleChange = (event) => {
+    const handleChange = (e) => {
         setSignUpData({
             ...signUpData,
-            [event.target.name]: event.target.value,
+            [e.target.name]: e.target.value,
         })
     }
 
-    const handleSubmit = async (event) => {
-        event.preventDefault();
+    const handleSubmit = async (e) => {
+        e.preventDefault();
         try {
             await axios.post('/dj-rest-auth/registration/', signUpData)
-            history.push('/signin')
-        } catch(err) {
+            history.push('/')
+        } catch (err) {
             setErrors(err.response?.data)
         }
     };
@@ -41,28 +41,29 @@ const SignUpForm = () => {
     return (
         <Row>
             <Col>
-                <Container>
-                    <h1>sign up</h1>
+                <Container className={appStyles.Form}>
+
+                    <h1>Join our community</h1>
+                    <p>Sign up for the full experience  - it's free!</p>
 
                     <Form onSubmit={handleSubmit}>
-                        <Form.Group controlId="username">
-                            <Form.Label className="d-none">username</Form.Label>
+
+                        <FloatingLabel className="mb-3" label="Username" controlId="username">
                             <Form.Control
                                 type="text"
-                                placeholder="Username"
+                                placeholder="username"
                                 name="username"
                                 value={username}
                                 onChange={handleChange}
                             />
-                        </Form.Group>
-                        {errors.username?.map((message, idx) =>
-                        <Alert variant="warning" key={idx}>
-                            {message}
-                        </Alert>
-                        )}
+                        </FloatingLabel>
+                        {errors.username?.map((message, idx) => (
+                            <Alert variant="warning" key={idx}>
+                                {message}
+                            </Alert>
+                        ))}
 
-                        <Form.Group controlId="password1">
-                            <Form.Label className="d-none">Password</Form.Label>
+                        <FloatingLabel className="mb-3" label="Password" controlId="password1">
                             <Form.Control
                                 type="password"
                                 placeholder="Password"
@@ -70,122 +71,51 @@ const SignUpForm = () => {
                                 value={password1}
                                 onChange={handleChange}
                             />
-                        </Form.Group>
+                        </FloatingLabel>
+                        {errors.password1?.map((message, idx) => (
+                            <Alert variant="warning" key={idx}>
+                                {message}
+                            </Alert>
+                        ))}
 
-                        <Form.Group controlId="password2">
-                            <Form.Label className="d-none">Confirm password</Form.Label>
+                        <FloatingLabel className="mb-3" label="Confirm Password" controlId="password2">
                             <Form.Control
                                 type="password"
-                                placeholder="Confirm password"
+                                placeholder="Confirm Password"
                                 name="password2"
                                 value={password2}
                                 onChange={handleChange}
                             />
-                        </Form.Group>
+                        </FloatingLabel>
+                        {errors.password2?.map((message, idx) => (
+                            <Alert variant="warning" key={idx}>
+                                {message}
+                            </Alert>
+                        ))}
 
-                        <Button
-                            type="submit"
-                        >
-                            Sign up
+                        <Button className={appStyles.Button} type="submit">
+                            Sign Up
                         </Button>
+
+                        {errors.non_field_errors?.map((message, idx) => (
+                            <Alert variant="warning" key={idx} className="mt-3">
+                                {message}
+                            </Alert>
+                        ))}
+
                     </Form>
                 </Container>
 
-                <Container className='mt-3'>
-                    <Link to="/signin">
-                        Already have an account? <span>Sign in</span>
+                <Container className={appStyles.Form}>
+                    <h2>Already a member?</h2>
+                    <Link className={appStyles.FormLink} to="/signin">
+                        Click here to Sign In
                     </Link>
                 </Container>
-            </Col>
-            <Col>
+
             </Col>
         </Row>
     );
-
-    // return (
-    //     <Row>
-    //         <Col>
-    //             <Container className={appStyles.Form}>
-
-    //                 <h1>Join our community</h1>
-    //                 <p>Sign up for the full experience  - it's free!</p>
-
-    //                 <Form onSubmit={handleSubmit}>
-
-    //                     <Form.Group controlId="username">
-    //                         <FloatingLabel label="Username" className="mb-3">
-    //                             <Form.Control
-    //                                 type="text"
-    //                                 placeholder="username"
-    //                                 name="username"
-    //                                 value={username}
-    //                                 onChange={handleChange}
-    //                             />
-    //                         </FloatingLabel>
-    //                     </Form.Group>
-    //                     {errors.username?.map((message, idx) => (
-    //                         <Alert variant="warning" key={idx}>
-    //                             {message}
-    //                         </Alert>
-    //                     ))}
-
-    //                     <Form.Group controlId="password1">
-    //                         <FloatingLabel label="Password" className="mb-3">
-    //                             <Form.Control
-    //                                 type="password"
-    //                                 placeholder="Password"
-    //                                 name="password1"
-    //                                 value={password1}
-    //                                 onChange={handleChange}
-    //                             />
-    //                         </FloatingLabel>
-    //                     </Form.Group>
-    //                     {errors.password1?.map((message, idx) => (
-    //                         <Alert variant="warning" key={idx}>
-    //                             {message}
-    //                         </Alert>
-    //                     ))}
-
-    //                     <Form.Group controlId="password2">
-    //                         <FloatingLabel label="Confirm Password" className="mb-3">
-    //                             <Form.Control
-    //                                 type="password"
-    //                                 placeholder="Confirm Password"
-    //                                 name="password2"
-    //                                 value={password2}
-    //                                 onChange={handleChange}
-    //                             />
-    //                         </FloatingLabel>
-    //                     </Form.Group>
-    //                     {errors.password2?.map((message, idx) => (
-    //                         <Alert variant="warning" key={idx}>
-    //                             {message}
-    //                         </Alert>
-    //                     ))}
-
-    //                     <Button className={appStyles.Button} type="submit">
-    //                         Sign Up
-    //                     </Button>
-
-    //                     {errors.non_field_errors?.map((message, idx) => (
-    //                         <Alert variant="warning" key={idx} className="mt-3">
-    //                             {message}
-    //                         </Alert>
-    //                     ))}
-
-    //                 </Form>
-    //             </Container>
-
-    //             <Container className={appStyles.Form}>
-    //                 <h2>Already a member?</h2>
-    //                 <Link className={appStyles.FormLink}>
-    //                     Click here to Sign In
-    //                 </Link>
-    //             </Container>
-
-    //         </Col>
-    //     </Row>
-    // );
 };
 
 export default SignUpForm;
