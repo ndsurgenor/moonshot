@@ -11,13 +11,39 @@ import {
 
 const SignInForm = () => {
 
+    const [signInData, setSignInData] = useState({
+        username: '',
+        password: '',
+    });
+    const { username, password } = signInData;
+
+    const handleChange = (e) => {
+        setSignInData({
+            ...signInData,
+            [e.target.name]: e.target.value,
+        })
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            await axios.post('/dj-rest-auth/login/', signInData)
+            history.push('/')
+        } catch (err) {
+            setErrors(err.response?.data)
+        }
+    };
+
+    const [errors, setErrors] = useState({});
+    const history = useHistory();
+
     return (
         <Row>
             <Col>
                 <Container className={formStyles.Form}>
 
-                    <h1>Join our community</h1>
-                    <p>Sign up for the full experience  - it's free!</p>
+                    <h1>Access your account</h1>
+                    <p>Sign in to share and connect</p>
 
                     <Form onSubmit={handleSubmit}>
 
@@ -36,39 +62,20 @@ const SignInForm = () => {
                             </Alert>
                         ))}
 
-                        <FloatingLabel className="mb-3" label="Password" controlId="password1">
+                        <FloatingLabel className="mb-3" label="Password" controlId="password">
                             <Form.Control
                                 type="password"
                                 placeholder="Password"
-                                name="password1"
-                                value={password1}
+                                name="password"
+                                value={password}
                                 onChange={handleChange}
                             />
                         </FloatingLabel>
-                        {errors.password1?.map((message, idx) => (
+                        {errors.password?.map((message, idx) => (
                             <Alert variant="warning" key={idx}>
                                 {message}
                             </Alert>
                         ))}
-
-                        <FloatingLabel className="mb-3" label="Confirm Password" controlId="password2">
-                            <Form.Control
-                                type="password"
-                                placeholder="Confirm Password"
-                                name="password2"
-                                value={password2}
-                                onChange={handleChange}
-                            />
-                        </FloatingLabel>
-                        {errors.password2?.map((message, idx) => (
-                            <Alert variant="warning" key={idx}>
-                                {message}
-                            </Alert>
-                        ))}
-
-                        <Button className={buttonStyles.Button} type="submit">
-                            Sign Up
-                        </Button>
 
                         {errors.non_field_errors?.map((message, idx) => (
                             <Alert variant="warning" key={idx} className="mt-3">
@@ -76,13 +83,17 @@ const SignInForm = () => {
                             </Alert>
                         ))}
 
+                        <Button className={buttonStyles.Button} type="submit">
+                            Sign In
+                        </Button>
+
                     </Form>
                 </Container>
 
                 <Container className={formStyles.Form}>
-                    <h2>Already a member?</h2>
-                    <Link className={formStyles.FormLink} to="/signin">
-                        Click here to Sign In
+                    <h2>Haven't joined us yet?</h2>
+                    <Link className={formStyles.FormLink} to="/signup">
+                        Click here to Sign Up
                     </Link>
                 </Container>
 

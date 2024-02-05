@@ -18,16 +18,12 @@ const SignUpForm = () => {
     });
     const { username, password1, password2 } = signUpData;
 
-    const [errors, setErrors] = useState({})
-
-    const history = useHistory();
-
     const handleChange = (e) => {
         setSignUpData({
             ...signUpData,
             [e.target.name]: e.target.value,
         })
-    }
+    };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -38,6 +34,9 @@ const SignUpForm = () => {
             setErrors(err.response?.data)
         }
     };
+
+    const [errors, setErrors] = useState({});
+    const history = useHistory();
 
     return (
         <Row>
@@ -94,23 +93,23 @@ const SignUpForm = () => {
                             </Alert>
                         ))}
 
-                        <Button className={buttonStyles.Button} type="submit">
-                            Sign Up
-                        </Button>
-
                         {errors.non_field_errors?.map((message, idx) => (
                             <Alert variant="warning" key={idx} className="mt-3">
                                 {message}
                             </Alert>
                         ))}
 
+                        <Button className={buttonStyles.Button} type="submit">
+                            Sign Up
+                        </Button>
+
                     </Form>
                 </Container>
 
                 <Container className={formStyles.Form}>
-                    <h2>Not joined us yet?</h2>
+                    <h2>Already a member?</h2>
                     <Link className={formStyles.FormLink} to="/signin">
-                        Click here to Sign Up
+                        Click here to Sign In
                     </Link>
                 </Container>
 
