@@ -11,9 +11,9 @@ import {
 const SignUpForm = () => {
 
     const [signUpData, setSignUpData] = useState({
-        username: "",
-        password1: "",
-        password2: "",
+        username: '',
+        password1: '',
+        password2: '',
     });
     const { username, password1, password2 } = signUpData;
 
