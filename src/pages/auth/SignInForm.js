@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
+import { SetCurrentUserContext } from "../../App";
 import axios from "axios";
 
 import formStyles from "../../styles/Form.module.css";
@@ -10,6 +11,8 @@ import {
 
 
 const SignInForm = () => {
+
+    const setCurrentUser = useContext(SetCurrentUserContext);
 
     const [signInData, setSignInData] = useState({
         username: '',
@@ -27,7 +30,8 @@ const SignInForm = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await axios.post('/dj-rest-auth/login/', signInData)
+            const {data} = await axios.post('/dj-rest-auth/login/', signInData);
+            setCurrentUser(data.user);
             history.push('/')
         } catch (err) {
             setErrors(err.response?.data)
