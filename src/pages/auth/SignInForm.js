@@ -10,37 +10,31 @@ import {
 } from "react-bootstrap";
 
 
-
-const SignInForm = () => {
-
-    const setCurrentUser = useSetCurrentUser();
-
+function SignInForm() {
+    const setCurrentUser = useSetCurrentUser();  
     const [signInData, setSignInData] = useState({
         username: '',
         password: '',
     });
-    const { username, password } = signInData;
-
+    const { username, password } = signInData;    
+    const [errors, setErrors] = useState({});  
+    const history = useHistory();
     const handleChange = (e) => {
         setSignInData({
             ...signInData,
             [e.target.name]: e.target.value,
         })
     };
-
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const {data} = await axios.post('/dj-rest-auth/login/', signInData);
+            const { data } = await axios.post('/dj-rest-auth/login/', signInData);
             setCurrentUser(data.user);
             history.push('/')
         } catch (err) {
             setErrors(err.response?.data)
         }
     };
-
-    const [errors, setErrors] = useState({});
-    const history = useHistory();
 
     return (
         <Row>

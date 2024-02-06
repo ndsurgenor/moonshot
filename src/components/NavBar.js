@@ -13,10 +13,9 @@ import { FaArrowRightToBracket } from "react-icons/fa6";
 
 
 const NavBar = () => {
-
     const currentUser = useCurrentUser();
-    const loggedInIcons = <>{currentUser?.username}</>;
-    const loggedOutIcons = (
+    const loggedInLinks = <>{currentUser?.username}</>;
+    const loggedOutLinks = (
         <>
             <NavLink
                 className={styles.NavLink}
@@ -54,8 +53,8 @@ const NavBar = () => {
                         >
                             <ImEarth className={styles.NavLinkIcon} />Home
                         </NavLink>
-                        
-                        {currentUser ? loggedInIcons : loggedOutIcons}
+                                                
+                        {currentUser ? loggedInLinks : loggedOutLinks}
                     </Nav>
                 </Navbar.Collapse >
             </Container >

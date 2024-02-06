@@ -10,10 +10,8 @@ export const useCurrentUser = () => useContext(CurrentUserContext)
 export const useSetCurrentUser = () => useContext(SetCurrentUserContext)
 
 export const CurrentUserProvider = ({ children }) => {
-
     const [currentUser, setCurrentUser] = useState(null);
     const history = useHistory;
-
     const handleMount = async () => {
         try {
             const { data } = await axiosRes.get('dj-rest-auth/user/');
@@ -29,13 +27,13 @@ export const CurrentUserProvider = ({ children }) => {
 
     useMemo(() => {
         axiosReq.interceptors.request.use(
-            async(config) => {
+            async (config) => {
                 try {
                     await axios.post('/dj-rest-auth/token/refresh/')
-                } catch(err){
+                } catch (err) {
                     setCurrentUser((prevCurrentUser) => {
                         if (prevCurrentUser) {
-                            history.push('signin/')
+                            history.push('/signin')
                         }
                         return null
                     })
@@ -44,22 +42,22 @@ export const CurrentUserProvider = ({ children }) => {
                 return config
             },
             (err) => {
-                return Promise.reject(err)
+                return Promise.reject(err);
             }
         );
         axiosRes.interceptors.response.use(
             (response) => response,
             async (err) => {
-                if (err.response?.status === 401){
+                if (err.response?.status === 401) {
                     try {
                         await axios.post('/dj-rest-auth/token/refresh/')
-                    } catch(err) {
+                    } catch (err) {
                         setCurrentUser(prevCurrentUser => {
-                            if (prevCurrentUser){
+                            if (prevCurrentUser) {
                                 history.push('/signin')
                             }
                             return null
-                        })
+                        });
                     }
                     return axios(err.config)
                 }
