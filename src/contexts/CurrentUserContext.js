@@ -15,6 +15,7 @@ export const CurrentUserProvider = ({ children }) => {
     const handleMount = async () => {
         try {
             const { data } = await axiosRes.get('dj-rest-auth/user/');
+            console.log(data)
             setCurrentUser(data);
         } catch (err) {
             console.log(err);
@@ -52,12 +53,12 @@ export const CurrentUserProvider = ({ children }) => {
                     try {
                         await axios.post('/dj-rest-auth/token/refresh/')
                     } catch (err) {
-                        setCurrentUser(prevCurrentUser => {
+                        setCurrentUser((prevCurrentUser) => {
                             if (prevCurrentUser) {
-                                history.push('/signin')
+                              history.push("/signin");
                             }
-                            return null
-                        });
+                            return null;
+                          });
                     }
                     return axios(err.config)
                 }
