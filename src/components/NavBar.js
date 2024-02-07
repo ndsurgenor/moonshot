@@ -1,20 +1,46 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import {useCurrentUser} from "../contexts/CurrentUserContext";
+import { useCurrentUser } from "../contexts/CurrentUserContext";
 
 import styles from '../styles/NavBar.module.css';
 import { Container, Nav, Navbar } from 'react-bootstrap';
 
-import { WiMoonAltWaxingCrescent3 } from "react-icons/wi";
+import {
+    FaArrowRightFromBracket, FaArrowRightToBracket, FaUserAstronaut
+} from "react-icons/fa6";
 import { ImEarth } from "react-icons/im";
 import { MdOutlineHub } from "react-icons/md";
-import { FaArrowRightToBracket } from "react-icons/fa6";
-
+import { RxRocket } from "react-icons/rx";
+import { WiMoonAltWaxingCrescent3 } from "react-icons/wi";
 
 
 const NavBar = () => {
     const currentUser = useCurrentUser();
-    const loggedInLinks = <>{currentUser?.username}</>;
+
+    const loggedInLinks = <>
+        <NavLink
+            className={styles.NavLink}
+            activeClassName={styles.ActiveNavLink}
+            to={`/user-profiles/${currentUser?.profile_id}`}
+        >
+            <FaUserAstronaut className={styles.NavLinkIcon} />Profile
+        </NavLink>
+        <NavLink
+            className={styles.NavLink}
+            activeClassName={styles.ActiveNavLink}
+            to="/photos/upload"
+        >
+            <RxRocket className={styles.NavLinkIcon} />Upload
+        </NavLink>
+        <NavLink
+            className={styles.NavLink}
+            to="/"
+            onClick={() => { }}
+        >
+            <FaArrowRightFromBracket className={styles.NavLinkIcon} />Sign Out
+        </NavLink>
+    </>;
+
     const loggedOutLinks = (
         <>
             <NavLink
@@ -53,7 +79,7 @@ const NavBar = () => {
                         >
                             <ImEarth className={styles.NavLinkIcon} />Home
                         </NavLink>
-                                                
+
                         {currentUser ? loggedInLinks : loggedOutLinks}
                     </Nav>
                 </Navbar.Collapse >
