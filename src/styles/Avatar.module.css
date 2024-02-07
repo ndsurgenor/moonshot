@@ -1,0 +1,5 @@
+.Avatar {
+    object-fit: cover;
+    margin: 0 1rem;
+    border-radius: 50%;
+}
