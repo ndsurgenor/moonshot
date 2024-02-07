@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import {
     useCurrentUser, useSetCurrentUser
@@ -20,6 +20,19 @@ import axios from 'axios';
 const NavBar = () => {
     const currentUser = useCurrentUser();
     const setCurrentUser = useSetCurrentUser();
+    const [expanded, setExpanded] = useState(false);
+    const ref = useRef(null)
+    useEffect(() => {
+        const handleClickOutside = (e) => {
+            if (ref.current && !ref.current.contains(e.target)){
+                setExpanded(false)
+            }
+        }
+        document.addEventListener('mouseup', handleClickOutside)
+        return () => {
+            document.removeEventListener('mouseup', handleClickOutside)
+        }
+    }, [ref]);
 
     const handleSignOut = async () => {
         try {
@@ -74,14 +87,24 @@ const NavBar = () => {
     );
 
     return (
-        <Navbar className={styles.NavBar} expand="md" fixed="top" data-bs-theme="dark">
+        <Navbar
+            className={styles.NavBar}
+            expand="md"
+            fixed="top"
+            data-bs-theme="dark"
+            expanded={expanded}
+        >
             <Container>
                 <NavLink to="/">
                     <Navbar.Brand className={styles.NavBrand}>
                         moonshot <WiMoonAltWaxingCrescent3 className={styles.NavBrandIcon} />
                     </Navbar.Brand>
                 </NavLink>
-                <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                <Navbar.Toggle
+                    aria-controls="basic-navbar-nav"
+                    onClick={() => setExpanded(!expanded)}
+                    ref={ref}
+                />
                 <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
                     <Nav>
                         <NavLink
