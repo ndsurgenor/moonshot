@@ -1,9 +1,10 @@
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+
 
 const useClickOutsideToggle = () => {
-
     const [expanded, setExpanded] = useState(false);
     const ref = useRef(null)
+
     useEffect(() => {
         const handleClickOutside = (e) => {
             if (ref.current && !ref.current.contains(e.target)) {
@@ -17,6 +18,6 @@ const useClickOutsideToggle = () => {
     }, [ref]);
 
     return { expanded, setExpanded, ref };
-}
+};
 
 export default useClickOutsideToggle

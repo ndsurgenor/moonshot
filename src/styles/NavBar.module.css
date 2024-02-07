@@ -25,6 +25,7 @@
     text-align: center;
     margin: 0.5rem 0.5rem;
     padding: 0.5rem 0.5rem;
+    /* Invisible borders preserve navbar alignment */
     border-top: 1px solid #00000000;
     border-bottom: 1px solid #00000000;
 }
@@ -44,3 +45,11 @@
     font-size: 1.5rem;
     padding-right: 0.5rem;
 }
+
+@media only screen and (max-width: 767px) {
+    .NavLink {
+      width: 85%;
+      text-align: left;
+      margin: 0.25rem auto 0.25rem 0;
+    }
+  }

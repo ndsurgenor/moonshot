@@ -9,19 +9,20 @@ import useClickOutsideToggle from '../hooks/useClickOutsideToggle';
 import styles from '../styles/NavBar.module.css';
 import { Container, Nav, Navbar } from 'react-bootstrap';
 
+import { FaCameraRetro } from "react-icons/fa";
 import {
     FaArrowRightFromBracket, FaArrowRightToBracket, FaUserAstronaut
 } from "react-icons/fa6";
 import { ImEarth } from "react-icons/im";
 import { MdOutlineHub } from "react-icons/md";
-import { RxRocket } from "react-icons/rx";
 import { WiMoonAltWaxingCrescent3 } from "react-icons/wi";
 
 
 const NavBar = () => {
     const currentUser = useCurrentUser();
     const setCurrentUser = useSetCurrentUser();
-    const {expanded, setExpanded, ref} = useClickOutsideToggle();
+    const { expanded, setExpanded, ref } = useClickOutsideToggle();
+
     const handleSignOut = async () => {
         try {
             await axios.post('dj-rest-auth/logout/');
@@ -30,30 +31,6 @@ const NavBar = () => {
             console.log(err);
         }
     };
-
-    const loggedInLinks = <>
-        <NavLink
-            className={styles.NavLink}
-            activeClassName={styles.ActiveNavLink}
-            to={`/user-profiles/${currentUser?.profile_id}`}
-        >
-            <FaUserAstronaut className={styles.NavLinkIcon} />Profile
-        </NavLink>
-        <NavLink
-            className={styles.NavLink}
-            activeClassName={styles.ActiveNavLink}
-            to="/photos/upload"
-        >
-            <RxRocket className={styles.NavLinkIcon} />Upload
-        </NavLink>
-        <NavLink
-            className={styles.NavLink}
-            to="/"
-            onClick={handleSignOut}
-        >
-            <FaArrowRightFromBracket className={styles.NavLinkIcon} />Sign Out
-        </NavLink>
-    </>;
 
     const loggedOutLinks = (
         <>
@@ -74,6 +51,30 @@ const NavBar = () => {
         </>
     );
 
+    const loggedInLinks = <>    
+        <NavLink
+            className={styles.NavLink}
+            activeClassName={styles.ActiveNavLink}
+            to="/photos/upload"
+        >
+            <FaCameraRetro className={styles.NavLinkIcon} />Upload+
+        </NavLink>
+        <NavLink
+            className={styles.NavLink}
+            activeClassName={styles.ActiveNavLink}
+            to={`/user-profiles/${currentUser?.profile_id}`}
+        >
+            <FaUserAstronaut className={styles.NavLinkIcon} />Profile
+        </NavLink>        
+        <NavLink
+            className={styles.NavLink}
+            to="/"
+            onClick={handleSignOut}
+        >
+            <FaArrowRightFromBracket className={styles.NavLinkIcon} />Sign Out
+        </NavLink>        
+    </>;
+
     return (
         <Navbar
             className={styles.NavBar}
@@ -86,10 +87,11 @@ const NavBar = () => {
                 <NavLink to="/">
                     <Navbar.Brand className={styles.NavBrand}>
                         moonshot <WiMoonAltWaxingCrescent3 className={styles.NavBrandIcon} />
-                    </Navbar.Brand>
+                    </Navbar.Brand>                    
                 </NavLink>
                 <Navbar.Toggle
                     aria-controls="basic-navbar-nav"
+                    className='px-1 border-2'
                     onClick={() => setExpanded(!expanded)}
                     ref={ref}
                 />
@@ -106,9 +108,9 @@ const NavBar = () => {
 
                         {currentUser ? loggedInLinks : loggedOutLinks}
                     </Nav>
-                </Navbar.Collapse >
-            </Container >
-        </Navbar >
+                </Navbar.Collapse >                
+            </Container >            
+        </Navbar >        
     );
 }
 
