@@ -1,6 +1,8 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { useCurrentUser } from "../contexts/CurrentUserContext";
+import {
+    useCurrentUser, useSetCurrentUser
+} from "../contexts/CurrentUserContext";
 
 import styles from '../styles/NavBar.module.css';
 import { Container, Nav, Navbar } from 'react-bootstrap';
@@ -12,10 +14,21 @@ import { ImEarth } from "react-icons/im";
 import { MdOutlineHub } from "react-icons/md";
 import { RxRocket } from "react-icons/rx";
 import { WiMoonAltWaxingCrescent3 } from "react-icons/wi";
+import axios from 'axios';
 
 
 const NavBar = () => {
     const currentUser = useCurrentUser();
+    const setCurrentUser = useSetCurrentUser();
+
+    const handleSignOut = async () => {
+        try {
+            await axios.post('dj-rest-auth/logout/');
+            setCurrentUser(null);
+        } catch (err) {
+            console.log(err);
+        }
+    };
 
     const loggedInLinks = <>
         <NavLink
@@ -35,7 +48,7 @@ const NavBar = () => {
         <NavLink
             className={styles.NavLink}
             to="/"
-            onClick={() => { }}
+            onClick={handleSignOut}
         >
             <FaArrowRightFromBracket className={styles.NavLinkIcon} />Sign Out
         </NavLink>
