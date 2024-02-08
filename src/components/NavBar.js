@@ -16,13 +16,19 @@ import {
 import { ImEarth } from "react-icons/im";
 import { MdOutlineHub } from "react-icons/md";
 import { WiMoonAltWaxingCrescent3 } from "react-icons/wi";
+import Avatar from './Avatar';
 
 
 const NavBar = () => {
     const currentUser = useCurrentUser();
     const setCurrentUser = useSetCurrentUser();
     const { expanded, setExpanded, ref } = useClickOutsideToggle();
-
+    const addAvatar = (
+        <Avatar
+            src={currentUser?.profile_image}
+            height={30}
+        />
+    )
     const handleSignOut = async () => {
         try {
             await axios.post('dj-rest-auth/logout/');
@@ -32,7 +38,7 @@ const NavBar = () => {
         }
     };
 
-    const loggedOutLinks = (
+    const signedOutLinks = (
         <>
             <NavLink
                 className={styles.NavLink}
@@ -51,7 +57,7 @@ const NavBar = () => {
         </>
     );
 
-    const loggedInLinks = <>    
+    const signedInLinks = <>
         <NavLink
             className={styles.NavLink}
             activeClassName={styles.ActiveNavLink}
@@ -65,7 +71,7 @@ const NavBar = () => {
             to={`/user-profiles/${currentUser?.profile_id}`}
         >
             <FaUserAstronaut className={styles.NavLinkIcon} />Profile
-        </NavLink>        
+        </NavLink>
         <NavLink
             className={styles.NavLink}
             to="/"
@@ -87,14 +93,17 @@ const NavBar = () => {
                 <NavLink to="/">
                     <Navbar.Brand className={styles.NavBrand}>
                         moonshot <WiMoonAltWaxingCrescent3 className={styles.NavBrandIcon} />
-                    </Navbar.Brand>                    
+                    </Navbar.Brand>
                 </NavLink>
+                <Navbar.Text>
+                {currentUser && addAvatar}
+                </Navbar.Text>                
                 <Navbar.Toggle
                     aria-controls="basic-navbar-nav"
                     className='px-1 border-2'
                     onClick={() => setExpanded(!expanded)}
                     ref={ref}
-                />
+                />                
                 <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
                     <Nav>
                         <NavLink
@@ -106,11 +115,11 @@ const NavBar = () => {
                             <ImEarth className={styles.NavLinkIcon} />Home
                         </NavLink>
 
-                        {currentUser ? loggedInLinks : loggedOutLinks}
+                        {currentUser ? signedInLinks : signedOutLinks}
                     </Nav>
-                </Navbar.Collapse >                
-            </Container >            
-        </Navbar >        
+                </Navbar.Collapse >
+            </Container >
+        </Navbar >
     );
 }
 
