@@ -24,6 +24,7 @@ function UploadForm() {
     other: '',
   });
   const {
+    photo,
     title,
     feature,
     description,
@@ -34,15 +35,25 @@ function UploadForm() {
     camera,
     other
   } = uploadData;
-  
-  const [errors, setErrors] = useState({});
-  const history = useHistory();
+
+  // const [errors, setErrors] = useState({});
+  // const history = useHistory();
 
   const handleChange = (e) => {
     setUploadData({
       ...uploadData,
       [e.target.name]: e.target.value,
     })
+  };
+
+  const handleChangePhoto = (e) => {
+    if (e.target.files.length) {
+      URL.revokeObjectURL(photo);
+      setUploadData({
+        ...uploadData,
+        photo: URL.createObjectURL(e.target.files[0])
+      })
+    }
   };
 
 
@@ -165,12 +176,19 @@ function UploadForm() {
         <Col>
           <Container>
             <Form.Group>
+              {photo ? (<></>): (<></>)}
               <Form.Label htmlFor="image-upload">
                 <Asset
                   src={Upload}
                   message="Tap/click above to select photo"
                 />
               </Form.Label>
+              <Form.Control
+                type="file"
+                accept="image/*"
+                controlId="photo"
+                onChange={handleChangePhoto}
+              />
             </Form.Group>
             <div>{formFields}</div>
           </Container>
