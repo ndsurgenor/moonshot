@@ -16,9 +16,11 @@ function SignInForm() {
         username: '',
         password: '',
     });
-    const { username, password } = signInData;    
+    const { username, password } = signInData; 
+
     const [errors, setErrors] = useState({});  
     const history = useHistory();
+    
     const handleChange = (e) => {
         setSignInData({
             ...signInData,

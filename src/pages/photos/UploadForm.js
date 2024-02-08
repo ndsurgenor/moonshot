@@ -34,7 +34,10 @@ function UploadForm() {
     camera,
     other
   } = uploadData;
+  
   const [errors, setErrors] = useState({});
+  const history = useHistory();
+
   const handleChange = (e) => {
     setUploadData({
       ...uploadData,
