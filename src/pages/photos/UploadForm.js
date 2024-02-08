@@ -1,56 +1,179 @@
 import React, { useState } from "react";
 
 import Upload from "../../assets/photo_upload.png";
-import {
-    Col, Row, Container, Form, FloatingLabel, Alert, Button,
-} from "react-bootstrap";
+import Asset from "../../components/Asset";
 
+import {
+  Col, Row, Container, Form, FloatingLabel, Button,
+} from "react-bootstrap";
 import appStyles from "../../App.module.css";
 import formStyles from "../../styles/Form.module.css"
-import btnStyles from "../../styles/Button.module.css";
+import buttonStyles from "../../styles/Button.module.css";
+
 
 function UploadForm() {
+  const [uploadData, setUploadData] = useState({
+    title: '',
+    feature: '',
+    description: '',
+    location: '',
+    date: '',
+    time: '',
+    lens: '',
+    camera: '',
+    other: '',
+  });
+  const {
+    title,
+    feature,
+    description,
+    location,
+    date,
+    time,
+    lens,
+    camera,
+    other
+  } = uploadData;
   const [errors, setErrors] = useState({});
-  const textFields = (
-    <div className="text-center">
-      {/* Add your form fields here */}
+  const handleChange = (e) => {
+    setUploadData({
+      ...uploadData,
+      [e.target.name]: e.target.value,
+    })
+  };
 
-    
-    
-      <Button
-        className={`${btnStyles.Button} ${btnStyles.Blue}`}
-        onClick={() => {}}
-      >
-        Cancel
-      </Button>
-      <Button className={`${btnStyles.Button} ${btnStyles.Blue}`} type="submit">
-        Upload
-      </Button>
-    </div>
+
+
+  const formFields = (
+    <>
+      < Container className={formStyles.Form} >
+
+        <h1>Enter photo details below</h1>
+        <p>Fields marked with * are required</p>
+
+        <Form>
+
+          <FloatingLabel className="mb-3" label="Title*" controlId="title">
+            <Form.Control
+              type="text"
+              placeholder="title"
+              name="title"
+              value={title}
+              onChange={handleChange}
+            />
+          </FloatingLabel>
+
+          <FloatingLabel className="mb-3" label="Main Feature*" controlId="feature">
+            <Form.Control
+              type="dropdown"
+              placeholder="feature"
+              name="feature"
+              value={feature}
+              onChange={handleChange}
+            />
+          </FloatingLabel>
+
+          <FloatingLabel className="mb-3" label="Description" controlId="description">
+            <Form.Control
+              as="textarea"
+              placeholder="Describe your photo here"
+              name="description"
+              style={{ height: "10rem" }} // Style here rather than in module.css
+              value={description}
+              onChange={handleChange}
+            />
+          </FloatingLabel>
+
+          <FloatingLabel className="mb-3" label="Location" controlId="location">
+            <Form.Control
+              type="text"
+              placeholder="location"
+              name="location"
+              value={location}
+              onChange={handleChange}
+            />
+          </FloatingLabel>
+
+          <FloatingLabel className="mb-3" label="Date Taken" controlId="date">
+            <Form.Control
+              type="date"
+              placeholder="date"
+              name="date"
+              value={date}
+              onChange={handleChange}
+            />
+          </FloatingLabel>
+
+          <FloatingLabel className="mb-3" label="Time Taken" controlId="time">
+            <Form.Control
+              type="time"
+              placeholder="time"
+              name="time"
+              value={time}
+              onChange={handleChange}
+            />
+          </FloatingLabel>
+
+          <FloatingLabel className="mb-3" label="Lens Used" controlId="lens">
+            <Form.Control
+              type="text"
+              placeholder="lens"
+              name="lens"
+              value={lens}
+              onChange={handleChange}
+            />
+          </FloatingLabel>
+
+          <FloatingLabel className="mb-3" label="Camera Used" controlId="camera">
+            <Form.Control
+              type="text"
+              placeholder="camera"
+              name="camera"
+              value={camera}
+              onChange={handleChange}
+            />
+          </FloatingLabel>
+
+          <FloatingLabel className="mb-3" label="Other Equipment" controlId="other">
+            <Form.Control
+              type="text"
+              placeholder="other"
+              name="other"
+              value={other}
+              onChange={handleChange}
+            />
+          </FloatingLabel>
+
+          <Button className={buttonStyles.Button} onClick={() => { }}>
+            Cancel
+          </Button>
+          <Button className={buttonStyles.Button} type="submit">
+            Upload
+          </Button>
+
+        </Form>
+      </Container >
+    </>
   );
 
   return (
     <Form className={formStyles.Form}>
       <Row>
-        <Col className="py-2 p-0 p-md-2" md={7} lg={8}>
-          <Container
-            className={`${appStyles.Content} d-flex flex-column justify-content-center`}
-          >
-            <Form.Group className="text-center">
-              
-                <Form.Label
-                  className="d-flex justify-content-center"
-                  htmlFor="image-upload"
-                >
-                  ASSET
-                </Form.Label>
-
+        <Col>
+          <Container>
+            <Form.Group>
+              <Form.Label htmlFor="image-upload">
+                <Asset
+                  src={Upload}
+                  message="Tap/click above to select photo"
+                />
+              </Form.Label>
             </Form.Group>
-            <div className="d-md-none">{textFields}</div>
+            <div>{formFields}</div>
           </Container>
         </Col>
-        <Col md={5} lg={4} className="d-none d-md-block p-0 p-md-2">
-          <Container className={appStyles.Content}>{textFields}</Container>
+        <Col>
+          <Container className={appStyles.Content}>{formFields}</Container>
         </Col>
       </Row>
     </Form>
