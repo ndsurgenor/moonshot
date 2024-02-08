@@ -56,14 +56,9 @@ function UploadForm() {
   };
 
   const formFields = (
-    <>
       < Container>
 
-        <h1>Enter photo details below</h1>
-        <p>Fields marked with * are required</p>
-
         <Form>
-
           <FloatingLabel className="mb-3" label="Title*" controlId="title">
             <Form.Control
               type="text"
@@ -84,11 +79,12 @@ function UploadForm() {
             >
               <option>(please select an option)</option>
               <option value="aurora">Aurora</option>
-              <option value="2">Constellation</option>
-              <option value="3">Moon</option>
-              <option value="4">Nightscape</option>
-              <option value="5">Planet</option>
-              <option value="6">(Other)</option>
+              <option value="constellation">Constellation</option>
+              <option value="deep_sky">Deep-sky</option>
+              <option value="moon">Moon</option>
+              <option value="nightscape">Nightscape</option>
+              <option value="planet">Planet</option>
+              <option value="other">(Other)</option>
             </Form.Select>
           </FloatingLabel>
 
@@ -164,33 +160,38 @@ function UploadForm() {
           </FloatingLabel>
 
           <Button className={buttonStyles.Button} onClick={() => { }}>
-            Cancel
+            Clear Details
           </Button>
           <Button className={buttonStyles.Button} type="submit">
-            Upload
+            Upload Photo
           </Button>
 
         </Form>
       </Container >
-    </>
   );
 
   return (
     <Form>
       <Row>
         <Col>
+          <h1>Enter photo details below</h1>
+          <p>Fields marked with * are required</p>
+        </Col>
+      </Row>
+      <Row>
+        <Col>
           <Container className={formStyles.Form}>
             <Form.Group>
               {photo ? (
                 <>
-                  <Image src={photo} fluid />
-                  <Form.Label htmlFor="image-upload">
-                    Chnage the image
+                  <Image src={photo} fluid rounded />
+                  <Form.Label htmlFor="photo-upload">
+                    Choose a different photo
                   </Form.Label>
                 </>
               ) : (
                 <>
-                  <Form.Label htmlFor="image-upload">
+                  <Form.Label htmlFor="photo-upload">
                     <Asset
                       src={Upload}
                       message="Tap/click above to select photo"
