@@ -4,9 +4,8 @@ import Upload from "../../assets/photo_upload.png";
 import Asset from "../../components/Asset";
 
 import {
-  Col, Row, Container, Form, FloatingLabel, Button,
+  Col, Row, Container, Image, Form, FloatingLabel, Button,
 } from "react-bootstrap";
-import appStyles from "../../App.module.css";
 import formStyles from "../../styles/Form.module.css"
 import buttonStyles from "../../styles/Button.module.css";
 
@@ -56,11 +55,9 @@ function UploadForm() {
     }
   };
 
-
-
   const formFields = (
     <>
-      < Container className={formStyles.Form} >
+      < Container>
 
         <h1>Enter photo details below</h1>
         <p>Fields marked with * are required</p>
@@ -78,13 +75,21 @@ function UploadForm() {
           </FloatingLabel>
 
           <FloatingLabel className="mb-3" label="Main Feature*" controlId="feature">
-            <Form.Control
+            <Form.Select
               type="dropdown"
               placeholder="feature"
               name="feature"
               value={feature}
               onChange={handleChange}
-            />
+            >
+              <option>(please select an option)</option>
+              <option value="aurora">Aurora</option>
+              <option value="2">Constellation</option>
+              <option value="3">Moon</option>
+              <option value="4">Nightscape</option>
+              <option value="5">Planet</option>
+              <option value="6">(Other)</option>
+            </Form.Select>
           </FloatingLabel>
 
           <FloatingLabel className="mb-3" label="Description" controlId="description">
@@ -171,30 +176,39 @@ function UploadForm() {
   );
 
   return (
-    <Form className={formStyles.Form}>
+    <Form>
       <Row>
         <Col>
-          <Container>
+          <Container className={formStyles.Form}>
             <Form.Group>
-              {photo ? (<></>): (<></>)}
-              <Form.Label htmlFor="image-upload">
-                <Asset
-                  src={Upload}
-                  message="Tap/click above to select photo"
-                />
-              </Form.Label>
-              <Form.Control
-                type="file"
-                accept="image/*"
-                controlId="photo"
-                onChange={handleChangePhoto}
-              />
+              {photo ? (
+                <>
+                  <Image src={photo} fluid />
+                  <Form.Label htmlFor="image-upload">
+                    Chnage the image
+                  </Form.Label>
+                </>
+              ) : (
+                <>
+                  <Form.Label htmlFor="image-upload">
+                    <Asset
+                      src={Upload}
+                      message="Tap/click above to select photo"
+                    />
+                  </Form.Label>
+                  <Form.Control
+                    type="file"
+                    accept="image/*"
+                    controlId="photo"
+                    onChange={handleChangePhoto}
+                  />
+                </>
+              )}
             </Form.Group>
-            <div>{formFields}</div>
           </Container>
         </Col>
         <Col>
-          <Container className={appStyles.Content}>{formFields}</Container>
+          {formFields}
         </Col>
       </Row>
     </Form>
