@@ -2,7 +2,7 @@ import { Route, Switch } from 'react-router-dom';
 import './api/axiosDefaults';
 import SignUpForm from './pages/auth/SignUpForm';
 import SignInForm from './pages/auth/SignInForm';
-import UploadForm from './pages/photos/Upload';
+import UploadForm from './pages/photos/UploadForm';
 
 import styles from './App.module.css';
 import NavBar from './components/NavBar';

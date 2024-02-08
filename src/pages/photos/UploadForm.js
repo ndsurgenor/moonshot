@@ -6,13 +6,11 @@ import {
 } from "react-bootstrap";
 
 import appStyles from "../../App.module.css";
+import formStyles from "../../styles/Form.module.css"
 import btnStyles from "../../styles/Button.module.css";
 
 function UploadForm() {
-
   const [errors, setErrors] = useState({});
-
-
   const textFields = (
     <div className="text-center">
       {/* Add your form fields here */}
@@ -32,7 +30,7 @@ function UploadForm() {
   );
 
   return (
-    <Form>
+    <Form className={formStyles.Form}>
       <Row>
         <Col className="py-2 p-0 p-md-2" md={7} lg={8}>
           <Container
