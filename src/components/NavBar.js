@@ -7,7 +7,7 @@ import {
 import useClickOutsideToggle from '../hooks/useClickOutsideToggle';
 
 import styles from '../styles/NavBar.module.css';
-import { Container, Nav, Navbar } from 'react-bootstrap';
+import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 
 import { FaCameraRetro } from "react-icons/fa";
 import {
@@ -24,10 +24,15 @@ const NavBar = () => {
     const setCurrentUser = useSetCurrentUser();
     const { expanded, setExpanded, ref } = useClickOutsideToggle();
     const addAvatar = (
-        <Avatar
-            src={currentUser?.profile_image}
-            height={30}
-        />
+        <>
+            <Avatar
+                src={currentUser?.profile_image}
+                height={40}
+            />
+            <Navbar.Text className={styles.NavText}>
+                {currentUser?.username}
+            </Navbar.Text>
+        </>
     )
     const handleSignOut = async () => {
         try {
@@ -65,7 +70,25 @@ const NavBar = () => {
         >
             <FaCameraRetro className={styles.NavLinkIcon} />Upload+
         </NavLink>
-        <NavLink
+        <NavDropdown className={styles.NavDropdown} title={currentUser && addAvatar}>
+            <NavDropdown.Item
+                className={`${styles.NavLink} mt-1}`}
+                activeClassName={styles.ActiveNavLink}
+            >
+                <NavLink to={`/user-profiles/${currentUser?.profile_id}`}>
+                    <FaUserAstronaut className={styles.NavLinkIcon} />Profile
+                </NavLink>
+            </NavDropdown.Item>
+            <NavDropdown.Item className={`${styles.NavLink} mt-1}`}>
+                <NavLink
+                    to="/"
+                    onClick={handleSignOut}
+                >
+                    <FaArrowRightFromBracket className={styles.NavLinkIcon} />Sign Out
+                </NavLink>
+            </NavDropdown.Item>
+        </NavDropdown>
+        {/* <NavLink
             className={styles.NavLink}
             activeClassName={styles.ActiveNavLink}
             to={`/user-profiles/${currentUser?.profile_id}`}
@@ -78,7 +101,7 @@ const NavBar = () => {
             onClick={handleSignOut}
         >
             <FaArrowRightFromBracket className={styles.NavLinkIcon} />Sign Out
-        </NavLink>        
+        </NavLink> */}
     </>;
 
     return (
@@ -95,15 +118,15 @@ const NavBar = () => {
                         moonshot <WiMoonAltWaxingCrescent3 className={styles.NavBrandIcon} />
                     </Navbar.Brand>
                 </NavLink>
-                <Navbar.Text>
-                {currentUser && addAvatar}
-                </Navbar.Text>                
+                {/* <Navbar.Text>
+                    {currentUser && addAvatar}
+                </Navbar.Text> */}
                 <Navbar.Toggle
                     aria-controls="basic-navbar-nav"
                     className='px-1 border-2'
                     onClick={() => setExpanded(!expanded)}
                     ref={ref}
-                />                
+                />
                 <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
                     <Nav>
                         <NavLink
