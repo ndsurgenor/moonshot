@@ -24,15 +24,9 @@ const NavBar = () => {
     const setCurrentUser = useSetCurrentUser();
     const { expanded, setExpanded, ref } = useClickOutsideToggle();
     const addAvatar = (
-        <>
-            <Avatar
-                src={currentUser?.profile_image}
-                height={40}
-            />
-            <Navbar.Text className={styles.NavText}>
-                {currentUser?.username}
-            </Navbar.Text>
-        </>
+        <Avatar
+            src={currentUser?.profile_image}
+        />
     )
     const handleSignOut = async () => {
         try {
@@ -70,7 +64,13 @@ const NavBar = () => {
         >
             <FaCameraRetro className={styles.NavLinkIcon} />Upload+
         </NavLink>
-        <NavDropdown className={styles.NavDropdown} title={currentUser && addAvatar}>
+        <Navbar.Text className="ms-2">
+            {currentUser && addAvatar}
+        </Navbar.Text>
+        <NavDropdown
+            className={styles.NavDropdown}
+            title={<span>{currentUser?.username}</span>}            
+            align="end">
             <NavDropdown.Item
                 className={`${styles.NavLink} mt-1}`}
                 activeClassName={styles.ActiveNavLink}
@@ -118,9 +118,12 @@ const NavBar = () => {
                         moonshot <WiMoonAltWaxingCrescent3 className={styles.NavBrandIcon} />
                     </Navbar.Brand>
                 </NavLink>
-                {/* <Navbar.Text>
+                <NavLink
+                    className="d-md-none m-auto"
+                    to={`/user-profiles/${currentUser?.profile_id}`}
+                >
                     {currentUser && addAvatar}
-                </Navbar.Text> */}
+                </NavLink>
                 <Navbar.Toggle
                     aria-controls="basic-navbar-nav"
                     className='px-1 border-2'
@@ -129,6 +132,7 @@ const NavBar = () => {
                 />
                 <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
                     <Nav>
+                        {/* Home link */}
                         <NavLink
                             className={styles.NavLink}
                             activeClassName={styles.ActiveNavLink}
@@ -137,7 +141,7 @@ const NavBar = () => {
                         >
                             <ImEarth className={styles.NavLinkIcon} />Home
                         </NavLink>
-
+                        {/* All other links */}
                         {currentUser ? signedInLinks : signedOutLinks}
                     </Nav>
                 </Navbar.Collapse >

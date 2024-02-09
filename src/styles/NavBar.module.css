@@ -1,13 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
-.NavBar,
-.NavDropdown div {
+.NavBar {
     background: linear-gradient(100deg, #05192e 0%, #0c2a33 100%);
 }
 
 .NavBrand,
 .NavLink,
-.NavText {
+.NavText,
+.NavDropdown span,
+.NavDropdown a {
     color: whitesmoke;
     text-decoration: none;
 }
@@ -25,7 +26,7 @@
 .NavLink {
     font-size: 1.1rem;
     text-align: center;
-    margin: 0.35rem 0.35rem;
+    margin: 0.4rem 0.4rem;
     padding: 0.5rem 0.5rem;
     /* Invisible borders preserve navbar alignment */
     border-top: 1px solid #00000000;
@@ -52,16 +53,20 @@
     color: #468be4;
 }
 
+.NavDropdown {
+    margin: auto;
+}
+
 .NavDropdown div {
+    background-color: #0c2a33;
     min-width: fit-content;
     padding-left: 1rem;
     padding-right: 1.5rem;
-    margin: 0;
 }
 
 @media only screen and (max-width: 767px) {
     .NavLink {
-      width: 70%;
+      width: 50%;
       text-align: left;
       margin: 0.25rem auto 0.25rem 0;
     }

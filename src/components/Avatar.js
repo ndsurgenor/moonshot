@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from '../styles/Avatar.module.css'
 
-const Avatar = ({ src, height = 50, text }) => {
+const Avatar = ({ src, height = 40, text }) => {
     return (
         <img
             className={styles.Avatar}

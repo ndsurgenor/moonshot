@@ -1,6 +1,6 @@
 .Avatar {
     object-fit: cover;
-    margin-right: 0.3rem;
+    margin: auto;
     border: 2px solid goldenrod;
     border-radius: 50%;
 }
