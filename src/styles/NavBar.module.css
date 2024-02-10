@@ -70,8 +70,14 @@
 
 @media only screen and (max-width: 767px) {
     .NavLink {
-      width: 50%;
+      width: 75%;
       text-align: left;
       margin: 0.25rem auto 0.25rem 0;
+    }
+  }
+
+  @media only screen and (max-width: 575px) {
+    .NavLink {
+      width: 100%;
     }
   }

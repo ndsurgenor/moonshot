@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import axios from 'axios';
 import { NavLink } from 'react-router-dom';
 import {
@@ -27,7 +27,8 @@ const NavBar = () => {
         <Avatar
             src={currentUser?.profile_image}
         />
-    )
+    ) 
+
     const handleSignOut = async () => {
         try {
             await axios.post('dj-rest-auth/logout/');
@@ -58,91 +59,13 @@ const NavBar = () => {
         </>
     );
 
-    // const dropdownMenuLinks = (
-    //     <>
-    //         <Navbar.Text className="d-none d-md-flex ms-2">
-    //             {currentUser && addAvatar}
-    //         </Navbar.Text>
-    //         <NavDropdown
-    //             className={`${styles.NavDropdown} d-none d-md-flex`}
-    //             title={<span>{currentUser?.username}</span>}
-    //             align="end">
-    //             <NavDropdown.ItemText >
-    //                 <NavLink
-    //                     className={styles.NavLink}
-    //                     activeClassName={styles.ActiveNavLink}
-    //                     to={`/user-profiles/${currentUser?.profile_id}`}
-    //                 >
-    //                     <FaUserAstronaut className={styles.NavLinkIcon} />
-    //                     Profile
-    //                 </NavLink>
-    //             </NavDropdown.ItemText>
-    //             <NavDropdown.ItemText>
-    //                 <NavLink
-    //                     className={styles.NavLink}
-    //                     to="/"
-    //                     onClick={handleSignOut}
-    //                 >
-    //                     <FaArrowRightFromBracket className={styles.NavLinkIcon} />
-    //                     Sign Out
-    //                 </NavLink>
-    //             </NavDropdown.ItemText>
-    //         </NavDropdown>
-    //     </>
-    // );
-
-    // const toggleMenuLinks = (
-    //     <>
-    //         <NavLink
-    //             className={`${styles.NavLink} d-md-none`}
-    //             activeClassName={styles.ActiveNavLink}
-    //             to={`/user-profiles/${currentUser?.profile_id}`}
-    //         >
-    //             <FaUserAstronaut className={styles.NavLinkIcon} />
-    //             Profile: {currentUser?.username}
-    //         </NavLink>
-    //         <NavLink
-    //             className={`${styles.NavLink} d-md-none`}
-    //             to="/"
-    //             onClick={handleSignOut}
-    //         >
-    //             <FaArrowRightFromBracket className={styles.NavLinkIcon} />
-    //             Sign Out
-    //         </NavLink>
-    //     </>
-    // );
-
-    const signedInLinks = (
+    const signedInDropdownLinks = (
         <>
-            <NavLink
-                className={styles.NavLink}
-                activeClassName={styles.ActiveNavLink}
-                to="/photos/upload"
-            >
-                <FaCameraRetro className={styles.NavLinkIcon} />
-                Upload+
-            </NavLink>
-            <NavLink
-                className={`${styles.NavLink} d-md-none`}
-                activeClassName={styles.ActiveNavLink}
-                to={`/user-profiles/${currentUser?.profile_id}`}
-            >
-                <FaUserAstronaut className={styles.NavLinkIcon} />
-                Profile: {currentUser?.username}
-            </NavLink>
-            <NavLink
-                className={`${styles.NavLink} d-md-none`}
-                to="/"
-                onClick={handleSignOut}
-            >
-                <FaArrowRightFromBracket className={styles.NavLinkIcon} />
-                Sign Out
-            </NavLink>
-            <Navbar.Text className="d-none d-md-flex ms-2">
+            <Navbar.Text className="ms-2">
                 {currentUser && addAvatar}
             </Navbar.Text>
             <NavDropdown
-                className={`${styles.NavDropdown} d-none d-md-flex`}
+                className={styles.NavDropdown}
                 title={<span>{currentUser?.username}</span>}
                 align="end">
                 <NavDropdown.ItemText >
@@ -166,8 +89,41 @@ const NavBar = () => {
                     </NavLink>
                 </NavDropdown.ItemText>
             </NavDropdown>
-            {/* {var ? dropdownMenuLinks : toggleMenuLinks} */}
         </>
+    );
+
+    const signedInToggleLinks = (
+        <>
+            <NavLink
+                className={styles.NavLink}
+                activeClassName={styles.ActiveNavLink}
+                to={`/user-profiles/${currentUser?.profile_id}`}
+            >
+                <FaUserAstronaut className={styles.NavLinkIcon} />
+                Profile: {currentUser?.username}
+            </NavLink>
+            <NavLink
+                className={styles.NavLink}
+                to="/"
+                onClick={handleSignOut}
+            >
+                <FaArrowRightFromBracket className={styles.NavLinkIcon} />
+                Sign Out
+            </NavLink>
+        </>
+    );
+
+    const signedInLinks = (<>
+        <NavLink
+            className={styles.NavLink}
+            activeClassName={styles.ActiveNavLink}
+            to="/photos/upload"
+        >
+            <FaCameraRetro className={styles.NavLinkIcon} />
+            Upload+
+        </NavLink>        
+        {window.innerWidth >= 767 ? signedInDropdownLinks : signedInToggleLinks}
+    </>
     );
 
     return (
@@ -184,8 +140,8 @@ const NavBar = () => {
                         moonshot <WiMoonAltWaxingCrescent3 className={styles.NavBrandIcon} />
                     </Navbar.Brand>
                 </NavLink>
-                <Navbar.Text>
-                    <span className="d-md-none">{currentUser && addAvatar}</span>
+                <Navbar.Text className="d-md-none ms-auto me-2">
+                    {currentUser && addAvatar}
                 </Navbar.Text>
                 <Navbar.Toggle
                     aria-controls="basic-navbar-nav"
