@@ -7,7 +7,7 @@ import {
 import useClickOutsideToggle from '../hooks/useClickOutsideToggle';
 
 import styles from '../styles/NavBar.module.css';
-import { Container, Nav, Navbar, NavbarText, NavDropdown } from 'react-bootstrap';
+import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 
 import { FaCameraRetro } from "react-icons/fa";
 import {
@@ -57,6 +57,60 @@ const NavBar = () => {
             </NavLink>
         </>
     );
+
+    // const dropdownMenuLinks = (
+    //     <>
+    //         <Navbar.Text className="d-none d-md-flex ms-2">
+    //             {currentUser && addAvatar}
+    //         </Navbar.Text>
+    //         <NavDropdown
+    //             className={`${styles.NavDropdown} d-none d-md-flex`}
+    //             title={<span>{currentUser?.username}</span>}
+    //             align="end">
+    //             <NavDropdown.ItemText >
+    //                 <NavLink
+    //                     className={styles.NavLink}
+    //                     activeClassName={styles.ActiveNavLink}
+    //                     to={`/user-profiles/${currentUser?.profile_id}`}
+    //                 >
+    //                     <FaUserAstronaut className={styles.NavLinkIcon} />
+    //                     Profile
+    //                 </NavLink>
+    //             </NavDropdown.ItemText>
+    //             <NavDropdown.ItemText>
+    //                 <NavLink
+    //                     className={styles.NavLink}
+    //                     to="/"
+    //                     onClick={handleSignOut}
+    //                 >
+    //                     <FaArrowRightFromBracket className={styles.NavLinkIcon} />
+    //                     Sign Out
+    //                 </NavLink>
+    //             </NavDropdown.ItemText>
+    //         </NavDropdown>
+    //     </>
+    // );
+
+    // const toggleMenuLinks = (
+    //     <>
+    //         <NavLink
+    //             className={`${styles.NavLink} d-md-none`}
+    //             activeClassName={styles.ActiveNavLink}
+    //             to={`/user-profiles/${currentUser?.profile_id}`}
+    //         >
+    //             <FaUserAstronaut className={styles.NavLinkIcon} />
+    //             Profile: {currentUser?.username}
+    //         </NavLink>
+    //         <NavLink
+    //             className={`${styles.NavLink} d-md-none`}
+    //             to="/"
+    //             onClick={handleSignOut}
+    //         >
+    //             <FaArrowRightFromBracket className={styles.NavLinkIcon} />
+    //             Sign Out
+    //         </NavLink>
+    //     </>
+    // );
 
     const signedInLinks = (
         <>
@@ -112,6 +166,7 @@ const NavBar = () => {
                     </NavLink>
                 </NavDropdown.ItemText>
             </NavDropdown>
+            {/* {var ? dropdownMenuLinks : toggleMenuLinks} */}
         </>
     );
 
