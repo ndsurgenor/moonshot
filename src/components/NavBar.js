@@ -5,6 +5,7 @@ import {
     useCurrentUser, useSetCurrentUser
 } from "../contexts/CurrentUserContext";
 import useClickOutsideToggle from '../hooks/useClickOutsideToggle';
+import useViewportWidth from '../hooks/useViewportWidth';
 
 import styles from '../styles/NavBar.module.css';
 import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
@@ -23,11 +24,8 @@ const NavBar = () => {
     const currentUser = useCurrentUser();
     const setCurrentUser = useSetCurrentUser();
     const { expanded, setExpanded, ref } = useClickOutsideToggle();
-    const addAvatar = (
-        <Avatar
-            src={currentUser?.profile_image}
-        />
-    ) 
+    const { width } = useViewportWidth();
+    const addAvatar = (<Avatar src={currentUser?.profile_image}/>);
 
     const handleSignOut = async () => {
         try {
@@ -65,9 +63,11 @@ const NavBar = () => {
                 {currentUser && addAvatar}
             </Navbar.Text>
             <NavDropdown
+                aria-controls="nav-dropdown"
                 className={styles.NavDropdown}
                 title={<span>{currentUser?.username}</span>}
-                align="end">
+                align="end"
+            >
                 <NavDropdown.ItemText >
                     <NavLink
                         className={styles.NavLink}
@@ -121,8 +121,9 @@ const NavBar = () => {
         >
             <FaCameraRetro className={styles.NavLinkIcon} />
             Upload+
-        </NavLink>        
-        {window.innerWidth >= 767 ? signedInDropdownLinks : signedInToggleLinks}
+        </NavLink>
+        {width < 767 ? signedInToggleLinks : signedInDropdownLinks}
+
     </>
     );
 
@@ -144,12 +145,12 @@ const NavBar = () => {
                     {currentUser && addAvatar}
                 </Navbar.Text>
                 <Navbar.Toggle
-                    aria-controls="basic-navbar-nav"
+                    aria-controls="navbar-toggle"
                     className='px-1 border-2'
                     onClick={() => setExpanded(!expanded)}
                     ref={ref}
                 />
-                <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
+                <Navbar.Collapse id="navbar-toggle" className="justify-content-end">
                     <Nav>
                         <NavLink
                             className={styles.NavLink}
