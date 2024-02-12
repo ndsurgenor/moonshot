@@ -6,6 +6,7 @@ import {
 } from "../contexts/CurrentUserContext";
 import useClickOutsideToggle from '../hooks/useClickOutsideToggle';
 import useViewportWidth from '../hooks/useViewportWidth';
+import Avatar from './Avatar';
 
 import styles from '../styles/NavBar.module.css';
 import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
@@ -17,7 +18,6 @@ import {
 import { ImEarth } from "react-icons/im";
 import { MdOutlineHub } from "react-icons/md";
 import { WiMoonAltWaxingCrescent3 } from "react-icons/wi";
-import Avatar from './Avatar';
 
 
 const NavBar = () => {

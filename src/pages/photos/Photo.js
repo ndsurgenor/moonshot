@@ -1,8 +1,9 @@
 import React from 'react';
 
 import { useCurrentUser } from '../../contexts/CurrentUserContext';
+import Avatar from '../../components/Avatar'
 
-import { Card } from 'react-bootstrap';
+import { Card, Container } from 'react-bootstrap';
 import styles from '../../styles/Photo.module.css'
 
 
@@ -11,7 +12,7 @@ const Photo = (props) => {
     id,
     user,
     profile_id,
-    profile_image,
+    user_avatar,
     comment_count,
     star_count,
     star_id,
@@ -31,17 +32,29 @@ const Photo = (props) => {
 
   const currentUser = useCurrentUser();
   const is_owner = currentUser?.username === user;
-
-  return (
-    <Card className="bg-dark text-white">
-      <Card.Img className={styles.PhotoImage} src={image} alt="Photo" />
+  
+  // At width < 767px first Card.Title displays ('d-md-none' cancels)
+  // Title in Container is hidden via media query in module.css file
+  return (<>
+    <Card.Title className="d-md-none mt-3 ms-1">
+      <h4>{title}</h4>
+    </Card.Title>
+    <Card className="mx-auto mt-md-3 bg-dark text-white">
+      <Card.Img src={image} alt="Photo" />
       <Card.ImgOverlay>
-        <Card.Title>{title}</Card.Title>
-        <Card.Subtitle>{main_feature} by {user}</Card.Subtitle>
+        <Container className={styles.PhotoHeader}>
+          <Card.Title className={styles.PhotoTitle}>
+            <h4>{title}</h4>
+          </Card.Title>
+          <Card.Subtitle className={styles.PhotoSubtitle}>
+            <span className="me-2">{user}</span>
+            <Avatar src={user_avatar} height={30} />
+          </Card.Subtitle>
+        </Container>
         <Card.Text>{description}</Card.Text>
       </Card.ImgOverlay>
-      <Card.Body></Card.Body>
     </Card>
+  </>
   )
 }
 

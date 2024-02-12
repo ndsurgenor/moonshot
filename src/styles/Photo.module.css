@@ -1,4 +1,29 @@
-.PhotoImage {
-    max-width: 90vh;
-    max-height: 90vh;
+.PhotoHeader {
+    display: flex;
+    justify-content: space-between;
+    padding: 0rem 0.5rem;
+}
+
+.PhotoTitle,
+.PhotoSubtitle {
+    margin: auto 0;
+    padding: 0.25rem 1rem;
+    border-radius: 5rem;
+}
+
+.PhotoSubtitle {
+    background-color: #00000055;
+}
+
+
+@media only screen and (max-width: 767px) {
+    .PhotoTitle {
+        display: none;
+    }
+
+    .PhotoSubtitle {
+        font-size: 0.9rem;
+        margin-left: auto ;
+        margin-right: -0.8rem;
+    }
 }

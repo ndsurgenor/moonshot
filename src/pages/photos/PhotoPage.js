@@ -8,29 +8,29 @@ import { Row, Col, Container } from 'react-bootstrap';
 
 
 function PhotoPage() {
-  const {id} = useParams();
-  const [photo, setPhoto] = useState({results: []});
+  const { id } = useParams();
+  const [photo, setPhoto] = useState({ results: [] });
 
   useEffect(() => {
     const handleMount = async () => {
-        try {
-            const [{data: photo}] = await Promise.all([
-                axiosReq.get(`/photos/${id}`)
-            ])
-            setPhoto({results: [photo]})
-            console.log(photo)
-        } catch(err) {
-            console.log(err)
-        }
+      try {
+        const [{ data: photo }] = await Promise.all([
+          axiosReq.get(`/photos/${id}`)
+        ])
+        setPhoto({ results: [photo] })
+        console.log(photo)
+      } catch (err) {
+        console.log(err)
+      }
     }
 
     handleMount()
   }, [id])
 
   return (
-    <Row>
-      <Col>
-      <Photo {...photo.results[0]} setPhotos={setPhoto} />
+    <Row className="d-flex justify-content-center">
+      <Col xl={10} xxl={9}>
+        <Photo {...photo.results[0]} setPhotos={setPhoto} />
         <Container>
           Comments
         </Container>
