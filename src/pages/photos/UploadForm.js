@@ -26,16 +26,16 @@ function UploadForm() {
     other: '',
   });
   const {
-    photo,
+    image,
     title,
-    feature,
+    main_feature,
     description,
     location,
-    date,
-    time,
-    lens,
-    camera,
-    other
+    photo_date,
+    photo_time,
+    lens_used,
+    camera_used,
+    other_equipment_used
   } = uploadData;
 
   const photoInput = useRef(null);
@@ -51,10 +51,10 @@ function UploadForm() {
 
   const handleChangePhoto = (e) => {
     if (e.target.files.length) {
-      URL.revokeObjectURL(photo);
+      URL.revokeObjectURL(image);
       setUploadData({
         ...uploadData,
-        photo: URL.createObjectURL(e.target.files[0])
+        image: URL.createObjectURL(e.target.files[0])
       })
     }
   };
@@ -65,14 +65,14 @@ function UploadForm() {
 
     formData.append('photo', photoInput.current.files[0])
     formData.append('title', title)
-    formData.append('feature', feature)
+    formData.append('feature', main_feature)
     formData.append('description', description)
     formData.append('location', location)
-    formData.append('date', date)
-    formData.append('time', time)
-    formData.append('lens', lens)
-    formData.append('camera', camera)
-    formData.append('other', other)
+    formData.append('date', photo_date)
+    formData.append('time', photo_time)
+    formData.append('lens', lens_used)
+    formData.append('camera', camera_used)
+    formData.append('other', other_equipment_used)
 
     try {
       const { data } = await axiosReq.post('/photos/', formData);
@@ -103,7 +103,7 @@ function UploadForm() {
           type="dropdown"
           placeholder="feature"
           name="feature"
-          value={feature}
+          value={main_feature}
           onChange={handleChange}
         >
           <option>(please select an option)</option>
@@ -143,7 +143,7 @@ function UploadForm() {
           type="date"
           placeholder="date"
           name="date"
-          value={date}
+          value={photo_date}
           onChange={handleChange}
         />
       </FloatingLabel>
@@ -153,7 +153,7 @@ function UploadForm() {
           type="time"
           placeholder="time"
           name="time"
-          value={time}
+          value={photo_time}
           onChange={handleChange}
         />
       </FloatingLabel>
@@ -163,7 +163,7 @@ function UploadForm() {
           type="text"
           placeholder="lens"
           name="lens"
-          value={lens}
+          value={lens_used}
           onChange={handleChange}
         />
       </FloatingLabel>
@@ -173,7 +173,7 @@ function UploadForm() {
           type="text"
           placeholder="camera"
           name="camera"
-          value={camera}
+          value={camera_used}
           onChange={handleChange}
         />
       </FloatingLabel>
@@ -183,7 +183,7 @@ function UploadForm() {
           type="text"
           placeholder="other"
           name="other"
-          value={other}
+          value={other_equipment_used}
           onChange={handleChange}
         />
       </FloatingLabel>
@@ -205,9 +205,9 @@ function UploadForm() {
           <h1>Enter photo details</h1>
           <p>Fields marked with * are required</p>
           <Form.Group className="mt-3" >
-            {photo ? (
+            {image ? (
               <>
-                <Image src={photo} fluid rounded />
+                <Image src={image} fluid rounded />
                 <Form.Label htmlFor="photo-upload">
                   Click 'Choose File' again to select a different photo
                 </Form.Label>
