@@ -6,14 +6,14 @@ import Upload from "../../assets/photo_upload.png";
 import Asset from "../../components/Asset";
 
 import {
-  Col, Row, Container, Image, Form, FloatingLabel, Button,
+  Col, Row, Container, Image, Form, FloatingLabel, Alert, Button,
 } from "react-bootstrap";
 import formStyles from "../../styles/Form.module.css"
 import buttonStyles from "../../styles/Button.module.css";
 
 
 function UploadForm() {
-  const [uploadData, setUploadData] = useState({    
+  const [uploadData, setUploadData] = useState({
     title: '',
     main_feature: '',
     description: '',
@@ -25,7 +25,7 @@ function UploadForm() {
     other_equipment_used: '',
     image: '',
   });
-  const {    
+  const {
     title,
     main_feature,
     description,
@@ -97,6 +97,11 @@ function UploadForm() {
           onChange={handleChange}
         />
       </FloatingLabel>
+      {errors.title?.map((message, idx) => (
+        <Alert variant="warning" key={idx}>
+          {message}
+        </Alert>
+      ))}
 
       <FloatingLabel className="mb-3" label="Main Feature*" controlId="main_feature">
         <Form.Select
@@ -116,6 +121,11 @@ function UploadForm() {
           <option value="other">(Other)</option>
         </Form.Select>
       </FloatingLabel>
+      {errors.main_feature?.map((message, idx) => (
+        <Alert variant="warning" key={idx}>
+          {message}
+        </Alert>
+      ))}
 
       <FloatingLabel className="mb-3" label="Description" controlId="description">
         <Form.Control
@@ -204,31 +214,37 @@ function UploadForm() {
         <Col md={6} className={formStyles.Form}>
           <h1>Enter photo details</h1>
           <p>Fields marked with * are required</p>
+          <Form.Control
+            type="file"
+            accept="image/*"
+            id="photo-upload"
+            onChange={handleChangePhoto}
+            ref={photoInput}
+          />
           <Form.Group className="mt-3" >
+            {errors.image?.map((message, idx) => (
+              <Alert variant="warning" key={idx}>
+                {message}
+              </Alert>
+            ))}
             {image ? (
               <>
-                <Image src={image} fluid rounded />
                 <Form.Label htmlFor="photo-upload">
                   Click 'Choose File' again to select a different photo
                 </Form.Label>
+                <Image src={image} fluid rounded />
+
               </>
             ) : (
               <>
                 <Form.Label htmlFor="photo-upload">
+                  A preview will appear below once your photo is chosen
                   <Asset
                     src={Upload}
                   />
-                  A preview will appear above once your photo is chosen
                 </Form.Label>
               </>
             )}
-            <Form.Control
-              type="file"
-              accept="image/*"
-              id="photo-upload"
-              onChange={handleChangePhoto}
-              ref={photoInput}
-            />
           </Form.Group>
         </Col>
         <Col md={6} className={formStyles.Form}>
