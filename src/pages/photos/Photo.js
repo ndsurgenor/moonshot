@@ -6,6 +6,8 @@ import Avatar from '../../components/Avatar'
 import { Card, Container } from 'react-bootstrap';
 import styles from '../../styles/Photo.module.css'
 
+import { FaCommentAlt, FaStar } from "react-icons/fa";
+
 
 const Photo = (props) => {
   const {
@@ -52,7 +54,20 @@ const Photo = (props) => {
           </Card.Subtitle>
         </Container>
         <Card.Text>{description}</Card.Text>
+        <Container>
+          <p><FaStar />Stars: {star_count}</p>
+          <p><FaCommentAlt />Comments: {comment_count}</p>          
+        </Container>
       </Card.ImgOverlay>
+      <Card.Body>
+        <p>Main feature: {main_feature}</p>
+        <p>Location: {location}</p>
+        <p>Date: {photo_date}</p>
+        <p>Time: {photo_time}</p>
+        <p>Lens: {lens_used}</p>
+        <p>Camera: {camera_used}</p>
+        <p>Other: {other_equipment_used}</p>
+      </Card.Body>
     </Card>
   </>
   )
