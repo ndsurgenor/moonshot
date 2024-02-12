@@ -57,6 +57,27 @@ const NavBar = () => {
         </>
     );
 
+    const signedInToggleLinks = (
+        <>
+            <NavLink
+                className={styles.NavLink}
+                activeClassName={styles.ActiveNavLink}
+                to={`/user-profiles/${currentUser?.profile_id}`}
+            >
+                <FaUserAstronaut className={styles.NavLinkIcon} />
+                Profile: {currentUser?.username}
+            </NavLink>
+            <NavLink
+                className={styles.NavLink}
+                to="/"
+                onClick={handleSignOut}
+            >
+                <FaArrowRightFromBracket className={styles.NavLinkIcon} />
+                Sign Out
+            </NavLink>
+        </>
+    );
+
     const signedInDropdownLinks = (
         <>
             <Navbar.Text className="ms-2">
@@ -89,27 +110,6 @@ const NavBar = () => {
                     </NavLink>
                 </NavDropdown.ItemText>
             </NavDropdown>
-        </>
-    );
-
-    const signedInToggleLinks = (
-        <>
-            <NavLink
-                className={styles.NavLink}
-                activeClassName={styles.ActiveNavLink}
-                to={`/user-profiles/${currentUser?.profile_id}`}
-            >
-                <FaUserAstronaut className={styles.NavLinkIcon} />
-                Profile: {currentUser?.username}
-            </NavLink>
-            <NavLink
-                className={styles.NavLink}
-                to="/"
-                onClick={handleSignOut}
-            >
-                <FaArrowRightFromBracket className={styles.NavLinkIcon} />
-                Sign Out
-            </NavLink>
         </>
     );
 

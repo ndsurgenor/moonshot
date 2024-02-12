@@ -14,7 +14,7 @@ import buttonStyles from "../../styles/Button.module.css";
 
 function UploadForm() {
   const [uploadData, setUploadData] = useState({
-    photo:'',
+    photo: '',
     title: '',
     feature: '',
     description: '',
@@ -88,112 +88,112 @@ function UploadForm() {
   const formFields = (
     < Container>
 
-        <FloatingLabel className="mb-3" label="Title*" controlId="title">
-          <Form.Control
-            type="text"
-            placeholder="title"
-            name="title"
-            value={title}
-            onChange={handleChange}
-          />
-        </FloatingLabel>
+      <FloatingLabel className="mb-3" label="Title*" controlId="title">
+        <Form.Control
+          type="text"
+          placeholder="title"
+          name="title"
+          value={title}
+          onChange={handleChange}
+        />
+      </FloatingLabel>
 
-        <FloatingLabel className="mb-3" label="Main Feature*" controlId="feature">
-          <Form.Select
-            type="dropdown"
-            placeholder="feature"
-            name="feature"
-            value={feature}
-            onChange={handleChange}
-          >
-            <option>(please select an option)</option>
-            <option value="aurora">Aurora</option>
-            <option value="constellation">Constellation</option>
-            <option value="deep_sky">Deep-sky</option>
-            <option value="moon">Moon</option>
-            <option value="nightscape">Nightscape</option>
-            <option value="planet">Planet</option>
-            <option value="other">(Other)</option>
-          </Form.Select>
-        </FloatingLabel>
+      <FloatingLabel className="mb-3" label="Main Feature*" controlId="feature">
+        <Form.Select
+          type="dropdown"
+          placeholder="feature"
+          name="feature"
+          value={feature}
+          onChange={handleChange}
+        >
+          <option>(please select an option)</option>
+          <option value="aurora">Aurora</option>
+          <option value="constellation">Constellation</option>
+          <option value="deep_sky">Deep-sky</option>
+          <option value="moon">Moon</option>
+          <option value="nightscape">Nightscape</option>
+          <option value="planet">Planet</option>
+          <option value="other">(Other)</option>
+        </Form.Select>
+      </FloatingLabel>
 
-        <FloatingLabel className="mb-3" label="Description" controlId="description">
-          <Form.Control
-            as="textarea"
-            placeholder="Describe your photo here"
-            name="description"
-            style={{ height: "10rem" }} // Style here rather than in module.css
-            value={description}
-            onChange={handleChange}
-          />
-        </FloatingLabel>
+      <FloatingLabel className="mb-3" label="Description" controlId="description">
+        <Form.Control
+          as="textarea"
+          placeholder="Describe your photo here"
+          name="description"
+          style={{ height: "7rem" }} // Style height here; not in module.css
+          value={description}
+          onChange={handleChange}
+        />
+      </FloatingLabel>
 
-        <FloatingLabel className="mb-3" label="Location" controlId="location">
-          <Form.Control
-            type="text"
-            placeholder="location"
-            name="location"
-            value={location}
-            onChange={handleChange}
-          />
-        </FloatingLabel>
+      <FloatingLabel className="mb-3" label="Location" controlId="location">
+        <Form.Control
+          type="text"
+          placeholder="location"
+          name="location"
+          value={location}
+          onChange={handleChange}
+        />
+      </FloatingLabel>
 
-        <FloatingLabel className="mb-3" label="Date Taken" controlId="date">
-          <Form.Control
-            type="date"
-            placeholder="date"
-            name="date"
-            value={date}
-            onChange={handleChange}
-          />
-        </FloatingLabel>
+      <FloatingLabel className="d-inline-flex w-50 mb-3" label="Date Taken" controlId="date">
+        <Form.Control
+          type="date"
+          placeholder="date"
+          name="date"
+          value={date}
+          onChange={handleChange}
+        />
+      </FloatingLabel>
 
-        <FloatingLabel className="mb-3" label="Time Taken" controlId="time">
-          <Form.Control
-            type="time"
-            placeholder="time"
-            name="time"
-            value={time}
-            onChange={handleChange}
-          />
-        </FloatingLabel>
+      <FloatingLabel className="d-inline-flex w-50 mb-3" label="Time Taken" controlId="time">
+        <Form.Control
+          type="time"
+          placeholder="time"
+          name="time"
+          value={time}
+          onChange={handleChange}
+        />
+      </FloatingLabel>
 
-        <FloatingLabel className="mb-3" label="Lens Used" controlId="lens">
-          <Form.Control
-            type="text"
-            placeholder="lens"
-            name="lens"
-            value={lens}
-            onChange={handleChange}
-          />
-        </FloatingLabel>
+      <FloatingLabel className="mb-3" label="Lens Used" controlId="lens">
+        <Form.Control
+          type="text"
+          placeholder="lens"
+          name="lens"
+          value={lens}
+          onChange={handleChange}
+        />
+      </FloatingLabel>
 
-        <FloatingLabel className="mb-3" label="Camera Used" controlId="camera">
-          <Form.Control
-            type="text"
-            placeholder="camera"
-            name="camera"
-            value={camera}
-            onChange={handleChange}
-          />
-        </FloatingLabel>
+      <FloatingLabel className="mb-3" label="Camera Used" controlId="camera">
+        <Form.Control
+          type="text"
+          placeholder="camera"
+          name="camera"
+          value={camera}
+          onChange={handleChange}
+        />
+      </FloatingLabel>
 
-        <FloatingLabel className="mb-3" label="Other Equipment" controlId="other">
-          <Form.Control
-            type="text"
-            placeholder="other"
-            name="other"
-            value={other}
-            onChange={handleChange}
-          />
-        </FloatingLabel>
+      <FloatingLabel className="mb-3" label="Other Equipment" controlId="other">
+        <Form.Control
+          type="text"
+          placeholder="other"
+          name="other"
+          value={other}
+          onChange={handleChange}
+        />
+      </FloatingLabel>
 
-        <Button className={buttonStyles.Button} onClick={() => { }}>
-          Clear Details
-        </Button>
-        <Button className={buttonStyles.Button} type="submit">
-          Upload Photo
-        </Button>
+      <Button className={buttonStyles.Button} onClick={() => { }}>
+        Clear
+      </Button>
+      <Button className={buttonStyles.Button} type="submit">
+        Submit
+      </Button>
 
     </Container >
   );
@@ -201,43 +201,37 @@ function UploadForm() {
   return (
     <Form onSubmit={handleSubmit}>
       <Row>
-        <Col>
-          <h1>Enter photo details below</h1>
+        <Col md={6} className={formStyles.Form}>
+          <h1>Enter photo details</h1>
           <p>Fields marked with * are required</p>
-        </Col>
-      </Row>
-      <Row>
-        <Col md={6}>
-          <Container className={formStyles.Form}>
-            <Form.Group>
-              {photo ? (
-                <>
-                  <Image src={photo} fluid rounded />
-                  <Form.Label htmlFor="photo-upload">
-                    Click 'Choose File' again to select a different photo
-                  </Form.Label>
-                </>
-              ) : (
-                <>
-                  <Form.Label htmlFor="photo-upload">
-                    <Asset
-                      src={Upload}
-                    />
-                    A preview will appear above once your photo is chosen
-                  </Form.Label>
-                  <Form.Control
-                    type="file"
-                    accept="image/*"
-                    id="photo-upload"
-                    onChange={handleChangePhoto}
-                    ref={photoInput}
+          <Form.Group className="mt-3" >
+            {photo ? (
+              <>
+                <Image src={photo} fluid rounded />
+                <Form.Label htmlFor="photo-upload">
+                  Click 'Choose File' again to select a different photo
+                </Form.Label>
+              </>
+            ) : (
+              <>
+                <Form.Label htmlFor="photo-upload">
+                  <Asset
+                    src={Upload}
                   />
-                </>
-              )}
-            </Form.Group>
-          </Container>
+                  A preview will appear above once your photo is chosen
+                </Form.Label>
+              </>
+            )}
+            <Form.Control
+              type="file"
+              accept="image/*"
+              id="photo-upload"
+              onChange={handleChangePhoto}
+              ref={photoInput}
+            />
+          </Form.Group>
         </Col>
-        <Col>
+        <Col md={6} className={formStyles.Form}>
           {formFields}
         </Col>
       </Row>

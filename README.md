@@ -521,6 +521,6 @@ This site was deployed to and is currently [hosted on the Heroku platform](https
 
 ## Credits & Acknowledgements
 - Background image by...
-- Brand logo, social media, and location page icons by [FontAwesome](https://fontawesome.com)
+- useViewportWidth() hook adapted from [code by Ferdinand Steenkamp](https://forum.rescript-lang.org/t/addeventlistener-for-window-resize/1254/3)
 - README.md and TESTING.md structure/outline adapted from documentation by ...
 - Many thanks to my Code Institute tutor [Daisy McGirr]([https://github.com/G-Taylor](https://www.linkedin.com/in/daisy-mcgirr-4a3671173/)) for her guidance and support in building this project
