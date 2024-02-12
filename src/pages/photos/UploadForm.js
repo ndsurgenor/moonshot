@@ -13,20 +13,19 @@ import buttonStyles from "../../styles/Button.module.css";
 
 
 function UploadForm() {
-  const [uploadData, setUploadData] = useState({
-    photo: '',
+  const [uploadData, setUploadData] = useState({    
     title: '',
-    feature: '',
+    main_feature: '',
     description: '',
     location: '',
-    date: '',
-    time: '',
-    lens: '',
-    camera: '',
-    other: '',
+    photo_date: '',
+    photo_time: '',
+    lens_used: '',
+    camera_used: '',
+    other_equipment_used: '',
+    image: '',
   });
-  const {
-    image,
+  const {    
     title,
     main_feature,
     description,
@@ -35,7 +34,8 @@ function UploadForm() {
     photo_time,
     lens_used,
     camera_used,
-    other_equipment_used
+    other_equipment_used,
+    image,
   } = uploadData;
 
   const photoInput = useRef(null);
@@ -60,19 +60,19 @@ function UploadForm() {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
     const formData = new FormData();
 
-    formData.append('photo', photoInput.current.files[0])
+    formData.append('image', photoInput.current.files[0])
     formData.append('title', title)
-    formData.append('feature', main_feature)
+    formData.append('main_feature', main_feature)
     formData.append('description', description)
     formData.append('location', location)
-    formData.append('date', photo_date)
-    formData.append('time', photo_time)
-    formData.append('lens', lens_used)
-    formData.append('camera', camera_used)
-    formData.append('other', other_equipment_used)
+    formData.append('photo_date', photo_date)
+    formData.append('photo_time', photo_time)
+    formData.append('lens_used', lens_used)
+    formData.append('camera_used', camera_used)
+    formData.append('other_equipment_used', other_equipment_used)
 
     try {
       const { data } = await axiosReq.post('/photos/', formData);
@@ -98,11 +98,11 @@ function UploadForm() {
         />
       </FloatingLabel>
 
-      <FloatingLabel className="mb-3" label="Main Feature*" controlId="feature">
+      <FloatingLabel className="mb-3" label="Main Feature*" controlId="main_feature">
         <Form.Select
           type="dropdown"
           placeholder="feature"
-          name="feature"
+          name="main_feature"
           value={main_feature}
           onChange={handleChange}
         >
@@ -138,51 +138,51 @@ function UploadForm() {
         />
       </FloatingLabel>
 
-      <FloatingLabel className="d-inline-flex w-50 mb-3" label="Date Taken" controlId="date">
+      <FloatingLabel className="d-inline-flex w-50 mb-3" label="Date Taken" controlId="photo_date">
         <Form.Control
           type="date"
           placeholder="date"
-          name="date"
+          name="photo_date"
           value={photo_date}
           onChange={handleChange}
         />
       </FloatingLabel>
 
-      <FloatingLabel className="d-inline-flex w-50 mb-3" label="Time Taken" controlId="time">
+      <FloatingLabel className="d-inline-flex w-50 mb-3" label="Time Taken" controlId="photo_time">
         <Form.Control
           type="time"
           placeholder="time"
-          name="time"
+          name="photo_time"
           value={photo_time}
           onChange={handleChange}
         />
       </FloatingLabel>
 
-      <FloatingLabel className="mb-3" label="Lens Used" controlId="lens">
+      <FloatingLabel className="mb-3" label="Lens Used" controlId="lens_used">
         <Form.Control
           type="text"
           placeholder="lens"
-          name="lens"
+          name="lens_used"
           value={lens_used}
           onChange={handleChange}
         />
       </FloatingLabel>
 
-      <FloatingLabel className="mb-3" label="Camera Used" controlId="camera">
+      <FloatingLabel className="mb-3" label="Camera Used" controlId="camera_used">
         <Form.Control
           type="text"
           placeholder="camera"
-          name="camera"
+          name="camera_used"
           value={camera_used}
           onChange={handleChange}
         />
       </FloatingLabel>
 
-      <FloatingLabel className="mb-3" label="Other Equipment" controlId="other">
+      <FloatingLabel className="mb-3" label="Other Equipment" controlId="other_equipment_used">
         <Form.Control
           type="text"
           placeholder="other"
-          name="other"
+          name="other_equipment_used"
           value={other_equipment_used}
           onChange={handleChange}
         />
