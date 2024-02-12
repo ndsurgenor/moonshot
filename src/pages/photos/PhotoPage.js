@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { axiosReq } from '../../api/axiosDefaults';
 
+import Photo from './Photo';
+
 import { Row, Col, Container } from 'react-bootstrap';
 
 
@@ -26,9 +28,9 @@ function PhotoPage() {
   }, [id])
 
   return (
-    <Row className="h-100">
+    <Row>
       <Col>
-      <p>Photo</p>
+      <Photo {...photo.results[0]} setPhotos={setPhoto} />
         <Container>
           Comments
         </Container>
