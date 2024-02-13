@@ -138,7 +138,7 @@ function UploadForm() {
         />
       </FloatingLabel>
 
-      <FloatingLabel className="mb-3" label="Location" controlId="location">
+      <FloatingLabel className="mb-3" label="Photo Location" controlId="location">
         <Form.Control
           type="text"
           placeholder="location"
