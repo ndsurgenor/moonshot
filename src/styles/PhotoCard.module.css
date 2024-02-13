@@ -27,9 +27,18 @@
     z-index: 1;
 }
 
-.PhotoIcon {
+.PhotoIcon,
+.PhotoStarred {
     font-size: 1.5rem;
     margin-right: 0.3rem;
+}
+
+.PhotoIcon {
+    color: whitesmoke;
+}
+
+.PhotoStarred {
+    color: goldenrod;
 }
 
 .PhotoFooter p {

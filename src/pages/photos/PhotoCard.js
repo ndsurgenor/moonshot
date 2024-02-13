@@ -41,7 +41,7 @@ const Photo = (props) => {
   const currentUser = useCurrentUser();
   const is_owner = currentUser?.username === user;
 
-  const handleStar = async () => {
+  const handleStarAdd = async () => {
     try {
       const { data } = await axiosRes.post('/stars/', { photo: id })
       setPhotos((prevPhotos) => ({
@@ -51,6 +51,24 @@ const Photo = (props) => {
             ...photo,
             star_count: photo.star_count + 1,
             star_id: data.id
+          } : photo;
+        })
+      }))
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
+  const handleStarRemove = async () => {
+    try {
+      await axiosRes.delete(`/stars/${star_id}`)
+      setPhotos((prevPhotos) => ({
+        ...prevPhotos,
+        results: prevPhotos.results.map((photo) => {
+          return photo.id === id ? {
+            ...photo,
+            star_count: photo.star_count - 1,
+            star_id: null
           } : photo;
         })
       }))
@@ -102,11 +120,11 @@ const Photo = (props) => {
             </span>
           </OverlayTrigger>
         ) : star_id ? (
-          <span>
-            <FaRegStar className={styles.PhotoIcon} />
+          <span onClick={handleStarRemove}>
+            <FaStar className={styles.PhotoStarred} />
           </span>
         ) : currentUser ? (
-          <span onClick={handleStar}>
+          <span onClick={handleStarAdd}>
             <FaRegStar className={styles.PhotoIcon} />
           </span>
         ) : (
