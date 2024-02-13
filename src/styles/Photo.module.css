@@ -12,7 +12,13 @@
 }
 
 .PhotoSubtitle {
+    color: whitesmoke;
     background-color: #00000055;
+}
+
+.PhotoSubtitle:hover {
+    color: #05192e;
+    background-color: goldenrod;
 }
 
 

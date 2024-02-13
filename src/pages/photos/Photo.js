@@ -14,6 +14,7 @@ const Photo = (props) => {
   const {
     id,
     user,
+    user_id,
     user_avatar,
     comment_count,
     star_count,
@@ -28,7 +29,6 @@ const Photo = (props) => {
     camera_used,
     other_equipment_used,
     image,
-    created_at,
     updated_at,
     photoPage,
   } = props
@@ -52,44 +52,17 @@ const Photo = (props) => {
           <Card.Title className={styles.PhotoTitle}>
             <h4>{title}</h4>
           </Card.Title>
-          <Card.Subtitle className={styles.PhotoSubtitle}>
-            <span className="me-2">{user}</span>
-            <Avatar src={user_avatar} height={30} />
-          </Card.Subtitle>
+          <Link to={`/user-profiles/${user_id}`}>
+            <Card.Subtitle className={styles.PhotoSubtitle}>
+              <span className="me-2">{user}</span>
+              <Avatar src={user_avatar} height={30} />
+            </Card.Subtitle>
+          </Link>
         </Container>
         <Card.Text>{description}</Card.Text>
       </Card.ImgOverlay>
       <Card.Body>
-        <div>
-          {is_owner ? (
-            <OverlayTrigger
-              placement="top"
-              overlay={
-                <Tooltip>You can't add a star to your own post</Tooltip>
-              }
-            >
-              <FaStar />
-            </OverlayTrigger>
-          ) : star_id ? (
-            <span onClick={() => { }}><FaRegStar /></span>
-          ) : currentUser ? (
-            <span onClick={() => { }}><FaStar /></span>
-          ) : (
-            <OverlayTrigger
-              placement="top"
-              overlay={
-                <Tooltip>You must sign in to add a star</Tooltip>
-              }
-            >
-              <FaStar />
-            </OverlayTrigger>
-          )}
-          {star_count}
-          <Link to={`/photos/${id}`}>
-            <FaCommentAlt />
-          </Link>
-          {comment_count}
-        </div>
+
         <p>Main feature: {main_feature}</p>
         <p>Location: {location}</p>
         <p>Date: {photo_date}</p>
@@ -99,6 +72,37 @@ const Photo = (props) => {
         <p>Other: {other_equipment_used}</p>
       </Card.Body>
     </Card>
+
+    <div>
+      {is_owner ? (
+        <OverlayTrigger
+          placement="top"
+          overlay={
+            <Tooltip>You can't add a star to your own post</Tooltip>
+          }
+        >
+          <span><FaStar /></span>
+        </OverlayTrigger>
+      ) : star_id ? (
+        <span onClick={() => { }}><FaRegStar /></span>
+      ) : currentUser ? (
+        <span onClick={() => { }}><FaStar /></span>
+      ) : (
+        <OverlayTrigger
+          placement="top"
+          overlay={
+            <Tooltip>You must sign in to add a star</Tooltip>
+          }
+        >
+          <span><FaStar /></span>
+        </OverlayTrigger>
+      )}
+      {star_count}
+      <Link to={`/photos/${id}`}>
+        <FaCommentAlt />
+      </Link>
+      {comment_count}
+    </div>
   </>
   )
 }
