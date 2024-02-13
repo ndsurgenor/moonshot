@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { axiosReq } from '../../api/axiosDefaults';
 
-import Photo from './Photo';
+import Photo from './PhotoCard';
 
 import { Row, Col, Container } from 'react-bootstrap';
 
@@ -29,7 +29,7 @@ function PhotoPage() {
 
   return (
     <Row className="d-flex justify-content-center">
-      <Col md={11} lg={10} xl={9} xxl={8}>
+      <Col xs={11} sm={12} md={10} lg={9} xl={8} xxl={7}>
         <Photo
           {...photo.results[0]}
           setPhotos={setPhoto}

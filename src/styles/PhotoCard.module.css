@@ -7,7 +7,7 @@
 .PhotoTitle,
 .PhotoSubtitle {
     margin: auto 0;
-    padding: 0.25rem 1rem;
+    padding: 0.3rem 0.5rem;
     border-radius: 5rem;
 }
 
@@ -17,19 +17,36 @@
 }
 
 .PhotoSubtitle:hover {
-    color: #05192e;
-    background-color: goldenrod;
+    background-color: #468be455;
+}
+
+.PhotoFooter {
+    display: flex;
+    justify-content: center;
+    margin-top: -2.5rem;
+    z-index: 1;
+}
+
+.PhotoIcon {
+    font-size: 1.5rem;
+    margin-right: 0.3rem;
+}
+
+.PhotoFooter p {
+    margin: auto 0.6rem auto 0;
 }
 
 
 @media only screen and (max-width: 767px) {
+    .PhotoHeader {
+        justify-content: right;
+    }
+
     .PhotoTitle {
         display: none;
     }
 
     .PhotoSubtitle {
         font-size: 0.9rem;
-        margin-left: auto ;
-        margin-right: -0.8rem;
     }
 }
