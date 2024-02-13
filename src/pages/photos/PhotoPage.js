@@ -30,7 +30,11 @@ function PhotoPage() {
   return (
     <Row className="d-flex justify-content-center">
       <Col md={11} lg={10} xl={9} xxl={8}>
-        <Photo {...photo.results[0]} setPhotos={setPhoto} />
+        <Photo
+          {...photo.results[0]}
+          setPhotos={setPhoto}
+          photoPage
+        />
         <Container>
           Comments
         </Container>

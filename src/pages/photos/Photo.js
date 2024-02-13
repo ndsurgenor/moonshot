@@ -3,17 +3,17 @@ import React from 'react';
 import { useCurrentUser } from '../../contexts/CurrentUserContext';
 import Avatar from '../../components/Avatar'
 
-import { Card, Container } from 'react-bootstrap';
+import { Card, Container, OverlayTrigger, Tooltip } from 'react-bootstrap';
 import styles from '../../styles/Photo.module.css'
 
-import { FaCommentAlt, FaStar } from "react-icons/fa";
+import { FaCommentAlt, FaRegStar, FaStar } from "react-icons/fa";
+import { Link } from 'react-router-dom';
 
 
 const Photo = (props) => {
   const {
     id,
     user,
-    profile_id,
     user_avatar,
     comment_count,
     star_count,
@@ -30,19 +30,23 @@ const Photo = (props) => {
     image,
     created_at,
     updated_at,
+    photoPage,
   } = props
 
   const currentUser = useCurrentUser();
   const is_owner = currentUser?.username === user;
-  
-  // At width < 767px first Card.Title displays ('d-md-none' cancels)
-  // Title in Container is hidden via media query in module.css file
+
+  // At width < 767px first Card.Title displays (cancelled by 'd-md-none')
+  // Title in Container is hidden via media query in Photo.module.css
   return (<>
+    {is_owner && photoPage && '...'}
     <Card.Title className="d-md-none mt-3 ms-1">
       <h4>{title}</h4>
     </Card.Title>
     <Card className="mx-auto mt-md-3 bg-dark text-white">
-      <Card.Img src={image} alt="Photo" />
+      <Link to={`/photos/${id}`}>
+        <Card.Img src={image} alt="Photo" />
+      </Link>
       <Card.ImgOverlay>
         <Container className={styles.PhotoHeader}>
           <Card.Title className={styles.PhotoTitle}>
@@ -54,12 +58,38 @@ const Photo = (props) => {
           </Card.Subtitle>
         </Container>
         <Card.Text>{description}</Card.Text>
-        <Container>
-          <p><FaStar />Stars: {star_count}</p>
-          <p><FaCommentAlt />Comments: {comment_count}</p>          
-        </Container>
       </Card.ImgOverlay>
       <Card.Body>
+        <div>
+          {is_owner ? (
+            <OverlayTrigger
+              placement="top"
+              overlay={
+                <Tooltip>You can't add a star to your own post</Tooltip>
+              }
+            >
+              <FaStar />
+            </OverlayTrigger>
+          ) : star_id ? (
+            <span onClick={() => { }}><FaRegStar /></span>
+          ) : currentUser ? (
+            <span onClick={() => { }}><FaStar /></span>
+          ) : (
+            <OverlayTrigger
+              placement="top"
+              overlay={
+                <Tooltip>You must sign in to add a star</Tooltip>
+              }
+            >
+              <FaStar />
+            </OverlayTrigger>
+          )}
+          {star_count}
+          <Link to={`/photos/${id}`}>
+            <FaCommentAlt />
+          </Link>
+          {comment_count}
+        </div>
         <p>Main feature: {main_feature}</p>
         <p>Location: {location}</p>
         <p>Date: {photo_date}</p>
