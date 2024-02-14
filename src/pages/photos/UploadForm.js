@@ -112,12 +112,12 @@ function UploadForm() {
           onChange={handleChange}
         >
           <option>(please select an option)</option>
-          <option value="aurora">Aurora</option>
-          <option value="constellation">Constellation</option>
+          <option value="aurora">Aurora</option>          
           <option value="deep_sky">Deep-sky</option>
           <option value="moon">Moon</option>
           <option value="nightscape">Nightscape</option>
           <option value="planet">Planet</option>
+          <option value="stars">Stars</option>
           <option value="other">(Other)</option>
         </Form.Select>
       </FloatingLabel>
@@ -138,7 +138,7 @@ function UploadForm() {
         />
       </FloatingLabel>
 
-      <FloatingLabel className="mb-3" label="Photo Location" controlId="location">
+      <FloatingLabel className="mb-3" label="Photo Location*" controlId="location">
         <Form.Control
           type="text"
           placeholder="location"
@@ -147,6 +147,11 @@ function UploadForm() {
           onChange={handleChange}
         />
       </FloatingLabel>
+      {errors.location?.map((message, idx) => (
+        <Alert variant="warning" key={idx}>
+          {message}
+        </Alert>
+      ))}
 
       <FloatingLabel className="d-inline-flex w-50 mb-3" label="Date Taken" controlId="photo_date">
         <Form.Control
@@ -168,7 +173,7 @@ function UploadForm() {
         />
       </FloatingLabel>
 
-      <FloatingLabel className="mb-3" label="Lens Used" controlId="lens_used">
+      <FloatingLabel className="mb-3" label="Telescope/Lens Used" controlId="lens_used">
         <Form.Control
           type="text"
           placeholder="lens"
@@ -228,20 +233,22 @@ function UploadForm() {
               </Alert>
             ))}
             {image ? (
-              <>
+              <>                
+                <Image src={image} fluid rounded />
                 <Form.Label htmlFor="photo-upload">
                   Click 'Choose File' again to select a different photo
                 </Form.Label>
-                <Image src={image} fluid rounded />
 
               </>
             ) : (
               <>
-                <Form.Label htmlFor="photo-upload">
-                  A preview will appear below once your photo is chosen
+                <Form.Label htmlFor="photo-upload">                  
                   <Asset
                     src={Upload}
                   />
+                  <p>Preview appears above once photo is chosen.
+                    Photos must be between 500-7680px in width/height
+                    and no larger than 4MB.</p>
                 </Form.Label>
               </>
             )}
