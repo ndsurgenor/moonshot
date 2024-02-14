@@ -10,7 +10,7 @@ import PhotoFeed from './pages/photos/PhotoFeed';
 import { Container } from 'react-bootstrap';
 import styles from './App.module.css';
 import NavBar from './components/NavBar';
-import { useCurrentUser } from './contexts/CurrentUserContext';
+// import { useCurrentUser } from './contexts/CurrentUserContext';
 
 
 function App() {
@@ -27,7 +27,7 @@ function App() {
             path="/"
             render={() => (
               <PhotoFeed
-                message="Nothing here but the empty void of space... Try searching for somethign else"
+                message="Nothing here but the empty void of space... Try searching for something else"
               />
             )}
           />

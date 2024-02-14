@@ -87,11 +87,11 @@ const Photo = (props) => {
     <Card className="mx-auto mt-md-3 bg-dark text-white">
 
       {/* Image */}
-      <Card.Img src={image} alt="Photo" />
+      <Card.Img src={image} alt="Photo"/>
 
       {/* Title & Subtitle */}
       <Link to={`/photos/${id}`}>
-        <Card.ImgOverlay>
+        <Card.ImgOverlay fluid>
           <Container className={styles.PhotoHeader}>
             <Card.Title className={styles.PhotoTitle}>
               <h4>{title}</h4>

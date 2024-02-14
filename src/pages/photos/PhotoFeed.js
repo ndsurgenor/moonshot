@@ -6,18 +6,22 @@ import PhotoCard from './PhotoCard';
 import Asset from '../../components/Asset';
 import NoResults from '../../assets/no-results.png';
 
-import { Container, Col, Row } from 'react-bootstrap';
+import { Container, Col, Row, Form } from 'react-bootstrap';
+import { FiSearch } from "react-icons/fi";
 
 
 function PhotoFeed({ message, filter = "" }) {
   const [photos, setPhotos] = useState({ results: [] });
   const [dataLoaded, setDataLoaded] = useState(false);
   const { pathname } = useLocation();
+  const [query, setQuery] = useState("");
 
   useEffect(() => {
     const getPhotos = async () => {
       try {
-        const { data } = await axiosReq.get(`/photos/?${filter}`)
+        const { data } = await axiosReq.get(
+          `/photos/?${filter}search=${query}`
+        )
         setPhotos(data)
         setDataLoaded(true)
       } catch (err) {
@@ -26,11 +30,21 @@ function PhotoFeed({ message, filter = "" }) {
     }
     setDataLoaded(false)
     getPhotos()
-  }, [filter, pathname])
+  }, [filter, pathname, query])
 
   return (
-    <Row className="h-100">
-      <Col md={8}>
+    <Row>
+      <Col md={7}>
+        <FiSearch />
+        <Form onSubmit={(e) => e.preventDefault()}>
+          <Form.Control
+            type="text"
+            placholder="Search photos"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}>
+          </Form.Control>
+        </Form>
+
         {dataLoaded ? (
           <>
             {photos.results.length ? (
@@ -53,7 +67,7 @@ function PhotoFeed({ message, filter = "" }) {
           </Container>
         )}
       </Col>
-      <Col md={4} className="d-none d-lg-block">
+      <Col md={5} className="d-none d-lg-block">
       </Col>
     </Row>
   );
