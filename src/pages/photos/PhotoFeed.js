@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { axiosReq } from '../../api/axiosDefaults';
 
+import InfiniteScroll from 'react-infinite-scroll-component';
 import PhotoCard from './PhotoCard';
 import Asset from '../../components/Asset';
 import NoResults from '../../assets/no-results.png';
@@ -53,13 +54,17 @@ function PhotoFeed({ message, filter = "" }) {
         {dataLoaded ? (
           <>
             {photos.results.length ? (
-              photos.results.map(photo => (
-                <PhotoCard
-                  key={photo.id}
-                  {...photo}
-                  setPhotos={setPhotos}
-                />
-              ))
+              <InfiniteScroll
+                children={
+                  photos.results.map(photo => (
+                    <PhotoCard key={photo.id} {...photo} setPhotos={setPhotos} />
+                  ))
+                }
+                dataLength={photos.results.length}
+                loader={<Asset spinner />}
+                hasMore={!!photos.next}
+                next={() => {}}
+              />
             ) : (
               <Container>
                 <Asset src={NoResults} message={message} />
