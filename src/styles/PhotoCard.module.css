@@ -6,6 +6,7 @@
 
 .PhotoTitle,
 .PhotoSubtitle {
+    color: whitesmoke;
     margin: auto 0;
     padding: 0.3rem 0.5rem;
     border-radius: 5rem;

@@ -87,24 +87,24 @@ const Photo = (props) => {
     <Card className="mx-auto mt-md-3 bg-dark text-white">
 
       {/* Image */}
-      <Link to={`/photos/${id}`}>
-        <Card.Img src={image} alt="Photo" />
-      </Link>
+      <Card.Img src={image} alt="Photo" />
 
       {/* Title & Subtitle */}
-      <Card.ImgOverlay>
-        <Container className={styles.PhotoHeader}>
-          <Card.Title className={styles.PhotoTitle}>
-            <h4>{title}</h4>
-          </Card.Title>
-          <Link to={`/user-profiles/${user_id}`}>
-            <Card.Subtitle className={styles.PhotoSubtitle}>
-              <span className="me-2">{user}</span>
-              <Avatar src={user_avatar} height={30} />
-            </Card.Subtitle>
-          </Link>
-        </Container>
-      </Card.ImgOverlay>
+      <Link to={`/photos/${id}`}>
+        <Card.ImgOverlay>
+          <Container className={styles.PhotoHeader}>
+            <Card.Title className={styles.PhotoTitle}>
+              <h4>{title}</h4>
+            </Card.Title>
+            <Link to={`/user-profiles/${user_id}`}>
+              <Card.Subtitle className={styles.PhotoSubtitle}>
+                <span className="me-2">{user}</span>
+                <Avatar src={user_avatar} height={30} />
+              </Card.Subtitle>
+            </Link>
+          </Container>
+        </Card.ImgOverlay>
+      </Link>
 
       {/* Stars & Comments */}
       <Container className={styles.PhotoFooter}>
@@ -163,7 +163,7 @@ const Photo = (props) => {
           </Col>
         </Row>
       </Card.Body>
-    </Card>
+    </Card >
   </>
   )
 }
