@@ -2,7 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { axiosReq } from '../../api/axiosDefaults';
 
-import { Container, Row, Col, Form } from 'react-bootstrap';
+import PhotoCard from './PhotoCard';
+import Asset from '../../components/Asset';
+import NoResults from '../../assets/no-results.png';
+
+import { Container, Col, Row } from 'react-bootstrap';
 
 
 function PhotoFeed({ message, filter = "" }) {
@@ -26,17 +30,27 @@ function PhotoFeed({ message, filter = "" }) {
 
   return (
     <Row className="h-100">
-      <Col>
+      <Col md={8}>
         {dataLoaded ? (
           <>
             {photos.results.length ? (
-              console.log('photos')
+              photos.results.map(photo => (
+                <PhotoCard
+                  key={photo.id}
+                  {...photo}
+                  setPhotos={setPhotos}
+                />
+              ))
             ) : (
-              console.log('no results')
+              <Container>
+                <Asset src={NoResults} message={message} />
+              </Container>
             )}
           </>
         ) : (
-          console.log('spinner')
+          <Container>
+            <Asset spinner />
+          </Container>
         )}
       </Col>
       <Col md={4} className="d-none d-lg-block">
