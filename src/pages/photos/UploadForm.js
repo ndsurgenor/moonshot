@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import { useHistory } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
 
-import Upload from "../../assets/photo_upload.png";
+import Upload from "../../assets/photo-upload.png";
 import Asset from "../../components/Asset";
 
 import {
