@@ -29,7 +29,12 @@ function PhotoFeed({ message, filter = "" }) {
       }
     }
     setDataLoaded(false)
-    getPhotos()
+    const photoFeedDelay = setTimeout(() => {
+      getPhotos()
+    }, 1000)
+    return () => {
+      clearTimeout(photoFeedDelay)
+    }
   }, [filter, pathname, query])
 
   return (
