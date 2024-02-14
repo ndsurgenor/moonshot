@@ -3,6 +3,7 @@ import { useLocation } from 'react-router-dom';
 import { axiosReq } from '../../api/axiosDefaults';
 
 import InfiniteScroll from 'react-infinite-scroll-component';
+import { getMoreData } from '../../utils/Utils';
 import PhotoCard from './PhotoCard';
 import Asset from '../../components/Asset';
 import NoResults from '../../assets/no-results.png';
@@ -40,7 +41,7 @@ function PhotoFeed({ message, filter = "" }) {
 
   return (
     <Row>
-      <Col md={7}>
+      <Col>
         <FiSearch />
         <Form onSubmit={(e) => e.preventDefault()}>
           <Form.Control
@@ -57,13 +58,15 @@ function PhotoFeed({ message, filter = "" }) {
               <InfiniteScroll
                 children={
                   photos.results.map(photo => (
-                    <PhotoCard key={photo.id} {...photo} setPhotos={setPhotos} />
+                    <Col sm={12} md={6} lg={4} className="d-inline-flex gap-3">
+                    <PhotoCard key={photo.id} {...photo} setPhotos={setPhotos}/>
+                    </Col>
                   ))
                 }
                 dataLength={photos.results.length}
                 loader={<Asset spinner />}
                 hasMore={!!photos.next}
-                next={() => {}}
+                next={() => getMoreData(photos, setPhotos)}
               />
             ) : (
               <Container>
@@ -76,8 +79,6 @@ function PhotoFeed({ message, filter = "" }) {
             <Asset spinner />
           </Container>
         )}
-      </Col>
-      <Col md={5} className="d-none d-lg-block">
       </Col>
     </Row>
   );

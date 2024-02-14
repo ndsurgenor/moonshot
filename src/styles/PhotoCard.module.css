@@ -1,3 +1,7 @@
+.PhotoImage {
+    max-height: 15rem;
+}
+
 .PhotoHeader {
     display: flex;
     justify-content: space-between;

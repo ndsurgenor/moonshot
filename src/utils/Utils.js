@@ -1,5 +1,6 @@
 import { axiosReq } from "../api/axiosDefaults"
 
+// Adapted from Utils.js by Code Institute
 export const getMoreData = async (resource, setResource) => {
     try {
         const { data } = await axiosReq.get(resource.next)
