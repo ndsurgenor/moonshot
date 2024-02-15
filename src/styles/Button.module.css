@@ -1,6 +1,7 @@
 .Button,
 .Button:hover {
     margin: 0 0.25rem;
+    z-index: 1;
 }
 
 .Button {

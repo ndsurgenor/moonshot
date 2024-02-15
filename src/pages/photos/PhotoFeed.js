@@ -68,7 +68,7 @@ function PhotoFeed({ message, filter = "" }) {
                 hasMore={!!photos.next}
                 next={() => getMoreData(photos, setPhotos)}
               >
-                <ResponsiveMasonry columnsCountBreakPoints={{575: 1, 767: 2, 1200: 3}}>
+                <ResponsiveMasonry columnsCountBreakPoints={{0: 1, 767: 2, 1200: 3}}>
                 <Masonry>
                   {photos.results.map(photo => (                    
                     <PhotoCard

@@ -4,7 +4,7 @@ import { axiosReq } from '../../api/axiosDefaults';
 
 import Photo from './PhotoCard';
 
-import { Row, Col, Container } from 'react-bootstrap';
+import { Container, Row, Col } from 'react-bootstrap';
 
 
 function PhotoPage() {
@@ -18,12 +18,10 @@ function PhotoPage() {
           axiosReq.get(`/photos/${id}`)
         ])
         setPhoto({ results: [photo] })
-        console.log(photo)
       } catch (err) {
         console.log(err)
       }
     }
-
     handleMount()
   }, [id])
 

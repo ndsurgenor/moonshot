@@ -3,37 +3,36 @@ import { Link } from 'react-router-dom';
 import { axiosRes } from '../../api/axiosDefaults';
 
 import { useCurrentUser } from '../../contexts/CurrentUserContext';
+
 import Avatar from '../../components/Avatar'
 
-import {
-  Container, Row, Col, Card, OverlayTrigger, Tooltip
-} from 'react-bootstrap';
+import { Container, Row, Col, Card, OverlayTrigger, Tooltip, Button } from 'react-bootstrap';
 import styles from '../../styles/PhotoCard.module.css'
+import buttonStyles from '../../styles/Button.module.css'
 
 import { CgComment } from "react-icons/cg";
-import { FaRegStar, FaStar } from "react-icons/fa";
-
+import { FaEdit, FaRegStar, FaRegTrashAlt, FaStar } from "react-icons/fa";
 
 
 const Photo = (props) => {
   const {
+    image,
     id,
-    user,
-    user_id,
+    user,    
     user_avatar,
-    comment_count,
+    user_id,    
     star_count,
     star_id,
+    comment_count,
     title,
-    main_feature,
     description,
+    main_feature,    
     location,
     photo_date,
     photo_time,
     lens_used,
     camera_used,
     other_equipment_used,
-    image,
     photoPage,
     setPhotos,
   } = props
@@ -77,7 +76,6 @@ const Photo = (props) => {
     }
   }
 
-
   return (
     <Card className="me-1 mt-1 bg-dark text-white">
 
@@ -91,7 +89,6 @@ const Photo = (props) => {
               <Card.Subtitle className={styles.PhotoOwner}>
                 <span className="me-1">{user}</span>
                 <Avatar src={user_avatar} height={30} />
-                {is_owner && photoPage && '...'}
               </Card.Subtitle>
             </Container>
           </Link>
@@ -144,6 +141,15 @@ const Photo = (props) => {
                 <Card.Title>{title}</Card.Title>
                 <Card.Text className="text-justify">{description}</Card.Text>
               </Col>
+              {is_owner &&
+                <Col className="d-flex justify-content-end">
+                  <Button className={buttonStyles.Button}>
+                    <FaEdit className="mb-1"/> Edit
+                  </Button>
+                  <Button className={buttonStyles.Button}>
+                    <FaRegTrashAlt className="mb-1"/> Delete
+                  </Button>
+                </Col>}
             </Row>
             <hr />
             <Row className="mt-3">
