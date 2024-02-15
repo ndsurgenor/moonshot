@@ -79,13 +79,12 @@ const Photo = (props) => {
 
 
   return (
-    <Card className="me-1 mt-1 bg-dark text-white">
+    <Card className="me-1 mt-1 bg-dark text-white h-100">
 
       {/* Photo */}
       <Link to={`/photos/${id}`}>
         <Card.Img src={image} alt="Photo" />
         <Card.ImgOverlay>
-
           {/* Photo Owner */}
           <Link to={`/user-profiles/${user_id}`}>
             <Container className="d-flex g-0">
@@ -96,7 +95,6 @@ const Photo = (props) => {
               </Card.Subtitle>
             </Container>
           </Link>
-
         </Card.ImgOverlay>
       </Link>
 
@@ -136,18 +134,19 @@ const Photo = (props) => {
         </Link>
         <p>{comment_count}</p>
       </Container>
-      <Container className={styles.PhotoDetails}>
 
-        {/* Photo Details (does not display in feeds) */}
-        {photoPage &&
+      {/* Photo Details (does not display in feeds) */}
+      {photoPage &&
+        <Container className={styles.PhotoDetails}>
           <Card.Body>
             <Row>
               <Col>
-                <Card.Title className="mb-3">{title}</Card.Title>
+                <Card.Title>{title}</Card.Title>
                 <Card.Text className="text-justify">{description}</Card.Text>
               </Col>
             </Row>
-            <Row>
+            <hr />
+            <Row className="mt-3">
               <Col sm={6}>
                 <p className="m-auto">Main feature: {main_feature}</p>
                 <p className="m-auto">Location: {location}</p>
@@ -161,9 +160,9 @@ const Photo = (props) => {
               </Col>
             </Row>
           </Card.Body>
-        }
+        </Container>
+      }
 
-      </Container>
     </Card >
   )
 }

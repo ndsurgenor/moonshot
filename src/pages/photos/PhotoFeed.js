@@ -40,54 +40,58 @@ function PhotoFeed({ message, filter = "" }) {
   }, [filter, pathname, query])
 
   return (
-    <Row>
-      <Col>
-        <h1>Latest Photos</h1>
-        <Form onSubmit={(e) => e.preventDefault()}>
-          <FiSearch />
-          <Form.Control
-            type="text"
-            placeholder="Search photos by title, owner, feature, etc."
-            className="mb-1"
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}>
-          </Form.Control>
-        </Form>
-
-        {dataLoaded ? (
-          <>
-            {photos.results.length ? (
-              <InfiniteScroll
-                children={
-                  photos.results.map(photo => (
-                    <Col sm={12} md={6} xl={4}
-                      className="d-inline-flex justify-content-around"
-                    >
-                      <PhotoCard
-                        key={photo.id}
-                        {...photo}
-                        setPhotos={setPhotos} />
-                    </Col>
-                  ))
-                }
-                dataLength={photos.results.length}
-                loader={<Asset spinner />}
-                hasMore={!!photos.next}
-                next={() => getMoreData(photos, setPhotos)}
-              />
-            ) : (
-              <Container>
-                <Asset src={NoResults} message={message} />
-              </Container>
-            )}
-          </>
-        ) : (
-          <Container>
-            <Asset spinner />
-          </Container>
-        )}
-      </Col>
-    </Row>
+    <>
+      <Row>
+        <Col>
+          <h1>Latest Photos</h1>
+          <Form onSubmit={(e) => e.preventDefault()}>
+            <FiSearch />
+            <Form.Control
+              type="text"
+              placeholder="Search photos by title, owner, feature, etc."
+              className="mb-3"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}>
+            </Form.Control>
+          </Form>
+        </Col>
+      </Row>
+      <Row>
+          {dataLoaded ? (
+            <>
+              {photos.results.length ? (
+                <InfiniteScroll
+                  children={
+                    photos.results.map(photo => (
+                      <Col sm={12} md={6} xl={4}
+                        className="d-inline-flex justify-content-center"
+                      >
+                        <PhotoCard
+                          key={photo.id}
+                          {...photo}
+                          setPhotos={setPhotos}
+                        />
+                      </Col>
+                    ))
+                  }
+                  dataLength={photos.results.length}
+                  loader={<Asset spinner />}
+                  hasMore={!!photos.next}
+                  next={() => getMoreData(photos, setPhotos)}
+                />
+              ) : (
+                <Container>
+                  <Asset src={NoResults} message={message} />
+                </Container>
+              )}
+            </>
+          ) : (
+            <Container>
+              <Asset spinner />
+            </Container>
+          )}
+      </Row>
+    </>
   );
 }
 
