@@ -83,7 +83,7 @@ const Photo = (props) => {
 
       {/* Photo */}
       <Link to={`/photos/${id}`}>
-        <Card.Img className={styles.Photo} src={image} alt="Photo" />
+        <Card.Img src={image} alt="Photo" />
         <Card.ImgOverlay>
 
           {/* Photo Owner */}
@@ -139,24 +139,29 @@ const Photo = (props) => {
       <Container className={styles.PhotoDetails}>
 
         {/* Photo Details (does not display in feeds) */}
-        {photoPage && <>
-          <Card.Text>{description}</Card.Text>
+        {photoPage &&
           <Card.Body>
             <Row>
+              <Col>
+                <Card.Title className="mb-3">{title}</Card.Title>
+                <Card.Text className="text-justify">{description}</Card.Text>
+              </Col>
+            </Row>
+            <Row>
               <Col sm={6}>
-                <p>Main feature: {main_feature}</p>
-                <p>Location: {location}</p>
-                <p>Date: {photo_date}</p>
-                <p>Time: {photo_time}</p>
+                <p className="m-auto">Main feature: {main_feature}</p>
+                <p className="m-auto">Location: {location}</p>
+                <p className="m-auto">Date: {photo_date}</p>
+                <p className="m-auto">Time: {photo_time}</p>
               </Col>
               <Col sm={6}>
-                <p>Lens: {lens_used}</p>
-                <p>Camera: {camera_used}</p>
-                <p>Other: {other_equipment_used}</p>
+                <p className="m-auto">Lens: {lens_used}</p>
+                <p className="m-auto">Camera: {camera_used}</p>
+                <p className="m-auto">Other: {other_equipment_used}</p>
               </Col>
             </Row>
           </Card.Body>
-        </>}
+        }
 
       </Container>
     </Card >

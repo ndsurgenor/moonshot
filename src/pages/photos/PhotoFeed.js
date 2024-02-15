@@ -43,11 +43,12 @@ function PhotoFeed({ message, filter = "" }) {
     <Row>
       <Col>
         <h1>Latest Photos</h1>
-        <FiSearch />
         <Form onSubmit={(e) => e.preventDefault()}>
+          <FiSearch />
           <Form.Control
             type="text"
-            placholder="Search photos"
+            placeholder="Search photos by title, owner, feature, etc."
+            className="mb-1"
             value={query}
             onChange={(e) => setQuery(e.target.value)}>
           </Form.Control>
