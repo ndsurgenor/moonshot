@@ -1,3 +1,8 @@
+.Photo {
+    max-height: 75vh;
+    max-width: fit-content;
+}
+
 .PhotoOwner {
     color: whitesmoke;
     background-color: #00000055;
@@ -35,6 +40,11 @@
 
 .PhotoStarred {
     color: goldenrod;
+}
+
+.PhotoDetails {
+    margin-top: -3rem;
+    margin-bottom: 1.5rem;
 }
 
 

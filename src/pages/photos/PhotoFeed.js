@@ -42,7 +42,7 @@ function PhotoFeed({ message, filter = "" }) {
   return (
     <Row>
       <Col>
-      <h1>Latest Photos</h1>
+        <h1>Latest Photos</h1>
         <FiSearch />
         <Form onSubmit={(e) => e.preventDefault()}>
           <Form.Control
@@ -59,8 +59,13 @@ function PhotoFeed({ message, filter = "" }) {
               <InfiniteScroll
                 children={
                   photos.results.map(photo => (
-                    <Col sm={12} md={6} xl={4} className="d-inline-flex">
-                    <PhotoCard key={photo.id} {...photo} setPhotos={setPhotos}/>
+                    <Col sm={12} md={6} xl={4}
+                      className="d-inline-flex justify-content-around"
+                    >
+                      <PhotoCard
+                        key={photo.id}
+                        {...photo}
+                        setPhotos={setPhotos} />
                     </Col>
                   ))
                 }

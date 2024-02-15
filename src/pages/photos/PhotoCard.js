@@ -83,7 +83,7 @@ const Photo = (props) => {
 
       {/* Photo */}
       <Link to={`/photos/${id}`}>
-        <Card.Img src={image} alt="Photo" />
+        <Card.Img className={styles.Photo} src={image} alt="Photo" />
         <Card.ImgOverlay>
 
           {/* Photo Owner */}
@@ -104,8 +104,8 @@ const Photo = (props) => {
       <Container className={styles.PhotoInteractions}>
         {is_owner ? (
           <OverlayTrigger placement="top" overlay={
-              <Tooltip>Stars can't be added to your own photos</Tooltip>
-            }
+            <Tooltip>Stars can't be added to your own photos</Tooltip>
+          }
           >
             <span>
               <FaStar className={styles.PhotoIcon} />
@@ -136,27 +136,29 @@ const Photo = (props) => {
         </Link>
         <p>{comment_count}</p>
       </Container>
+      <Container className={styles.PhotoDetails}>
 
+        {/* Photo Details (does not display in feeds) */}
+        {photoPage && <>
+          <Card.Text>{description}</Card.Text>
+          <Card.Body>
+            <Row>
+              <Col sm={6}>
+                <p>Main feature: {main_feature}</p>
+                <p>Location: {location}</p>
+                <p>Date: {photo_date}</p>
+                <p>Time: {photo_time}</p>
+              </Col>
+              <Col sm={6}>
+                <p>Lens: {lens_used}</p>
+                <p>Camera: {camera_used}</p>
+                <p>Other: {other_equipment_used}</p>
+              </Col>
+            </Row>
+          </Card.Body>
+        </>}
 
-
-
-      {/* Photo Info */}
-      {/* <Card.Text>{description}</Card.Text>
-      <Card.Body> */}
-      {/* <Row>
-          <Col sm={6}>
-            <p>Main feature: {main_feature}</p>
-            <p>Location: {location}</p>
-            <p>Date: {photo_date}</p>
-            <p>Time: {photo_time}</p>
-          </Col>
-          <Col sm={6}>
-            <p>Lens: {lens_used}</p>
-            <p>Camera: {camera_used}</p>
-            <p>Other: {other_equipment_used}</p>
-          </Col>
-        </Row> */}
-      {/* </Card.Body> */}
+      </Container>
     </Card >
   )
 }
