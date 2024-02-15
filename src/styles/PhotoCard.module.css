@@ -1,23 +1,12 @@
-.PhotoImage {
-    max-height: 15rem;
-}
-
-.PhotoHeader {
-    display: flex;
-    justify-content: space-between;
-    padding: 0rem 0.5rem;
-}
-
 .PhotoTitle,
 .PhotoSubtitle {
     color: whitesmoke;
-    margin: auto 0;
+    margin-left: auto;
     padding: 0.3rem 0.5rem;
     border-radius: 5rem;
 }
 
 .PhotoSubtitle {
-    color: whitesmoke;
     background-color: #00000055;
 }
 
