@@ -79,7 +79,7 @@ const Photo = (props) => {
 
 
   return (
-    <Card className="me-1 mt-1 bg-dark text-white h-100">
+    <Card className="me-1 mt-1 bg-dark text-white">
 
       {/* Photo */}
       <Link to={`/photos/${id}`}>

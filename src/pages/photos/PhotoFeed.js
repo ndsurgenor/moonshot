@@ -3,6 +3,8 @@ import { useLocation } from 'react-router-dom';
 import { axiosReq } from '../../api/axiosDefaults';
 
 import InfiniteScroll from 'react-infinite-scroll-component';
+import Masonry, { ResponsiveMasonry } from 'react-responsive-masonry';
+
 import { getMoreData } from '../../utils/Utils';
 import PhotoCard from './PhotoCard';
 import Asset from '../../components/Asset';
@@ -57,39 +59,39 @@ function PhotoFeed({ message, filter = "" }) {
         </Col>
       </Row>
       <Row>
-          {dataLoaded ? (
-            <>
-              {photos.results.length ? (
-                <InfiniteScroll
-                  children={
-                    photos.results.map(photo => (
-                      <Col sm={12} md={6} xl={4}
-                        className="d-inline-flex justify-content-center"
-                      >
-                        <PhotoCard
-                          key={photo.id}
-                          {...photo}
-                          setPhotos={setPhotos}
-                        />
-                      </Col>
-                    ))
-                  }
-                  dataLength={photos.results.length}
-                  loader={<Asset spinner />}
-                  hasMore={!!photos.next}
-                  next={() => getMoreData(photos, setPhotos)}
-                />
-              ) : (
-                <Container>
-                  <Asset src={NoResults} message={message} />
-                </Container>
-              )}
-            </>
-          ) : (
-            <Container>
-              <Asset spinner />
-            </Container>
-          )}
+        {dataLoaded ? (
+          <>
+            {photos.results.length ? (
+              <InfiniteScroll
+                dataLength={photos.results.length}
+                loader={<Asset spinner />}
+                hasMore={!!photos.next}
+                next={() => getMoreData(photos, setPhotos)}
+              >
+                <ResponsiveMasonry columnsCountBreakPoints={{575: 1, 767: 2, 1200: 3}}>
+                <Masonry>
+                  {photos.results.map(photo => (                    
+                    <PhotoCard
+                      key={photo.id}
+                      {...photo}
+                      setPhotos={setPhotos}
+                    />             
+                  ))}
+                  </Masonry>
+                </ResponsiveMasonry>
+
+              </InfiniteScroll>
+            ) : (
+              <Container>
+                <Asset src={NoResults} message={message} />
+              </Container>
+            )}
+          </>
+        ) : (
+          <Container>
+            <Asset spinner />
+          </Container>
+        )}
       </Row>
     </>
   );
