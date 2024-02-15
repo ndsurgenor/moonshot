@@ -79,35 +79,31 @@ const Photo = (props) => {
 
 
   return (
-    <Card className="mx-1 mt-md-3 bg-dark text-white">
+    <Card className="me-1 mt-1 bg-dark text-white">
 
-      {/* Image */}
-      {/* <Card.Title className={styles.PhotoTitle}>
-        <h4>{title}</h4>
-      </Card.Title> */}
-
+      {/* Photo */}
       <Link to={`/photos/${id}`}>
         <Card.Img src={image} alt="Photo" />
         <Card.ImgOverlay>
+
+          {/* Photo Owner */}
           <Link to={`/user-profiles/${user_id}`}>
-            {/* Photo Owner */}
             <Container className="d-flex g-0">
-              <Card.Subtitle className={styles.PhotoSubtitle}>
+              <Card.Subtitle className={styles.PhotoOwner}>
                 <span className="me-1">{user}</span>
                 <Avatar src={user_avatar} height={30} />
                 {is_owner && photoPage && '...'}
               </Card.Subtitle>
             </Container>
           </Link>
+
         </Card.ImgOverlay>
       </Link>
 
       {/* Stars & Comments */}
-      <Container className={styles.PhotoFooter}>
+      <Container className={styles.PhotoInteractions}>
         {is_owner ? (
-          <OverlayTrigger
-            placement="top"
-            overlay={
+          <OverlayTrigger placement="top" overlay={
               <Tooltip>Stars can't be added to your own photos</Tooltip>
             }
           >
@@ -125,8 +121,7 @@ const Photo = (props) => {
           </span>
         ) : (
           <OverlayTrigger
-            placement="top"
-            overlay={
+            placement="top" overlay={
               <Tooltip>Please sign in to add stars</Tooltip>
             }
           >
@@ -141,6 +136,9 @@ const Photo = (props) => {
         </Link>
         <p>{comment_count}</p>
       </Container>
+
+
+
 
       {/* Photo Info */}
       {/* <Card.Text>{description}</Card.Text>

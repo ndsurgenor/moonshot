@@ -59,7 +59,7 @@ function PhotoFeed({ message, filter = "" }) {
               <InfiniteScroll
                 children={
                   photos.results.map(photo => (
-                    <Col sm={12} md={6} xl={4} className="d-inline-flex gap-3">
+                    <Col sm={12} md={6} xl={4} className="d-inline-flex">
                     <PhotoCard key={photo.id} {...photo} setPhotos={setPhotos}/>
                     </Col>
                   ))

@@ -1,24 +1,25 @@
-.PhotoTitle,
-.PhotoSubtitle {
+.PhotoOwner {
     color: whitesmoke;
+    background-color: #00000055;
     margin-left: auto;
     padding: 0.3rem 0.5rem;
     border-radius: 5rem;
 }
 
-.PhotoSubtitle {
-    background-color: #00000055;
-}
-
-.PhotoSubtitle:hover {
+.PhotoOwner:hover {
     background-color: #468be455;
 }
 
-.PhotoFooter {
+.PhotoInteractions {
     display: flex;
     justify-content: center;
     margin-top: -2.5rem;
+    margin-bottom: 2.5rem;
     z-index: 1;
+}
+
+.PhotoInteractions p {
+    margin: auto 0.6rem auto 0;
 }
 
 .PhotoIcon,
@@ -36,21 +37,9 @@
     color: goldenrod;
 }
 
-.PhotoFooter p {
-    margin: auto 0.6rem auto 0;
-}
-
 
 @media only screen and (max-width: 767px) {
-    .PhotoHeader {
-        justify-content: right;
-    }
-
-    .PhotoTitle {
-        display: none;
-    }
-
-    .PhotoSubtitle {
+    .PhotoInteractions {
         font-size: 0.9rem;
     }
 }
