@@ -4,6 +4,7 @@ import './api/axiosDefaults';
 import SignUpForm from './pages/auth/SignUpForm';
 import SignInForm from './pages/auth/SignInForm';
 import UploadForm from './pages/photos/UploadForm';
+import EditForm from './pages/photos/EditForm';
 import PhotoPage from './pages/photos/PhotoPage';
 import PhotoFeed from './pages/photos/PhotoFeed';
 
@@ -34,6 +35,7 @@ function App() {
           <Route exact path="/signup" render={() => <SignUpForm />} />
           <Route exact path="/signin" render={() => <SignInForm />} />
           <Route exact path="/photos/upload" render={() => <UploadForm />} />
+          <Route exact path="/photos/:id/edit" render={() => <EditForm />} />
           <Route exact path="/photos/:id" render={() => <PhotoPage />} />
           <Route render={() => <h1>404 Error - Page Not Found</h1>} />
         </Switch>
