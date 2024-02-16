@@ -3,9 +3,10 @@ import { Link } from 'react-router-dom';
 import { axiosRes } from "../../api/axiosDefaults";
 
 import Avatar from "../../components/Avatar";
-import { Form, InputGroup } from 'react-bootstrap';
+import { Form, InputGroup, Button } from 'react-bootstrap';
 
-import styles from "../../styles/Comments.module.css";
+import styles from '../../styles/Comments.module.css';
+import buttonStyles from '../../styles/Button.module.css'
 
 
 function AddCommentForm(props) {
@@ -51,12 +52,12 @@ function AddCommentForm(props) {
         <Form className="mt-2" onSubmit={handleSubmit}>
             <Form.Group>
                 <InputGroup>
-                    <Link to={`/photos/${profile_id}`}>
+                    <Link to={`/user-profiles/${profile_id}`}>
                         <Avatar src={profileImage} />
                     </Link>
                     <Form.Control
                         className={styles.Form}
-                        placeholder="my comment..."
+                        placeholder="Add your comment here"
                         as="textarea"
                         value={content}
                         onChange={handleChange}
@@ -64,14 +65,14 @@ function AddCommentForm(props) {
                     />
                 </InputGroup>
             </Form.Group>
-            <button
-                className={`${styles.Button} btn d-block ml-auto`}
+            <Button
+                className={buttonStyles.Button}
                 disabled={!content.trim()}
                 type="submit"
             >
-                post
-            </button>
-        </Form>
+                Add+
+            </Button>
+        </Form >
     );
 }
 

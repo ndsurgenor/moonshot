@@ -8,9 +8,9 @@ import { Container, Row, Col } from 'react-bootstrap';
 
 const Comment = (props) => {
     const {
-        profile_id,
-        user_avatar,
         user,
+        user_id,
+        user_avatar,        
         updated_at,
         content
     } = props;
@@ -20,7 +20,7 @@ const Comment = (props) => {
             <Row>
                 <hr />
                 <Col xs={1}>
-                    <Link to={`/user-profiles/${profile_id}`}>
+                    <Link to={`/user-profiles/${user_id}`}>
                         <Avatar src={user_avatar} height={30} />
                     </Link>
                 </Col>
