@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { axiosRes } from "../../api/axiosDefaults";
 
-import Avatar from "../../components/Avatar";
-import { Form, InputGroup, Button } from 'react-bootstrap';
+import { useCurrentUser } from '../../contexts/CurrentUserContext';
 
-import styles from '../../styles/Comments.module.css';
+import { Form, FloatingLabel, Button, InputGroup } from 'react-bootstrap';
+import styles from '../../styles/Comments.module.css'
 import buttonStyles from '../../styles/Button.module.css'
 
 
@@ -14,10 +13,9 @@ function AddCommentForm(props) {
         photo,
         setPhoto,
         setComments,
-        profileImage,
-        profile_id
     } = props;
     const [content, setContent] = useState('');
+    const currentUser = useCurrentUser()
 
     const handleChange = (e) => {
         setContent(e.target.value);
@@ -50,28 +48,28 @@ function AddCommentForm(props) {
 
     return (
         <Form className="mt-2" onSubmit={handleSubmit}>
-            <Form.Group>
-                <InputGroup>
-                    <Link to={`/user-profiles/${profile_id}`}>
-                        <Avatar src={profileImage} />
-                    </Link>
+            <InputGroup className="mt-1 mb-3">
+                <FloatingLabel
+                    label={`Add comment as ${currentUser?.username}...`}
+                    controlId="comment"
+                >
                     <Form.Control
-                        className={styles.Form}
-                        placeholder="Add your comment here"
                         as="textarea"
+                        placeholder="Add comment"
+                        name="comment"
+                        style={{ height: "4rem" }} // Style height here; not in module.css
                         value={content}
                         onChange={handleChange}
-                        rows={2}
                     />
-                </InputGroup>
-            </Form.Group>
-            <Button
-                className={buttonStyles.Button}
-                disabled={!content.trim()}
-                type="submit"
-            >
-                Add+
-            </Button>
+                </FloatingLabel>
+                <Button
+                    className={`${styles.CommentButton} ${buttonStyles.Button}`}
+                    disabled={!content.trim()}
+                    type="submit"
+                >
+                    +
+                </Button>
+            </InputGroup>
         </Form >
     );
 }

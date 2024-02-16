@@ -1,6 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 
+import {useCurrentUser} from '../contexts/CurrentUserContext'
+
 import Avatar from './Avatar';
 
 import { Container, Row, Col } from 'react-bootstrap';
@@ -15,13 +17,16 @@ const Comment = (props) => {
         content
     } = props;
 
+    const currentUser = useCurrentUser()
+    const is_owner = currentUser?.username === user;
+
     return (
         <Container>
             <Row>
                 <hr />
                 <Col xs={1}>
                     <Link to={`/user-profiles/${user_id}`}>
-                        <Avatar src={user_avatar} height={30} />
+                        <Avatar src={user_avatar}/>
                     </Link>
                 </Col>
                 <Col className="align-self-center ml-2">

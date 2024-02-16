@@ -154,7 +154,7 @@ function EditForm() {
                     as="textarea"
                     placeholder="Describe your photo here"
                     name="description"
-                    style={{ height: "7rem" }} // Style height here; not in module.css
+                    style={{ height: "6rem" }} // Style height here; not in module.css
                     value={description}
                     onChange={handleChange}
                 />
