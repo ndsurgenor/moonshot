@@ -2,9 +2,6 @@ import React, { useEffect, useRef, useState } from "react";
 import { useHistory, useParams } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
 
-import Upload from "../../assets/photo-upload.png";
-import Asset from "../../components/Asset";
-
 import {
     Col, Row, Container, Image, Form, FloatingLabel, Alert, Button,
 } from "react-bootstrap";
@@ -101,7 +98,7 @@ function EditForm() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         const formData = new FormData();
-              
+
         formData.append('title', title)
         formData.append('main_feature', main_feature)
         formData.append('description', description)
@@ -112,7 +109,7 @@ function EditForm() {
         formData.append('camera_used', camera_used)
         formData.append('other_equipment_used', other_equipment_used)
 
-        if(photoInput?.current?.files[0]){
+        if (photoInput?.current?.files[0]) {
             formData.append('image', photoInput.current.files[0])
         }
 
@@ -245,7 +242,7 @@ function EditForm() {
                 />
             </FloatingLabel>
 
-            <Button className={buttonStyles.Button} onClick={() => { }}>
+            <Button className={buttonStyles.Button} onClick={() => history.goBack()}>
                 Cancel
             </Button>
             <Button className={buttonStyles.Button} type="submit">
@@ -274,26 +271,10 @@ function EditForm() {
                                 {message}
                             </Alert>
                         ))}
-                        {image ? (
-                            <>
-                                <Image src={image} fluid rounded />
-                                <Form.Label htmlFor="photo-upload">
-                                    Click 'Choose File' again to select a different photo
-                                </Form.Label>
-
-                            </>
-                        ) : (
-                            <>
-                                <Form.Label htmlFor="photo-upload">
-                                    <Asset
-                                        src={Upload}
-                                    />
-                                    <p>Preview appears above once photo is chosen.
-                                        Photos must be between 500-7680px in width/height
-                                        and no larger than 4MB.</p>
-                                </Form.Label>
-                            </>
-                        )}
+                        <Image src={image} fluid rounded />
+                        <Form.Label htmlFor="photo-upload">
+                            Click 'Choose File' again to select a different photo
+                        </Form.Label>
                     </Form.Group>
                 </Col>
                 <Col md={6} className={formStyles.Form}>
