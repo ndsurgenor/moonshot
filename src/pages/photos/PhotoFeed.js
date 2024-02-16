@@ -74,7 +74,7 @@ function PhotoFeed({ message, filter = "" }) {
                     <PhotoCard
                       key={photo.id}
                       {...photo}
-                      setPhotos={setPhotos}
+                      setPhotos={setPhotos}                      
                     />             
                   ))}
                   </Masonry>
