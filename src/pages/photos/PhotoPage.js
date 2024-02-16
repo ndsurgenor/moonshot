@@ -2,7 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { axiosReq } from '../../api/axiosDefaults';
 
+import { useCurrentUser } from "../../contexts/CurrentUserContext";
+
 import Photo from './PhotoCard';
+import AddCommentForm from "../comments/AddCommentForm";
 
 import { Container, Row, Col } from 'react-bootstrap';
 
@@ -10,6 +13,10 @@ import { Container, Row, Col } from 'react-bootstrap';
 function PhotoPage() {
   const { id } = useParams();
   const [photo, setPhoto] = useState({ results: [] });
+  const currentUser = useCurrentUser();
+  const profile_image = currentUser?.profile_image;
+  const [comments, setComments] = useState({ results: [] });
+
 
   useEffect(() => {
     const handleMount = async () => {
@@ -34,7 +41,17 @@ function PhotoPage() {
           photoPage
         />
         <Container>
-          Comments
+          {currentUser ? (
+            <AddCommentForm
+              profile_id={currentUser.profile_id}
+              profileImage={profile_image}
+              photo={id}
+              setPhoto={setPhoto}
+              setComments={setComments}
+            />
+          ) : comments.results.length ? (
+            "Comments"
+          ) : null}
         </Container>
       </Col>
     </Row>
