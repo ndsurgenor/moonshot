@@ -6,6 +6,7 @@ import { useCurrentUser } from "../../contexts/CurrentUserContext";
 
 import Photo from './PhotoCard';
 import AddCommentForm from "../comments/AddCommentForm";
+import Comment from '../../components/Comment'
 
 import { Container, Row, Col } from 'react-bootstrap';
 
@@ -52,13 +53,11 @@ function PhotoPage() {
               setComments={setComments}
             />
           ) : comments.results.length ? (
-            "Comments"            
+            "Comments"
           ) : null}
           {comments.results.length ? (
             comments.results.map(comment => (
-              <p key={comment.id}>
-                {comment.user}:{comment.content}
-              </p>
+              <Comment key={comment.id} {...comment} />
             ))
           ) : currentUser ? (
             <span>Add the first comment</span>
