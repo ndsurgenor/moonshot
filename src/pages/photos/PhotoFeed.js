@@ -5,11 +5,13 @@ import { axiosReq } from '../../api/axiosDefaults';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import Masonry, { ResponsiveMasonry } from 'react-responsive-masonry';
 
-import { getMoreData } from '../../utils/Utils';
 import PhotoCard from './PhotoCard';
 import Asset from '../../components/Asset';
-import NoResults from '../../assets/no-results.png';
+import { getMoreData } from '../../utils/Utils';
 
+import styles from '../../styles/PhotoFeed.module.css'
+
+import NoResults from '../../assets/no-results.png';
 import { Container, Col, Row, Form } from 'react-bootstrap';
 import { FiSearch } from "react-icons/fi";
 
@@ -62,21 +64,24 @@ function PhotoFeed({ message, filter = "" }) {
         {dataLoaded ? (
           <>
             {photos.results.length ? (
-              <InfiniteScroll
+              <InfiniteScroll              
                 dataLength={photos.results.length}
                 loader={<Asset spinner />}
                 hasMore={!!photos.next}
                 next={() => getMoreData(photos, setPhotos)}
               >
-                <ResponsiveMasonry columnsCountBreakPoints={{0: 1, 767: 2, 1200: 3}}>
-                <Masonry>
-                  {photos.results.map(photo => (                    
-                    <PhotoCard
-                      key={photo.id}
-                      {...photo}
-                      setPhotos={setPhotos}                      
-                    />             
-                  ))}
+                <ResponsiveMasonry
+                className={styles.PhotoGallery}
+                  columnsCountBreakPoints={{ 0: 1, 767: 2, 1200: 3 }}
+                >
+                  <Masonry>
+                    {photos.results.map(photo => (
+                      <PhotoCard
+                        key={photo.id}
+                        {...photo}
+                        setPhotos={setPhotos}
+                      />
+                    ))}
                   </Masonry>
                 </ResponsiveMasonry>
 
