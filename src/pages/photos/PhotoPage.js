@@ -21,10 +21,12 @@ function PhotoPage() {
   useEffect(() => {
     const handleMount = async () => {
       try {
-        const [{ data: photo }] = await Promise.all([
-          axiosReq.get(`/photos/${id}`)
+        const [{ data: photo }, { data: comments }] = await Promise.all([
+          axiosReq.get(`/photos/${id}`),
+          axiosReq.get(`/comments/?photo=${id}`)
         ])
-        setPhoto({ results: [photo] })
+        setPhoto({ results: [photo] });
+        setComments(comments);
       } catch (err) {
         console.log(err)
       }
@@ -50,8 +52,17 @@ function PhotoPage() {
               setComments={setComments}
             />
           ) : comments.results.length ? (
-            "Comments"
+            "Comments"            
           ) : null}
+          {comments.results.length ? (
+            comments.results.map(comment => (
+              <p key={comment.id}>
+                {comment.user}:{comment.content}
+              </p>
+            ))
+          ) : currentUser ? (
+            <span>Add the first comment</span>
+          ) : (<span>No comments. Sign in to add one</span>)}
         </Container>
       </Col>
     </Row>
