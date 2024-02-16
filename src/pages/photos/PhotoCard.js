@@ -18,7 +18,7 @@ import { ImCancelCircle } from "react-icons/im";
 import { PiWarningFill } from "react-icons/pi";
 
 
-const Photo = (props) => {
+const PhotoCard = (props) => {
   const {
     image,
     id,
@@ -218,4 +218,4 @@ const Photo = (props) => {
   )
 }
 
-export default Photo
+export default PhotoCard

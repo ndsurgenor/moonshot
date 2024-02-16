@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 
-import {useCurrentUser} from '../contexts/CurrentUserContext'
+import { useCurrentUser } from '../contexts/CurrentUserContext'
 
 import Avatar from './Avatar';
 
@@ -12,7 +12,7 @@ const Comment = (props) => {
     const {
         user,
         user_id,
-        user_avatar,        
+        user_avatar,
         updated_at,
         content
     } = props;
@@ -23,17 +23,25 @@ const Comment = (props) => {
     return (
         <Container>
             <Row>
-                <hr />
-                <Col xs={1}>
+                <Col xs={1} className="mt-1">
                     <Link to={`/user-profiles/${user_id}`}>
-                        <Avatar src={user_avatar}/>
+                        <Avatar src={user_avatar} />
                     </Link>
                 </Col>
-                <Col className="align-self-center ml-2">
-                    <span>{user}</span>
-                    <span>{updated_at}</span>
-                    <p>{content}</p>
+                <Col>
+                    <Container className="d-inline-flex justify-content-between g-0">
+                        <span className="text-end">{user}</span>
+                        <span className="text-end">Last updated: {updated_at}</span>
+                    </Container>
+                    <p className="m-0">{content}</p>
+                    {is_owner &&
+                        <Container className="d-flex justify-content-end g-0">
+                            <Link className="me-1" to="/">Edit</Link>|
+                            <Link className="ms-1" to="/">Delete</Link>
+                        </Container>
+                    }
                 </Col>
+                <hr className="mb-2" />
             </Row>
         </Container>
     );

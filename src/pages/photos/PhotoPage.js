@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { axiosReq } from '../../api/axiosDefaults';
 
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 
-import Photo from './PhotoCard';
+import PhotoCard from './PhotoCard';
 import AddCommentForm from "../comments/AddCommentForm";
 import Comment from '../../components/Comment'
 
@@ -17,7 +17,6 @@ function PhotoPage() {
   const currentUser = useCurrentUser();
   const profile_image = currentUser?.profile_image;
   const [comments, setComments] = useState({ results: [] });
-
 
   useEffect(() => {
     const handleMount = async () => {
@@ -38,12 +37,17 @@ function PhotoPage() {
   return (
     <Row className="d-flex justify-content-center">
       <Col xs={11} sm={12} md={10} lg={9} xl={8} xxl={7}>
-        <Photo
+
+        {/* Photo & Details */}
+        <PhotoCard
           {...photo.results[0]}
           setPhotos={setPhoto}
           photoPage
         />
-        <Container>
+
+        {/* Comment Section */}
+        <Container className="mb-3">
+          {/* Add Comment Form */}
           {currentUser ? (
             <AddCommentForm
               profile_id={currentUser.profile_id}
@@ -53,15 +57,22 @@ function PhotoPage() {
               setComments={setComments}
             />
           ) : comments.results.length ? (
-            "Comments"
+            <h3>Comments</h3>
           ) : null}
+          {/* Comments */}
+          <h4>Comments</h4>
+          <hr className="mt-0 mb-2" />
           {comments.results.length ? (
             comments.results.map(comment => (
               <Comment key={comment.id} {...comment} />
             ))
           ) : currentUser ? (
-            <span>Add the first comment</span>
-          ) : (<span>No comments. Sign in to add one</span>)}
+            <span>No comments yet. Add the first one above.</span>
+          ) : (
+            <span>
+              No comments yet. <Link to="/signin">Sign in</Link> to add the first one!
+            </span>
+          )}
         </Container>
       </Col>
     </Row>
