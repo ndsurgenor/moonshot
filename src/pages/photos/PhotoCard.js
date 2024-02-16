@@ -48,12 +48,20 @@ const Photo = (props) => {
 
   const handleModalClose = () => setShow(false);
   const handleModalShow = () => setShow(true);
+
   const handlePhotoEdit = () => {
     history.push(`/photos/${id}/edit`)
   };
-  const handlePhotoDelete = () => {
-    history.push(`/photos/${id}/edit`)
+
+  const handlePhotoDelete = async () => {
+    try {
+      await axiosRes.delete(`/photos/${id}/`);
+      history.goBack();
+    } catch(err) {
+      console.log(err);
+    }
   };
+
   const handleStarAdd = async () => {
     try {
       const { data } = await axiosRes.post('/stars/', { photo: id })
