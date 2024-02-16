@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
 
@@ -35,9 +35,6 @@ function EditForm() {
         image,
     } = uploadData;
 
-    console.log(uploadData)
-
-    const photoInput = useRef(null);
     const [errors, setErrors] = useState({});
     const history = useHistory();
     const { id } = useParams();
@@ -85,16 +82,6 @@ function EditForm() {
         })
     };
 
-    const handleChangePhoto = (e) => {
-        if (e.target.files.length) {
-            URL.revokeObjectURL(image);
-            setUploadData({
-                ...uploadData,
-                image: URL.createObjectURL(e.target.files[0])
-            })
-        }
-    };
-
     const handleSubmit = async (e) => {
         e.preventDefault();
         const formData = new FormData();
@@ -108,10 +95,6 @@ function EditForm() {
         formData.append('lens_used', lens_used)
         formData.append('camera_used', camera_used)
         formData.append('other_equipment_used', other_equipment_used)
-
-        if (photoInput?.current?.files[0]) {
-            formData.append('image', photoInput.current.files[0])
-        }
 
         try {
             await axiosReq.put(`/photos/${id}/`, formData);
@@ -258,22 +241,11 @@ function EditForm() {
                 <Col md={6} className={formStyles.Form}>
                     <h1>Edit photo details</h1>
                     <p>Fields marked with * are required</p>
-                    <Form.Control
-                        type="file"
-                        accept="image/*"
-                        id="photo-upload"
-                        onChange={handleChangePhoto}
-                        ref={photoInput}
-                    />
                     <Form.Group className="mt-3" >
-                        {errors.image?.map((message, idx) => (
-                            <Alert variant="warning" key={idx}>
-                                {message}
-                            </Alert>
-                        ))}
                         <Image src={image} fluid rounded />
-                        <Form.Label htmlFor="photo-upload">
-                            Click 'Choose File' again to select a different photo
+                        <Form.Label className="mt-3" htmlFor="photo-upload">
+                            Note that it is not possible to change photo with this form.
+                            If you require a different photo, please add it as a new upload.
                         </Form.Label>
                     </Form.Group>
                 </Col>
