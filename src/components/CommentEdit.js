@@ -1,21 +1,26 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
+import { axiosRes } from '../api/axiosDefaults';
 
-import Form from "react-bootstrap/Form";
-import { axiosRes } from "../api/axiosDefaults";
+import { Container, Form } from 'react-bootstrap';
+import styles from '../styles/Comments.module.css';
 
-import styles from "../styles/Comments.module.css";
 
 function CommentEditForm(props) {
-    const { id, content, setShowEditForm, setComments } = props;
+    const {
+        id,
+        content,
+        setShowEditForm,
+        setComments
+    } = props;
 
     const [formContent, setFormContent] = useState(content);
 
-    const handleChange = (event) => {
-        setFormContent(event.target.value);
+    const handleChange = (e) => {
+        setFormContent(e.target.value);
     };
 
-    const handleSubmit = async (event) => {
-        event.preventDefault();
+    const handleSubmit = async (e) => {
+        e.preventDefault();
         try {
             await axiosRes.put(`/comments/${id}/`, {
                 content: formContent.trim(),
@@ -27,7 +32,7 @@ function CommentEditForm(props) {
                         ? {
                             ...comment,
                             content: formContent.trim(),
-                            updated_at: "now",
+                            updated_at: "just now",
                         }
                         : comment;
                 }),
@@ -39,32 +44,27 @@ function CommentEditForm(props) {
     };
 
     return (
-        <Form onSubmit={handleSubmit}>
-            <Form.Group className="pr-1">
-                <Form.Control
-                    className={styles.Form}
-                    as="textarea"
-                    value={formContent}
-                    onChange={handleChange}
-                    rows={2}
-                />
-            </Form.Group>
-            <div className="text-right">
-                <button
-                    className={styles.Button}
+        <Form>
+            <Form.Control
+                as="textarea"
+                style={{ height: "4rem" }} // Style height here; not in module.css
+                value={formContent}
+                onChange={handleChange}
+            />
+            <Container className="d-flex justify-content-end g-0">
+                <span
+                    className={`${styles.CommentLink} me-1`}
                     onClick={() => setShowEditForm(false)}
-                    type="button"
                 >
-                    cancel
-                </button>
-                <button
-                    className={styles.Button}
-                    disabled={!content.trim()}
-                    type="submit"
+                    Cancel
+                </span>|
+                <span
+                    className={`${styles.CommentLink} ms-1`}
+                    onClick={handleSubmit}
                 >
-                    save
-                </button>
-            </div>
+                    Save
+                </span>
+            </Container>
         </Form>
     );
 }

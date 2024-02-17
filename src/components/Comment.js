@@ -8,6 +8,7 @@ import Avatar from './Avatar';
 import CommentEditForm from './CommentEdit';
 
 import { Container, Row, Col } from 'react-bootstrap';
+import styles from '../styles/Comments.module.css';
 
 
 const Comment = (props) => {
@@ -54,8 +55,8 @@ const Comment = (props) => {
                 </Col>
                 <Col xs={11}>
                     <Container className="d-flex justify-content-between mb-1 g-0">
-                        <span>{user}</span>
-                        <span>Last updated: {updated_at}</span>
+                        <span className={styles.CommentUser}>{user}</span>
+                        <span className={styles.CommentUpdated}>Last updated: {updated_at}</span>
                     </Container>
                     {showEditForm ? (
                         <CommentEditForm
@@ -71,10 +72,16 @@ const Comment = (props) => {
                     )}
                     {is_owner && !showEditForm && (
                         <Container className="d-flex justify-content-end g-0">
-                            <span className="me-1" onClick={() => setShowEditForm(true)}>
+                            <span
+                                className={`${styles.CommentLink} me-1`}
+                                onClick={() => setShowEditForm(true)}
+                            >
                                 Edit
                             </span>|
-                            <span className="ms-1" onClick={handleCommentDelete}>
+                            <span
+                                className={`${styles.CommentLink} ms-1`}
+                                onClick={handleCommentDelete}
+                            >
                                 Delete
                             </span>
                         </Container>

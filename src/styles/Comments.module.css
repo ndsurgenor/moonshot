@@ -1,5 +1,24 @@
-
 .CommentButton {
     font-size: 1.5rem;
     font-weight: bold;  
+}
+
+.CommentUser,
+.CommentUpdated {
+    color: #05192e;
+    font-size: 0.85rem;
+}
+
+.CommentUpdated {
+    font-style: italic;
+}
+
+.CommentLink {
+    color: #468be4;
+    text-decoration: underline;
+}
+
+.CommentLink:hover {
+    color: goldenrod;
+    cursor: pointer;
 }
