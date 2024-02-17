@@ -57,7 +57,7 @@ const PhotoCard = (props) => {
     try {
       await axiosRes.delete(`/photos/${id}/`);
       history.goBack();
-    } catch(err) {
+    } catch (err) {
       console.log(err);
     }
   };
@@ -79,6 +79,7 @@ const PhotoCard = (props) => {
       console.log(err)
     }
   };
+  
   const handleStarRemove = async () => {
     try {
       await axiosRes.delete(`/stars/${star_id}`)
@@ -98,7 +99,7 @@ const PhotoCard = (props) => {
   };
 
   return (
-    <Card className="mt-2 mx-1 bg-dark text-white">
+    <Card className="mt-2 mx-1 bg-dark text-white" data-backdrop="false">
 
       {/* Edit/Delete Buttons: only shown to owner on Photo Page */}
       {is_owner && photoPage &&
@@ -135,6 +136,7 @@ const PhotoCard = (props) => {
       <Link to={`/photos/${id}`}>
         <Card.Img src={image} alt="Photo" />
         <Card.ImgOverlay>
+
           {/* Photo Owner: always shown on Home Page, but
           only shown on Photo Page when user is not owner */}
           {(!photoPage || (!is_owner && photoPage)) &&
@@ -146,6 +148,7 @@ const PhotoCard = (props) => {
                 </Card.Subtitle>
               </Container>
             </Link>}
+
         </Card.ImgOverlay>
       </Link>
 

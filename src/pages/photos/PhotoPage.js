@@ -14,9 +14,9 @@ import { Container, Row, Col } from 'react-bootstrap';
 function PhotoPage() {
   const { id } = useParams();
   const [photo, setPhoto] = useState({ results: [] });
-  const currentUser = useCurrentUser();
-  const profile_image = currentUser?.profile_image;
   const [comments, setComments] = useState({ results: [] });
+  const currentUser = useCurrentUser();
+  const profile_image = currentUser?.profile_image;  
 
   useEffect(() => {
     const handleMount = async () => {
@@ -64,7 +64,12 @@ function PhotoPage() {
           <hr className="mt-0 mb-2" />
           {comments.results.length ? (
             comments.results.map(comment => (
-              <Comment key={comment.id} {...comment} />
+              <Comment
+              key={comment.id}
+              {...comment}
+              setPhoto = {setPhoto}
+              setComments = {setComments}
+              />
             ))
           ) : currentUser ? (
             <span>No comments yet. Add the first one above.</span>
