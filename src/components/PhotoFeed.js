@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import { axiosReq } from '../../api/axiosDefaults';
+import { axiosReq } from '../api/axiosDefaults';
 
 import InfiniteScroll from 'react-infinite-scroll-component';
 import Masonry, { ResponsiveMasonry } from 'react-responsive-masonry';
+import { getMoreData } from '../utils/Utils';
 
 import PhotoCard from './PhotoCard';
-import Asset from '../../components/Asset';
-import { getMoreData } from '../../utils/Utils';
+import Asset from './Asset';
+import NoResults from '../assets/no-results.png';
 
-import styles from '../../styles/PhotoFeed.module.css'
-
-import NoResults from '../../assets/no-results.png';
 import { Container, Col, Row, Form } from 'react-bootstrap';
+import styles from '../styles/PhotoFeed.module.css'
+
 import { FiSearch } from "react-icons/fi";
 
 

@@ -12,7 +12,7 @@ import formStyles from "../../styles/Form.module.css"
 import buttonStyles from "../../styles/Button.module.css";
 
 
-function UploadForm() {
+function PhotoUploadForm() {
   const [uploadData, setUploadData] = useState({
     title: '',
     main_feature: '',
@@ -262,4 +262,4 @@ function UploadForm() {
   );
 }
 
-export default UploadForm;
+export default PhotoUploadForm;

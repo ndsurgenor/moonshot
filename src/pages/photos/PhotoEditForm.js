@@ -9,7 +9,7 @@ import formStyles from "../../styles/Form.module.css"
 import buttonStyles from "../../styles/Button.module.css";
 
 
-function EditForm() {
+function PhotoEditForm() {
     const [uploadData, setUploadData] = useState({
         title: '',
         main_feature: '',
@@ -257,4 +257,4 @@ function EditForm() {
     );
 }
 
-export default EditForm;
+export default PhotoEditForm;

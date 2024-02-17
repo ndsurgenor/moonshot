@@ -51,7 +51,7 @@ const Comment = (props) => {
                     </Link>
                 </Col>
                 <Col xs={11}>
-                    <Container className="d-flex justify-content-between g-0">
+                    <Container className="d-flex justify-content-between mb-1 g-0">
                         <span>{user}</span>
                         <span>Last updated: {updated_at}</span>
                     </Container>
@@ -63,7 +63,7 @@ const Comment = (props) => {
                         </Container>
                     }
                 </Col>
-                <hr className="mb-2" />
+                <hr className="my-2" />
             </Row>
         </Container>
     );

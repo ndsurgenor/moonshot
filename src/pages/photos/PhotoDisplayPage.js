@@ -4,14 +4,14 @@ import { axiosReq } from '../../api/axiosDefaults';
 
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 
-import PhotoCard from './PhotoCard';
+import PhotoCard from '../../components/PhotoCard';
 import AddCommentForm from "../comments/AddCommentForm";
 import Comment from '../../components/Comment'
 
 import { Container, Row, Col } from 'react-bootstrap';
 
 
-function PhotoPage() {
+function PhotoDisplayPage() {
   const { id } = useParams();
   const [photo, setPhoto] = useState({ results: [] });
   const [comments, setComments] = useState({ results: [] });
@@ -84,4 +84,4 @@ function PhotoPage() {
   );
 }
 
-export default PhotoPage;
+export default PhotoDisplayPage;

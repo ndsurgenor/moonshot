@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import { axiosRes } from '../../api/axiosDefaults';
+import { axiosRes } from '../api/axiosDefaults';
 
-import { useCurrentUser } from '../../contexts/CurrentUserContext';
+import { useCurrentUser } from '../contexts/CurrentUserContext';
 
-import Avatar from '../../components/Avatar'
+import Avatar from './Avatar'
 
 import {
   Container, Row, Col, Card, OverlayTrigger, Tooltip, Button, Modal
 } from 'react-bootstrap';
-import styles from '../../styles/PhotoCard.module.css'
-import buttonStyles from '../../styles/Button.module.css'
+import styles from '../styles/PhotoCard.module.css'
+import buttonStyles from '../styles/Button.module.css'
 
 import { CgComment } from "react-icons/cg";
 import { FaEdit, FaRegStar, FaRegTrashAlt, FaStar } from "react-icons/fa";
