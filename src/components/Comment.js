@@ -1,10 +1,11 @@
-import React from 'react'
-import { Link, useHistory } from 'react-router-dom';
+import React, { useState } from 'react'
+import { Link } from 'react-router-dom';
 import { axiosRes } from '../api/axiosDefaults';
 
 import { useCurrentUser } from '../contexts/CurrentUserContext'
 
 import Avatar from './Avatar';
+import CommentEditForm from './CommentEdit';
 
 import { Container, Row, Col } from 'react-bootstrap';
 
@@ -20,11 +21,12 @@ const Comment = (props) => {
         setPhoto,
         setComments
     } = props;
+    const [showEditForm, setShowEditForm] = useState(false);
     const currentUser = useCurrentUser()
     const is_owner = currentUser?.username === user;
-    const history = useHistory()
 
-    const handleCommentDelete = async () => {
+    const handleCommentDelete = async (e) => {
+        e.preventDefault();
         try {
             await axiosRes.delete(`/comments/${id}/`);
             setPhoto((prevPhoto) => ({
@@ -55,13 +57,28 @@ const Comment = (props) => {
                         <span>{user}</span>
                         <span>Last updated: {updated_at}</span>
                     </Container>
-                    <p className="m-0">{content}</p>
-                    {is_owner &&
+                    {showEditForm ? (
+                        <CommentEditForm
+                            id={id}
+                            user_id={user_id}
+                            content={content}
+                            user_avatar={user_avatar}
+                            setComments={setComments}
+                            setShowEditForm={setShowEditForm}
+                        />
+                    ) : (
+                        <p className="m-0">{content}</p>
+                    )}
+                    {is_owner && !showEditForm && (
                         <Container className="d-flex justify-content-end g-0">
-                            <Link className="me-1" to="/">Edit</Link>|
-                            <Link className="ms-1" onClick={handleCommentDelete}>Delete</Link>
+                            <span className="me-1" onClick={() => setShowEditForm(true)}>
+                                Edit
+                            </span>|
+                            <span className="ms-1" onClick={handleCommentDelete}>
+                                Delete
+                            </span>
                         </Container>
-                    }
+                    )}
                 </Col>
                 <hr className="my-2" />
             </Row>

@@ -57,7 +57,7 @@ function CommentAdd(props) {
                         as="textarea"
                         placeholder="Add comment"
                         name="comment"
-                        style={{ height: "4rem" }} // Style height here; not in module.css
+                        style={{ height: "5rem" }} // Style height here; not in module.css
                         value={content}
                         onChange={handleChange}
                     />
