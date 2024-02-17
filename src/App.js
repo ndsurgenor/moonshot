@@ -6,7 +6,8 @@ import SignInForm from './pages/auth/SignInForm';
 import PhotoUploadForm from './pages/photos/PhotoUploadForm';
 import PhotoEditForm from './pages/photos/PhotoEditForm';
 import PhotoDisplayPage from './pages/photos/PhotoDisplayPage';
-import HomePage from './pages/HomePage';
+// import HomePage from './pages/HomePage';
+import PhotoFeedOld from './pages/photos/PhotoFeedOld';
 
 import { Container } from 'react-bootstrap';
 import styles from './App.module.css';
@@ -27,7 +28,7 @@ function App() {
             exact
             path="/"
             render={() => (
-              <HomePage
+              <PhotoFeedOld
                 message="Nothing here but the empty void of space... Try searching for something else"
               />
             )}
