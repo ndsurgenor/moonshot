@@ -2,11 +2,15 @@ import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { axiosReq } from '../../api/axiosDefaults';
 
+import InfiniteScroll from 'react-infinite-scroll-component';
+
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
+import { getMoreData } from '../../utils/Utils';
 
 import PhotoCard from '../../components/PhotoCard';
 import CommentAdd from "../../components/CommentAdd";
 import Comment from '../../components/Comment'
+import Asset from '../../components/Asset';
 
 import { Container, Row, Col } from 'react-bootstrap';
 
@@ -16,7 +20,7 @@ function PhotoDisplayPage() {
   const [photo, setPhoto] = useState({ results: [] });
   const [comments, setComments] = useState({ results: [] });
   const currentUser = useCurrentUser();
-  const profile_image = currentUser?.profile_image;  
+  const profile_image = currentUser?.profile_image;
 
   useEffect(() => {
     const handleMount = async () => {
@@ -63,14 +67,20 @@ function PhotoDisplayPage() {
           <h4>Comments</h4>
           <hr className="mt-0 mb-2" />
           {comments.results.length ? (
-            comments.results.map(comment => (
-              <Comment
-              key={comment.id}
-              {...comment}
-              setPhoto = {setPhoto}
-              setComments = {setComments}
-              />
-            ))
+            <InfiniteScroll
+              children={comments.results.map(comment => (
+                <Comment
+                  key={comment.id}
+                  {...comment}
+                  setPhoto={setPhoto}
+                  setComments={setComments}
+                />
+              ))}
+              dataLength={comments.results.length}
+              loader={<Asset spinner />}
+              hasMore={!!comments.next}
+              next={() => getMoreData(comments, setComments)}
+            />
           ) : currentUser ? (
             <span>No comments yet. Add the first one above.</span>
           ) : (
