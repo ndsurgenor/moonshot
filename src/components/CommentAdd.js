@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
-import { axiosRes } from "../../api/axiosDefaults";
+import { axiosRes } from "../api/axiosDefaults";
 
-import { useCurrentUser } from '../../contexts/CurrentUserContext';
+import { useCurrentUser } from '../contexts/CurrentUserContext';
 
 import { Form, FloatingLabel, Button, InputGroup } from 'react-bootstrap';
-import styles from '../../styles/Comments.module.css'
-import buttonStyles from '../../styles/Button.module.css'
+import styles from '../styles/Comments.module.css'
+import buttonStyles from '../styles/Button.module.css'
 
 
-function AddCommentForm(props) {
+function CommentAdd(props) {
     const {
         photo,
         setPhoto,
@@ -74,4 +74,4 @@ function AddCommentForm(props) {
     );
 }
 
-export default AddCommentForm;
+export default CommentAdd;

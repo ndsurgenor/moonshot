@@ -5,7 +5,7 @@ import { axiosReq } from '../../api/axiosDefaults';
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 
 import PhotoCard from '../../components/PhotoCard';
-import AddCommentForm from "../comments/AddCommentForm";
+import CommentAdd from "../../components/CommentAdd";
 import Comment from '../../components/Comment'
 
 import { Container, Row, Col } from 'react-bootstrap';
@@ -49,7 +49,7 @@ function PhotoDisplayPage() {
         <Container className="mb-3">
           {/* Add Comment Form */}
           {currentUser ? (
-            <AddCommentForm
+            <CommentAdd
               profile_id={currentUser.profile_id}
               profileImage={profile_image}
               photo={id}

@@ -10,10 +10,8 @@ import PhotoCard from './PhotoCard';
 import Asset from './Asset';
 import NoResults from '../assets/no-results.png';
 
-import { Container, Col, Row, Form } from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
 import styles from '../styles/PhotoFeed.module.css'
-
-import { FiSearch } from "react-icons/fi";
 
 
 function PhotoFeed({ message, filter = "" }) {
@@ -45,22 +43,6 @@ function PhotoFeed({ message, filter = "" }) {
 
   return (
     <>
-      <Row>
-        <Col>
-          <h1>Latest Photos</h1>
-          <Form onSubmit={(e) => e.preventDefault()}>
-            <FiSearch />
-            <Form.Control
-              type="text"
-              placeholder="Search photos by title, owner, feature, etc."
-              className="mb-3"
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}>
-            </Form.Control>
-          </Form>
-        </Col>
-      </Row>
-      <Row>
         {dataLoaded ? (
           <>
             {photos.results.length ? (
@@ -97,7 +79,6 @@ function PhotoFeed({ message, filter = "" }) {
             <Asset spinner />
           </Container>
         )}
-      </Row>
     </>
   );
 }
