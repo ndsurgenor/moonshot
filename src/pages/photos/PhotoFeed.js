@@ -4,6 +4,8 @@ import { axiosReq } from '../../api/axiosDefaults';
 
 import InfiniteScroll from 'react-infinite-scroll-component';
 import Masonry, { ResponsiveMasonry } from 'react-responsive-masonry';
+
+import { useCurrentUser } from '../../contexts/CurrentUserContext';
 import { getMoreData } from '../../utils/Utils';
 
 import PhotoCard from '../../components/PhotoCard';
@@ -14,13 +16,20 @@ import { Container, Col, Row, Form } from 'react-bootstrap';
 import styles from '../../styles/PhotoFeed.module.css'
 
 import { FiSearch } from "react-icons/fi";
+import Filters from '../../components/Filters';
 
 
-function PhotoFeedOld({ message, filter = "" }) {
+function PhotoFeed(props) {
+  const {
+    message,
+    filter = ""
+  } = props
   const [photos, setPhotos] = useState({ results: [] });
   const [dataLoaded, setDataLoaded] = useState(false);
   const { pathname } = useLocation();
   const [query, setQuery] = useState("");
+  const currentUser = useCurrentUser();
+
   useEffect(() => {
     const getPhotos = async () => {
       try {
@@ -41,20 +50,26 @@ function PhotoFeedOld({ message, filter = "" }) {
       clearTimeout(photoFeedDelay)
     }
   }, [filter, pathname, query])
+
   return (
     <>
       <Row>
         <Col>
           <h1>Latest Photos</h1>
+          {currentUser &&
+            <Filters />
+          }
           <Form onSubmit={(e) => e.preventDefault()}>
-            <FiSearch />
+
             <Form.Control
               type="text"
               placeholder="Search photos by title, owner, feature, etc."
               className="mb-3"
               value={query}
               onChange={(e) => setQuery(e.target.value)}>
+
             </Form.Control>
+            <FiSearch />
           </Form>
         </Col>
       </Row>
@@ -91,11 +106,12 @@ function PhotoFeedOld({ message, filter = "" }) {
           </>
         ) : (
           <Container>
-            <Asset spinner />
+            <Asset message='Loading images...' spinner />
           </Container>
         )}
       </Row>
     </>
   );
 }
-export default PhotoFeedOld;
+
+export default PhotoFeed;

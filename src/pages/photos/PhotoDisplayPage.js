@@ -82,7 +82,7 @@ function PhotoDisplayPage() {
               next={() => getMoreData(comments, setComments)}
             />
           ) : currentUser ? (
-            <span>No comments yet. Add the first one above.</span>
+            <span>No comments yet. Be the first.</span>
           ) : (
             <span>
               No comments yet. <Link to="/signin">Sign in</Link> to add the first one!
