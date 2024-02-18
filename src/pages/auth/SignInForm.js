@@ -1,26 +1,27 @@
-import React, { useState } from "react";
-import { Link, useHistory } from "react-router-dom";
-import { useSetCurrentUser } from "../../contexts/CurrentUserContext";
-import axios from "axios";
+import React, { useState } from 'react';
+import { Link, useHistory } from 'react-router-dom';
+import axios from 'axios';
 
-import formStyles from "../../styles/Form.module.css";
-import buttonStyles from "../../styles/Button.module.css";
+import { useSetCurrentUser } from '../../contexts/CurrentUserContext';
+
 import {
     Col, Row, Container, Form, FloatingLabel, Alert, Button,
-} from "react-bootstrap";
+} from 'react-bootstrap';
+import formStyles from '../../styles/Form.module.css';
+import buttonStyles from '../../styles/Button.module.css';
 
 
 function SignInForm() {
-    const setCurrentUser = useSetCurrentUser();  
+    const setCurrentUser = useSetCurrentUser();
     const [signInData, setSignInData] = useState({
         username: '',
         password: '',
     });
-    const { username, password } = signInData; 
+    const { username, password } = signInData;
 
-    const [errors, setErrors] = useState({});  
+    const [errors, setErrors] = useState({});
     const history = useHistory();
-    
+
     const handleChange = (e) => {
         setSignInData({
             ...signInData,

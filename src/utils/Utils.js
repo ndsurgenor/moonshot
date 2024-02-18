@@ -1,4 +1,5 @@
-import { axiosReq } from "../api/axiosDefaults"
+import { axiosReq } from '../api/axiosDefaults'
+
 
 // Adapted from Utils.js by Code Institute
 export const getMoreData = async (resource, setResource) => {
@@ -9,8 +10,8 @@ export const getMoreData = async (resource, setResource) => {
             next: data.next,
             results: data.results.reduce((acc, cur) => {
                 return acc.some(accResult => accResult.id === cur.id)
-                ? acc
-                : [...acc, cur]
+                    ? acc
+                    : [...acc, cur]
             }, prevResource.results)
         }))
     } catch (err) {

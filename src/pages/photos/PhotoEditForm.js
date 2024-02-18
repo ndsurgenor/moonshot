@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from "react";
-import { useHistory, useParams } from "react-router";
+import React, { useEffect, useState } from 'react';
+import { useHistory, useParams } from 'react-router';
 import { axiosReq } from "../../api/axiosDefaults";
 
 import {
     Col, Row, Container, Image, Form, FloatingLabel, Alert, Button,
-} from "react-bootstrap";
-import formStyles from "../../styles/Form.module.css"
-import buttonStyles from "../../styles/Button.module.css";
+} from 'react-bootstrap';
+import formStyles from '../../styles/Form.module.css';
+import buttonStyles from '../../styles/Button.module.css';
 
 
 function PhotoEditForm() {

@@ -62,14 +62,14 @@ function PhotoFeedOld({ message, filter = "" }) {
         {dataLoaded ? (
           <>
             {photos.results.length ? (
-              <InfiniteScroll              
+              <InfiniteScroll
                 dataLength={photos.results.length}
                 loader={<Asset spinner />}
                 hasMore={!!photos.next}
                 next={() => getMoreData(photos, setPhotos)}
               >
                 <ResponsiveMasonry
-                className={styles.PhotoGallery}
+                  className={styles.PhotoGallery}
                   columnsCountBreakPoints={{ 0: 1, 767: 2, 1200: 3 }}
                 >
                   <Masonry>

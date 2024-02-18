@@ -12,10 +12,10 @@ import {
 import styles from '../styles/PhotoCard.module.css'
 import buttonStyles from '../styles/Button.module.css'
 
-import { CgComment } from "react-icons/cg";
-import { FaEdit, FaRegStar, FaRegTrashAlt, FaStar } from "react-icons/fa";
-import { ImCancelCircle } from "react-icons/im";
-import { PiWarningFill } from "react-icons/pi";
+import { CgComment } from 'react-icons/cg';
+import { FaEdit, FaRegStar, FaRegTrashAlt, FaStar } from 'react-icons/fa';
+import { ImCancelCircle } from 'react-icons/im';
+import { PiWarningFill } from 'react-icons/pi';
 
 
 const PhotoCard = (props) => {
@@ -79,7 +79,7 @@ const PhotoCard = (props) => {
       console.log(err)
     }
   };
-  
+
   const handleStarRemove = async () => {
     try {
       await axiosRes.delete(`/stars/${star_id}`)

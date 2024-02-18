@@ -1,20 +1,20 @@
-import React, { useState } from "react";
-import { Link, useHistory } from "react-router-dom";
-import axios from "axios";
+import React, { useState } from 'react';
+import { Link, useHistory } from 'react-router-dom';
+import axios from 'axios';
 
-import formStyles from "../../styles/Form.module.css";
-import buttonStyles from "../../styles/Button.module.css";
 import {
     Col, Row, Container, Form, FloatingLabel, Alert, Button,
-} from "react-bootstrap";
+} from 'react-bootstrap';
+import formStyles from '../../styles/Form.module.css';
+import buttonStyles from '../../styles/Button.module.css';
 
 
 const SignUpForm = () => {
 
     const [signUpData, setSignUpData] = useState({
-        username: '',
-        password1: '',
-        password2: '',
+        username: "",
+        password1: "",
+        password2: "",
     });
     const { username, password1, password2 } = signUpData;
     const [errors, setErrors] = useState({});
@@ -35,7 +35,7 @@ const SignUpForm = () => {
         } catch (err) {
             setErrors(err.response?.data)
         }
-    };    
+    };
 
     return (
         <Row>

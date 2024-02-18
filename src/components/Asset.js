@@ -1,9 +1,9 @@
-import React from "react";
-import { Spinner } from "react-bootstrap"
-import assetStyles from "../styles/Asset.module.css"
+import React from 'react';
+
+import { Spinner } from 'react-bootstrap'
+import assetStyles from '../styles/Asset.module.css'
 
 
-// Adapted from Asset.js by Code Institute
 const Asset = ({ spinner, src, message }) => {
     return (
         <div className={assetStyles.Asset}>

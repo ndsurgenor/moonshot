@@ -1,15 +1,15 @@
-import React, { useRef, useState } from "react";
-import { useHistory } from "react-router";
-import { axiosReq } from "../../api/axiosDefaults";
+import React, { useRef, useState } from 'react';
+import { useHistory } from 'react-router';
+import { axiosReq } from '../../api/axiosDefaults';
 
-import Upload from "../../assets/photo-upload.png";
-import Asset from "../../components/Asset";
+import Upload from '../../assets/photo-upload.png';
+import Asset from '../../components/Asset';
 
 import {
   Col, Row, Container, Image, Form, FloatingLabel, Alert, Button,
-} from "react-bootstrap";
-import formStyles from "../../styles/Form.module.css"
-import buttonStyles from "../../styles/Button.module.css";
+} from 'react-bootstrap';
+import formStyles from '../../styles/Form.module.css';
+import buttonStyles from '../../styles/Button.module.css';
 
 
 function PhotoUploadForm() {
@@ -112,7 +112,7 @@ function PhotoUploadForm() {
           onChange={handleChange}
         >
           <option>(please select an option)</option>
-          <option value="aurora">Aurora</option>          
+          <option value="aurora">Aurora</option>
           <option value="deep_sky">Deep-sky</option>
           <option value="moon">Moon</option>
           <option value="nightscape">Nightscape</option>
@@ -233,7 +233,7 @@ function PhotoUploadForm() {
               </Alert>
             ))}
             {image ? (
-              <>                
+              <>
                 <Image src={image} fluid rounded />
                 <Form.Label htmlFor="photo-upload">
                   Click 'Choose File' again to select a different photo
@@ -242,7 +242,7 @@ function PhotoUploadForm() {
               </>
             ) : (
               <>
-                <Form.Label htmlFor="photo-upload">                  
+                <Form.Label htmlFor="photo-upload">
                   <Asset
                     src={Upload}
                   />

@@ -1,23 +1,25 @@
 import React from 'react';
-import axios from 'axios';
 import { NavLink } from 'react-router-dom';
+import axios from 'axios';
+
+import useClickOutsideToggle from '../hooks/useClickOutsideToggle';
+import useViewportWidth from '../hooks/useViewportWidth';
 import {
     useCurrentUser, useSetCurrentUser
 } from "../contexts/CurrentUserContext";
-import useClickOutsideToggle from '../hooks/useClickOutsideToggle';
-import useViewportWidth from '../hooks/useViewportWidth';
+
 import Avatar from './Avatar';
 
+import { Container, Navbar, Nav, NavDropdown } from 'react-bootstrap';
 import styles from '../styles/NavBar.module.css';
-import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 
-import { FaCameraRetro } from "react-icons/fa";
+import { FaCameraRetro } from 'react-icons/fa';
 import {
     FaArrowRightFromBracket, FaArrowRightToBracket, FaUserAstronaut
-} from "react-icons/fa6";
-import { ImEarth } from "react-icons/im";
-import { MdOutlineHub } from "react-icons/md";
-import { WiMoonAltWaxingCrescent3 } from "react-icons/wi";
+} from 'react-icons/fa6';
+import { ImEarth } from 'react-icons/im';
+import { MdOutlineHub } from 'react-icons/md';
+import { WiMoonAltWaxingCrescent3 } from 'react-icons/wi';
 
 
 const NavBar = () => {
@@ -25,7 +27,7 @@ const NavBar = () => {
     const setCurrentUser = useSetCurrentUser();
     const { expanded, setExpanded, ref } = useClickOutsideToggle();
     const { width } = useViewportWidth();
-    const addAvatar = (<Avatar src={currentUser?.profile_image}/>);
+    const addAvatar = (<Avatar src={currentUser?.profile_image} />);
 
     const handleSignOut = async () => {
         try {
