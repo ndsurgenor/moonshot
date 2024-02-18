@@ -56,7 +56,8 @@ function PhotoFeed(props) {
     <>
       <Row>
         <Col className="d-flex">
-          <h1>{header}</h1>
+          <h1>Latest Photos</h1>
+          <h5>Viewing {header}</h5>
           {currentUser &&
             <Filters />
           }

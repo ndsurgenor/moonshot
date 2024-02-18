@@ -29,7 +29,7 @@ function App() {
 
           {/* Standard Views */}
           <Route exact path="/" render={() => (
-            <PhotoFeed header="Latest Photos" message="No results" />
+            <PhotoFeed header="all photos" message="No results" />
           )} />
           <Route exact path="/signup" render={() => <SignUpForm />} />
           <Route exact path="/signin" render={() => <SignInForm />} />
@@ -42,35 +42,35 @@ function App() {
           <Route exact path="/photos/filtered/user-uploads" render={() => (
             <PhotoFeed
               filter={`user__userprofile=${profile_id}&ordering=-created_at&`}
-              header="Your Photos"
+              header="photos you have uploaded"
               message="No results"
             />
           )} />
           <Route exact path="/photos/filtered/stars-given" render={() => (
             <PhotoFeed
               filter={`stars__user__userprofile=${profile_id}&ordering=-stars__created_at&`}
-              header="Your Stars"
+              header="photos you have starred"
               message="No results"
             />
           )} />
           <Route exact path="/photos/filtered/comments-given" render={() => (
             <PhotoFeed
               filter={`comments__user__userprofile=${profile_id}&ordering=-comments__updated_at&`}
-              header="Your Comments"
+              header="photos you have commented on"
               message="No results"
             />
           )} />
           <Route exact path="/photos/filtered/stars-received" render={() => (
             <PhotoFeed
               filter={`stars&user__userprofile=${profile_id}&ordering=-stars__created_at&`}
-              header="Stars Received"
+              header="photos you have received stars for"
               message="No results"
             />
           )} />
           <Route exact path="/photos/filtered/comments-received" render={() => (
             <PhotoFeed
               filter={`comments&user__userprofile=${profile_id}&ordering=-comments__updated_at&`}
-              header="Comments Received"
+              header="photos you have received comments about"
               message="No results"
             />
           )} />          
