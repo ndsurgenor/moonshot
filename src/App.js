@@ -26,26 +26,58 @@ function App() {
       <NavBar />
       <Container className={styles.Main}>
         <Switch>
-          <Route exact path="/" render={() => (<PhotoFeed message="No results" />)} />
+
+          {/* Standard Views */}
+          <Route exact path="/" render={() => (
+            <PhotoFeed header="Latest Photos" message="No results" />
+          )} />
           <Route exact path="/signup" render={() => <SignUpForm />} />
           <Route exact path="/signin" render={() => <SignInForm />} />
           <Route exact path="/photos/upload" render={() => <PhotoUploadForm />} />
           <Route exact path="/photos/:id/edit" render={() => <PhotoEditForm />} />
           <Route exact path="/photos/:id" render={() => <PhotoDisplayPage />} />
           <Route exact path="/user-profiles/:id" render={() => (<PhotoFeed message="No results" />)} />
-          <Route exact path="/starred" render={() => (
+
+          {/* Filtered Photo Views */}
+          <Route exact path="/photos/filtered/user-uploads" render={() => (
             <PhotoFeed
+              filter={`user__userprofile=${profile_id}&ordering=-created_at&`}
+              header="Your Photos"
               message="No results"
+            />
+          )} />
+          <Route exact path="/photos/filtered/stars-given" render={() => (
+            <PhotoFeed
               filter={`stars__user__userprofile=${profile_id}&ordering=-stars__created_at&`}
-            />
-          )} />
-          <Route exact path="/user-profiles/commented" render={() => (
-            <PhotoFeed
+              header="Your Stars"
               message="No results"
-              filter={`comments__user__userprofile=${profile_id}&ordering=-comments__created_at&`}
             />
           )} />
+          <Route exact path="/photos/filtered/comments-given" render={() => (
+            <PhotoFeed
+              filter={`comments__user__userprofile=${profile_id}&ordering=-comments__updated_at&`}
+              header="Your Comments"
+              message="No results"
+            />
+          )} />
+          <Route exact path="/photos/filtered/stars-received" render={() => (
+            <PhotoFeed
+              filter={`stars&user__userprofile=${profile_id}&ordering=-stars__created_at&`}
+              header="Stars Received"
+              message="No results"
+            />
+          )} />
+          <Route exact path="/photos/filtered/comments-received" render={() => (
+            <PhotoFeed
+              filter={`comments&user__userprofile=${profile_id}&ordering=-comments__updated_at&`}
+              header="Comments Received"
+              message="No results"
+            />
+          )} />          
+
+          {/* Error Views */}
           <Route render={() => <h1>404 Error - Page Not Found</h1>} />
+
         </Switch>
       </Container>
     </div>

@@ -21,8 +21,9 @@ import Filters from '../../components/Filters';
 
 function PhotoFeed(props) {
   const {
-    message,
-    filter = ""
+    filter = "",
+    header,
+    message,    
   } = props
   const [photos, setPhotos] = useState({ results: [] });
   const [dataLoaded, setDataLoaded] = useState(false);
@@ -54,8 +55,8 @@ function PhotoFeed(props) {
   return (
     <>
       <Row>
-        <Col>
-          <h1>Latest Photos</h1>
+        <Col className="d-flex">
+          <h1>{header}</h1>
           {currentUser &&
             <Filters />
           }
