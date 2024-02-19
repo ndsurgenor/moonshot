@@ -1,4 +1,33 @@
-.PhotoGallery {
+.FeedGallery {
     overflow: hidden;
     margin-bottom: 2rem;
+}
+
+.FeedHeader {
+    margin-top: 0.35rem;
+    margin-left: 0.25rem;
+}
+
+.FeedLink {
+    margin: 0 0.2rem;
+    text-decoration: underline;
+}
+
+.FeedSearchIcon {
+    font-size: 1.5rem;
+    margin-top: 0.5rem;
+    margin-right: 0.5rem;
+}
+
+
+@media only screen and (max-width: 767px) {
+    .FeedHeader {        
+        text-align: center;
+    }
+}
+
+@media only screen and (max-width: 360px) {
+    .FeedHeader {        
+        font-size: 1.25rem;
+    }
 }

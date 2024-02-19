@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { axiosReq } from '../../api/axiosDefaults';
 
 import InfiniteScroll from 'react-infinite-scroll-component';
@@ -8,22 +8,24 @@ import Masonry, { ResponsiveMasonry } from 'react-responsive-masonry';
 import { useCurrentUser } from '../../contexts/CurrentUserContext';
 import { getMoreData } from '../../utils/Utils';
 
+import Filters from '../../components/Filters';
 import PhotoCard from '../../components/PhotoCard';
 import Asset from '../../components/Asset';
 import NoResults from '../../assets/no-results.png';
 
 import { Container, Col, Row, Form } from 'react-bootstrap';
 import styles from '../../styles/PhotoFeed.module.css'
+import appStyles from '../../App.module.css'
 
-import { FiSearch } from "react-icons/fi";
-import Filters from '../../components/Filters';
+import { FiSearch } from 'react-icons/fi';
+import { GoRocket } from 'react-icons/go';
 
 
 function PhotoFeed(props) {
   const {
     filter = "",
     header,
-    message,    
+    message,
   } = props
   const [photos, setPhotos] = useState({ results: [] });
   const [dataLoaded, setDataLoaded] = useState(false);
@@ -54,27 +56,61 @@ function PhotoFeed(props) {
 
   return (
     <>
+      {/* Signed In & Signed Out header */}
       <Row>
-        <Col className="d-flex">
-          <h1>Latest Photos</h1>
-          <h5>Viewing {header}</h5>
-          {currentUser &&
-            <Filters />
-          }
+        {currentUser ? (
+          <Container
+            className="d-md-flex text-center text-md-start mt-md-3 mb-3"
+          >
+            <Col xs={12} md={6}>
+              <h3 className={styles.FeedHeader}>
+                Viewing {header}
+              </h3>
+            </Col>
+            <Col xs={12} md={6} >
+              <Filters className="me-md-2" />
+            </Col>
+          </Container>
+        ) : (
+          <Col xs={12}>
+            <h1 className="text-center mt-md-3 mb-0">
+              <span className={appStyles.Brand}>
+                Welcome to moonshot
+              </span>
+            </h1>
+            <h4 className="text-center mb-3">
+              Your space to snap & share space
+              <GoRocket className="ms-2" />
+            </h4>
+            <p className="text-center">
+              Please<Link className={styles.FeedLink} to="/signup">sign up</Link>
+              or<Link className={styles.FeedLink} to="/signin">sign in</Link>
+              to get the most out of your visit
+            </p>
+          </Col>
+        )}
+      </Row>
+
+      {/* Search Bar */}
+      <Row>
+        <Col>
           <Form onSubmit={(e) => e.preventDefault()}>
+            <Container className="d-flex">
+              <FiSearch className={styles.FeedSearchIcon} />
+              <Form.Control
+                type="text"
+                placeholder="Search photos by title, owner, feature, etc."
+                className="mb-3"
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}>
 
-            <Form.Control
-              type="text"
-              placeholder="Search photos by title, owner, feature, etc."
-              className="mb-3"
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}>
-
-            </Form.Control>
-            <FiSearch />
+              </Form.Control>
+            </Container>
           </Form>
         </Col>
       </Row>
+
+      {/* Photo Gallery */}
       <Row>
         {dataLoaded ? (
           <>
@@ -86,7 +122,7 @@ function PhotoFeed(props) {
                 next={() => getMoreData(photos, setPhotos)}
               >
                 <ResponsiveMasonry
-                  className={styles.PhotoGallery}
+                  className={styles.FeedGallery}
                   columnsCountBreakPoints={{ 0: 1, 767: 2, 1200: 3 }}
                 >
                   <Masonry>
@@ -112,6 +148,7 @@ function PhotoFeed(props) {
           </Container>
         )}
       </Row>
+
     </>
   );
 }

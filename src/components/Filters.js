@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 import { Container, OverlayTrigger, Tooltip } from 'react-bootstrap';
 import styles from '../styles/Filters.module.css'
@@ -13,10 +13,13 @@ import { TbStarsFilled } from "react-icons/tb";
 
 const Filters = () => {
     const active = false
+    // const active = {Link} === useLocation().pathname
 
     return (
-        <Container>
-            <h4>Filters</h4>
+        <Container className="d-md-flex m-auto g-0">
+            <h5 className="d-none d-sm-inline m-auto me-1">
+                Filters
+            </h5>
 
             <OverlayTrigger placement="bottom" overlay={
                 <Tooltip>All photos</Tooltip>}>
@@ -33,7 +36,7 @@ const Filters = () => {
             </OverlayTrigger>
 
             <OverlayTrigger placement="bottom" overlay={
-                <Tooltip>Your uploads</Tooltip>}>
+                <Tooltip>Your photos</Tooltip>}>
                 <Link to="/photos/filtered/user-uploads">
                     <span
                         className={active ? styles.FilterActive : styles.FilterButton}
