@@ -7,7 +7,7 @@ import SignUpForm from './pages/auth/SignUpForm';
 import SignInForm from './pages/auth/SignInForm';
 import PhotoUploadForm from './pages/photos/PhotoUploadForm';
 import PhotoEditForm from './pages/photos/PhotoEditForm';
-import PhotoDisplayPage from './pages/photos/PhotoDisplayPage';
+import PhotoDetail from './pages/photos/PhotoDetail';
 import PhotoFeed from './pages/photos/PhotoFeed';
 
 import { Container } from 'react-bootstrap';
@@ -35,7 +35,7 @@ function App() {
           <Route exact path="/signin" render={() => <SignInForm />} />
           <Route exact path="/photos/upload" render={() => <PhotoUploadForm />} />
           <Route exact path="/photos/:id/edit" render={() => <PhotoEditForm />} />
-          <Route exact path="/photos/:id" render={() => <PhotoDisplayPage />} />
+          <Route exact path="/photos/:id" render={() => <PhotoDetail />} />
           <Route exact path="/user-profiles/:id" render={() => (<PhotoFeed message="No results" />)} />
 
           {/* Filtered Photo Views */}

@@ -15,7 +15,7 @@ import Asset from '../../components/Asset';
 import { Container, Row, Col } from 'react-bootstrap';
 
 
-function PhotoDisplayPage() {
+function PhotoDetail() {
   const { id } = useParams();
   const [photo, setPhoto] = useState({ results: [] });
   const [comments, setComments] = useState({ results: [] });
@@ -94,4 +94,4 @@ function PhotoDisplayPage() {
   );
 }
 
-export default PhotoDisplayPage;
+export default PhotoDetail;

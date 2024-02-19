@@ -1,3 +1,11 @@
+.PhotoLink {
+    cursor: pointer;
+}
+
+.PhotoNoLink {
+    cursor:default;
+}
+
 .PhotoOwner {
     color: whitesmoke;
     background-color: #00000055;

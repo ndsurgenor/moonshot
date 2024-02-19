@@ -133,7 +133,10 @@ const PhotoCard = (props) => {
       </Modal>
 
       {/* Photo */}
-      <Link to={`/photos/${id}`}>
+      <Link
+        className={!photoPage ? styles.PhotoLink : styles.PhotoNoLink}
+        to={!photoPage ? `/photos/${id}` : "#"}
+      >
         <Card.Img src={image} alt="Photo" />
         <Card.ImgOverlay>
 
@@ -147,7 +150,8 @@ const PhotoCard = (props) => {
                   <Avatar src={user_avatar} height={30} />
                 </Card.Subtitle>
               </Container>
-            </Link>}
+            </Link>
+          }
 
         </Card.ImgOverlay>
       </Link>
