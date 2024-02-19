@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 
-import { Container } from 'react-bootstrap';
+import { Container, OverlayTrigger, Tooltip } from 'react-bootstrap';
 import styles from '../styles/Filters.module.css'
 
 import { CgComment } from 'react-icons/cg';
@@ -12,57 +12,96 @@ import { TbStarsFilled } from "react-icons/tb";
 
 
 const Filters = () => {
+    const active = false
+
     return (
         <Container>
             <h4>Filters</h4>
-            <Link to="/">
-                <span className={styles.FilterButton}>
-                    <FaPhotoFilm
-                        className={styles.FilterIcon}
-                        aria-label="view all photos"
-                    />
-                </span>
-            </Link>
-            <Link to="/photos/filtered/user-uploads">
-                <span className={styles.FilterButton}>
-                    <FaCameraRetro
-                        className={styles.FilterIcon}
-                        aria-label="view photos you have uploaded"
-                    />
-                </span>
-            </Link>
-            <Link to="/photos/filtered/stars-received">
-                <span className={styles.FilterButton}>
-                    <TbStarsFilled
-                        className={styles.FilterIcon}
-                        aria-label=" view your photos with stars"
-                    />
-                </span>
-            </Link>
-            <Link to="/photos/filtered/comments-received">
-                <span className={styles.FilterButton}>
-                    <LiaComments
-                        className={styles.FilterIcon}
-                        aria-label="view your photos with comments"
-                    />
-                </span>
-            </Link>
-            <Link to="/photos/filtered/stars-given">
-                <span className={styles.FilterButton}>
-                    <FaStar
-                        className={styles.FilterIcon}
-                        aria-label="view photos you have starred"
-                    />
-                </span>
-            </Link>
-            <Link to="/photos/filtered/comments-given">
-                <span className={styles.FilterButton}>
-                    <CgComment
-                        className={styles.FilterIcon}
-                        aria-label="view photos you have commented on"
-                    />
-                </span>
-            </Link>
+
+            <OverlayTrigger placement="bottom" overlay={
+                <Tooltip>All photos</Tooltip>}>
+                <Link to="/">
+                    <span
+                        className={active ? styles.FilterActive : styles.FilterButton}
+                    >
+                        <FaPhotoFilm
+                            className={styles.FilterIcon}
+                            aria-label="view all photos"
+                        />
+                    </span>
+                </Link>
+            </OverlayTrigger>
+
+            <OverlayTrigger placement="bottom" overlay={
+                <Tooltip>Your uploads</Tooltip>}>
+                <Link to="/photos/filtered/user-uploads">
+                    <span
+                        className={active ? styles.FilterActive : styles.FilterButton}
+                    >
+                        <FaCameraRetro
+                            className={styles.FilterIcon}
+                            aria-label="view photos you have uploaded"
+                        />
+                    </span>
+                </Link>
+            </OverlayTrigger>
+
+            <OverlayTrigger placement="bottom" overlay={
+                <Tooltip>Stars given</Tooltip>}>
+                <Link to="/photos/filtered/stars-given">
+                    <span
+                        className={active ? styles.FilterActive : styles.FilterButton}
+                    >
+                        <FaStar
+                            className={styles.FilterIcon}
+                            aria-label="view photos you have starred"
+                        />
+                    </span>
+                </Link>
+            </OverlayTrigger>
+
+            <OverlayTrigger placement="bottom" overlay={
+                <Tooltip>Comments given</Tooltip>}>
+                <Link to="/photos/filtered/comments-given">
+                    <span
+                        className={active ? styles.FilterActive : styles.FilterButton}
+                    >
+                        <CgComment
+                            className={styles.FilterIcon}
+                            aria-label="view photos you have commented on"
+                        />
+                    </span>
+                </Link>
+            </OverlayTrigger>
+
+            <OverlayTrigger placement="bottom" overlay={
+                <Tooltip>Stars received</Tooltip>}>
+                <Link to="/photos/filtered/stars-received">
+                    <span
+                        className={active ? styles.FilterActive : styles.FilterButton}
+                    >
+                        <TbStarsFilled
+                            className={styles.FilterIcon}
+                            aria-label=" view your photos with stars"
+                        />
+                    </span>
+                </Link>
+            </OverlayTrigger>
+
+            <OverlayTrigger placement="bottom" overlay={
+                <Tooltip>Comments received</Tooltip>}>
+                <Link to="/photos/filtered/comments-received">
+                    <span
+                        className={active ? styles.FilterActive : styles.FilterButton}
+                    >
+                        <LiaComments
+                            className={styles.FilterIcon}
+                            aria-label="view your photos with comments"
+                        />
+                    </span>
+                </Link>
+            </OverlayTrigger>
+
         </Container>
     )
 }

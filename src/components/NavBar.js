@@ -42,7 +42,7 @@ const NavBar = () => {
         <>
             <NavLink
                 className={styles.NavLink}
-                activeClassName={styles.ActiveNavLink}
+                activeClassName={styles.NavLinkActive}
                 to="/signup"
             >
                 <MdOutlineHub className={styles.NavLinkIcon} />
@@ -50,7 +50,7 @@ const NavBar = () => {
             </NavLink>
             <NavLink
                 className={styles.NavLink}
-                activeClassName={styles.ActiveNavLink}
+                activeClassName={styles.NavLinkActive}
                 to="/signin"
             >
                 <FaArrowRightToBracket className={styles.NavLinkIcon} />
@@ -63,7 +63,7 @@ const NavBar = () => {
         <>
             <NavLink
                 className={styles.NavLink}
-                activeClassName={styles.ActiveNavLink}
+                activeClassName={styles.NavLinkActive}
                 to={`/user-profiles/${currentUser?.profile_id}`}
             >
                 <FaUserAstronaut className={styles.NavLinkIcon} />
@@ -94,7 +94,7 @@ const NavBar = () => {
                 <NavDropdown.ItemText >
                     <NavLink
                         className={styles.NavLink}
-                        activeClassName={styles.ActiveNavLink}
+                        activeClassName={styles.NavLinkActive}
                         to={`/user-profiles/${currentUser?.profile_id}`}
                     >
                         <FaUserAstronaut className={styles.NavLinkIcon} />
@@ -118,7 +118,7 @@ const NavBar = () => {
     const signedInLinks = (<>
         <NavLink
             className={styles.NavLink}
-            activeClassName={styles.ActiveNavLink}
+            activeClassName={styles.NavLinkActive}
             to="/photos/upload"
         >
             <FaCameraRetro className={styles.NavLinkIcon} />
@@ -156,7 +156,7 @@ const NavBar = () => {
                     <Nav>
                         <NavLink
                             className={styles.NavLink}
-                            activeClassName={styles.ActiveNavLink}
+                            activeClassName={styles.NavLinkActive}
                             exact
                             to="/"
                         >

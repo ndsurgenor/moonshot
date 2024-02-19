@@ -19,7 +19,7 @@
 }
 
 .NavBrandIcon {
-    rotate: 22deg;    
+    rotate: 5deg;    
     margin-left: -0.2rem;
     margin-bottom: 1rem;    
 }
@@ -40,7 +40,7 @@
     border-radius: 5rem;
 }
 
-.ActiveNavLink {
+.NavLinkActive {
     border-top: 1px solid goldenrod;
     border-bottom: 1px solid goldenrod;
 }
@@ -68,6 +68,7 @@
     margin: 0.5rem 0;
     padding-bottom: 0.4rem;
 }
+
 
 @media only screen and (max-width: 767px) {
     .NavLink {
