@@ -1,0 +1,19 @@
+.FilterButton {
+    display: inline-flex;
+    height: 2.8rem;
+    width: 2.8rem;
+    color: whitesmoke;
+    background-color: darkgrey;
+    font-size: 1.6rem;    
+    border: 2px solid;
+    border-radius: 50%;
+}
+
+.FilterButton:hover {
+    color: goldenrod;
+    background-color: whitesmoke;
+}
+
+.FilterIcon {
+    margin: auto;
+}
