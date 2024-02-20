@@ -20,8 +20,8 @@ const Filters = () => {
         <Container className="d-md-flex m-auto g-0">
 
             {/* Label to left of filters on medium and larger screens */}
-            <h5 className="d-none d-md-inline m-auto me-1">
-                Filters
+            <h5 className="d-none d-md-inline m-auto me-2">
+                Filter
             </h5>
 
             {/* Filter Buttons */}
@@ -84,7 +84,7 @@ const Filters = () => {
 
             {/* Label under filters on smaller screens */}
             <h6 className="d-md-none m-auto">
-                Filters
+                Filter
             </h6>
 
         </Container>
