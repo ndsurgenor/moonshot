@@ -1,6 +1,8 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useHistory } from 'react-router';
 import { axiosReq } from '../../api/axiosDefaults';
+
+import { useCurrentUser } from '../../contexts/CurrentUserContext';
 
 import Upload from '../../assets/photo-upload.png';
 import Asset from '../../components/Asset';
@@ -13,6 +15,31 @@ import buttonStyles from '../../styles/Button.module.css';
 
 
 function PhotoUploadForm() {
+  const history = useHistory();
+  const currentUser = useCurrentUser();
+  const id = currentUser?.profile_id
+
+  useEffect(() => {
+    const handleMount = async () => {
+      try {
+        const { data } = await axiosReq.get(
+          `/equipment-profiles/${id}/`
+        );
+        const {
+          main_lens,
+          main_camera,
+          other_equipment,
+        } = data;
+        console.log(main_lens)
+        console.log(main_camera)
+        console.log(other_equipment)
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    handleMount();
+  }, [history, id]);
+
   const [uploadData, setUploadData] = useState({
     title: '',
     main_feature: '',
@@ -40,7 +67,6 @@ function PhotoUploadForm() {
 
   const photoInput = useRef(null);
   const [errors, setErrors] = useState({});
-  const history = useHistory();
 
   const handleChange = (e) => {
     setUploadData({

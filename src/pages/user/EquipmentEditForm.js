@@ -89,6 +89,7 @@ function EquipmentEditForm() {
             </FloatingLabel>
 
             <FloatingLabel className="mb-3" label="Main Camera" controlId="main_camera">
+
                 <Form.Control
                     type="text"
                     placeholder="camera"
