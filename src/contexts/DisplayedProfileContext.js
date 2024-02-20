@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 
-import { axiosRes } from "../api/axiosDefaults";
+import { axiosRes } from '../api/axiosDefaults';
 
 
 export const DisplayedProfileContext = createContext();
@@ -14,7 +14,7 @@ export const DisplayedProfileProvider = ({ children }) => {
     const [displayedProfile, setDisplayedProfile] = useState(null);
     const handleMount = async () => {
         try {
-            const { data } = await axiosRes.get(`/user-profiles/`);
+            const { data } = await axiosRes.get(`/user-profiles/:id`);
             setDisplayedProfile(data);
         } catch (err) {
             console.log(err);

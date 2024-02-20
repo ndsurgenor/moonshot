@@ -4,7 +4,7 @@ import React, {
 import { useHistory } from 'react-router';
 import axios from 'axios';
 
-import { axiosReq, axiosRes } from "../api/axiosDefaults";
+import { axiosReq, axiosRes } from '../api/axiosDefaults';
 
 
 export const CurrentUserContext = createContext();

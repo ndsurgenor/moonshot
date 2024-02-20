@@ -1,4 +1,5 @@
-.FilterButton {
+.FilterButton,
+.FilterActive {
     display: inline-flex;
     height: 2.8rem;
     width: 2.8rem;
