@@ -15,7 +15,7 @@ import styles from '../styles/NavBar.module.css';
 
 import { FaCameraRetro } from 'react-icons/fa';
 import {
-    FaArrowRightFromBracket, FaArrowRightToBracket, FaUserAstronaut
+    FaArrowRightFromBracket, FaArrowRightToBracket, FaGear, FaUserAstronaut
 } from 'react-icons/fa6';
 import { ImEarth } from 'react-icons/im';
 import { MdOutlineHub } from 'react-icons/md';
@@ -67,7 +67,15 @@ const NavBar = () => {
                 to={`/user-profiles/${currentUser?.profile_id}`}
             >
                 <FaUserAstronaut className={styles.NavLinkIcon} />
-                Profile: {currentUser?.username}
+                Profile
+            </NavLink>
+            <NavLink
+                className={styles.NavLink}
+                activeClassName={styles.NavLinkActive}
+                to={`/equipment-profiles/${currentUser?.profile_id}`}
+            >
+                <FaGear className={styles.NavLinkIcon} />
+                Gear
             </NavLink>
             <NavLink
                 className={styles.NavLink}
@@ -75,7 +83,7 @@ const NavBar = () => {
                 onClick={handleSignOut}
             >
                 <FaArrowRightFromBracket className={styles.NavLinkIcon} />
-                Sign Out
+                Sign Out: {currentUser?.username}
             </NavLink>
         </>
     );
@@ -101,6 +109,17 @@ const NavBar = () => {
                         Profile
                     </NavLink>
                 </NavDropdown.ItemText>
+                <NavDropdown.ItemText >
+                    <NavLink
+                        className={styles.NavLink}
+                        activeClassName={styles.NavLinkActive}
+                        to={`/equipment-profiles/${currentUser?.profile_id}`}
+                    >
+                        <FaGear className={styles.NavLinkIcon} />
+                        Gear
+                    </NavLink>
+                </NavDropdown.ItemText>
+                <NavDropdown.Divider />
                 <NavDropdown.ItemText>
                     <NavLink
                         className={styles.NavLink}

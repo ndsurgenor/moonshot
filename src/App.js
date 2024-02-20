@@ -9,6 +9,7 @@ import PhotoUploadForm from './pages/photos/PhotoUploadForm';
 import PhotoEditForm from './pages/photos/PhotoEditForm';
 import PhotoDetail from './pages/photos/PhotoDetail';
 import PhotoFeed from './pages/photos/PhotoFeed';
+import EquipmentForm from './pages/user/EquipmentForm';
 
 import { Container } from 'react-bootstrap';
 import styles from './App.module.css';
@@ -36,6 +37,7 @@ function App() {
           <Route exact path="/photos/upload" render={() => <PhotoUploadForm />} />
           <Route exact path="/photos/:id/edit" render={() => <PhotoEditForm />} />
           <Route exact path="/photos/:id" render={() => <PhotoDetail />} />
+          <Route exact path="/equipment-profiles/:id" render={() => <EquipmentForm />} />
           <Route exact path="/user-profiles/:id" render={() => (
             <PhotoFeed
               filter={`user__userprofile=${profile_id}&ordering=-created_at&`}
