@@ -35,6 +35,7 @@ function PhotoFeed(props) {
   const [query, setQuery] = useState("");
   const currentUser = useCurrentUser();
 
+
   useEffect(() => {
     const getPhotos = async () => {
       try {
@@ -56,12 +57,13 @@ function PhotoFeed(props) {
     }
   }, [filter, pathname, query])
 
+
   return (
     <>
       {/* Page Headers*/}
       <Row>
         {id ? (
-          // User Profile
+          // User Profile          
           <Container>
             <Col>
             <Avatar />

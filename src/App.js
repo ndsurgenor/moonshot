@@ -14,11 +14,14 @@ import EquipmentForm from './pages/user/EquipmentForm';
 import { Container } from 'react-bootstrap';
 import styles from './App.module.css';
 import NavBar from './components/NavBar';
+import { useDisplayedProfile } from './contexts/DisplayedProfileContext';
 
 
 function App() {
   const currentUser = useCurrentUser();
-  const profile_id = currentUser?.profile_id || "";
+  const currentProfile = useDisplayedProfile();
+  const user_id = currentUser?.profile_id || "";
+  const profile_id = currentProfile?.profile_id || "";
 
   return (<>
     <div className={styles.App}>
@@ -48,21 +51,21 @@ function App() {
           {/* Filtered Photo Views */}
           <Route exact path="/photos/filtered/user-uploads" render={() => (
             <PhotoFeed
-              filter={`user__userprofile=${profile_id}&ordering=-created_at&`}
+              filter={`user__userprofile=${user_id}&ordering=-created_at&`}
               header="your photos"
               message="No results"
             />
           )} />
           <Route exact path="/photos/filtered/stars-given" render={() => (
             <PhotoFeed
-              filter={`stars__user__userprofile=${profile_id}&ordering=-stars__created_at&`}
+              filter={`stars__user__userprofile=${user_id}&ordering=-stars__created_at&`}
               header="photos with your stars"
               message="No results"
             />
           )} />
           <Route exact path="/photos/filtered/comments-given" render={() => (
             <PhotoFeed
-              filter={`comment__user__userprofile=${profile_id}&ordering=-comment__created_at&`}
+              filter={`comment__user__userprofile=${user_id}&ordering=-comment__created_at&`}
               header="photos with your comments"
               message="No results"
             />
