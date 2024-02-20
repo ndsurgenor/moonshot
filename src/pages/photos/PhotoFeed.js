@@ -74,12 +74,12 @@ function PhotoFeed(props) {
           <Container
             className="d-md-flex text-center text-md-start mt-md-3 mb-3"
           >
-            <Col xs={12} md={6}>
+            <Col xs={12} md={8}>
               <h3 className={styles.FeedHeader}>
                 Viewing {header}
               </h3>
             </Col>
-            <Col xs={12} md={6} >
+            <Col xs={12} md={4} >
               <Filters className="me-md-2" />
             </Col>
           </Container>
@@ -108,7 +108,7 @@ function PhotoFeed(props) {
       <Row>
         <Col>
           <Form onSubmit={(e) => e.preventDefault()}>
-            <Container className="d-flex">
+            <div className="d-flex">
               <FiSearch className={styles.FeedSearchIcon} />
               <Form.Control
                 type="text"
@@ -118,7 +118,7 @@ function PhotoFeed(props) {
                 onChange={(e) => setQuery(e.target.value)}>
 
               </Form.Control>
-            </Container>
+            </div>
           </Form>
         </Col>
       </Row>

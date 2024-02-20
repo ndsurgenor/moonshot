@@ -54,31 +54,31 @@ function App() {
           <Route exact path="/photos/filtered/stars-given" render={() => (
             <PhotoFeed
               filter={`stars__user__userprofile=${profile_id}&ordering=-stars__created_at&`}
-              header="stars given"
+              header="photos with your stars"
               message="No results"
             />
           )} />
           <Route exact path="/photos/filtered/comments-given" render={() => (
             <PhotoFeed
-              filter={`comments__user__userprofile=${profile_id}&ordering=-comments__created_at&`}
-              header="comments given"
+              filter={`comment__user__userprofile=${profile_id}&ordering=-comment__created_at&`}
+              header="photos with your comments"
               message="No results"
             />
           )} />
-          <Route exact path="/photos/filtered/stars-received" render={() => (
+          {/* <Route exact path="/photos/filtered/stars-received" render={() => (
             <PhotoFeed
-              filter={`user__userprofile=${profile_id}&star_count>0&ordering=-stars__created_at&`}
-              header="stars received"
+              filter={`user__userprofile=${profile_id}__user__stars&ordering=-stars__created_at&`}
+              header="your photos with stars received"
               message="No results"
             />
           )} />
           <Route exact path="/photos/filtered/comments-received" render={() => (
             <PhotoFeed
-              filter={`comments__userprofile=${profile_id}&ordering=-comments__updated_at&`}
-              header="comments received"
+              filter={`photo__user__userprofile=${profile_id}&ordering=-comments__created_at&`}
+              header="your photos with comments received"
               message="No results"
             />
-          )} />
+          )} /> */}
 
           {/* Error Views */}
           <Route render={() => <h1>404 Error - Page Not Found</h1>} />

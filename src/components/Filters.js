@@ -7,22 +7,25 @@ import styles from '../styles/Filters.module.css'
 import { CgComment } from 'react-icons/cg';
 import { FaCameraRetro, FaStar } from 'react-icons/fa';
 import { FaPhotoFilm } from "react-icons/fa6";
-import { LiaComments } from "react-icons/lia";
-import { TbStarsFilled } from "react-icons/tb";
+// import { LiaComments } from "react-icons/lia";
+// import { TbStarsFilled } from "react-icons/tb";
 
 
 const Filters = () => {
     const [buttonStyle, setButtonStyle] = useState(styles.FilterButton);
     const changeButtonStyle = (e) => {
-        e.target = setButtonStyle(styles.FilterActive);        
+        e.target = setButtonStyle(styles.FilterActive);
     };
 
     return (
         <Container className="d-md-flex m-auto g-0">
-            <h5 className="d-none d-sm-inline m-auto me-1">
+
+            {/* Label to left of filters on medium and larger screens */}
+            <h5 className="d-none d-md-inline m-auto me-1">
                 Filters
             </h5>
 
+            {/* Filter Buttons */}
             <OverlayTrigger placement="bottom" overlay={
                 <Tooltip>All photos</Tooltip>}>
                 <Link to="/">
@@ -37,7 +40,6 @@ const Filters = () => {
                     </span>
                 </Link>
             </OverlayTrigger>
-
             <OverlayTrigger placement="bottom" overlay={
                 <Tooltip>Your photos</Tooltip>}>
                 <Link to="/photos/filtered/user-uploads">
@@ -52,7 +54,6 @@ const Filters = () => {
                     </span>
                 </Link>
             </OverlayTrigger>
-
             <OverlayTrigger placement="bottom" overlay={
                 <Tooltip>Stars given</Tooltip>}>
                 <Link to="/photos/filtered/stars-given">
@@ -67,7 +68,6 @@ const Filters = () => {
                     </span>
                 </Link>
             </OverlayTrigger>
-
             <OverlayTrigger placement="bottom" overlay={
                 <Tooltip>Comments given</Tooltip>}>
                 <Link to="/photos/filtered/comments-given">
@@ -83,7 +83,7 @@ const Filters = () => {
                 </Link>
             </OverlayTrigger>
 
-            <OverlayTrigger placement="bottom" overlay={
+            {/* <OverlayTrigger placement="bottom" overlay={
                 <Tooltip>Stars received</Tooltip>}>
                 <Link to="/photos/filtered/stars-received">
                     <span
@@ -111,7 +111,12 @@ const Filters = () => {
                         />
                     </span>
                 </Link>
-            </OverlayTrigger>
+            </OverlayTrigger> */}
+
+            {/* Label under filters on smaller screens */}
+            <h6 className="d-md-none m-auto">
+                Filters
+            </h6>
 
         </Container>
     )
