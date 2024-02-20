@@ -36,7 +36,12 @@ function App() {
           <Route exact path="/photos/upload" render={() => <PhotoUploadForm />} />
           <Route exact path="/photos/:id/edit" render={() => <PhotoEditForm />} />
           <Route exact path="/photos/:id" render={() => <PhotoDetail />} />
-          <Route exact path="/user-profiles/:id" render={() => (<PhotoFeed message="No results" />)} />
+          <Route exact path="/user-profiles/:id" render={() => (
+            <PhotoFeed
+              filter={`user__userprofile=${profile_id}&ordering=-created_at&`}
+              message="No results"
+            />
+          )} />
 
           {/* Filtered Photo Views */}
           <Route exact path="/photos/filtered/user-uploads" render={() => (
@@ -55,7 +60,7 @@ function App() {
           )} />
           <Route exact path="/photos/filtered/comments-given" render={() => (
             <PhotoFeed
-              filter={`comments.length__user__userprofile=${profile_id}&ordering=-comments__created_at&`}
+              filter={`comments__user__userprofile=${profile_id}&ordering=-comments__created_at&`}
               header="comments given"
               message="No results"
             />

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useParams } from 'react-router-dom';
 import { axiosReq } from '../../api/axiosDefaults';
 
 import InfiniteScroll from 'react-infinite-scroll-component';
@@ -8,6 +8,7 @@ import Masonry, { ResponsiveMasonry } from 'react-responsive-masonry';
 import { useCurrentUser } from '../../contexts/CurrentUserContext';
 import { getMoreData } from '../../utils/Utils';
 
+import Avatar from '../../components/Avatar';
 import Filters from '../../components/Filters';
 import PhotoCard from '../../components/PhotoCard';
 import Asset from '../../components/Asset';
@@ -29,6 +30,7 @@ function PhotoFeed(props) {
   } = props
   const [photos, setPhotos] = useState({ results: [] });
   const [dataLoaded, setDataLoaded] = useState(false);
+  const { id } = useParams();
   const { pathname } = useLocation();
   const [query, setQuery] = useState("");
   const currentUser = useCurrentUser();
@@ -56,9 +58,19 @@ function PhotoFeed(props) {
 
   return (
     <>
-      {/* Signed In & Signed Out header */}
+      {/* Page Headers*/}
       <Row>
-        {currentUser ? (
+        {id ? (
+          // User Profile
+          <Container>
+            <Col>
+            <Avatar />
+            </Col>
+            <Col>
+            </Col>
+          </Container>
+        ) : currentUser ? (
+          // Signed In Home Page
           <Container
             className="d-md-flex text-center text-md-start mt-md-3 mb-3"
           >
@@ -72,6 +84,7 @@ function PhotoFeed(props) {
             </Col>
           </Container>
         ) : (
+          // Signed Out Home Page
           <Col xs={12}>
             <h1 className="text-center mt-md-3 mb-0">
               <span className={appStyles.Brand}>

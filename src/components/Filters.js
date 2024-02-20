@@ -1,5 +1,5 @@
-import React from 'react'
-import { Link, useLocation } from 'react-router-dom';
+import React, { useState } from 'react'
+import { Link } from 'react-router-dom';
 
 import { Container, OverlayTrigger, Tooltip } from 'react-bootstrap';
 import styles from '../styles/Filters.module.css'
@@ -12,8 +12,10 @@ import { TbStarsFilled } from "react-icons/tb";
 
 
 const Filters = () => {
-    const active = false
-    // const active = {Link} === useLocation().pathname
+    const [buttonStyle, setButtonStyle] = useState(styles.FilterButton);
+    const changeButtonStyle = (e) => {
+        e.target = setButtonStyle(styles.FilterActive);        
+    };
 
     return (
         <Container className="d-md-flex m-auto g-0">
@@ -25,7 +27,8 @@ const Filters = () => {
                 <Tooltip>All photos</Tooltip>}>
                 <Link to="/">
                     <span
-                        className={active ? styles.FilterActive : styles.FilterButton}
+                        className={buttonStyle}
+                        onClick={changeButtonStyle}
                     >
                         <FaPhotoFilm
                             className={styles.FilterIcon}
@@ -39,7 +42,8 @@ const Filters = () => {
                 <Tooltip>Your photos</Tooltip>}>
                 <Link to="/photos/filtered/user-uploads">
                     <span
-                        className={active ? styles.FilterActive : styles.FilterButton}
+                        className={buttonStyle}
+                        onClick={changeButtonStyle}
                     >
                         <FaCameraRetro
                             className={styles.FilterIcon}
@@ -53,7 +57,8 @@ const Filters = () => {
                 <Tooltip>Stars given</Tooltip>}>
                 <Link to="/photos/filtered/stars-given">
                     <span
-                        className={active ? styles.FilterActive : styles.FilterButton}
+                        className={buttonStyle}
+                        onClick={changeButtonStyle}
                     >
                         <FaStar
                             className={styles.FilterIcon}
@@ -67,7 +72,8 @@ const Filters = () => {
                 <Tooltip>Comments given</Tooltip>}>
                 <Link to="/photos/filtered/comments-given">
                     <span
-                        className={active ? styles.FilterActive : styles.FilterButton}
+                        className={buttonStyle}
+                        onClick={changeButtonStyle}
                     >
                         <CgComment
                             className={styles.FilterIcon}
@@ -81,7 +87,8 @@ const Filters = () => {
                 <Tooltip>Stars received</Tooltip>}>
                 <Link to="/photos/filtered/stars-received">
                     <span
-                        className={active ? styles.FilterActive : styles.FilterButton}
+                        className={buttonStyle}
+                        onClick={changeButtonStyle}
                     >
                         <TbStarsFilled
                             className={styles.FilterIcon}
@@ -95,7 +102,8 @@ const Filters = () => {
                 <Tooltip>Comments received</Tooltip>}>
                 <Link to="/photos/filtered/comments-received">
                     <span
-                        className={active ? styles.FilterActive : styles.FilterButton}
+                        className={buttonStyle}
+                        onClick={changeButtonStyle}
                     >
                         <LiaComments
                             className={styles.FilterIcon}
