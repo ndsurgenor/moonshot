@@ -64,11 +64,16 @@ function PhotoFeed(props) {
       <Row>
         {id ? (
           // User Profile          
-          <Container>
-            <Col>
-            <Avatar />
+          <Container className="d-block d-md-flex text-center text-md-start my-3">
+            <Col xs={12} md={6}>
+            <h3>User Profile for {currentUser?.username}</h3>
+            <Avatar src={currentUser?.profile_image} height={75}/>            
             </Col>
-            <Col>
+            <Col xs={12} md={6}>
+            <h3>Main Gear</h3>
+            <p className="mb-0">Telescope/Lens: {}</p>
+            <p className="mb-0">Camera:</p>
+            <p className="mb-0">Other Equipment:</p>
             </Col>
           </Container>
         ) : currentUser ? (

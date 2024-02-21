@@ -135,7 +135,8 @@ function GearEditForm() {
                 <Col xs={12} className={formStyles.Form}>
                     <h1>Edit main gear profile</h1>
                     <p>
-                        Details saved here will auto-populate on the photo upload form
+                        Details saved here will appear on your user profile 
+                        and the upload/edit page
                     </p>
                     {formFields}
                 </Col>

@@ -13,6 +13,7 @@ import Comment from '../../components/Comment'
 import Asset from '../../components/Asset';
 
 import { Container, Row, Col } from 'react-bootstrap';
+import styles from '../../styles/Comments.module.css'
 
 
 function PhotoDetail() {
@@ -61,7 +62,11 @@ function PhotoDetail() {
               setComments={setComments}
             />
           ) : comments.results.length ? (
-            <h3>Comments</h3>
+            <p className="text-center mt-2">
+              You need to <Link className={styles.CommentLink} to="/signup">sign up</Link>
+              or<Link className={styles.CommentLink} to="/signin">sign in</Link>
+              to add comments
+            </p>
           ) : null}
           {/* Comments */}
           <h4>Comments</h4>

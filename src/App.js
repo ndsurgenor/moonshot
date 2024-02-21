@@ -3,7 +3,8 @@ import { ToastContainer, Slide } from 'react-toastify';
 import './api/axiosDefaults';
 
 import { useCurrentUser } from './contexts/CurrentUserContext';
-import { useDisplayedProfile } from './contexts/DisplayedProfileContext';
+
+import NavBar from './components/NavBar';
 
 import SignUpForm from './pages/auth/SignUpForm';
 import SignInForm from './pages/auth/SignInForm';
@@ -15,15 +16,12 @@ import GearEditForm from './pages/user/GearEditForm';
 
 import { Container } from 'react-bootstrap';
 import styles from './App.module.css';
-import NavBar from './components/NavBar';
 import 'react-toastify/dist/ReactToastify.css';
 
 
 function App() {
   const currentUser = useCurrentUser();
-  const currentProfile = useDisplayedProfile();
   const user_id = currentUser?.profile_id || "";
-  const profile_id = currentProfile?.profile_id || "";
 
   return (<>
     <div className={styles.App}>
@@ -45,7 +43,7 @@ function App() {
           <Route exact path="/equipment-profiles/:id" render={() => <GearEditForm />} />
           <Route exact path="/user-profiles/:id" render={() => (
             <PhotoFeed
-              filter={`user__userprofile=${profile_id}&ordering=-created_at&`}
+              filter={`user__userprofile=${user_id}&ordering=-created_at&`}
               message="No results"
             />
           )} />

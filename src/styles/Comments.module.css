@@ -16,6 +16,7 @@
 .CommentLink {
     color: #468be4;
     text-decoration: underline;
+    margin: 0 0.2rem;
 }
 
 .CommentLink:hover {
