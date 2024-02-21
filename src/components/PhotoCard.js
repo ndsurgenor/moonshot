@@ -16,6 +16,7 @@ import { CgComment } from 'react-icons/cg';
 import { FaEdit, FaRegStar, FaRegTrashAlt, FaStar } from 'react-icons/fa';
 import { ImCancelCircle } from 'react-icons/im';
 import { PiWarningFill } from 'react-icons/pi';
+import Moment from 'react-moment';
 
 
 const PhotoCard = (props) => {
@@ -29,11 +30,11 @@ const PhotoCard = (props) => {
     star_id,
     comment_count,
     title,
-    description,
     main_feature,
     location,
     photo_date,
     photo_time,
+    description,
     lens_used,
     camera_used,
     other_equipment_used,
@@ -47,7 +48,7 @@ const PhotoCard = (props) => {
   const [show, setShow] = useState(false);
 
   const main_feature_text =
-  String(main_feature)[0].toUpperCase()+String(main_feature).slice(1)
+    String(main_feature)[0].toUpperCase() + String(main_feature).slice(1)
 
   const handleModalClose = () => setShow(false);
   const handleModalShow = () => setShow(true);
@@ -212,8 +213,12 @@ const PhotoCard = (props) => {
               <Col sm={6}>
                 <p className="m-auto">Main feature: {main_feature_text}</p>
                 <p className="m-auto">Location: {location}</p>
-                <p className="m-auto">Date: {photo_date}</p>
-                <p className="m-auto">Time: {photo_time}</p>
+                <p className="m-auto">
+                  Date: <Moment format="DD/MM/YYYY">{photo_date}</Moment>
+                </p>
+                <p className="m-auto">
+                  Time: <Moment parse="hh:mm" format="HH:mm">{photo_time}</Moment>
+                </p>
               </Col>
               <Col sm={6}>
                 <p className="m-auto">Lens: {lens_used}</p>

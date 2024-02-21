@@ -13,11 +13,11 @@ import buttonStyles from '../../styles/Button.module.css';
 function PhotoEditForm() {
     const [uploadData, setUploadData] = useState({
         title: '',
-        main_feature: '',
-        description: '',
+        main_feature: '',        
         location: '',
         photo_date: '',
         photo_time: '',
+        description: '',
         lens_used: '',
         camera_used: '',
         other_equipment_used: '',
@@ -25,11 +25,11 @@ function PhotoEditForm() {
     });
     const {
         title,
-        main_feature,
-        description,
+        main_feature,        
         location,
         photo_date,
         photo_time,
+        description,
         lens_used,
         camera_used,
         other_equipment_used,
@@ -55,11 +55,11 @@ function PhotoEditForm() {
                 const { data } = await axiosReq.get(`/photos/${id}/`);
                 const {
                     title,
-                    main_feature,
-                    description,
+                    main_feature,                    
                     location,
                     photo_date,
                     photo_time,
+                    description,
                     lens_used,
                     camera_used,
                     other_equipment_used,
@@ -68,11 +68,11 @@ function PhotoEditForm() {
                 } = data;
                 is_owner ? setUploadData({
                     title,
-                    main_feature,
-                    description,
+                    main_feature,                    
                     location,
                     photo_date,
                     photo_time,
+                    description,
                     lens_used,
                     camera_used,
                     other_equipment_used,
@@ -97,11 +97,11 @@ function PhotoEditForm() {
         const formData = new FormData();
 
         formData.append('title', title)
-        formData.append('main_feature', main_feature)
-        formData.append('description', description)
+        formData.append('main_feature', main_feature)        
         formData.append('location', location)
         formData.append('photo_date', photo_date)
         formData.append('photo_time', photo_time)
+        formData.append('description', description)
         formData.append('lens_used', lens_used)
         formData.append('camera_used', camera_used)
         formData.append('other_equipment_used', other_equipment_used)
@@ -146,7 +146,7 @@ function PhotoEditForm() {
                     value={main_feature}
                     onChange={handleChange}
                 >
-                    <option>(please select an option)</option>
+                    <option value="No selection">(please select an option)</option>
                     <option value="aurora">Aurora</option>
                     <option value="deep-sky">Deep-sky</option>
                     <option value="moon">Moon</option>
@@ -177,7 +177,7 @@ function PhotoEditForm() {
                 </Alert>
             ))}
 
-            <FloatingLabel className="d-inline-flex w-50 mb-3" label="Date Taken*" controlId="photo_date">
+            <FloatingLabel className="d-inline-flex w-50" label="Date Taken*" controlId="photo_date">
                 <Form.Control
                     type="date"
                     placeholder="date"
@@ -186,13 +186,8 @@ function PhotoEditForm() {
                     onChange={handleChange}
                 />
             </FloatingLabel>
-            {errors.date?.map((message, idx) => (
-                <Alert variant="warning" key={idx}>
-                    {message}
-                </Alert>
-            ))}
 
-            <FloatingLabel className="d-inline-flex w-50 mb-3" label="Time Taken*" controlId="photo_time">
+            <FloatingLabel className="d-inline-flex w-50" label="Time Taken*" controlId="photo_time">
                 <Form.Control
                     type="time"
                     placeholder="time"
@@ -201,13 +196,25 @@ function PhotoEditForm() {
                     onChange={handleChange}
                 />
             </FloatingLabel>
+
+            <div className="d-inline-flex mb-3">
+                <Form.Text muted>
+                    Leaving blank keeps previously saved date/time
+                </Form.Text>
+            </div>
+
+            {errors.date?.map((message, idx) => (
+                <Alert variant="warning" key={idx}>
+                    {message}
+                </Alert>
+            ))}
             {errors.time?.map((message, idx) => (
                 <Alert variant="warning" key={idx}>
                     {message}
                 </Alert>
             ))}
 
-            <FloatingLabel className="mb-3" label="Description" controlId="description">
+            <FloatingLabel className="mb-3" label="Photo Description" controlId="description">
                 <Form.Control
                     as="textarea"
                     placeholder="Describe your photo here"

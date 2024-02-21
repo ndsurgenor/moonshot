@@ -43,11 +43,11 @@ function PhotoUploadForm() {
 
   const [uploadData, setUploadData] = useState({
     title: '',
-    main_feature: '',
-    description: '',
+    main_feature: '',    
     location: '',
     photo_date: '',
     photo_time: '',
+    description: '',
     lens_used: '',
     camera_used: '',
     other_equipment_used: '',
@@ -55,11 +55,11 @@ function PhotoUploadForm() {
   });
   const {
     title,
-    main_feature,
-    description,
+    main_feature,    
     location,
     photo_date,
     photo_time,
+    description,
     lens_used,
     camera_used,
     other_equipment_used,
@@ -70,9 +70,9 @@ function PhotoUploadForm() {
   const [errors, setErrors] = useState({});
 
   const uploadNotify = () => toast.info(
-    "Uploading photo...", {autoClose: 1750});
+    "Uploading photo...", { autoClose: 1750 });
   const successNotify = () => toast.success(
-    "Photo uploaded successfully", {delay: 2500});
+    "Photo uploaded successfully", { delay: 2500 });
   const errorNotify = () => toast.error(
     "Error occured attempting upload. Please alter details and try again",
     toast.dismiss()
@@ -97,23 +97,23 @@ function PhotoUploadForm() {
 
   const handleSubmit = async (e) => {
 
-    e.preventDefault();    
+    e.preventDefault();
     const formData = new FormData();
 
     formData.append('image', photoInput.current.files[0])
     formData.append('title', title)
-    formData.append('main_feature', main_feature)
-    formData.append('description', description)
+    formData.append('main_feature', main_feature)    
     formData.append('location', location)
     formData.append('photo_date', photo_date)
     formData.append('photo_time', photo_time)
+    formData.append('description', description)
     formData.append('lens_used', lens_used)
     formData.append('camera_used', camera_used)
     formData.append('other_equipment_used', other_equipment_used)
 
     try {
-      uploadNotify();      
-      const { data } = await axiosReq.post('/photos/', formData);            
+      uploadNotify();
+      const { data } = await axiosReq.post('/photos/', formData);
       history.push(`/photos/${data.id}`);
       successNotify();
     } catch (err) {
@@ -151,7 +151,7 @@ function PhotoUploadForm() {
           value={main_feature}
           onChange={handleChange}
         >
-          <option>(please select an option)</option>
+          <option value="Unspecified">(please select an option)</option>
           <option value="aurora">Aurora</option>
           <option value="deep-sky">Deep-sky</option>
           <option value="moon">Moon</option>
@@ -182,7 +182,7 @@ function PhotoUploadForm() {
         </Alert>
       ))}
 
-      <FloatingLabel className="d-inline-flex w-50 mb-3" label="Date Taken*" controlId="photo_date">
+      <FloatingLabel className="d-inline-flex w-50 mb-1" label="Date Taken*" controlId="photo_date">
         <Form.Control
           type="date"
           placeholder="date"
@@ -192,7 +192,7 @@ function PhotoUploadForm() {
         />
       </FloatingLabel>
 
-      <FloatingLabel className="d-inline-flex w-50 mb-3" label="Time Taken*" controlId="photo_time">
+      <FloatingLabel className="d-inline-flex w-50 mb-1" label="Time Taken*" controlId="photo_time">
         <Form.Control
           type="time"
           placeholder="time"
@@ -201,6 +201,12 @@ function PhotoUploadForm() {
           onChange={handleChange}
         />
       </FloatingLabel>
+
+      <div className="d-inline-flex mb-3">
+        <Form.Text muted>
+          Leaving blank applies today's date/current time
+        </Form.Text>
+      </div>
 
       {errors.date?.map((message, idx) => (
         <Alert variant="warning" key={idx}>
@@ -213,7 +219,7 @@ function PhotoUploadForm() {
         </Alert>
       ))}
 
-      <FloatingLabel className="mb-3" label="Description" controlId="description">
+      <FloatingLabel className="mb-3" label="Photo Description" controlId="description">
         <Form.Control
           as="textarea"
           placeholder="Describe your photo here"
