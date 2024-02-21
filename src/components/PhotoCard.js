@@ -46,6 +46,9 @@ const PhotoCard = (props) => {
   const history = useHistory();
   const [show, setShow] = useState(false);
 
+  const main_feature_text =
+  String(main_feature)[0].toUpperCase()+String(main_feature).slice(1)
+
   const handleModalClose = () => setShow(false);
   const handleModalShow = () => setShow(true);
 
@@ -207,7 +210,7 @@ const PhotoCard = (props) => {
             <hr />
             <Row className="mt-3">
               <Col sm={6}>
-                <p className="m-auto">Main feature: {main_feature}</p>
+                <p className="m-auto">Main feature: {main_feature_text}</p>
                 <p className="m-auto">Location: {location}</p>
                 <p className="m-auto">Date: {photo_date}</p>
                 <p className="m-auto">Time: {photo_time}</p>

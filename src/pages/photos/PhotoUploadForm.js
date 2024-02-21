@@ -153,7 +153,7 @@ function PhotoUploadForm() {
         >
           <option>(please select an option)</option>
           <option value="aurora">Aurora</option>
-          <option value="deep_sky">Deep-sky</option>
+          <option value="deep-sky">Deep-sky</option>
           <option value="moon">Moon</option>
           <option value="nightscape">Nightscape</option>
           <option value="planet">Planet</option>
