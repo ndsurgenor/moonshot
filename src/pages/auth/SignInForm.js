@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import axios from 'axios';
 
 import { useSetCurrentUser } from '../../contexts/CurrentUserContext';
-
-import { toast } from 'react-toastify';
 
 import {
     Col, Row, Container, Form, FloatingLabel, Alert, Button,
@@ -21,9 +20,9 @@ function SignInForm() {
     });
     const { username, password } = signInData;
 
-    const signinNotify = () => toast.success("Sign-in successful");
-    const problemNotify = () => toast.error(
-        "Problem signing in. Please alter details and try again"
+    const sucessNotify = () => toast.success("Sign-in successful");
+    const errorNotify = () => toast.error(
+        "An error occured during sign-up. Please alter details and try again"
     );
 
     const [errors, setErrors] = useState({});
@@ -41,10 +40,10 @@ function SignInForm() {
             const { data } = await axios.post('/dj-rest-auth/login/', signInData);
             setCurrentUser(data.user);
             history.push('/');
-            signinNotify();
+            sucessNotify();
         } catch (err) {
             setErrors(err.response?.data)
-            problemNotify();
+            errorNotify();
         }
     };
 

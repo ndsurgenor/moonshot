@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import axios from 'axios';
-
 import { toast } from 'react-toastify';
+import axios from 'axios';
 
 import {
     Col, Row, Container, Form, FloatingLabel, Alert, Button,
@@ -19,9 +18,11 @@ const SignUpForm = () => {
     });
     const { username, password1, password2 } = signUpData;
 
-    const signinNotify = () => toast.success("Sign-Up successful");
-    const problemNotify = () => toast.error(
-        "Problem signing up. Please alter details and try again"
+    const sucessNotify = () => toast.success(
+        "Sign-up successful. Welcome to moonshot!"
+    );
+    const errorNotify = () => toast.error(
+        "An error occured during sign-up. Please alter details and try again"
     );
 
     const [errors, setErrors] = useState({});
@@ -37,10 +38,12 @@ const SignUpForm = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await axios.post('/dj-rest-auth/registration/', signUpData)
-            history.push('/')
+            await axios.post('/dj-rest-auth/registration/', signUpData);
+            history.push('/');
+            sucessNotify();
         } catch (err) {
-            setErrors(err.response?.data)
+            setErrors(err.response?.data);
+            errorNotify();
         }
     };
 

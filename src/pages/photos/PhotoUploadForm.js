@@ -1,10 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useHistory } from 'react-router';
+import { toast } from 'react-toastify';
 import { axiosReq } from '../../api/axiosDefaults';
 
 import { useCurrentUser } from '../../contexts/CurrentUserContext';
-
-import { toast } from 'react-toastify';
 
 import Upload from '../../assets/photo-upload.png';
 import Asset from '../../components/Asset';
@@ -69,7 +68,15 @@ function PhotoUploadForm() {
 
   const photoInput = useRef(null);
   const [errors, setErrors] = useState({});
-  const uploadNotify = () => toast.info("Uploading photo...");
+
+  const uploadNotify = () => toast.info(
+    "Uploading photo...");
+  const successNotify = () => toast.success(
+    "Photo uploaded successfully", {delay: 1000});
+  const errorNotify = () => toast.error(
+    "Error occured attempting upload. Please alter details and try again",
+    toast.dismiss()
+  );
 
   const handleChange = (e) => {
     setUploadData({
@@ -78,7 +85,7 @@ function PhotoUploadForm() {
     })
   };
 
-  const handleChangePhoto = (e) => {    
+  const handleChangePhoto = (e) => {
     if (e.target.files.length) {
       URL.revokeObjectURL(image);
       setUploadData({
@@ -89,9 +96,8 @@ function PhotoUploadForm() {
   };
 
   const handleSubmit = async (e) => {
-        
-    e.preventDefault();
-    uploadNotify();
+
+    e.preventDefault();    
     const formData = new FormData();
 
     formData.append('image', photoInput.current.files[0])
@@ -103,17 +109,20 @@ function PhotoUploadForm() {
     formData.append('photo_time', photo_time)
     formData.append('lens_used', lens_used)
     formData.append('camera_used', camera_used)
-    formData.append('other_equipment_used', other_equipment_used)    
+    formData.append('other_equipment_used', other_equipment_used)
 
     try {
-      const { data } = await axiosReq.post('/photos/', formData);
-      history.push(`/photos/${data.id}`)      
+      uploadNotify();      
+      const { data } = await axiosReq.post('/photos/', formData);            
+      history.push(`/photos/${data.id}`);
+      successNotify();
     } catch (err) {
-      console.log(err)
+      console.log(err);
+      errorNotify();
       if (err.response?.status !== 401) {
         setErrors(err.response?.data)
       }
-    }   
+    }
   }
 
   const formFields = (

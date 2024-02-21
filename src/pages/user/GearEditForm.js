@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory, useParams } from 'react-router';
+import { toast } from 'react-toastify';
 import { axiosReq } from "../../api/axiosDefaults";
 
 import {
@@ -9,7 +10,7 @@ import formStyles from '../../styles/Form.module.css';
 import buttonStyles from '../../styles/Button.module.css';
 
 
-function EquipmentEditForm() {
+function GearEditForm() {
     const [equipmentData, setEquipmentData] = useState({
         main_lens: '',
         main_camera: '',
@@ -24,6 +25,13 @@ function EquipmentEditForm() {
     const [setErrors] = useState({});
     const history = useHistory();
     const { id } = useParams();
+
+    const sucessNotify = () => toast.success(
+        "Gear profile updated successfully"
+    );
+    const errorNotify = () => toast.error(
+        "An error occured while attempting to save. Please try again"
+    );
 
     useEffect(() => {
         const handleMount = async () => {
@@ -67,8 +75,10 @@ function EquipmentEditForm() {
         try {
             await axiosReq.put(`/equipment-profiles/${id}/`, formData);
             history.push(`/user-profiles/${id}`)
+            sucessNotify();
         } catch (err) {
             console.log(err)
+            errorNotify();
             if (err.response?.status !== 401) {
                 setErrors(err.response?.data)
             }
@@ -123,7 +133,7 @@ function EquipmentEditForm() {
         <Form onSubmit={handleSubmit}>
             <Row className="justify-content-center">
                 <Col xs={12} className={formStyles.Form}>
-                    <h1>Edit Equipment details</h1>
+                    <h1>Edit main gear profile</h1>
                     <p>
                         Details saved here will auto-populate on the photo upload form
                     </p>
@@ -134,4 +144,4 @@ function EquipmentEditForm() {
     );
 }
 
-export default EquipmentEditForm;
+export default GearEditForm;

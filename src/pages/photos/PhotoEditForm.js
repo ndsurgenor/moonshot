@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory, useParams } from 'react-router';
+import { toast } from 'react-toastify';
 import { axiosReq } from "../../api/axiosDefaults";
 
 import {
@@ -38,6 +39,15 @@ function PhotoEditForm() {
     const [errors, setErrors] = useState({});
     const history = useHistory();
     const { id } = useParams();
+
+    const updateNotify = () => toast.info(
+        "Updating details...");
+      const successNotify = () => toast.success(
+        "Deatils updated successfully", {delay: 1000});
+      const errorNotify = () => toast.error(
+        "An error occured while updating. Please alter details and try again",
+        toast.dismiss()
+      );
 
     useEffect(() => {
         const handleMount = async () => {
@@ -97,10 +107,13 @@ function PhotoEditForm() {
         formData.append('other_equipment_used', other_equipment_used)
 
         try {
+            updateNotify();
             await axiosReq.put(`/photos/${id}/`, formData);
-            history.push(`/photos/${id}`)
+            history.push(`/photos/${id}`);
+            successNotify();
         } catch (err) {
             console.log(err)
+            errorNotify();
             if (err.response?.status !== 401) {
                 setErrors(err.response?.data)
             }
