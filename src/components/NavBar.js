@@ -1,5 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import axios from 'axios';
 
 import useClickOutsideToggle from '../hooks/useClickOutsideToggle';
@@ -29,12 +30,21 @@ const NavBar = () => {
     const { width } = useViewportWidth();
     const addAvatar = (<Avatar src={currentUser?.profile_image} />);
 
+    const successNotify = () => toast.success(
+        `Signed out ${currentUser?.username} successfullly`
+    );
+    const errorNotify = () => toast.success(
+        "An arror occuring during sign-out. Please try again"
+    );
+
     const handleSignOut = async () => {
         try {
             await axios.post('dj-rest-auth/logout/');
             setCurrentUser(null);
+            successNotify();
         } catch (err) {
             console.log(err);
+            errorNotify();
         }
     };
 

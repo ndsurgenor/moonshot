@@ -1,5 +1,5 @@
 import { Route, Switch } from 'react-router-dom';
-import { ToastContainer, Slide, Zoom } from 'react-toastify';
+import { ToastContainer, Slide } from 'react-toastify';
 import './api/axiosDefaults';
 
 import { useCurrentUser } from './contexts/CurrentUserContext';
