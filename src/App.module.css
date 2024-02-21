@@ -29,3 +29,9 @@ a {
     text-decoration: none;
     transition: ease-in-out 0.2s;    
   }
+
+.Toast {
+    --toastify-color-dark: #0c2a33;
+    --toastify-color-progress-success: none;
+    --toastify-color-progress-error: none;
+}

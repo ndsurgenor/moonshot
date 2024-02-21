@@ -4,6 +4,8 @@ import axios from 'axios';
 
 import { useSetCurrentUser } from '../../contexts/CurrentUserContext';
 
+import { toast } from 'react-toastify';
+
 import {
     Col, Row, Container, Form, FloatingLabel, Alert, Button,
 } from 'react-bootstrap';
@@ -19,6 +21,11 @@ function SignInForm() {
     });
     const { username, password } = signInData;
 
+    const signinNotify = () => toast.success("Sign-in successful");
+    const problemNotify = () => toast.error(
+        "Problem signing in. Please alter details and try again"
+    );
+
     const [errors, setErrors] = useState({});
     const history = useHistory();
 
@@ -33,15 +40,18 @@ function SignInForm() {
         try {
             const { data } = await axios.post('/dj-rest-auth/login/', signInData);
             setCurrentUser(data.user);
-            history.push('/')
+            history.push('/');
+            signinNotify();
         } catch (err) {
             setErrors(err.response?.data)
+            problemNotify();
         }
     };
 
     return (
         <Row>
             <Col>
+
                 <Container className={formStyles.Form}>
 
                     <h1>Access your account</h1>

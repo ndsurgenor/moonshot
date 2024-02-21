@@ -1,7 +1,9 @@
 import { Route, Switch } from 'react-router-dom';
+import { ToastContainer, Slide, Zoom } from 'react-toastify';
 import './api/axiosDefaults';
 
 import { useCurrentUser } from './contexts/CurrentUserContext';
+import { useDisplayedProfile } from './contexts/DisplayedProfileContext';
 
 import SignUpForm from './pages/auth/SignUpForm';
 import SignInForm from './pages/auth/SignInForm';
@@ -14,7 +16,7 @@ import EquipmentEditForm from './pages/user/EquipmentEditForm';
 import { Container } from 'react-bootstrap';
 import styles from './App.module.css';
 import NavBar from './components/NavBar';
-import { useDisplayedProfile } from './contexts/DisplayedProfileContext';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 function App() {
@@ -26,9 +28,9 @@ function App() {
   return (<>
     <div className={styles.App}>
       <NavBar />
+
       <Container className={styles.Main}>
         <Switch>
-
           {/* Standard Views */}
           <Route exact path="/" render={() => (
             <PhotoFeed
@@ -47,7 +49,6 @@ function App() {
               message="No results"
             />
           )} />
-
           {/* Filtered Photo Views */}
           <Route exact path="/photos/filtered/user-uploads" render={() => (
             <PhotoFeed
@@ -70,26 +71,19 @@ function App() {
               message="No results"
             />
           )} />
-          {/* <Route exact path="/photos/filtered/stars-received" render={() => (
-            <PhotoFeed
-              filter={`user__userprofile=${profile_id}__user__stars&ordering=-stars__created_at&`}
-              header="your photos with stars received"
-              message="No results"
-            />
-          )} />
-          <Route exact path="/photos/filtered/comments-received" render={() => (
-            <PhotoFeed
-              filter={`photo__user__userprofile=${profile_id}&ordering=-comments__created_at&`}
-              header="your photos with comments received"
-              message="No results"
-            />
-          )} /> */}
-
           {/* Error Views */}
           <Route render={() => <h1>404 Error - Page Not Found</h1>} />
-
         </Switch>
       </Container>
+
+      <ToastContainer
+        className={styles.Toast}
+        position="bottom-center"
+        transition={Slide}
+        theme="dark"
+        autoClose={3500}
+        limit={3}
+      />
     </div>
   </>
   );
