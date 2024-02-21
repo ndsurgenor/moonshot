@@ -59,7 +59,7 @@ const PhotoCard = (props) => {
   const handlePhotoDelete = async () => {
     try {
       await axiosRes.delete(`/photos/${id}/`);
-      history.goBack();
+      history.push("/");
     } catch (err) {
       console.log(err);
     }
