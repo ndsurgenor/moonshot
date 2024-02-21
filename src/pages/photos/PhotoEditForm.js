@@ -41,13 +41,13 @@ function PhotoEditForm() {
     const { id } = useParams();
 
     const updateNotify = () => toast.info(
-        "Updating details...");
-      const successNotify = () => toast.success(
-        "Deatils updated successfully", {delay: 1000});
-      const errorNotify = () => toast.error(
+        "Updating details...", { autoClose: 2000 });
+    const successNotify = () => toast.success(
+        "Details updated successfully", { delay: 3000 });
+    const errorNotify = () => toast.error(
         "An error occured while updating. Please alter details and try again",
         toast.dismiss()
-      );
+    );
 
     useEffect(() => {
         const handleMount = async () => {
@@ -148,7 +148,7 @@ function PhotoEditForm() {
                 >
                     <option>(please select an option)</option>
                     <option value="aurora">Aurora</option>
-                    <option value="deep_sky">Deep-sky</option>
+                    <option value="deep-sky">Deep-sky</option>
                     <option value="moon">Moon</option>
                     <option value="nightscape">Nightscape</option>
                     <option value="planet">Planet</option>
@@ -162,18 +162,7 @@ function PhotoEditForm() {
                 </Alert>
             ))}
 
-            <FloatingLabel className="mb-3" label="Description" controlId="description">
-                <Form.Control
-                    as="textarea"
-                    placeholder="Describe your photo here"
-                    name="description"
-                    style={{ height: "6rem" }} // Style height here; not in module.css
-                    value={description}
-                    onChange={handleChange}
-                />
-            </FloatingLabel>
-
-            <FloatingLabel className="mb-3" label="Photo Location*" controlId="location">
+            <FloatingLabel className="mb-3" label="Location*" controlId="location">
                 <Form.Control
                     type="text"
                     placeholder="location"
@@ -188,7 +177,7 @@ function PhotoEditForm() {
                 </Alert>
             ))}
 
-            <FloatingLabel className="d-inline-flex w-50 mb-3" label="Date Taken" controlId="photo_date">
+            <FloatingLabel className="d-inline-flex w-50 mb-3" label="Date Taken*" controlId="photo_date">
                 <Form.Control
                     type="date"
                     placeholder="date"
@@ -197,13 +186,34 @@ function PhotoEditForm() {
                     onChange={handleChange}
                 />
             </FloatingLabel>
+            {errors.date?.map((message, idx) => (
+                <Alert variant="warning" key={idx}>
+                    {message}
+                </Alert>
+            ))}
 
-            <FloatingLabel className="d-inline-flex w-50 mb-3" label="Time Taken" controlId="photo_time">
+            <FloatingLabel className="d-inline-flex w-50 mb-3" label="Time Taken*" controlId="photo_time">
                 <Form.Control
                     type="time"
                     placeholder="time"
                     name="photo_time"
                     value={photo_time}
+                    onChange={handleChange}
+                />
+            </FloatingLabel>
+            {errors.time?.map((message, idx) => (
+                <Alert variant="warning" key={idx}>
+                    {message}
+                </Alert>
+            ))}
+
+            <FloatingLabel className="mb-3" label="Description" controlId="description">
+                <Form.Control
+                    as="textarea"
+                    placeholder="Describe your photo here"
+                    name="description"
+                    style={{ height: "6rem" }} // Style height here; not in module.css
+                    value={description}
                     onChange={handleChange}
                 />
             </FloatingLabel>

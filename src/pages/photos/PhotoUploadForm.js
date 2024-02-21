@@ -70,9 +70,9 @@ function PhotoUploadForm() {
   const [errors, setErrors] = useState({});
 
   const uploadNotify = () => toast.info(
-    "Uploading photo...");
+    "Uploading photo...", {autoClose: 1750});
   const successNotify = () => toast.success(
-    "Photo uploaded successfully", {delay: 1000});
+    "Photo uploaded successfully", {delay: 2500});
   const errorNotify = () => toast.error(
     "Error occured attempting upload. Please alter details and try again",
     toast.dismiss()
@@ -167,18 +167,7 @@ function PhotoUploadForm() {
         </Alert>
       ))}
 
-      <FloatingLabel className="mb-3" label="Description" controlId="description">
-        <Form.Control
-          as="textarea"
-          placeholder="Describe your photo here"
-          name="description"
-          style={{ height: "6rem" }} // Style height here; not in module.css
-          value={description}
-          onChange={handleChange}
-        />
-      </FloatingLabel>
-
-      <FloatingLabel className="mb-3" label="Photo Location*" controlId="location">
+      <FloatingLabel className="mb-3" label="Location*" controlId="location">
         <Form.Control
           type="text"
           placeholder="location"
@@ -193,7 +182,7 @@ function PhotoUploadForm() {
         </Alert>
       ))}
 
-      <FloatingLabel className="d-inline-flex w-50 mb-3" label="Date Taken" controlId="photo_date">
+      <FloatingLabel className="d-inline-flex w-50 mb-3" label="Date Taken*" controlId="photo_date">
         <Form.Control
           type="date"
           placeholder="date"
@@ -203,12 +192,34 @@ function PhotoUploadForm() {
         />
       </FloatingLabel>
 
-      <FloatingLabel className="d-inline-flex w-50 mb-3" label="Time Taken" controlId="photo_time">
+      <FloatingLabel className="d-inline-flex w-50 mb-3" label="Time Taken*" controlId="photo_time">
         <Form.Control
           type="time"
           placeholder="time"
           name="photo_time"
           value={photo_time}
+          onChange={handleChange}
+        />
+      </FloatingLabel>
+
+      {errors.date?.map((message, idx) => (
+        <Alert variant="warning" key={idx}>
+          {message}
+        </Alert>
+      ))}
+      {errors.time?.map((message, idx) => (
+        <Alert variant="warning" key={idx}>
+          {message}
+        </Alert>
+      ))}
+
+      <FloatingLabel className="mb-3" label="Description" controlId="description">
+        <Form.Control
+          as="textarea"
+          placeholder="Describe your photo here"
+          name="description"
+          style={{ height: "6rem" }} // Style height here; not in module.css
+          value={description}
           onChange={handleChange}
         />
       </FloatingLabel>
@@ -243,8 +254,8 @@ function PhotoUploadForm() {
         />
       </FloatingLabel>
 
-      <Button className={buttonStyles.Button} onClick={() => { }}>
-        Clear
+      <Button className={buttonStyles.Button} onClick={() => history.goBack()}>
+        Cancel
       </Button>
       <Button className={buttonStyles.Button} type="submit">
         Submit
