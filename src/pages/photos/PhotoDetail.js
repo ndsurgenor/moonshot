@@ -12,7 +12,7 @@ import CommentAdd from "../../components/CommentAdd";
 import Comment from '../../components/Comment'
 import Asset from '../../components/Asset';
 
-import Col from 'react-bootstrap/Column';
+import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import styles from '../../styles/Comments.module.css'
