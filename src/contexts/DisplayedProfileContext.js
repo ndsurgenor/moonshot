@@ -17,7 +17,7 @@ export const DisplayedProfileProvider = ({ children }) => {
             const { data } = await axiosRes.get(`/user-profiles/:id`);
             setDisplayedProfile(data);
         } catch (err) {
-            console.log(err);
+            // console.log(err);
         }
     };
 

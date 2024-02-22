@@ -62,7 +62,7 @@ const PhotoCard = (props) => {
       await axiosRes.delete(`/photos/${id}/`);
       history.push("/");
     } catch (err) {
-      console.log(err);
+      // console.log(err);
     }
   };
 
@@ -80,7 +80,7 @@ const PhotoCard = (props) => {
         })
       }))
     } catch (err) {
-      console.log(err)
+      // console.log(err)
     }
   };
 
@@ -98,7 +98,7 @@ const PhotoCard = (props) => {
         })
       }))
     } catch (err) {
-      console.log(err)
+      // console.log(err)
     }
   };
 

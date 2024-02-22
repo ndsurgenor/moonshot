@@ -33,7 +33,7 @@ function PhotoDetail() {
         setPhoto({ results: [photo] });
         setComments(comments);
       } catch (err) {
-        console.log(err)
+        // console.log(err)
       }
     }
     handleMount()

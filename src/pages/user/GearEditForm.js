@@ -51,7 +51,7 @@ function GearEditForm() {
                     other_equipment,
                 }) : history.push("/");
             } catch (err) {
-                console.log(err);
+                // console.log(err);
             }
         };
         handleMount();
@@ -77,7 +77,7 @@ function GearEditForm() {
             history.push(`/user-profiles/${id}`)
             sucessNotify();
         } catch (err) {
-            console.log(err)
+            // console.log(err)
             errorNotify();
             if (err.response?.status !== 401) {
                 setErrors(err.response?.data)

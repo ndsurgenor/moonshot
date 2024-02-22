@@ -35,7 +35,7 @@ function PhotoUploadForm() {
           other_equipment_used: data.other_equipment
         }))
       } catch (err) {
-        console.log(err);
+        // console.log(err);
       }
     };
     handleMount();
@@ -117,7 +117,7 @@ function PhotoUploadForm() {
       history.push(`/photos/${data.id}`);
       successNotify();
     } catch (err) {
-      console.log(err);
+      // console.log(err);
       errorNotify();
       if (err.response?.status !== 401) {
         setErrors(err.response?.data)

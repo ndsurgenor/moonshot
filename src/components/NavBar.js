@@ -45,7 +45,7 @@ const NavBar = () => {
             removeTokenTimestamp();
             successNotify();
         } catch (err) {
-            console.log(err);
+            // console.log(err);
             errorNotify();
         }
     };

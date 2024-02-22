@@ -79,7 +79,7 @@ function PhotoEditForm() {
                     image
                 }) : history.push("/");
             } catch (err) {
-                console.log(err);
+                // console.log(err);
             }
         };
         handleMount();
@@ -112,7 +112,7 @@ function PhotoEditForm() {
             history.push(`/photos/${id}`);
             successNotify();
         } catch (err) {
-            console.log(err)
+            // console.log(err)
             errorNotify();
             if (err.response?.status !== 401) {
                 setErrors(err.response?.data)

@@ -45,7 +45,7 @@ function PhotoFeed(props) {
         setPhotos(data)
         setDataLoaded(true)
       } catch (err) {
-        console.log(err)
+        // console.log(err)
       }
     }
     setDataLoaded(false)
