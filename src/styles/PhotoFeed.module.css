@@ -7,6 +7,7 @@
 
 .FeedHeader {
     font-family: 'Poppins';
+    font-size: 1.75rem;
     margin-top: 0.35rem;
     margin-left: 0.25rem;
 }
@@ -26,11 +27,6 @@
 @media only screen and (max-width: 767px) {
     .FeedHeader {        
         text-align: center;
-    }
-}
-
-@media only screen and (max-width: 360px) {
-    .FeedHeader {        
-        font-size: 1.25rem;
+        font-size: 1.5rem;
     }
 }

@@ -82,9 +82,9 @@ function PhotoFeed(props) {
             className="d-md-flex text-center text-md-start mt-md-3 mb-3"
           >
             <Col xs={12} md={8}>
-              <h2 className={styles.FeedHeader}>
+              <h1 className={styles.FeedHeader}>
                 viewing {header}
-              </h2>
+              </h1>
             </Col>
             <Col xs={12} md={4} >
               <Filters className="me-md-2" />
