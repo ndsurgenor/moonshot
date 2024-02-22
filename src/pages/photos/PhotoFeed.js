@@ -14,7 +14,10 @@ import PhotoCard from '../../components/PhotoCard';
 import Asset from '../../components/Asset';
 import NoResults from '../../assets/no-results.png';
 
-import { Container, Col, Row, Form } from 'react-bootstrap';
+import Col from 'react-bootstrap/Col';
+import Container from 'react-bootstrap/Container';
+import Form from 'react-bootstrap/Form';
+import Row from 'react-bootstrap/Row';
 import styles from '../../styles/PhotoFeed.module.css'
 import appStyles from '../../App.module.css'
 

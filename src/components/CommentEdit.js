@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { axiosRes } from '../api/axiosDefaults';
 
-import { Container, Form } from 'react-bootstrap';
+import Container from 'react-bootstrap/Container';
+import Form from 'react-bootstrap/Form';
 import styles from '../styles/Comments.module.css';
 
 

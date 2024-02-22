@@ -1,14 +1,20 @@
 import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
+import Moment from 'react-moment';
 import { axiosRes } from '../api/axiosDefaults';
 
 import { useCurrentUser } from '../contexts/CurrentUserContext';
 
 import Avatar from './Avatar'
 
-import {
-  Container, Row, Col, Card, OverlayTrigger, Tooltip, Button, Modal
-} from 'react-bootstrap';
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
+import Col from 'react-bootstrap/Col';
+import Container from 'react-bootstrap/Container';
+import Modal from 'react-bootstrap/Modal';
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+import Row from 'react-bootstrap/Row';
+import Tooltip from 'react-bootstrap/Tooltip';
 import styles from '../styles/PhotoCard.module.css'
 import buttonStyles from '../styles/Button.module.css'
 
@@ -16,7 +22,6 @@ import { CgComment } from 'react-icons/cg';
 import { FaEdit, FaRegStar, FaRegTrashAlt, FaStar } from 'react-icons/fa';
 import { ImCancelCircle } from 'react-icons/im';
 import { PiWarningFill } from 'react-icons/pi';
-import Moment from 'react-moment';
 
 
 const PhotoCard = (props) => {

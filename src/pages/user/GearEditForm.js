@@ -3,9 +3,12 @@ import { useHistory, useParams } from 'react-router';
 import { toast } from 'react-toastify';
 import { axiosReq } from "../../api/axiosDefaults";
 
-import {
-    Container, Col, Row, Form, FloatingLabel, Button,
-} from 'react-bootstrap';
+import Button from 'react-bootstrap/Button';
+import Col from 'react-bootstrap/Col';
+import Container from 'react-bootstrap/Container';
+import FloatingLabel from 'react-bootstrap/FloatingLabel';
+import Form from 'react-bootstrap/Form';
+import Row from 'react-bootstrap/Row';
 import formStyles from '../../styles/Form.module.css';
 import buttonStyles from '../../styles/Button.module.css';
 

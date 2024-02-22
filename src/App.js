@@ -14,7 +14,7 @@ import PhotoDetail from './pages/photos/PhotoDetail';
 import PhotoFeed from './pages/photos/PhotoFeed';
 import GearEditForm from './pages/user/GearEditForm';
 
-import { Container } from 'react-bootstrap';
+import Container from 'react-bootstrap/Container';
 import styles from './App.module.css';
 import 'react-toastify/dist/ReactToastify.css';
 

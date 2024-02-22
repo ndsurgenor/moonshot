@@ -1,5 +1,4 @@
 import jwtDecode from 'jwt-decode';
-
 import { axiosReq } from '../api/axiosDefaults';
 
 // Adapted from Utils.js by Code Institute

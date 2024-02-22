@@ -1,7 +1,9 @@
 import React from 'react'
 import { Link, useLocation } from 'react-router-dom';
 
-import { Container, OverlayTrigger, Tooltip } from 'react-bootstrap';
+import Container from 'react-bootstrap/Container';
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+import Tooltip from 'react-bootstrap/Tooltip';
 import styles from '../styles/Filters.module.css'
 
 import { CgComment } from 'react-icons/cg';

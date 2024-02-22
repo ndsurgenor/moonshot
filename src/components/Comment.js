@@ -7,7 +7,9 @@ import { useCurrentUser } from '../contexts/CurrentUserContext'
 import Avatar from './Avatar';
 import CommentEditForm from './CommentEdit';
 
-import { Container, Row, Col } from 'react-bootstrap';
+import Col from 'react-bootstrap/Col';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
 import styles from '../styles/Comments.module.css';
 
 
