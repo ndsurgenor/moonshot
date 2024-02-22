@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, useHistory, useLocation } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import axios from 'axios';
 
@@ -28,7 +28,6 @@ function SignInForm() {
 
     const [errors, setErrors] = useState({});
     const history = useHistory();
-    const {state} = useLocation();
 
     const handleChange = (e) => {
         setSignInData({
@@ -42,7 +41,7 @@ function SignInForm() {
             const { data } = await axios.post('/dj-rest-auth/login/', signInData);
             setCurrentUser(data.user);
             setTokenTimestamp(data);
-            state === "signup" ? history.push("/") : history.goBack()          
+            history.goBack()          
             successNotify();
         } catch (err) {
             setErrors(err.response?.data)

@@ -118,7 +118,7 @@ const SignUpForm = () => {
 
                 <Container className={formStyles.Form}>
                     <h2>Already a member?</h2>
-                    <Link className={formStyles.FormLink} to="/signin" state={{ prev: 'signup' }}>
+                    <Link className={formStyles.FormLink} to="/signin">
                         Click here to Sign In
                     </Link>
                 </Container>
