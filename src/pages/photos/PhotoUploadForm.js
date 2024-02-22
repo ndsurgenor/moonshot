@@ -20,7 +20,7 @@ function PhotoUploadForm() {
   const currentUser = useCurrentUser();
   const id = currentUser?.profile_id
 
-  useEffect(() => {
+useEffect(() => {
     const handleMount = async () => {
       try {
         const { data } = await axiosReq.get(
@@ -32,8 +32,8 @@ function PhotoUploadForm() {
           other_equipment,
         } = data;
         console.log(main_lens)
-        console.log(main_camera)
-        console.log(other_equipment)
+        console.log(main_camera) 
+        console.log(other_equipment)         
       } catch (err) {
         console.log(err);
       }
@@ -43,7 +43,7 @@ function PhotoUploadForm() {
 
   const [uploadData, setUploadData] = useState({
     title: '',
-    main_feature: '',    
+    main_feature: '',
     location: '',
     photo_date: '',
     photo_time: '',
@@ -55,7 +55,7 @@ function PhotoUploadForm() {
   });
   const {
     title,
-    main_feature,    
+    main_feature,
     location,
     photo_date,
     photo_time,
@@ -102,7 +102,7 @@ function PhotoUploadForm() {
 
     formData.append('image', photoInput.current.files[0])
     formData.append('title', title)
-    formData.append('main_feature', main_feature)    
+    formData.append('main_feature', main_feature)
     formData.append('location', location)
     formData.append('photo_date', photo_date)
     formData.append('photo_time', photo_time)
