@@ -63,7 +63,7 @@ function PhotoDetail() {
             />
           ) : comments.results.length ? (
             <p className="text-center mt-2">
-              You need to <Link className={styles.CommentLink} to="/signup">sign up</Link>
+              You need to<Link className={styles.CommentLink} to="/signup">sign up</Link>
               or<Link className={styles.CommentLink} to="/signin">sign in</Link>
               to add comments
             </p>
