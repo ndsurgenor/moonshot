@@ -8,6 +8,7 @@ import useViewportWidth from '../hooks/useViewportWidth';
 import {
     useCurrentUser, useSetCurrentUser
 } from "../contexts/CurrentUserContext";
+import { removeTokenTimestamp } from '../utils/Utils';
 
 import Avatar from './Avatar';
 
@@ -41,6 +42,7 @@ const NavBar = () => {
         try {
             await axios.post('dj-rest-auth/logout/');
             setCurrentUser(null);
+            removeTokenTimestamp();
             successNotify();
         } catch (err) {
             console.log(err);

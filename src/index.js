@@ -7,13 +7,14 @@ import { BrowserRouter as Router } from 'react-router-dom'
 import { CurrentUserProvider } from './contexts/CurrentUserContext';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Router>
-      <CurrentUserProvider>
-        <App />
-      </CurrentUserProvider>
-    </Router>
-  </React.StrictMode>,
+  // <React.StrictMode>
+  <Router>
+    <CurrentUserProvider>
+      <App />
+    </CurrentUserProvider>
+  </Router>
+  // </React.StrictMode>
+  ,
   document.getElementById('root')
 );
 

@@ -1,7 +1,9 @@
-import { axiosReq } from '../api/axiosDefaults'
+import jwtDecode from 'jwt-decode';
 
+import { axiosReq } from '../api/axiosDefaults';
 
 // Adapted from Utils.js by Code Institute
+
 export const getMoreData = async (resource, setResource) => {
     try {
         const { data } = await axiosReq.get(resource.next)
@@ -18,3 +20,16 @@ export const getMoreData = async (resource, setResource) => {
         console.log(err)
     }
 }
+
+export const setTokenTimestamp = (data) => {
+    const refreshTokenTimestamp = jwtDecode(data?.refresh_token).exp;
+    localStorage.setItem("refreshTokenTimestamp", refreshTokenTimestamp);
+  };
+  
+  export const shouldRefreshToken = () => {
+    return !!localStorage.getItem("refreshTokenTimestamp");
+  };
+  
+  export const removeTokenTimestamp = () => {
+    localStorage.removeItem("refreshTokenTimestamp");
+  };

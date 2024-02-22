@@ -4,6 +4,7 @@ import { toast } from 'react-toastify';
 import axios from 'axios';
 
 import { useSetCurrentUser } from '../../contexts/CurrentUserContext';
+import { setTokenTimestamp } from '../../utils/Utils';
 
 import {
     Col, Row, Container, Form, FloatingLabel, Alert, Button,
@@ -40,6 +41,7 @@ function SignInForm() {
         try {
             const { data } = await axios.post('/dj-rest-auth/login/', signInData);
             setCurrentUser(data.user);
+            setTokenTimestamp(data);
             state === "signup" ? history.push("/") : history.goBack()          
             successNotify();
         } catch (err) {
