@@ -20,14 +20,14 @@ function SignInForm() {
     });
     const { username, password } = signInData;
 
-    const sucessNotify = () => toast.success("Sign-in successful");
+    const successNotify = () => toast.success("Sign-in successful");
     const errorNotify = () => toast.error(
         "An error occured during sign-up. Please alter details and try again"
     );
 
     const [errors, setErrors] = useState({});
     const history = useHistory();
-    const prevPathname = useLocation().from
+    const {state} = useLocation();
 
     const handleChange = (e) => {
         setSignInData({
@@ -40,8 +40,8 @@ function SignInForm() {
         try {
             const { data } = await axios.post('/dj-rest-auth/login/', signInData);
             setCurrentUser(data.user);
-            prevPathname === "/signup" ? history.push("/") : history.goBack()          
-            sucessNotify();
+            state === "signup" ? history.push("/") : history.goBack()          
+            successNotify();
         } catch (err) {
             setErrors(err.response?.data)
             errorNotify();
