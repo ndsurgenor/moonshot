@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useHistory, useLocation } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import axios from 'axios';
 
@@ -27,6 +27,7 @@ function SignInForm() {
 
     const [errors, setErrors] = useState({});
     const history = useHistory();
+    const prevPathname = useLocation().from
 
     const handleChange = (e) => {
         setSignInData({
@@ -39,7 +40,7 @@ function SignInForm() {
         try {
             const { data } = await axios.post('/dj-rest-auth/login/', signInData);
             setCurrentUser(data.user);
-            history.goBack();
+            prevPathname === "/signup" ? history.push("/") : history.goBack()          
             sucessNotify();
         } catch (err) {
             setErrors(err.response?.data)

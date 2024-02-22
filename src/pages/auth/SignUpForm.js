@@ -11,6 +11,7 @@ import buttonStyles from '../../styles/Button.module.css';
 
 
 const SignUpForm = () => {
+
     const [signUpData, setSignUpData] = useState({
         username: "",
         password1: "",
