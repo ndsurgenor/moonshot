@@ -55,7 +55,7 @@ function PhotoFeed(props) {
     return () => {
       clearTimeout(photoFeedDelay)
     }
-  }, [filter, pathname, query])
+  }, [filter, pathname, query, currentUser])
 
 
   return (
