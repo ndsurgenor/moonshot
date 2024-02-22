@@ -19,21 +19,21 @@ function PhotoUploadForm() {
   const history = useHistory();
   const currentUser = useCurrentUser();
   const id = currentUser?.profile_id
+  const [gearData, setGearData] = useState({})
 
-useEffect(() => {
+  useEffect(() => {
     const handleMount = async () => {
-      try {
+      if (id) try {
         const { data } = await axiosReq.get(
           `/equipment-profiles/${id}/`
         );
-        const {
-          main_lens,
-          main_camera,
-          other_equipment,
-        } = data;
-        console.log(main_lens)
-        console.log(main_camera) 
-        console.log(other_equipment)         
+        setGearData(data)
+        setUploadData(prevDetails => ({
+          ...prevDetails,
+          lens_used: data.main_lens,
+          camera_used: data.main_camera,
+          other_equipment_used: data.other_equipment
+        }))
       } catch (err) {
         console.log(err);
       }
@@ -48,9 +48,9 @@ useEffect(() => {
     photo_date: '',
     photo_time: '',
     description: '',
-    lens_used: '',
-    camera_used: '',
-    other_equipment_used: '',
+    lens_used: gearData.main_lens,
+    camera_used: gearData.main_camera,
+    other_equipment_used: gearData.other_equipment,
     image: '',
   });
   const {
@@ -291,22 +291,25 @@ useEffect(() => {
             ))}
             {image ? (
               <>
-                <Image src={image} fluid rounded />
-                <Form.Label htmlFor="photo-upload">
-                  Click 'Choose File' again to select a different photo
+                <Form.Label
+                  className={formStyles.FormLink}
+                  htmlFor="photo-upload"
+                >
+                  <Image src={image} fluid rounded />
                 </Form.Label>
-
+                <p>Click 'Choose File' or the image itself to select a different photo</p>
               </>
             ) : (
               <>
-                <Form.Label htmlFor="photo-upload">
-                  <Asset
-                    src={Upload}
-                  />
-                  <p>Preview appears above once photo is chosen.
-                    Photos must be between 500-7680px in width/height
-                    and no larger than 4MB.</p>
+                <Form.Label
+                  className={formStyles.FormLink}
+                  htmlFor="photo-upload"
+                >
+                  <Asset src={Upload} />
                 </Form.Label>
+                <p>Preview appears above once photo is chosen.
+                  Photos must be between 500-7680px in width/height
+                  and no larger than 4MB.</p>
               </>
             )}
           </Form.Group>

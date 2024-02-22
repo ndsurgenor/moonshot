@@ -66,14 +66,14 @@ function PhotoFeed(props) {
           // User Profile          
           <Container className="d-block d-md-flex text-center text-md-start my-3">
             <Col xs={12} md={6}>
-            <h3>User Profile for {currentUser?.username}</h3>
-            <Avatar src={currentUser?.profile_image} height={75}/>            
+              <h3>User Profile for {currentUser?.username}</h3>
+              <Avatar src={currentUser?.profile_image} height={75} />
             </Col>
             <Col xs={12} md={6}>
-            <h3>Main Gear</h3>
-            <p className="mb-0">Telescope/Lens: {}</p>
-            <p className="mb-0">Camera:</p>
-            <p className="mb-0">Other Equipment:</p>
+              <h3>Main Gear</h3>
+              <p className="mb-0">Telescope/Lens: { }</p>
+              <p className="mb-0">Camera:</p>
+              <p className="mb-0">Other Equipment:</p>
             </Col>
           </Container>
         ) : currentUser ? (
@@ -82,9 +82,9 @@ function PhotoFeed(props) {
             className="d-md-flex text-center text-md-start mt-md-3 mb-3"
           >
             <Col xs={12} md={8}>
-              <h3 className={styles.FeedHeader}>
-                Viewing {header}
-              </h3>
+              <h2 className={styles.FeedHeader}>
+                viewing {header}
+              </h2>
             </Col>
             <Col xs={12} md={4} >
               <Filters className="me-md-2" />

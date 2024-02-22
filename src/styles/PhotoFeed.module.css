@@ -1,9 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
 .FeedGallery {
     overflow: hidden;
     margin-bottom: 2rem;
 }
 
 .FeedHeader {
+    font-family: 'Poppins';
     margin-top: 0.35rem;
     margin-left: 0.25rem;
 }
