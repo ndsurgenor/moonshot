@@ -19,6 +19,7 @@ import styles from '../../styles/Comments.module.css'
 
 
 function PhotoDetail() {
+
   const { id } = useParams();
   const [photo, setPhoto] = useState({ results: [] });
   const [comments, setComments] = useState({ results: [] });

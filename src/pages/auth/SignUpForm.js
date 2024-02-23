@@ -3,6 +3,8 @@ import { Link, useHistory } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import axios from 'axios';
 
+import { useRedirect } from '../../hooks/useRedirect';
+
 import Alert from 'react-bootstrap/Alert';
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
@@ -15,6 +17,7 @@ import buttonStyles from '../../styles/Button.module.css';
 
 
 const SignUpForm = () => {
+    useRedirect("signedIn")
 
     const [signUpData, setSignUpData] = useState({
         username: "",

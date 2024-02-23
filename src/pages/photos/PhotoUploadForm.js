@@ -4,6 +4,7 @@ import { toast } from 'react-toastify';
 import { axiosReq } from '../../api/axiosDefaults';
 
 import { useCurrentUser } from '../../contexts/CurrentUserContext';
+import { useRedirect } from '../../hooks/useRedirect';
 
 import Upload from '../../assets/photo-upload.png';
 import Asset from '../../components/Asset';
@@ -21,6 +22,8 @@ import buttonStyles from '../../styles/Button.module.css';
 
 
 function PhotoUploadForm() {
+  useRedirect("signedOut");
+
   const history = useHistory();
   const currentUser = useCurrentUser();
   const id = currentUser?.profile_id

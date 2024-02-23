@@ -22,6 +22,7 @@ import { FaCameraRetro } from 'react-icons/fa';
 import {
     FaArrowRightFromBracket, FaArrowRightToBracket, FaGear, FaUserAstronaut
 } from 'react-icons/fa6';
+import { GoRocket } from 'react-icons/go';
 import { ImEarth } from 'react-icons/im';
 import { MdOutlineHub } from 'react-icons/md';
 import { WiMoonAltWaxingCrescent3 } from 'react-icons/wi';
@@ -145,7 +146,7 @@ const NavBar = () => {
                         activeClassName={styles.NavLinkActive}
                         to={`/equipment-profiles/${currentUser?.profile_id}`}
                     >
-                        <FaGear className={styles.NavLinkIcon} />
+                        <GoRocket className={styles.NavLinkIcon} />
                         Account
                     </NavLink>
                 </NavDropdown.ItemText>
