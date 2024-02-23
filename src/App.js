@@ -5,6 +5,7 @@ import './api/axiosDefaults';
 import { useCurrentUser } from './contexts/CurrentUserContext';
 
 import NavBar from './components/NavBar';
+import NotFound from './components/NotFound';
 
 import SignUpForm from './pages/auth/SignUpForm';
 import SignInForm from './pages/auth/SignInForm';
@@ -75,7 +76,8 @@ function App() {
           )} />
 
           {/* Error Views */}
-          <Route render={() => <h1>404 Error - Page Not Found</h1>} />
+          <Route render={() => <NotFound />} />
+
         </Switch>
       </Container>
 

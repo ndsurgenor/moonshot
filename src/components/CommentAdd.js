@@ -7,8 +7,8 @@ import Button from 'react-bootstrap/Button';
 import InputGroup from 'react-bootstrap/InputGroup';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
-import styles from '../styles/Comments.module.css'
-import buttonStyles from '../styles/Button.module.css'
+import styles from '../styles/Comments.module.css';
+import buttonStyles from '../styles/Button.module.css';
 
 
 function CommentAdd(props) {
