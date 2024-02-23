@@ -9,9 +9,10 @@
 .PhotoOwner {
     color: whitesmoke;
     background-color: #00000055;
-    margin-left: auto;
+    margin: 0.75rem 0.5rem -3.25rem auto;
     padding: 0.3rem 0.5rem;
     border-radius: 5rem;
+    z-index: 1
 }
 
 .PhotoOwner:hover {

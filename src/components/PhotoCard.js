@@ -141,16 +141,8 @@ const PhotoCard = (props) => {
         </Modal.Footer>
       </Modal>
 
-      {/* Photo */}
-      <Link
-        className={!photoPage ? styles.PhotoLink : styles.PhotoNoLink}
-        to={!photoPage ? `/photos/${id}` : "#"}
-      >
-        <Card.Img src={image} alt="Photo" />
-        <Card.ImgOverlay>
-
-          {/* Photo Owner: always shown on Home Page, but
-          only shown on Photo Page when user is not owner */}
+      {/* Owner: always shown on Home Page, but only
+      shown on Photo Page when user is not owner */}
           {(!photoPage || (!is_owner && photoPage)) &&
             <Link to={`/user-profiles/${user_id}`}>
               <Container className="d-flex g-0">
@@ -162,8 +154,13 @@ const PhotoCard = (props) => {
             </Link>
           }
 
-        </Card.ImgOverlay>
-      </Link>
+      {/* Photo */}
+      <Link
+        className={!photoPage ? styles.PhotoLink : styles.PhotoNoLink}
+        to={!photoPage ? `/photos/${id}` : "#"}
+      >
+        <Card.Img src={image} alt="Photo" />
+      </Link>      
 
       {/* Stars & Comments */}
       <Container className={styles.PhotoInteractions}>
