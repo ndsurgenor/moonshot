@@ -32,7 +32,12 @@ const NavBar = () => {
     const setCurrentUser = useSetCurrentUser();
     const { expanded, setExpanded, ref } = useClickOutsideToggle();
     const { width } = useViewportWidth();
-    const addAvatar = (<Avatar src={currentUser?.profile_image} />);
+    const addAvatar = (
+        <Avatar
+            src={currentUser?.profile_image}
+            height={width < 320 ? 29 : 44}
+        />
+    );
 
     const successNotify = () => toast.success(
         `Signed out ${currentUser?.username} successfullly`
@@ -134,6 +139,16 @@ const NavBar = () => {
                         Gear
                     </NavLink>
                 </NavDropdown.ItemText>
+                <NavDropdown.ItemText >
+                    <NavLink
+                        className={styles.NavLink}
+                        activeClassName={styles.NavLinkActive}
+                        to={`/equipment-profiles/${currentUser?.profile_id}`}
+                    >
+                        <FaGear className={styles.NavLinkIcon} />
+                        Account
+                    </NavLink>
+                </NavDropdown.ItemText>
                 <NavDropdown.Divider />
                 <NavDropdown.ItemText>
                     <NavLink
@@ -172,14 +187,17 @@ const NavBar = () => {
             expanded={expanded}
         >
             <Container>
+                {/* Brand & Logo */}
                 <NavLink to="/">
                     <Navbar.Brand className={styles.NavBrand}>
                         moonshot <WiMoonAltWaxingCrescent3 className={styles.NavBrandIcon} />
                     </Navbar.Brand>
                 </NavLink>
+                {/* Avatar shown on smaller screens, outside of toggle */}
                 <Navbar.Text className="d-md-none ms-auto me-2">
                     {currentUser && addAvatar}
                 </Navbar.Text>
+                {/* Toggle Menu */}
                 <Navbar.Toggle
                     aria-controls="navbar-toggle"
                     className='px-1 border-2'
