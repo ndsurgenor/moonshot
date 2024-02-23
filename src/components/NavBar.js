@@ -34,10 +34,7 @@ const NavBar = () => {
     const { expanded, setExpanded, ref } = useClickOutsideToggle();
     const { width } = useViewportWidth();
     const addAvatar = (
-        <Avatar
-            src={currentUser?.profile_image}
-            // height={width < 320 ? 29 : 44}
-        />
+        <Avatar src={currentUser?.profile_image} />
     );
 
     const successNotify = () => toast.success(

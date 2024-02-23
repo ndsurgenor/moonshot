@@ -92,7 +92,7 @@ function PhotoFeed(props) {
               <h3>Profile for {profile.user}</h3>
               <p>Photos added: {profile.photo_upload_count}</p>
               {currentUser?.profile_id === profile.id &&
-              <Link to="/">Edit profile details</Link>}
+              <Link to={`/user-profiles/edit/${id}`}>Edit profile details</Link>}
             </Col>
             <Col xs={12} md={6} lg={5}>
               <h4 className="mt-0 mt-md-1">Main Gear</h4>
