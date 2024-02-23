@@ -49,17 +49,21 @@ const Comment = (props) => {
 
     return (
         <Container>
-            <Row>
-                <Col xs={1} className="mt-1 g-0">
+            <Row className="d-flex justify-content-between m-auto">
+                <Col xs={2} sm={1} className="d-inline text-center m-auto">
                     <Link to={`/user-profiles/${user_id}`}>
-                        <Avatar src={user_avatar} />
+                        <Avatar src={user_avatar}/>
                     </Link>
+                    <p className={styles.CommentUser}>{user}</p>
                 </Col>
-                <Col xs={11}>
-                    <Container className="d-flex justify-content-between mb-1 g-0">
-                        <span className={styles.CommentUser}>{user}</span>
-                        <span className={styles.CommentUpdated}>Last updated: {updated_at}</span>
-                    </Container>
+                <Col xs={10} sm={11}>                    
+                    <span className={styles.CommentUpdated}>
+                        Last updated: {updated_at}
+                    </span>
+                </Col>
+            </Row>
+            <Row>
+                <Col className="g-0">
                     {showEditForm ? (
                         <CommentEditForm
                             id={id}
@@ -70,7 +74,7 @@ const Comment = (props) => {
                             setShowEditForm={setShowEditForm}
                         />
                     ) : (
-                        <p className="m-0">{content}</p>
+                        <p>{content}</p>
                     )}
                     {is_owner && !showEditForm && (
                         <Container className="d-flex justify-content-end g-0">

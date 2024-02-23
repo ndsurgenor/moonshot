@@ -310,7 +310,7 @@ function PhotoUploadForm() {
                   className={formStyles.FormLink}
                   htmlFor="photo-upload"
                 >
-                  <Asset src={Upload} />
+                    <Asset src={Upload} />
                 </Form.Label>
                 <p>Preview appears above once photo is chosen.
                   Photos must be between 500-7680px in width/height

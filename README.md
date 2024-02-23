@@ -44,7 +44,7 @@ The site is aimed at helping users to easily upload their personal photos of the
 ### Milestones & User Stories
 This project was developed with 6 milestones (epics) in mind. From each of these milestones a number of dev goals and user stories were created, each one given a prioritisation using the MoSCoW method. The detail of these milestones, goals and stories implemented in the final project is outlined below; further detail regarding sprints, MoSCoW designation and acceptance criteria (covered under Structure) are included on the [GitHub Projects Kanban Board](https://github.com/users/ndsurgenor/projects/9) created for the project.
 
-![Kanban](static/images/readme/kanban.png)
+![Kanban](docs/kanban.png)
 
 #### Milestone 1 - API & Admin Functionality
 - 1.1 - Dev Goal: set up Django REST and its supporting libraries via the IDE in order for API development to begin

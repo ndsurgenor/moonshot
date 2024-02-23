@@ -32,6 +32,8 @@ function PhotoFeed(props) {
     message,
   } = props
   const [photos, setPhotos] = useState({ results: [] });
+  const [gear, setGear] = useState({});
+  const [profile, setProfile] = useState({});
   const [dataLoaded, setDataLoaded] = useState(false);
   const { id } = useParams();
   const { pathname } = useLocation();
@@ -60,6 +62,33 @@ function PhotoFeed(props) {
     }
   }, [filter, pathname, query, currentUser])
 
+  useEffect(() => {
+    const handleMount = async () => {
+      try {
+        const { data } = await axiosReq.get(
+          `/equipment-profiles/${id}/`
+        );
+        setGear(data);
+      } catch (err) {
+        // console.log(err);
+      }
+    };
+    handleMount();
+  }, [id]);
+
+  useEffect(() => {
+    const handleMount = async () => {
+      try {
+        const { data } = await axiosReq.get(
+          `/user-profiles/${id}/`
+        );
+        setProfile(data);
+      } catch (err) {
+        // console.log(err);
+      }
+    };
+    handleMount();
+  }, [id]);
 
   return (
     <>
@@ -69,14 +98,14 @@ function PhotoFeed(props) {
           // User Profile          
           <Container className="d-block d-md-flex text-center text-md-start my-3">
             <Col xs={12} md={6}>
-              <h3>User Profile for {currentUser?.username}</h3>
-              <Avatar src={currentUser?.profile_image} height={75} />
+              <h3>User Profile for {profile.user}</h3>
+              <Avatar src={profile.avatar} height={75} />
             </Col>
             <Col xs={12} md={6}>
               <h3>Main Gear</h3>
-              <p className="mb-0">Telescope/Lens: { }</p>
-              <p className="mb-0">Camera:</p>
-              <p className="mb-0">Other Equipment:</p>
+              <p className="mb-0">Telescope/Lens: {gear.main_lens}</p>
+              <p className="mb-0">Camera: {gear.main_camera}</p>
+              <p className="mb-0">Other Equipment: {gear.other_equipment}</p>
             </Col>
           </Container>
         ) : currentUser ? (
