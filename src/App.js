@@ -13,6 +13,7 @@ import PhotoEditForm from './pages/photos/PhotoEditForm';
 import PhotoDetail from './pages/photos/PhotoDetail';
 import PhotoFeed from './pages/photos/PhotoFeed';
 import GearEditForm from './pages/user/GearEditForm';
+import AccountEditForm from './pages/user/AccountEditForm';
 
 import Container from 'react-bootstrap/Container';
 import styles from './App.module.css';
@@ -29,6 +30,7 @@ function App() {
 
       <Container className={styles.Main}>
         <Switch>
+
           {/* Standard Views */}
           <Route exact path="/" render={() => (
             <PhotoFeed
@@ -39,14 +41,16 @@ function App() {
           <Route exact path="/signin" render={() => <SignInForm />} />
           <Route exact path="/photos/upload" render={() => <PhotoUploadForm />} />
           <Route exact path="/photos/:id/edit" render={() => <PhotoEditForm />} />
-          <Route exact path="/photos/:id" render={() => <PhotoDetail />} />
-          <Route exact path="/equipment-profiles/:id" render={() => <GearEditForm />} />
+          <Route exact path="/photos/:id" render={() => <PhotoDetail />} />          
           <Route exact path="/user-profiles/:id" render={() => (
             <PhotoFeed
               filter={`user__userprofile=${user_id}&ordering=-created_at&`}
               message="No results"
             />
           )} />
+          <Route exact path="/equipment-profiles/:id" render={() => <GearEditForm />} />
+          <Route exact path="/user-profiles/edit/:id" render={() => <AccountEditForm />} />
+
           {/* Filtered Photo Views */}
           <Route exact path="/photos/filtered/user-uploads" render={() => (
             <PhotoFeed
@@ -69,6 +73,7 @@ function App() {
               message="No results"
             />
           )} />
+
           {/* Error Views */}
           <Route render={() => <h1>404 Error - Page Not Found</h1>} />
         </Switch>

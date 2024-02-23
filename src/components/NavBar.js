@@ -22,9 +22,9 @@ import { FaCameraRetro } from 'react-icons/fa';
 import {
     FaArrowRightFromBracket, FaArrowRightToBracket, FaGear, FaUserAstronaut
 } from 'react-icons/fa6';
-import { GoRocket } from 'react-icons/go';
 import { ImEarth } from 'react-icons/im';
 import { MdOutlineHub } from 'react-icons/md';
+import { RiGitRepositoryPrivateFill } from "react-icons/ri";
 import { WiMoonAltWaxingCrescent3 } from 'react-icons/wi';
 
 
@@ -36,7 +36,7 @@ const NavBar = () => {
     const addAvatar = (
         <Avatar
             src={currentUser?.profile_image}
-            height={width < 320 ? 29 : 44}
+            // height={width < 320 ? 29 : 44}
         />
     );
 
@@ -100,6 +100,14 @@ const NavBar = () => {
             </NavLink>
             <NavLink
                 className={styles.NavLink}
+                activeClassName={styles.NavLinkActive}
+                to={`/user-profiles/edit/${currentUser?.profile_id}`}
+            >
+                <RiGitRepositoryPrivateFill className={styles.NavLinkIcon} />
+                Account
+            </NavLink>
+            <NavLink
+                className={styles.NavLink}
                 to="/"
                 onClick={handleSignOut}
             >
@@ -144,9 +152,9 @@ const NavBar = () => {
                     <NavLink
                         className={styles.NavLink}
                         activeClassName={styles.NavLinkActive}
-                        to={`/equipment-profiles/${currentUser?.profile_id}`}
+                        to={`/user-profiles/edit/${currentUser?.profile_id}`}
                     >
-                        <GoRocket className={styles.NavLinkIcon} />
+                        <RiGitRepositoryPrivateFill className={styles.NavLinkIcon} />
                         Account
                     </NavLink>
                 </NavDropdown.ItemText>
@@ -194,9 +202,10 @@ const NavBar = () => {
                         moonshot <WiMoonAltWaxingCrescent3 className={styles.NavBrandIcon} />
                     </Navbar.Brand>
                 </NavLink>
-                {/* Avatar shown on smaller screens, outside of toggle */}
+                {/* Avatar shown outside of toggle on smaller screens;
+                completely hidden on extra-small screens (< 315px) */}
                 <Navbar.Text className="d-md-none ms-auto me-2">
-                    {currentUser && addAvatar}
+                    {currentUser && width > 314 && addAvatar}
                 </Navbar.Text>
                 {/* Toggle Menu */}
                 <Navbar.Toggle
