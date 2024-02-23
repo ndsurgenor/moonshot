@@ -40,7 +40,6 @@ function PhotoFeed(props) {
   const [query, setQuery] = useState("");
   const currentUser = useCurrentUser();
 
-
   useEffect(() => {
     const getPhotos = async () => {
       try {
@@ -65,30 +64,19 @@ function PhotoFeed(props) {
   useEffect(() => {
     const handleMount = async () => {
       try {
-        const { data } = await axiosReq.get(
-          `/equipment-profiles/${id}/`
-        );
-        setGear(data);
+        const [{ data: profile }, { data: gear }] =
+          await Promise.all([
+            axiosReq.get(`/user-profiles/${id}/`),
+            axiosReq.get(`/equipment-profiles/${id}/`)
+          ])
+        setProfile(profile);
+        setGear(gear);
       } catch (err) {
-        // console.log(err);
+        // console.log(err)
       }
-    };
-    handleMount();
-  }, [id]);
-
-  useEffect(() => {
-    const handleMount = async () => {
-      try {
-        const { data } = await axiosReq.get(
-          `/user-profiles/${id}/`
-        );
-        setProfile(data);
-      } catch (err) {
-        // console.log(err);
-      }
-    };
-    handleMount();
-  }, [id]);
+    }
+    handleMount()
+  }, [id])
 
   return (
     <>
@@ -96,12 +84,15 @@ function PhotoFeed(props) {
       <Row>
         {id ? (
           // User Profile          
-          <Container className="d-block d-md-flex text-center text-md-start my-3">
-            <Col xs={12} md={6}>
-              <h3>User Profile for {profile.user}</h3>
+          <Container className="d-md-flex text-center text-md-start my-3">
+            <Col xs={12} md={1} lg={2} className="text-center text-md-end me-3">
               <Avatar src={profile.avatar} height={75} />
             </Col>
-            <Col xs={12} md={6}>
+            <Col xs={12} md={5} lg={5} className="ms-sm-0 ms-md-3 ms-lg-0">
+              <h3>Profile for {profile.user}</h3>
+              <p>Photos added: {profile.photo_upload_count}</p>
+            </Col>
+            <Col xs={12} md={6} lg={5}>
               <h3>Main Gear</h3>
               <p className="mb-0">Telescope/Lens: {gear.main_lens}</p>
               <p className="mb-0">Camera: {gear.main_camera}</p>

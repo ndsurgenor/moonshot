@@ -43,7 +43,7 @@ function App() {
           <Route exact path="/equipment-profiles/:id" render={() => <GearEditForm />} />
           <Route exact path="/user-profiles/:id" render={() => (
             <PhotoFeed
-              filter={`user__userprofile:=${user_id}=-created_at&`}
+              filter={`user__userprofile=${user_id}&ordering=-created_at&`}
               message="No results"
             />
           )} />

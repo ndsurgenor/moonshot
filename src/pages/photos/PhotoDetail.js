@@ -28,10 +28,11 @@ function PhotoDetail() {
   useEffect(() => {
     const handleMount = async () => {
       try {
-        const [{ data: photo }, { data: comments }] = await Promise.all([
-          axiosReq.get(`/photos/${id}`),
-          axiosReq.get(`/comments/?photo=${id}`)
-        ])
+        const [{ data: photo }, { data: comments }]
+          = await Promise.all([
+            axiosReq.get(`/photos/${id}`),
+            axiosReq.get(`/comments/?photo=${id}`)
+          ])
         setPhoto({ results: [photo] });
         setComments(comments);
       } catch (err) {
