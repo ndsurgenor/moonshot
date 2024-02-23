@@ -28,17 +28,17 @@ const AccountEditForm = () => {
         name,
         details,
         avatar,
-    } = profileData; 
-    
+    } = profileData;
+
     const currentUser = useCurrentUser();
     const setCurrentUser = useSetCurrentUser();
     const { id } = useParams();
     const history = useHistory();
     const imageFile = useRef();
-    const [errors, setErrors] = useState({});       
+    const [errors, setErrors] = useState({});
 
     const successNotify = () => toast.success(
-        "Gear profile updated successfully"
+        "Account details updated successfully"
     );
     const errorNotify = () => toast.error(
         "An error occured while attempting to save. Please try again"
@@ -94,7 +94,9 @@ const AccountEditForm = () => {
         e.preventDefault();
         const formData = new FormData();
 
-        formData.append("avatar", imageFile.current.files[0]);
+        if (imageFile?.current?.files[0]) {
+            formData.append("avatar", imageFile?.current?.files[0]);
+        }
         formData.append("name", name);
         formData.append("details", details);
 
