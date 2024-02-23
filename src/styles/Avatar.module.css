@@ -1,6 +1,12 @@
-.Avatar {
+.Avatar,
+.AvatarImage {
     object-fit: cover;
     margin: auto;
     border: 2px solid goldenrod;
     border-radius: 50%;
+}
+
+.AvatarImage {
+    width: 12.5rem;
+    height: 12.5rem;
 }

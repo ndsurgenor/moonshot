@@ -29,7 +29,7 @@ function GearEditForm() {
     const history = useHistory();
     const { id } = useParams();
 
-    const sucessNotify = () => toast.success(
+    const successNotify = () => toast.success(
         "Gear profile updated successfully"
     );
     const errorNotify = () => toast.error(
@@ -78,7 +78,7 @@ function GearEditForm() {
         try {
             await axiosReq.put(`/equipment-profiles/${id}/`, formData);
             history.push(`/user-profiles/${id}`)
-            sucessNotify();
+            successNotify();
         } catch (err) {
             // console.log(err)
             errorNotify();

@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { useHistory, useParams } from 'react-router';
-// import { toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import { axiosReq } from "../../api/axiosDefaults";
 
 import { useCurrentUser, useSetCurrentUser } from '../../contexts/CurrentUserContext';
@@ -19,12 +19,6 @@ import buttonStyles from '../../styles/Button.module.css';
 
 
 const AccountEditForm = () => {
-    const currentUser = useCurrentUser();
-    const setCurrentUser = useSetCurrentUser();
-    const { id } = useParams();
-    const history = useHistory();
-    const imageFile = useRef();
-
     const [profileData, setProfileData] = useState({
         name: "",
         details: "",
@@ -34,8 +28,21 @@ const AccountEditForm = () => {
         name,
         details,
         avatar,
-    } = profileData;
-    const [errors, setErrors] = useState({});
+    } = profileData; 
+    
+    const currentUser = useCurrentUser();
+    const setCurrentUser = useSetCurrentUser();
+    const { id } = useParams();
+    const history = useHistory();
+    const imageFile = useRef();
+    const [errors, setErrors] = useState({});       
+
+    const successNotify = () => toast.success(
+        "Gear profile updated successfully"
+    );
+    const errorNotify = () => toast.error(
+        "An error occured while attempting to save. Please try again"
+    );
 
     useEffect(() => {
         const handleMount = async () => {
@@ -55,7 +62,7 @@ const AccountEditForm = () => {
                         avatar,
                     });
                 } catch (err) {
-                    // console.log(err);
+                    // console.log(err);                    
                     history.push("/");
                 }
             } else {
@@ -100,8 +107,10 @@ const AccountEditForm = () => {
                 profile_image: data.avatar,
             }));
             history.goBack();
+            successNotify();
         } catch (err) {
             // console.log(err);
+            errorNotify();
             setErrors(err.response?.data);
         }
     };
@@ -147,7 +156,7 @@ const AccountEditForm = () => {
                         Details added here will appear on your profile page
                     </p>
                     <Form.Control
-                    className="mb-2"
+                        className="mb-2"
                         type="file"
                         id="image-upload"
                         ref={imageFile}
@@ -159,7 +168,11 @@ const AccountEditForm = () => {
                             <Form.Label
                                 className={formStyles.FormLink}
                                 htmlFor="photo-upload">
-                                <Image className={avatarStyles.Avatar} src={avatar} height={200} />
+                                <Image
+                                    className={avatarStyles.AvatarImage}
+                                    src={avatar}
+                                    fluid
+                                />
                             </Form.Label>
                         )}
                         {errors?.image?.map((message, idx) => (
