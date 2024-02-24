@@ -56,7 +56,6 @@ This project was developed with 6 milestones (epics) in mind. From each of these
 - 1.7 - User Story: as a Site Admin I want to have access to search and filtering tools on the backend so I can find and edit particular data more easily
 - 1.8 - Dev Goal: create an early API deployment to Heroku to ensure all is working from the very start and allow continuous testing throughout production
 
-
 #### Milestone 2 - Frontend Navigation
 - 2.1 - Dev Goal: set up ReactJS and its supporting libraries via the IDE and create an early  deployment to Heroku in for frontend development to begin and to ensure all is working from the very start
 - 2.2 - User Story: as a Site Visitor/User I want access to navigation links at the top of every page so I can easily move between different areas of the site
@@ -70,49 +69,55 @@ This project was developed with 6 milestones (epics) in mind. From each of these
 - 3.4 - User Story: as a Site User I want to be able to sign out from my account so that I know my account cannot be accessed by unauthorised persons
 
 #### Milestone 4 - Photo Uploads
-- 4.1 - User Story: as a Site User I want to be able to upload my own astrological photos to the site so that they are saved to my account and can be shared with others
-- 4.2 - User Story: as a Site User I want to include specific details such as keywords, date, time, location etc. with my uploaded photos so that those details can be dispalyed alongside the photo for the benefit of other users
+- 4.1 - User Story: as a Site User I want to be able to upload my own astrological photos to the site so that they are shared on the home page and commented on/upvoted by others
+- 4.2 - User Story: as a Site User I want to include specific details such as keywords, date, time, location etc. with my uploaded photos so that those details can be displayed alongside the photo for the benefit of other users
 - 4.3 - User Story: as a Site User I want to be able to update the details of any photo I have added so that I can correct mistakes or add new information if required
 - 4.4 - User Story: as a Site User I want to be able to delete any photo I have added so that I can remove my photos from the site if I so desire
 - 4.5 - Dev Goal: write defensive code to prevent anyone from accessing the ability to update/delete posts which were not specifically uploaded by them
 
 #### Milestone 5 - Home & Profile Pages
-- 5.1 - User Story: as a Site Visitor/User I want to view all user posts from the home page so I can see the latest content when first accessing the site
-- 5.2 - User Story: as a Site User I want to be able to continously scroll through posts so that I don't have to navigate between and reload multiple pages
-- 5.3 - User Story: as a Site User I want to be able to search for posts using tags/keywords so I can view content specifically related to those tags/keywords and specific users
-- 5.4 - User Story: as a Site User I want to be able to select an individual post from the feed so I can view details, comments, and upvotes directly associated with that photo
+- 5.1 - User Story: as a Site Visitor/User I want to view all user photos from the home page so I can see the latest content when first accessing the site
+- 5.2 - User Story: as a Site User I want to be able to continously scroll through photos so that I don't have to navigate between and reload multiple pages
+- 5.3 - User Story: as a Site User I want to be able to search photos with keywords (title, feature, user, etc.) so I can view content specifically related to those tags/keywords
+- 5.4 - User Story: as a Site User I want to be able to select an individual photo from the feed so I can view details, comments, and upvotes directly associated with that photo
 - 5.5 - User Story: as a Site User I want to be able to access a personalised profile page so that I can add an avatar and personal bio
 
 #### Milestone 6 - Community Interaction
-- 6.1 User Story: as a Site User I want to be able to upvote other users posts so that I can show my appreciation for their photography
-- 6.2 User Story: as a Site User I want to be able to comment on other users posts so that I can ask questions and/or start a discussion about the photo
-- 6.3 - User Story: as a Site User I want to view a feed of those posts I've upvoted so I have easy access to those posts I've shown a particular interest in
-- 6.4 - User Story: as a Site User I want to view a feed of those posts I've commented on so I have easy access to posts where I am involved in a discussion thread
+- 6.1 User Story: as a Site User I want to be able to upvote other users photos so that I can show my appreciation for their photography
+- 6.2 User Story: as a Site User I want to be able to comment on other users photos so that I can ask questions and/or start a discussion about the photo
+- 6.3 - User Story: as a Site User I want to view a feed of those photos I've upvoted so I have easy access to those posts I've shown a particular interest in
+- 6.4 - User Story: as a Site User I want to view a feed of those photos I've commented on so I have easy access to posts where I am involved in a discussion thread
 
 ## Scope
 
 Using these milestones, goals, and stories to guide my thinking, the following was planned as the Scope of the project:
 
 - Responsive Design:
-  - Resizing on all devices from 360px upwards
+  - Resizing on all devices from 320px upwards (consideration for 280px+ also given)
   - Toggle menu for navbar links at smaller sizes
-- Home page displaying the latest uploads and links appropriate to logged-out/in status:
+- Home page displaying the latest uploads and links appropriate to logged-out/in status (for * see below):
   - Home (available to all users)
   - Sign Up  (logged-out)
   - Sign In  (logged-out)
-  - 'MySky' (logged-in; _see below_)
-- Links and features only available to logged-in users of the site:
-  - Infite scroll of feed on home page
-  - Ability to search for photos using tags/keywords
-  - 'MySky' options showing the users' own photos/only photos they have upvoted
-  - Ability to upvote/comment on other users' photos 
-- Stylised error pages which help guie users back to appropriate areas of the site
+  - Upload  (logged-in)
+  - Profile* (logged-in)
+  - Gear* (logged-in)
+  - Account* (logged-in)
+  - Sign Out* (logged-in)
+- Features appearing on the site as appropriate:
+  - Gallery with 'masonary' layout for photo feeds (Home, Profile)
+  - Infite scroll on photo feeds (Home, Profile)
+  - Ability to search for photos using filters/search bar (Home signed-in, Profile)
+  - Ability to star (like)/comment on other users' photos
+  - User avatar appearing in navbar
+  - Pages marked * above in dropdown menu when viewed on medium/large screens
+- Stylised 404 papge
 
 ## Structure
 
 With Strategy and Scope now in place, focus shifted to setting acceptance criteria for each of the above, thereby informing exactly what features to include as part of the project. These acceptance criteria were added to each Dev Goal and User Story on the aforementioned Kanban board to act as an insurance that task would be completed to the fullest extent needed.
 
-### Features
+### Features/Components
 Hovering over a reference (Ref) number below will display a description of that Dev Goal/User Story while clicking the link will return you to the relevant Milestone section of this document.
 
 **Milestone**|**Ref**|**Type**|**Acceptance Criteria/Features**
@@ -137,7 +142,7 @@ Photos|[4.1](#milestone-4---photo-uploads "As a Site User I want to be able to u
 Photos|[4.2](#milestone-4---photo-uploads "As a Site User I want to include specific details such as keywords, date, time, location etc. with my uploaded photos so that those details can be displayed alongside the photo for the benefit of other users")|User Story|<ul><li>Create Photo page and connect to API</li><li>Add code for title, user and image display</li><li>Add code to display photo information</li><li>Add code to display number of stars/comments</li><li>Style the Photo Page and Photo Card</li></ul>
 Photos|[4.3](#milestone-4---photo-uploads "As a Site User I want to be able to update the details of any photo I have added so that I can correct mistakes or add new information if required")|User Story|<ul><li>Create form fields for editing post</li><li>Retrieve details from API to pre-populate fields</li><li>Add code to prevent unauthorised users from accessing form</li></ul>
 Photos|[4.4](#milestone-4---photo-uploads "As a Site User I want to be able to delete any photo I have added so that I can remove my photos from the site if I so desire")|User Story|<ul><li>Create delete button only visible to photo owner</li><li>Create confirmation modal to ensure deletion is wanted</li><li>Add code to remove photo from the database</li><li>Style created components</li></ul>
-Photos|[4.5](#milestone-4---photo-uploads "Write defensive code to prevent anyone from accessing photos which were not specifically uploaded by them")|Dev Goal|<ul><li>Create useRedirect hook</li><li>Add hook to relevant pages to redirect users</li></ul>
+Photos|[4.5](#milestone-4---photo-uploads "Write defensive code to prevent anyone from accessing the ability to update/delete posts which were not specifically uploaded by them")|Dev Goal|<ul><li>Create useRedirect hook</li><li>Add hook to relevant pages to redirect users</li></ul>
 Pages|[5.1](#milestone-5---home--profile-pages "As a Site Visitor/User I want to view all user posts from the home page so I can see the latest content when first accessing the site")|User Story|<ul><li>Add photo feed to display user photos</li><li>Add infinite scroll to photos</li><li>Style photo feed using react-responsive-masonry</li></ul>
 Pages|[5.2](#milestone-5---home--profile-pages "As a Site User I want to be able to continously scroll through posts so that I don't have to navigate between and reload multiple pages")|User Story|<ul><li>Install react-infinite-scroll-component</li><li>Add Infinite Scroll component to PhotoFeed</li><li>Create reusable getMoreData utility and add to infinite scroll</li></ul>
 Pages|[5.3](#milestone-5---home--profile-pages "As a Site User I want to be able to search photos for keywords (title, feature, user etc.) so I can view content specifically related to those keywords")|User Story|<ul><li>Add search bar to photo feed</li><li>Add code to connect input field to API</li><li>Style search bar</li></ul>
@@ -158,64 +163,71 @@ Now that specific features had been decided upon, a wireframing tool was used to
 - Sign Up
 - Sign In
 
-![Home-Intial](TO BE ADDED)
-![Sign-Up](TO BE ADDED)
-![Sign-In](TO BE ADDED)
+![Home-Intial](docs/wf-home-initial.png)
+![Sign-Up](docs/wf-signup.png)
+![Sign-In](docs/wf-signin.png)
 
 ### Logged-In Pages
-- Home (logged-out)
-- Profile
+- Home (logged-in)
 - Upload
-- Photo Details
+- Photo Detail
+- Profile
+- Gear/Account Forms
 
-![Home-User](TO BE ADDED)
-![Profile](TO BE ADDED)
-![Upload](TO BE ADDED)
-![Photo-Details](TO BE ADDED)
+![Home-User](docs/wf-home-user.png)
+![Upload](docs/wf-upload-form.png)
+![Photo-Detail](docs/wf-photo-detail.png)
+![Profile](docs/wf-user-profile.png)
+![Profile-edit](docs/wf-profile-edit.png)
 
-
-### Database Model
+<!-- ### Database Model
 !!! MOVE THIS TO API README !!!
 
 The [database model](TO BE ADDED) was designed on the basis of django-allauth handling data for authorised users, while the booking model would be coded by myself. The diagram below shows the relationship of various tables within the project, but central to this is the relationship between the 'auth_user' and 'booking_sys_booking' tables; specifically, a one-to-many by connection of the user_id and contact_id fields i.e. a single user can create many bookings, but each booking can only belong to one user.
 
-![Database](TO BE ADDED)
+![Database](TO BE ADDED) -->
 
-## Surface  !!! TO BE UPDATED !!!
-With wireframe and database models in place, actual features of the site could now be coded using HTML, Bootstrap for ReactJS, CSS, and JavaScript, all according to the criteria listed above.
+## Surface
 
-### Design & Typography  !!! TO BE UPDATED !!!
-  - [Libre Baskerville](https://fonts.google.com/specimen/Libre+Baskerville) was chosen as the font for h1 and h2 elements throughout the site to give a refined 'serif' look to major headings
-  - All other text on the site is styled using [Noto Sans](https://fonts.google.com/noto/specimen/Noto+Sans) to provide a minimalist contrast to the headings and be clearly legible for larger portions of text
-  - The main colours selected for the site were chosen as a variation on a monochromatic scheme thus creating a refined, modern look to reflect the style of the restaurant. Specifically these colours and their hexadecimal codes are:
-    - Eerie Black #1B1B1B
-    - Dark Slate Grey #2F4F4F
-    - Dim Grey #696969
-    - Gainsboro #DCDCDC
-    - Ghost White #F8F8FF
-  - This palette was used to create the dark and light themes for the two distinct sections of the site i.e. the main/info section (darker theme) and the authorised-access only section for bookings (lighter theme). In each section the footer has a background colour of dark slate grey to provide continuity across the site   
-  - The background image and landing page image were selected from the [Pexels](https://www.pexels.com/) library ([specific credit below](#credits--acknowledgements)) and chosen to reflect elements of the colour scheme
-  - The site logo was chosen as an abstract representation of a steamer basket, a cooking device used in Asian cuisine, as well as somewhat imitating the light fixtures shown in the background image used throughout the site. This logo is also used as the favicon for the site. 
+With wireframe and database models in place, actual features of the site could now be coded using HTML, Bootstrap for ReactJS, CSS, and JavaScript JSX & React, all according to the criteria listed above.
 
-  ![Design](static/images/readme/design-board.png)
+### Design & Typography
+  - [Poppins](https://fonts.google.com/specimen/Poppins) was chosen as the font for h1 and h2 elements throughout the site to give a refined, rounded look to major headings
+  - All other text on the site is styled using [Barlow](https://fonts.google.com/noto/specimen/Barlow) to provide a minimalist, narrower-styled contrast to the headings and be clearly legible for larger portions of text
+  - The main colours selected for the site were chosen as reflection of elements often associated with space and the sky, but choosing in favour of deep blues over black to provide a nicer contrast for users. Specifically these colours and their hexadecimal codes are:
+    - Oxford Blue variant #05162E
+    - Gunmetal Green variant #0C2A33
+    - Goldenrod #DAA520
+    - Whitesmoke #F5F5F5
+    - Dim Grey #696969  
+  - The site logo was chosen as an abstract representation of the moon, while a full-moon icon along with a single 'm' is used as the favicon for the site. 
 
-### Features Implemented !!! TO BE UPDATED !!!
+  ![Design](docs/design.png)
 
-Each of the following implementations was added in response to the acceptance criteria above, specific details of which are provided below each feature heading for easy reference.
+### Features & Component Architecture Implemented
+
+Each of the following implementations was added in response to the user stories and acceptance criteria above, details of which are provided below each feature heading for easy reference.
 
 #### Navbar & Toggler
-> &bull; A navbar providing clear links to menu and location info  
-&bull; A highlighted link to the booking area page in the navbar
+> &bull; 2.2 - User Story: as a Site Visitor/User I want access to navigation links at the top of every page so I can easily move between different areas of the site  
+&bull; 2.3 - User Story: as a Site Visitor I want to easily access a sign up page so I can become a registered user and upload my own content/directly particpate with other users of the site  
+&bull; 2.4 - User Story: as a Site User I want to easily access a sign in page so I can use the full functionality of the site  
+&bull; 3.1 - User Story: as a Site User I want view additional navigational links so that I can access those areas of the site only available to registered users  
+&bull; 3.3 - User Story: as a Site Visitor/User I want have a clear indication as to whether or not I am logged in/logged out so I can easily discern if I need to sign up/sign in before accessing certain pages
 
-![Navbar](static/images/readme/features-navbar.png)
+![Navbar](docs/fts-navbar.png)
 
-- Links alter depending on which section of the site the user is accessing
+- The Navbar component is rendered at launch then adjusts conditionally as the user navigates the site
 - Links provided to each page of the site for easy navigation
+- Links alter depending on signed-in/signed-out status
 - Navbar remains fixed to top of screen for constant access to links, even when scrolling
-- Navbar toggler appears at screen sizes of 746px or less to preserve well-formatted layout
-- Booking link given button formatting to stand out to users
+- Navbar dropdown appears when signed-in and viewing 767px+ width to display links neatly
+- Navbar toggler appears at screen sizes <767px to preserve well-formatted layout
+- Navbar displays username and reusable Avatar component on dropdown when user is signed-in
+- Signout link restyled on toggler to continue displaying the username
+- Reusable Avatar component is hideen at screen <315px to preserve good formatting
 
-#### Footer
+#### Home Page
 > &bull; A footer providing summarised info and social links
 
 ![Footer](static/images/readme/features-footer.png)
@@ -327,7 +339,6 @@ Each of the following implementations was added in response to the acceptance cr
 - Users can either click 'Confirm & Update' to make changes or 'Return' to return to the booking list with details unchanged
 
 #### Booking Deletion Capabilities
-
 > &bull; A button beside each entry in the booking list to allow for its deletion  
 &bull; The displaying of the details to be deleted alongside a warning when clicking said button  
 &bull; The option of returning to the list without making changes  
@@ -340,18 +351,7 @@ Each of the following implementations was added in response to the acceptance cr
 - This form provides a warning that deleting a booking cannot be undone alongside details of the booking to be deleted
 - Users can either click 'Confirm & Delete' to delete the booking or 'Return' to return to the booking list without deletion
 
-#### Booking Overview for Admin
-> &bull; A list of all bookings made in the admin area of the site  
-&bull; A dropdown option for each individual booking allowing for selection of 'Confirmed' or 'Cancelled'
-
-![Overview](static/images/readme/features-admin-overview.png)
-
-- A link named 'Bookings' provided in the lefthand menu allows the admin to view all entries on the database
-- Booking names formatted as ```<date> <time> <contact> x<group size> - <status>``` and displayed in date order for ease of reading/understanding
-- Clicking a booking name will take the admin to its detailed view where the status can be updated and saved
-- These changes are fed back to the used via their booking list on the regular site
-
-#### Error Pages
+#### 404 Error Page
 > &bull; A 403 Error page which provides a link back to a valid area of the site  
 &bull; A 404 Error page which provides a link back to a valid area of the site  
 &bull; A 500 Error page which provides a link back to a valid area of the site
@@ -362,11 +362,11 @@ Each of the following implementations was added in response to the acceptance cr
 - The 404 page displays when the user tries to access a non-existent page and provides links back to the main areas of the site
 - The 500 page displays when the there is an error with the site's internal server and provides links back to the main areas of the site
 
-### Features to be implemented  !!! TO BE UPDATED !!!
+### Features to be implemented
 
 The following features have been identified as long-term goals which bring value to the UX; however, they have not been implemented at this stage as they would require a significant time investment, thereby delaying vital other features of the site, or a level of programming knowledge which I haven't yet developed. 
 
-- FEATURE 1
+- User following/unfollowing
 - FEATURE 2
 - FEATURE 3
 
