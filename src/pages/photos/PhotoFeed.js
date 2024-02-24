@@ -90,15 +90,23 @@ function PhotoFeed(props) {
             </Col>
             <Col xs={12} md={5} lg={5} className="ms-sm-0 ms-md-3 ms-lg-0">
               <h3>Profile for {profile.user}</h3>
-              <p>Photos added: {profile.photo_upload_count}</p>
+              <p className="mb-0">Name: {profile.name}</p>
+              <p className="mb-0">Details: {profile.details}</p>
+              <p className="mb-0">Photos added: {profile.photo_upload_count}</p>
               {currentUser?.profile_id === profile.id &&
-              <Link to={`/user-profiles/edit/${id}`}>Edit profile details</Link>}
+                <Link className={styles.FeedLink} to={`/user-profiles/edit/${id}`}>
+                  Edit profile details
+                </Link>}
             </Col>
             <Col xs={12} md={6} lg={5}>
               <h4 className="mt-0 mt-md-1">Main Gear</h4>
               <p className="mb-0">Scope/Lens: {gear.main_lens}</p>
               <p className="mb-0">Camera: {gear.main_camera}</p>
               <p className="mb-0">Other Equipment: {gear.other_equipment}</p>
+              {currentUser?.profile_id === profile.id &&
+                <Link className={styles.FeedLink} to={`/equipment-profiles/${id}`}>
+                  Edit equipment details
+                </Link>}
             </Col>
           </Container>
         ) : currentUser ? (

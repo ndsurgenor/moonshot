@@ -17,6 +17,10 @@
     text-decoration: underline;
 }
 
+.FeedLink:hover {
+    color: goldenrod;
+}
+
 .FeedSearchIcon {
     font-size: 1.5rem;
     margin-top: 0.5rem;

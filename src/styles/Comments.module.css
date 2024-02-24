@@ -6,11 +6,14 @@
 .CommentUser,
 .CommentUpdated {
     color: #05192e;
-    font-size: 0.85rem;
+    font-size: 0.8rem;
+    margin: auto;
 }
 
-.CommentUpdated {
+.CommentUpdated {    
     font-style: italic;
+    text-align: end;
+    margin-bottom: 0.25rem;
 }
 
 .CommentLink {
@@ -22,4 +25,17 @@
 .CommentLink:hover {
     color: goldenrod;
     cursor: pointer;
+}
+
+
+@media only screen and (max-width: 575px) {
+    .CommentUpdated {        
+        margin-top: -1.25rem;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    .CommentUpdated {        
+        margin-top: 0rem;
+    }
 }
