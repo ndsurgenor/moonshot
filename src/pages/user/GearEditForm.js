@@ -77,7 +77,7 @@ function GearEditForm() {
 
         try {
             await axiosReq.put(`/equipment-profiles/${id}/`, formData);
-            history.push(`/user-profiles/${id}`)
+            history.push(`/user-profiles/${id}`);
             successNotify();
         } catch (err) {
             // console.log(err)

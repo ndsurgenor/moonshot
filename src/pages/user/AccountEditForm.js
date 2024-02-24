@@ -108,7 +108,7 @@ const AccountEditForm = () => {
                 ...currentUser,
                 profile_image: data.avatar,
             }));
-            history.goBack();
+            history.push(`/user-profiles/${id}`);
             successNotify();
         } catch (err) {
             // console.log(err);
