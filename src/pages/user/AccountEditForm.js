@@ -130,7 +130,7 @@ const AccountEditForm = () => {
                 />
             </FloatingLabel>
 
-            <FloatingLabel className="mb-3" label="Details" controlId="details">
+            <FloatingLabel className="mb-3" label="Personal Details" controlId="details">
                 <Form.Control
                     type="text"
                     placeholder="details"
