@@ -78,9 +78,9 @@ This project was developed with 6 milestones (epics) in mind. From each of these
 #### Milestone 5 - Home & Profile Pages
 - 5.1 - User Story: as a Site Visitor/User I want to view all user photos from the home page so I can see the latest content when first accessing the site
 - 5.2 - User Story: as a Site User I want to be able to continously scroll through photos so that I don't have to navigate between and reload multiple pages
-- 5.3 - User Story: as a Site User I want to be able to search photos with keywords (title, feature, user, etc.) so I can view content specifically related to those tags/keywords
+- 5.3 - User Story: as a Site User I want to be able to search photos with keywords (title, feature, user, etc.) so I can view content specifically related to those keywords
 - 5.4 - User Story: as a Site User I want to be able to select an individual photo from the feed so I can view details, comments, and upvotes directly associated with that photo
-- 5.5 - User Story: as a Site User I want to be able to access a personalised profile page so that I can add an avatar and personal bio
+- 5.5 - User Story: as a Site User I want to be able to access a personalised profile page so that I can add an avatar, personal bio and equipment details
 
 #### Milestone 6 - Community Interaction
 - 6.1 User Story: as a Site User I want to be able to upvote other users photos so that I can show my appreciation for their photography
@@ -147,7 +147,7 @@ Pages|[5.1](#milestone-5---home--profile-pages "As a Site Visitor/User I want to
 Pages|[5.2](#milestone-5---home--profile-pages "As a Site User I want to be able to continously scroll through posts so that I don't have to navigate between and reload multiple pages")|User Story|<ul><li>Install react-infinite-scroll-component</li><li>Add Infinite Scroll component to PhotoFeed</li><li>Create reusable getMoreData utility and add to infinite scroll</li></ul>
 Pages|[5.3](#milestone-5---home--profile-pages "As a Site User I want to be able to search photos for keywords (title, feature, user etc.) so I can view content specifically related to those keywords")|User Story|<ul><li>Add search bar to photo feed</li><li>Add code to connect input field to API</li><li>Style search bar</li></ul>
 Pages|[5.4](#milestone-5---home--profile-pages "As a Site User I want to be able to select an individual photo from the feed so I can view details, comments, and upvotes directly associated with that photo")|User Story|<ul><li>Add link to photos in Home Page feed</li><li>Display selected photo on its own page</li><li>Display full details not shown on the Home Page feed</li><li>Display Edit & Delete buttons for owner of the photo</li></ul>
-Pages|[5.5](#milestone-5---home--profile-pages "As a Site User I want to be able to access a personalised profile page so that I can add an avatar and personal bio")|User Story|<ul><li>Dedicated profile page for user</li><li>Display of user's photos</li><li>Details regarding user</li><li>Account page to edit and update details</li></ul>
+Pages|[5.5](#milestone-5---home--profile-pages "As a Site User I want to be able to access a personalised profile page so that I can add an avatar, personal bio and equipment details")|User Story|<ul><li>Dedicated profile page for user</li><li>Display of user's photos</li><li>Details regarding user</li><li>Gear page to edit and update details</li><li>Account page to edit and update details</li></ul>
 Interaction|[6.1](#milestone-6---community-interaction "As a Site User I want to be able to upvote other users photos so that I can show my appreciation for their photography")|User Story|<ul><li>Prevent user from adding a star to their own photo</li><li>Allow user to add a star to other users' photos</li><li>Allow user to remove star from other users' photos</li><li>Increment/decrement star count accordingly</li></ul>
 Interaction|[6.2](#milestone-6---community-interaction "As a Site User I want to be able to comment on other users photos so that I can ask questions and/or start a discussion about the photo")|User Story|<ul><li>Add a form to let users create comments</li><li>Show all comments made on Photo Page</li><li>Allow users to edit/delete comments</li><li>Add infinite scroll to comments</li><li>Style comment forms and displays</li></ul>
 Interaction|[6.3](#milestone-6---community-interaction "As a Site User I want to view a feed of those photos I've upvoted so I have easy access to those photos I've shown a particular interest in")|User Story|<ul><li>Add filter buttons to signed in home page</li><li>Add route to connect to API and filter correct content</li><li>Style filter buttons</li></ul>
@@ -209,11 +209,12 @@ With wireframe and database models in place, actual features of the site could n
 Each of the following implementations was added in response to the user stories and acceptance criteria above, details of which are provided below each feature heading for easy reference.
 
 #### Navbar & Toggler
-> &bull; 2.2 - User Story: as a Site Visitor/User I want access to navigation links at the top of every page so I can easily move between different areas of the site  
+> &bull; 2.2 - User Story: as a Site Visitor/User I want access to navigation links at the top of every page so I can easily move between different areas of the site   
 &bull; 2.3 - User Story: as a Site Visitor I want to easily access a sign up page so I can become a registered user and upload my own content/directly particpate with other users of the site  
-&bull; 2.4 - User Story: as a Site User I want to easily access a sign in page so I can use the full functionality of the site  
-&bull; 3.1 - User Story: as a Site User I want view additional navigational links so that I can access those areas of the site only available to registered users  
-&bull; 3.3 - User Story: as a Site Visitor/User I want have a clear indication as to whether or not I am logged in/logged out so I can easily discern if I need to sign up/sign in before accessing certain pages
+&bull; 2.4 - User Story: as a Site User I want to easily access a sign in page so I can use the full functionality of the site   
+&bull; 3.1 - User Story: as a Site User I want view additional navigational links so that I can access those areas of the site only available to registered users    
+&bull; 3.3 - User Story: as a Site Visitor/User I want have a clear indication as to whether or not I am logged in/logged out so I can easily discern if I need to sign up/sign in before accessing certain pages    
+&bull; 3.4 - User Story: as a Site User I want to be able to sign out from my account so that I know my account cannot be accessed by unauthorised persons  
 
 ![Navbar](docs/fts-navbar.png)
 
@@ -228,152 +229,107 @@ Each of the following implementations was added in response to the user stories 
 - Reusable Avatar component is hideen at screen <315px to preserve good formatting
 
 #### Home Page
-> &bull; A footer providing summarised info and social links
+> &bull; 5.1 - User Story: as a Site Visitor/User I want to view all user photos from the home page so I can see the latest content when first accessing the site  
+&bull; 5.2 - User Story: as a Site User I want to be able to continously scroll through photos so that I don't have to navigate between and reload multiple pages  
+&bull; 5.3 - User Story: as a Site User I want to be able to search photos with keywords (title, feature, user, etc.) so I can view content specifically related to those keywords  
+&bull; 5.4 - User Story: as a Site User I want to be able to select an individual photo from the feed so I can view details, comments, and upvotes directly associated with that photo   
+&bull; 6.1 User Story: as a Site User I want to be able to upvote other users photos so that I can show my appreciation for their photography  
+&bull; 6.3 - User Story: as a Site User I want to view a feed of those photos I've upvoted so I have easy access to those posts I've shown a particular interest in  
+&bull; 6.4 - User Story: as a Site User I want to view a feed of those photos I've commented on so I have easy access to posts where I am involved in a discussion thread
 
-![Footer](static/images/readme/features-footer.png)
+![Home](docs/fts-home.png)
 
-- Footer remains fixed to bottom of screen for constant display of info and social links
-- Footer resizes and hides certain details at different screen sizes to preserve well-formatted layout
+- Signed-out users will see a welcome message displayed as the page's header
+- Signed-in users will see feed filters and a desciption as the page's header
+- Both views use the adaptible Photo Feed page which can be called with different filters for different views
+- Anytime the photo feed is called it displays using a reponsive 'masonry' layout and infinite scroll component
+- The reusable Asset component is called while photos are loading in the form of a 'loading-dot' animation along with text of 'Loading images...' 
+- The Photo Feed page also renders a search bar just below the page header
+- Further filtering is achieved with the Filters component in the signed-in view
+- Each photo is rendered using a reusable Photo Card component which allows for the adding of stars and access to individual user profiles
+- Each photo can be clicked directly to direct the user to an individual page for the image outlining photo details (see [Photo Details](#photo-details) below)
 
-#### Home Page
-> &bull; A home page displaying opening times of the restaurant  
-&bull; A home page also displaying a quick link to the booking area of the site  
-&bull; Elements that display/resize/scroll when viewed on different sized devices
+#### Sign Up/In
+> &bull; 2.3 - User Story: as a Site Visitor I want to easily access a sign up page so I can become a registered user and upload my own content/directly particpate with other users of the site    
+&bull; 2.4 - User Story: as a Site User I want to easily access a sign in page so I can use the full functionality of the site    
+&bull; 3.2 - User Story: as a Site User I want to remain logged in to the site until I choose otherwise so that my experience is not interuppted by having to continously re-enter my username and password  
 
-![Home](static/images/readme/features-home.png)
+![SignUpIn](docs/fts-signup-signin.png)
 
-- The 'Open' image provides a clear welcome to users of the site
-- The restaurant ethos, opening times and phone number are clearly displayed alongside this
-- An additional 'Book Now' button is provided to guide users who may have arrived at the site for that single purpose
-- Image and ethos hidden on smaller screens to preserve well-formatted layout and keep opening times clearly displayed
-- Additional 'Menu' button appears on smaller screens for easier navigation to menu page 
+- Simple forms allow the user to quickly enter details and sign up/sign in to the site
+- Links below each form help redirect the user if they have initially selected the inccorect access form 
+- Stylised success/error messages ('toasts') appear on clicking 'Submit' to provide immediate feedback from the form to the user
+- Field specific alerts let the user know of any specific issue with the data they have entered
+- JWTs are used to prevent the user from having to log in every 5 minutes or so 
 
-#### Menu Page
-> &bull; A static page showing the food and prices within the restaurant  
-&bull; Elements that display/resize/scroll when viewed on different sized devices
+#### Upload/Edit Photo
+> &bull; 4.1 - User Story: as a Site User I want to be able to upload my own astrological photos to the site so that they are shared on the home page and commented on/upvoted by others  
+&bull; 4.2 - User Story: as a Site User I want to include specific details such as keywords, date, time, location etc. with my uploaded photos so that those details can be displayed alongside the photo for the benefit of other users  
+&bull; 4.3 - User Story: as a Site User I want to be able to edit the details of any photo I have added so that I can correct mistakes or add new information if required  
 
-![Menu](static/images/readme/features-menu.png)
+![UploadEdit](docs/fts-upload-edit.png)
 
-- Food and prices clearly laid out under different headings
-- Layout switches from two to one-column design at smaller screen sizes
-- When necessary, page scrolls to display text hidden by footer
+- Image placeholder implemented with reusable Asset component to allow preview once image is selected by user
+- Different field types (file, text, textarea, date, time) direct the user as to what input to provide
+- Fields relating to equipment autofill according to details added by the user in the gear proile (see [Gear/Account Detail Forms](#gearaccount-detail-forms) below)
+- Edit form prevents user fomr changing image, only details, so that stars and commments remain relevant
+- Stylised success/error messages ('toasts') appear on clicking 'Submit' to provide immediate feedback from the form to the user
+- Field specific alerts let the user know of any specific issue with the data they have entered
 
-#### Location Page
-> &bull; A static page showing the map location and transport options for the restaurant  
-&bull; Elements that display/resize/scroll when viewed on different sized devices
+#### Photo Details
+> &bull; 4.2 - User Story: as a Site User I want to include specific details such as keywords, date, time, location etc. with my uploaded photos so that those details can be displayed alongside the photo for the benefit of other users  
+&bull; 4.3 - User Story: as a Site User I want to be able to update the details of any photo I have added so that I can correct mistakes or add new information if required  
+&bull; 4.4 - User Story: as a Site User I want to be able to delete any photo I have added so that I can remove my photos from the site if I so desire  
+&bull; 4.5 - Dev Goal: write defensive code to prevent anyone from accessing the ability to update/delete posts which were not specifically uploaded by them  
+&bull; 6.1 User Story: as a Site User I want to be able to upvote other users photos so that I can show my appreciation for their photography  
+&bull; 6.2 User Story: as a Site User I want to be able to comment on other users photos so that I can ask questions and/or start a discussion about the photo  
 
-![Location](static/images/readme/features-location.png)
+![PhotoDetails](docs/fts-photo-details.png)
 
 - Restaurant location clearly indicated at centre of map
 - Info regarding local parking and bus options given below map with appropriate icons
 - Map and transport info resizes to preserve well-formatted layout at smaller screen sizes
 
-#### Booking Admin
-> &bull; An admin area only allowing access to the site admin/superuser  
-&bull; A link to the database to clearly display the details of each booking i.e. entry in the database
+#### Profile
+> &bull; 5.5 - User Story: as a Site User I want to be able to access a personalised profile page so that I can add an avatar and personal bio  
 
-![Admin](static/images/readme/features-admin.png)
+![Profile](docs/fts-profile.png)
 
-- An admin area accessible via https://east-street-bc0671035c95.herokuapp.com/admin which can only be accessed by typing the address i.e. no direct link is provided to users of the site
-- Username and password details must be entered to gain access and will only admit those designated as administrators
-- A link named 'Bookings' provided in the lefthand menu allows the admin to view all entries on the database
+- A profile specific avatar is displayed using the reusable Avatar component
+- Personal and equipment details of the particular user are also displayed as a header
+- As with the home page above, a filtered photo feed (specific to the displayed user) is used to render the rest of the page
+- The reusable Asset component is called while photos are loading in the form of a 'loading-dot' animation along with text of 'Loading images...' 
+- As before, each photo is rendered using a reusable Photo Card component which allows for the adding of stars and access to an individual page for the image outlining details (see [Photo Details](#photo-details) above)
 
-#### Sign Up/In/Out Forms
-> &bull; A sign-up form requiring username and password details  
-&bull; A sign-in form requiring username and password details  
-&bull; A sign-out form requiring the user to confirm that they wish to sign out
+#### Gear/Account Detail Forms
+> &bull; 5.5 - User Story: as a Site User I want to be able to access a personalised profile page so that I can add an avatar, personal bio and equipment details  
 
-![Sign](static/images/readme/features-sign.png)
+![GearAccount](docs/fts-gear-account.png)
 
-- Sign-in form linked directly to 'Bookings' link to display if user is not already logged in
-- Text and link on sign-in form enables sign up if user is not already registered
-- Sign-in form requires username and password in order to access booking area
-- Sign-up form requires confirmation of password in case user types incorrectly in the first instance
-- Text and link on sign-up form enables sign in if user is already registered
-- Sign-out form linked directly to 'Logout' link and brand link in bookings section
-- 'Sign Out' button returns the user to the home page with confirmation alert if successful
-- 'Cancel' button keeps the user signed in and returns them to the 'New Booking' page 
-
-#### Booking Form
-> &bull; A booking form with date, time, and group size fields which saves those details to the database  
-&bull; The option to only select between the days of Wednesday to Sunday inclusive on the booking form  
-&bull; The option to only select between the hours of 12.30pm and 9.30pm inclusive on the booking form  
-&bull; The option to only select between the group size of 1 and 12 inclusive on the booking form  
-&bull; A navbar link to the form to allow access from a different area of the booking site
-
-![Form](static/images/readme/features-form.png)
-
-- The booking form is displayed as the initial page when the user signs into to this section of the site
-- This form can also be accessed using the 'New Booking' link in the navbar
-- The booking form displays the signed-in username and does not allow for this to be changed
-- The booking form also displays text advising user of days which are unavailable for booking
-- Attempting to book on today's date or earlier displays the message "A booking cannot be made any earlier than tomorrow"
-- Attempting to book on a Monday/Tuesday displays the message "Sorry, the restaurant is closed on a Monday/Tuesday"
-- Times are displayed as a dropdown selection in 15 minute intervals, only allowing for times when the restaurant is open
-- Group size is also displayed as a dropdown menu only allowing for groups between 1-12 persons
-
-#### User Booking List
-> &bull; A list of bookings particular to that user which displays automatically after they have submitted a valid booking  
-&bull; A navbar link to the list of bookings to allow access from a different area of the booking site
-
-![List](static/images/readme/features-list.png)
-
-- The booking list will display after a user has made a successful booking
-- This user-specific booking list can also be accessed via the 'Current Bookings' link in the navbar
-- Only bookings which the signed-in user has made will be displayed in the table
-- The booking list will show the status of the booking alongside 'Update ad 'Delete' buttons, if appropriate, to allow for full CRUD functionality
-- Date format and layout will adjust for smaller screen sizes in order to keep the list well organised
-
-#### Booking Update Capabilities
-> &bull; A button beside each entry in the booking list to allow updating of its details  
-&bull; The displaying of the current details within the booking form when clicking said button  
-&bull; The option of returning to the list without making changes  
-&bull; The updating of these details to the database when the user changes values and clicks 'Confirm'
-
-![Update](static/images/readme/features-update.png)
-
-- A button marked 'Update' appears beside all bookings marked as either 'Pending' or 'Confirmed'
-- The 'Update' button will be hidden for any entry whose status the restaurant has set to 'Cancelled'
-- Clicking this button takes the user to an adjusted version of the 'New Booking' page
-- This adjusted form provides a warning that confirmed bookings will be reset to 'Pending' if updated
-- Users can either click 'Confirm & Update' to make changes or 'Return' to return to the booking list with details unchanged
-
-#### Booking Deletion Capabilities
-> &bull; A button beside each entry in the booking list to allow for its deletion  
-&bull; The displaying of the details to be deleted alongside a warning when clicking said button  
-&bull; The option of returning to the list without making changes  
-&bull; The deletion of the booking on the database when the user clicks 'Confirm'
-
-![Delete](static/images/readme/features-delete.png)
-
-- A button marked 'Delete' appears beside all bookings in the booking list
-- Clicking this button takes the user to the 'Delete a Booking' confirmation page
-- This form provides a warning that deleting a booking cannot be undone alongside details of the booking to be deleted
-- Users can either click 'Confirm & Delete' to delete the booking or 'Return' to return to the booking list without deletion
+- Gear form allows user to set their favoured lens and camera along with any other equipment
+- Gear info set using this form is displayed on the user's profile and auto-filled in the upload form
+- Account form allows user to update personal image in reusable Avatar component as well as name and personal details
+- Account info set reusing this form is displayed on the user's profile
+- Stylised success/error messages ('toasts') appear on clicking 'Save' to provide immediate feedback from the form to the user
+- Field specific alerts let the user know of any specific issue with the data they have entered 
 
 #### 404 Error Page
-> &bull; A 403 Error page which provides a link back to a valid area of the site  
-&bull; A 404 Error page which provides a link back to a valid area of the site  
-&bull; A 500 Error page which provides a link back to a valid area of the site
 
-![Errors](static/images/readme/features-errors.png)
+![404](docs/fts-404.png)
 
-- The 403 page displays when the user tries to access an area they do not have permission to view and provides links back to the main areas of the site
-- The 404 page displays when the user tries to access a non-existent page and provides links back to the main areas of the site
-- The 500 page displays when the there is an error with the site's internal server and provides links back to the main areas of the site
+- The 404 page displays when the user tries to access a non-existent page
+- This page uses the reusable Asset component to display the no-results.png image alongside info text
 
 ### Features to be implemented
 
 The following features have been identified as long-term goals which bring value to the UX; however, they have not been implemented at this stage as they would require a significant time investment, thereby delaying vital other features of the site, or a level of programming knowledge which I haven't yet developed. 
 
-- User following/unfollowing
-- FEATURE 2
-- FEATURE 3
+- User following/unfollowing other users: 
 
 ### Technology & Resources  !!! TO BE UPDATED !!!
 
 #### Technologies Used  !!! TO BE UPDATED !!!
-In order to code and design these featured the following technologies were utilised:
+In order to code and design these features and components the following technologies were utilised:
 
 - Python Modules
   - asgiref==3.7.2
