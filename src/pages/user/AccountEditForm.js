@@ -139,10 +139,16 @@ const AccountEditForm = () => {
                     onChange={handleChange} />
             </FloatingLabel>
 
-            <Button className={buttonStyles.Button} onClick={() => history.goBack()}>
+            <Button
+                className={buttonStyles.Button}
+                onClick={() => history.push(`/user-profiles/${id}`)}
+            >
                 Cancel
             </Button>
-            <Button className={buttonStyles.Button} type="submit">
+            <Button
+                className={buttonStyles.Button}
+                type="submit"
+            >
                 Save
             </Button>
 

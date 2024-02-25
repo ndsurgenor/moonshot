@@ -122,10 +122,16 @@ function GearEditForm() {
                 />
             </FloatingLabel>
 
-            <Button className={buttonStyles.Button} onClick={() => history.goBack()}>
+            <Button
+                className={buttonStyles.Button}
+                onClick={() => history.push(`/user-profiles/${id}`)}
+            >
                 Cancel
             </Button>
-            <Button className={buttonStyles.Button} type="submit">
+            <Button
+                className={buttonStyles.Button}
+                type="submit"
+            >
                 Save
             </Button>
 
@@ -138,7 +144,7 @@ function GearEditForm() {
                 <Col xs={12} className={formStyles.Form}>
                     <h1>Edit main gear profile</h1>
                     <p>
-                        Details saved here will appear on your user profile 
+                        Details saved here will appear on your user profile
                         and the upload/edit page
                     </p>
                     {formFields}
