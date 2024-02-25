@@ -273,7 +273,7 @@ Each of the following implementations was added in response to the user stories 
 - Different field types (file, text, textarea, date, time) direct the user as to what input to provide
 - Fields relating to equipment autofill according to details added by the user in the gear proile (see [Gear/Account Detail Forms](#gearaccount-detail-forms) below)
 - Edit form prevents user fomr changing image, only details, so that stars and commments remain relevant
-- Stylised success/error messages ('toasts') appear on clicking 'Submit' to provide immediate feedback from the form to the user
+- Stylised success/upload/error messages ('toasts') appear on clicking 'Submit' to provide immediate feedback from the form to the user
 - Field specific alerts let the user know of any specific issue with the data they have entered
 
 #### Photo Details
@@ -297,8 +297,10 @@ Each of the following implementations was added in response to the user stories 
 ![PhotoComments](docs/fts-photo-comments.png)
 
 - The resuable Comment component renders a comment form and all user comments below the related image
-- Adding a comment causes a Comment component with the relevant info to immdeiately display below the Add Comment form
+- Clicking the 'add' button is not possible until text has actually been added to the form
+- Adding a comment causes a Comment component with the relevant info to immediately display below the Add Comment form
 - Comments are displayed with the reusable Avatar component allowing access to that user's profile
+- Clicking 'Edit' below an owned comment caused the form to render in place so changes can be made
 
 #### Profile
 > &bull; 5.5 - User Story: as a Site User I want to be able to access a personalised profile page so that I can add an avatar, personal bio and equipment details 
