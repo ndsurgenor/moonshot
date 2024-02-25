@@ -374,7 +374,7 @@ In order to code and design these features and components the following technolo
 - CSS
   - Used to modify Bootstrap behaviour where required and create additional custom stylings
 
-#### Packages Used
+#### Packages Used (frontend & backend)
 - [Gitpod](https://gitpod.io) used to code the site and transfer files between the editor and the repository
 - [GitHub](https://github.com) used to store the files for this project
 - [Cacoo](https://cacoo.com) used to develop the wireframe models for the site design
@@ -418,7 +418,7 @@ Manual and automated testing undertaken for this project can be viewed in the se
 
 ## Deployment  !!! TO BE UPDATED !!!
 
-### Heroku Deployment
+### Heroku Deployment (frontend & backend)
 This site was deployed to and is currently [hosted on the Heroku platform](https://moonshot-13d14b7a6fbd.herokuapp.com/). The steps for deploying to Heroku, using ElephantSQL as the database host, are as follows:
 
 #### Cloudinary Setup
