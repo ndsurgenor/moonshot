@@ -1,8 +1,7 @@
 # moonshot
+_Please note that this README file outlines the frontend development of this application; if you require info on backend development please navigate to [the README for moonshot-api](https://github.com/ndsurgenor/moonshot-api/blob/main/README.md)_
 
-Moonshot (stylised completely in lowercase) is a web application built for the sharing and discussion around amateur astrophtography. 
-
-This site has been designed to allow imagined users and visitors the ability to view photos uploaded by registered users of the site; registered users will also be able to create a personal profile and 'star' (that is, like) and comment on other users' posts.
+Moonshot (stylised completely in lowercase) is a web application built for the sharing and discussion around amateur astrophtography. This site has been designed to allow imagined users and visitors the ability to view photos uploaded by registered users of the site; registered users will also be able to create a personal profile and 'star' (that is, like) and comment on other users' posts.
 
 [LIVE LINK to Application](https://moonshot-13d14b7a6fbd.herokuapp.com/)<br>
 [LIVE LINK to API](https://moonshot-api-ff76437bf02f.herokuapp.com/)<br>
@@ -340,7 +339,7 @@ The following features have been identified as long-term goals which bring value
 
 ### Technology & Resources
 
-#### Technologies Used  !!! TO BE UPDATED !!!
+#### Technologies Used
 In order to code and design these features and components the following technologies were utilised:
 
 - Dependencies
@@ -360,38 +359,43 @@ In order to code and design these features and components the following technolo
   - react-scripts: 4.0.3
   - react-toastify: 8.1.0
   - web-vitals: 1.1.2
-- [React](https://react.dev/)
+- [Node](https://nodejs.org/en)
+  - Used as package manager to install dependencies
+- [ReactJS](https://react.dev/)
   - Used as the JavaScript library in the development of this project
 - [Heroku](https://heroku.com)
   - Used as the cloud-based deployment platform for this project
 - [ElephantSQL](https://elephantsql.com)
   - Used as the database hosting service
 - HTML
-  - Used as the base coding language for templates and site content
+  - Used for smaller static elements
 - [React Bootstrap](https://react-bootstrap.netlify.app/)
   - Used as the main means of design layout and formatting throughout the site
 - CSS
   - Used to modify Bootstrap behaviour where required and create additional custom stylings
-- JavaScript
-  - Used to create a timed automatic dismissal of on-screen alerts
 
 #### Packages Used
 - [Gitpod](https://gitpod.io) used to code the site and transfer files between the editor and the repository
 - [GitHub](https://github.com) used to store the files for this project
 - [Cacoo](https://cacoo.com) used to develop the wireframe models for the site design
-- [Lucid Chart](https://dbdiagram.io/) used to create the database diagram
+- [Lucid Chart](https://lucid.app/) used to create the database diagram (see backend README)
 - [Google Fonts](https://fonts.google.com/) used to style the text throughout the site
-- [Google Maps](https://www.google.com/maps) used to create the specific map for the Location page
 - [Coolors](https://coolors.co/) used to help create the colour scheme
+- [React Icons](https://react-icons.github.io/react-icons/) used to display the icons used throughout the site
+- [React Toastify](https://www.npmjs.com/package/react-toastify) used to create the success/uploading/error pop-ups throughout the site
+- [Infinite Scroll](https://www.npmjs.com/package/react-infinite-scroll-component) used to prevent pagination of photo pages and allow continuous browsing of content
+- [Responsive Masonary](https://www.npmjs.com/package/react-responsive-masonry) used to create a responsive gallery layout of images on photo feed pages
+- [Moment](https://www.npmjs.com/package/react-moment) used to correctly format date and time values on Photo Detail pages
 - [Markdown Table Generator](https://jakebathman.github.io/Markdown-Table-Generator/) used to create tables for documentation
 - PowerPoint, MS Paint, and the Windows Photo app used to produce image files for documentation
 
-#### Reference Materials  !!! TO BE UPDATED !!!
-- ADD MORE HERE...
+#### Reference Materials
+- [Rescript post](https://forum.rescript-lang.org/t/addeventlistener-for-window-resize/1254) by [Ferdinand Steenkamp](https://github.com/Ferdzzzzzzzz) referenced for creating `useViewportWidth()` hook 
+- Documentation for similar project by [Asia Wi](https://github.com/AsiaWi) referenced frequently when creating the READ.md and TESTING.md files on both frontend and backend repos
 - [Code Institute](https://codeinstitute.net/) course materials and walkthrough projects provided many reference points for implementing features of this project
-- Any other resources used are directly referenced where appropriate
+- Resources used are directly referenced within code where appropriate
 
-<!-- ## Testing  !!! TO BE UPDATED !!!
+## Testing  !!! TO BE UPDATED !!!
 
 Manual and automated testing undertaken for this project can be viewed in the separate [TESTING.md file](TESTING.md) (_Use CTRL + Click to this or any of the following links in a new tab/window_). You can also navigate to a specific area of the file by selecting one of the headings below:
 
@@ -402,7 +406,7 @@ Manual and automated testing undertaken for this project can be viewed in the se
     - [Responsiveness](TESTING.md#responsiveness)
     - [Authentication](TESTING.md#authentication)
     - [CRUD Functionality](TESTING.md#crud-functionality)
-- [Automated Testing](TESTING.md#automated-testing)
+<!-- - [Automated Testing](TESTING.md#automated-testing) -->
 - [Validator Testing](TESTING.md#validator-testing)
     - [W3C](TESTING.md#w3c)
     - [PEP8](TESTING.md#pep8)
@@ -415,7 +419,7 @@ Manual and automated testing undertaken for this project can be viewed in the se
 ## Deployment  !!! TO BE UPDATED !!!
 
 ### Heroku Deployment
-This site was deployed to and is currently [hosted on the Heroku platform](https://east-street-bc0671035c95.herokuapp.com/). The steps for deploying to Heroku, using ElephantSQL as the database host, are as follows:
+This site was deployed to and is currently [hosted on the Heroku platform](https://moonshot-13d14b7a6fbd.herokuapp.com/). The steps for deploying to Heroku, using ElephantSQL as the database host, are as follows:
 
 #### ElephantSQL Setup
   1. Navigate to [ElephantSQL](https://www.elephantsql.com/) and create an account/log in
@@ -487,7 +491,24 @@ This site was deployed to and is currently [hosted on the Heroku platform](https
 6. Run ```git clone copied-git-url``` in the terminal to finish
 
 ## Credits & Acknowledgements
-- Background image by...
+- All photos taken from [Pexels](https://www.pexels.com/) website and directly accredited to the following users (links point to specific photos):
+  - [Ave Calvar Martinez](https://www.pexels.com/photo/lighthouse-glowing-on-starry-sky-4954713/)
+  - [Benjamin Suter](https://www.pexels.com/photo/blue-and-green-sky-and-mountain-3617500/)
+  - [Eberhard Grossgasteiger](https://www.pexels.com/photo/mountain-rock-and-moon-1366835/)
+  - [Faik Akmd](https://www.pexels.com/photo/photo-of-night-sky-1025469/)
+  - [Flavien Beauvais](https://www.pexels.com/photo/stars-in-the-sky-at-night-14596641/)
+  - [Frank Cone](https://www.pexels.com/photo/super-moon-over-snowcapped-mountain-2361600/)
+  - [Marco Milanesi](https://www.pexels.com/photo/photo-of-mountain-under-starry-night-sky-2670898/)
+  - [Neale LaSalle](https://www.pexels.com/photo/silhouette-of-trees-during-nighttime-631477/)  
+  - [Rakicevic Nenad](https://www.pexels.com/photo/creative-photo-of-person-holding-glass-mason-jar-under-a-starry-sky-1274260/)
+  - [Ross Peebles](https://www.pexels.com/photo/bare-tree-under-starry-sky-731649/)
+  - [S Migaj](https://www.pexels.com/photo/water-falls-1009136/)
+  - [Şeyma Alkaş](https://www.pexels.com/photo/photo-of-full-moon-on-the-sky-15018956/)
+  - [Shahidrafique Awan](https://www.pexels.com/photo/crescent-moon-during-night-744479/)
+  - [Son Tung Tran](https://www.pexels.com/photo/full-blood-moon-in-an-evening-sky-6540589/)
+  - [Stein Egil Liland](https://www.pexels.com/photo/aurora-borealis-photo-1933317/)
+  - ['Pixabay'](https://www.pexels.com/photo/great-sphinx-of-giza-under-blue-starry-sky-262780/)
+  - ['Visit Greenland'](https://www.pexels.com/photo/aurora-borealis-360912/)  
 - useViewportWidth() hook adapted from [code by Ferdinand Steenkamp](https://forum.rescript-lang.org/t/addeventlistener-for-window-resize/1254/3)
-- README.md and TESTING.md structure/outline adapted from documentation by ...
+- README.md and TESTING.md structure/outline adapted from [Asia Wi](https://github.com/AsiaWi/snap-it-up-frontend)
 - Many thanks to my Code Institute tutor [Daisy McGirr](https://www.linkedin.com/in/daisy-mcgirr-4a3671173/) for her guidance, support, and strong effort in helping me to build this project
