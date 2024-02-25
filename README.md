@@ -421,36 +421,30 @@ Manual and automated testing undertaken for this project can be viewed in the se
 ### Heroku Deployment
 This site was deployed to and is currently [hosted on the Heroku platform](https://moonshot-13d14b7a6fbd.herokuapp.com/). The steps for deploying to Heroku, using ElephantSQL as the database host, are as follows:
 
-#### ElephantSQL Setup
-  1. Navigate to [ElephantSQL](https://www.elephantsql.com/) and create an account/log in
-  2. Click 'Create New Instance' in the top right
-  3. Enter an Instance/Database name, choose a Plan (free version will suffice) then click 'Select Region'
-  4. Select a region from the dropdown, click 'Review' and then 'Create instance'
-  5. Return to the dashboard and click on the instance name
-  6. In the URL section click the copy icon to copy the database URL
+#### Cloudinary Setup
+  1. Navigate to [Cloudinary](https://www.cloudinary.com/) and create an account/log in
+  2. Navigate to 'Programmable Media' and then 'Dashboard'
+  3. Copy the value called 'API environment variable'
 
-#### Django Project Settings
-  7. In the project workspace, navigate to/create a file named 'Procfile' (remember the capital 'P')
-  8. Add the following code replacing ```<myapp>``` with the actual app name then save the file:
-      ``` python
-      web: gunicorn <myapp>.wsgi
-      ```
-  9. Now navigate to/create a file named 'env.py'
-  10. Add the following code, replacing ```<myurl>``` with the URL just copied from ElephantSQL and ```<mykey>``` with a string of your choice then save the file:
+#### ElephantSQL Setup
+  4. Navigate to [ElephantSQL](https://www.elephantsql.com/) and create an account/log in
+  5. Click 'Create New Instance' in the top right
+  6. Enter an Instance/Database name, choose a Plan (free version will suffice) then click 'Select Region'
+  7. Select a region from the dropdown, click 'Review' and then 'Create instance'
+  8. Return to the dashboard and click on the instance name
+  9. In the URL section click the copy icon to copy the database URL
+
+#### Backend Setup
+  10. In the backend repo navigate to/create a file named 'env.py'
+  11. Add the following code, replacing `<mycloudinaryurl>` with your personal link from Cloudinary, `<mydatabaseurl>` with the URL copied from ElephantSQL and, `<mykey>` with a string of your choice then save the file:
       ``` python
       import os
 
-      os.environ["DATABASE_URL"]=<myurl>
+      os.environ['CLOUDINARY_URL']=<mycloudinaryurl>
+      os.environ["DATABASE_URL"]=<mydatabaseurl>
       os.environ["SECRET_KEY"]=<mykey>
       ```
-  11. Open 'settings.py' and add the following near the top of the code:
-      ```python
-      import os
-      import dj_database_url
-      if os.path.isfile('env.py'):
-        import env
-      ```
-  12. Further down the page, replace any current instance of the SECRET_KEY variable with:
+  12. Open 'settings.py' and replace any current instance of the SECRET_KEY variable with:
       ``` python
       SECRET_KEY = os.environ.get('SECRET_KEY')
       ```
@@ -463,18 +457,44 @@ This site was deployed to and is currently [hosted on the Heroku platform](https
   14. Save the file then run ```python manage.py migrate``` in the terminal
   15. Commit and push these changes to the repository
 
-#### Heroku Setup
+#### Backend Heroku Setup
   16. Navigate to [Heroku](https://heroku.com) and create an account/log in
   17. Click 'New' in the top right and select 'Create New App'
   18. Enter an App name (must be unique), choose a region, and then click 'Create app'
   19. Select 'Settings' in the menubar
   20. Click 'Reveal Config Vars' and add the following:<br>
+    - CLOUDINARY_URL: the CLOUDINARY_URL copied from Cloudinary<br>
     - DATABASE_URL: the DATABASE_URL copied from ElephantSQL<br>
     - SECRET_KEY: The SECRET_KEY string you created<br>
     - PORT: 8000
   21. Click 'Deploy' in the menubar tab then 'GitHub' under 'Deployment method'
   22. Select the repository you want to deploy and click 'Connect'
-  23. Scroll down and click 'Deploy Branch' to complete the process
+  23. Scroll down and click 'Deploy Branch' to complete the process (note the deployed URL)
+
+#### Frontend Setup
+  24. In the project workspace, navigate to/create a file named 'Procfile' (remember the capital 'P') and add the code `web: serve -s build`
+  25. Install axios (if not already done) using the command `npm install axios`and create a folder/file called axios/axiosDefaults under src
+  26. Add the following code, replacing `<myapiurl>` with the deployed API URL from step 23:
+    ``` JSX
+      import axios from 'axios';
+
+      axios.defaults.baseURL = '<myapiurl>';
+      axios.defaults.headers.post['Content-Type'] = 'multipart/form-data';
+      axios.defaults.withCredentials = true;
+
+      export const axiosReq = axios.create();
+      export const axiosRes = axios.create();
+    ```
+  27. Import this file to App.js before saving, commiting and pushing changes to repo
+
+#### Frontend Heroku Setup
+  28. Navigate to [Heroku](https://heroku.com) and log in
+  29. Click 'New' in the top right and select 'Create New App'
+  30. Enter an App name (must be unique), choose a region, and then click 'Create app'
+  31. Click 'Deploy' in the menubar tab then 'GitHub' under 'Deployment method'
+  32. Select the repository you want to deploy and click 'Connect'
+  33. Scroll down and click 'Deploy Branch' to complete the process
+
 
 ### Forking the Repository
 1. Login to/create your [GitHub](https://github.com) account
@@ -509,6 +529,6 @@ This site was deployed to and is currently [hosted on the Heroku platform](https
   - [Stein Egil Liland](https://www.pexels.com/photo/aurora-borealis-photo-1933317/)
   - ['Pixabay'](https://www.pexels.com/photo/great-sphinx-of-giza-under-blue-starry-sky-262780/)
   - ['Visit Greenland'](https://www.pexels.com/photo/aurora-borealis-360912/)  
-- useViewportWidth() hook adapted from [code by Ferdinand Steenkamp](https://forum.rescript-lang.org/t/addeventlistener-for-window-resize/1254/3)
+- `useViewportWidth()` hook adapted from [code by Ferdinand Steenkamp](https://forum.rescript-lang.org/t/addeventlistener-for-window-resize/1254/3)
 - README.md and TESTING.md structure/outline adapted from [Asia Wi](https://github.com/AsiaWi/snap-it-up-frontend)
 - Many thanks to my Code Institute tutor [Daisy McGirr](https://www.linkedin.com/in/daisy-mcgirr-4a3671173/) for her guidance, support, and strong effort in helping me to build this project
