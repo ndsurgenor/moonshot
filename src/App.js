@@ -1,4 +1,4 @@
-import { Route, Switch, useParams } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import { ToastContainer, Slide } from 'react-toastify';
 import './api/axiosDefaults';
 
@@ -24,7 +24,6 @@ import 'react-toastify/dist/ReactToastify.css';
 function App() {
   const currentUser = useCurrentUser();
   const user_id = currentUser?.profile_id || "";
-  const { id } = useParams();
 
   return (<>
     <div className={styles.App}>
@@ -45,10 +44,7 @@ function App() {
           <Route exact path="/photos/:id/edit" render={() => <PhotoEditForm />} />
           <Route exact path="/photos/:id" render={() => <PhotoDetail />} />
           <Route exact path="/user-profiles/:id" render={() => (
-            <PhotoFeed
-              filter={`user__userprofile=6&ordering=-created_at&`}
-              message="No results"
-            />
+            <PhotoFeed message="No results" user_profile/>
           )} />
           <Route exact path="/equipment-profiles/:id" render={() => <GearEditForm />} />
           <Route exact path="/user-profiles/edit/:id" render={() => <AccountEditForm />} />

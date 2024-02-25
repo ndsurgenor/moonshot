@@ -30,6 +30,7 @@ function PhotoFeed(props) {
     filter = "",
     header,
     message,
+    user_profile,
   } = props
   const [photos, setPhotos] = useState({ results: [] });
   const [gear, setGear] = useState({});
@@ -44,7 +45,11 @@ function PhotoFeed(props) {
     const getPhotos = async () => {
       try {
         const { data } = await axiosReq.get(
-          `/photos/?${filter}search=${query}`
+          user_profile ? (
+            `/photos/?user__userprofile=${id}&ordering=-created_at&search=${query}`
+          ) : (
+            `/photos/?${filter}search=${query}`
+          )
         )
         setPhotos(data)
         setDataLoaded(true)
@@ -59,7 +64,7 @@ function PhotoFeed(props) {
     return () => {
       clearTimeout(photoFeedDelay)
     }
-  }, [filter, pathname, query, currentUser])
+  }, [filter, pathname, query, currentUser, id, user_profile])
 
   useEffect(() => {
     const handleMount = async () => {
