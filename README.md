@@ -204,7 +204,7 @@ With wireframe and database models in place, actual features of the site could n
 
   ![Design](docs/design.png)
 
-### Features & Component Architecture Implemented
+### Features & Components Implemented
 
 Each of the following implementations was added in response to the user stories and acceptance criteria above, details of which are provided below each feature heading for easy reference.
 
@@ -281,17 +281,27 @@ Each of the following implementations was added in response to the user stories 
 &bull; 4.3 - User Story: as a Site User I want to be able to update the details of any photo I have added so that I can correct mistakes or add new information if required  
 &bull; 4.4 - User Story: as a Site User I want to be able to delete any photo I have added so that I can remove my photos from the site if I so desire  
 &bull; 4.5 - Dev Goal: write defensive code to prevent anyone from accessing the ability to update/delete posts which were not specifically uploaded by them  
-&bull; 6.1 User Story: as a Site User I want to be able to upvote other users photos so that I can show my appreciation for their photography  
-&bull; 6.2 User Story: as a Site User I want to be able to comment on other users photos so that I can ask questions and/or start a discussion about the photo  
+&bull; 6.1 User Story: as a Site User I want to be able to upvote other users photos so that I can show my appreciation for their photography    
 
 ![PhotoDetails](docs/fts-photo-details.png)
 
-- Restaurant location clearly indicated at centre of map
-- Info regarding local parking and bus options given below map with appropriate icons
-- Map and transport info resizes to preserve well-formatted layout at smaller screen sizes
+- The reusable PhotoCard component renders the image along with various details entered by the user
+- As with the home/profile pages, signed-in non-owners can click to add a star to the image
+- If the photo belongs to the sign-in user, 'Edit' and 'Delete' buttons will also appear above the image
+- Selecting 'Edit' redirects the user to the relevant form with pre-populated fields for the photo
+- Selecting 'Delete' will display a confirmation modal to help prevent accidental deletion
+
+#### Photo Comments
+> &bull; 6.2 User Story: as a Site User I want to be able to comment on other users photos so that I can ask questions and/or start a discussion about the photo
+
+![PhotoComments](docs/fts-photo-comments.png)
+
+- The resuable Comment component renders a comment form and all user comments below the related image
+- Adding a comment causes a Comment component with the relevant info to immdeiately display below the Add Comment form
+- Comments are displayed with the reusable Avatar component allowing access to that user's profile
 
 #### Profile
-> &bull; 5.5 - User Story: as a Site User I want to be able to access a personalised profile page so that I can add an avatar and personal bio  
+> &bull; 5.5 - User Story: as a Site User I want to be able to access a personalised profile page so that I can add an avatar, personal bio and equipment details 
 
 ![Profile](docs/fts-profile.png)
 
@@ -324,53 +334,52 @@ Each of the following implementations was added in response to the user stories 
 
 The following features have been identified as long-term goals which bring value to the UX; however, they have not been implemented at this stage as they would require a significant time investment, thereby delaying vital other features of the site, or a level of programming knowledge which I haven't yet developed. 
 
-- User following/unfollowing other users: 
+- Following/unfollowing other users: requires a new model at the backend and extensive work on the frontend which was not within the time capabilities of the initial project
 
-### Technology & Resources  !!! TO BE UPDATED !!!
+### Technology & Resources
 
 #### Technologies Used  !!! TO BE UPDATED !!!
 In order to code and design these features and components the following technologies were utilised:
 
-- Python Modules
-  - asgiref==3.7.2
-  - cloudinary==1.34.0
-  - dj-database-url==0.5.0
-  - dj3-cloudinary-storage==0.0.6
-  - Django==4.2.7
-  - django-allauth==0.55.0
-  - gunicorn==21.2.0
-  - oauthlib==3.2.2
-  - psycopg2==2.9.7
-  - PyJWT==2.8.0
-  - python3-openid==3.2.0
-  - requests-oauthlib==1.3.1
-  - sqlparse==0.4.4
-  - urllib3==1.26.15
-- [Django](https://www.djangoproject.com/)
-  - Used as the main Python framework in the development of this project
-  - django-allauth is employed as the means of managing user accounts used for the booking system
-  - Jinga/Django templating is used for queries to the database to insert data from it onto the site pages 
+- Dependencies
+  - axios: 0.21.4
+  - bootstrap: 4.6.0
+  - jwt-decode: 3.1.2
+  - moment: 2.30.1
+  - node: 16.20.2
+  - react: 17.0.2
+  - react-bootstrap: 2.10.0
+  - react-dom: 17.0.2
+  - react-icons: 5.0.1
+  - react-infinite-scroll-component: 6.1.0
+  - react-moment: 1.1.3
+  - react-responsive-masonry: 2.1.7
+  - react-router-dom: 5.3.0
+  - react-scripts: 4.0.3
+  - react-toastify: 8.1.0
+  - web-vitals: 1.1.2
+- [React](https://react.dev/)
+  - Used as the JavaScript library in the development of this project
 - [Heroku](https://heroku.com)
   - Used as the cloud-based deployment platform for this project
 - [ElephantSQL](https://elephantsql.com)
   - Used as the database hosting service
 - HTML
   - Used as the base coding language for templates and site content
-- [Bootstrap](https://getbootstrap.com/)
+- [React Bootstrap](https://react-bootstrap.netlify.app/)
   - Used as the main means of design layout and formatting throughout the site
 - CSS
   - Used to modify Bootstrap behaviour where required and create additional custom stylings
 - JavaScript
   - Used to create a timed automatic dismissal of on-screen alerts
 
-#### Packages Used !!! TO BE UPDATED !!!
+#### Packages Used
 - [Gitpod](https://gitpod.io) used to code the site and transfer files between the editor and the repository
 - [GitHub](https://github.com) used to store the files for this project
 - [Cacoo](https://cacoo.com) used to develop the wireframe models for the site design
-- [DBDiagram](https://dbdiagram.io/) used to create the database diagram
+- [Lucid Chart](https://dbdiagram.io/) used to create the database diagram
 - [Google Fonts](https://fonts.google.com/) used to style the text throughout the site
 - [Google Maps](https://www.google.com/maps) used to create the specific map for the Location page
-- [TinyURL](https://tinyurl.com/app) used to shorten link for map source
 - [Coolors](https://coolors.co/) used to help create the colour scheme
 - [Markdown Table Generator](https://jakebathman.github.io/Markdown-Table-Generator/) used to create tables for documentation
 - PowerPoint, MS Paint, and the Windows Photo app used to produce image files for documentation
@@ -380,7 +389,7 @@ In order to code and design these features and components the following technolo
 - [Code Institute](https://codeinstitute.net/) course materials and walkthrough projects provided many reference points for implementing features of this project
 - Any other resources used are directly referenced where appropriate
 
-## Testing  !!! TO BE UPDATED !!!
+<!-- ## Testing  !!! TO BE UPDATED !!!
 
 Manual and automated testing undertaken for this project can be viewed in the separate [TESTING.md file](TESTING.md) (_Use CTRL + Click to this or any of the following links in a new tab/window_). You can also navigate to a specific area of the file by selecting one of the headings below:
 
@@ -399,7 +408,7 @@ Manual and automated testing undertaken for this project can be viewed in the se
 - [Accessibility & Performance](TESTING.md#accessibility--performance)
     - [WAVE](TESTING.md#wave)
     - [Lighthouse](TESTING.md#lighthouse)
-- [Bugs](TESTING.md#bugs)
+- [Bugs](TESTING.md#bugs) -->
 
 ## Deployment  !!! TO BE UPDATED !!!
 
@@ -479,4 +488,4 @@ This site was deployed to and is currently [hosted on the Heroku platform](https
 - Background image by...
 - useViewportWidth() hook adapted from [code by Ferdinand Steenkamp](https://forum.rescript-lang.org/t/addeventlistener-for-window-resize/1254/3)
 - README.md and TESTING.md structure/outline adapted from documentation by ...
-- Many thanks to my Code Institute tutor [Daisy McGirr]([https://github.com/G-Taylor](https://www.linkedin.com/in/daisy-mcgirr-4a3671173/)) for her guidance and support in building this project
+- Many thanks to my Code Institute tutor [Daisy McGirr](https://www.linkedin.com/in/daisy-mcgirr-4a3671173/) for her guidance, support, and strong effort in helping me to build this project
