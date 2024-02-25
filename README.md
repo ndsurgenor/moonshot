@@ -495,20 +495,21 @@ This site was deployed to and is currently [hosted on the Heroku platform](https
   32. Select the repository you want to deploy and click 'Connect'
   33. Scroll down and click 'Deploy Branch' to complete the process
 
-
 ### Forking the Repository
 1. Login to/create your [GitHub](https://github.com) account
-2. Navigate to the EastSt. GitHub Repository: https://github.com/ndsurgenor/east-street
+2. Navigate to the moonshot GitHub Repository: https://github.com/ndsurgenor/moonshot
 3. Towards the top right, under the main banner, click 'Fork'
 4. Adjust the form fields if desired, then click 'Create fork' to finish
+_Repeat these steps for the [moonshot-api](https://github.com/ndsurgenor/moonshot-api) repo if required, as described in backend README_
 
 ### Cloning the Repository/Running Locally
 1. Login to/create your [GitHub](https://github.com) account
-2. Navigate to the EastSt. GitHub Repository: https://github.com/ndsurgenor/east-street
+2. Navigate to the moonshot Repository: https://github.com/ndsurgenor/moonshot
 3. Click the '<> Code' dropdown button and ensure 'HTTPS' is selected
 4. Click the copy icon (two overlapped squares) beside the repository URL
 5. Open your local IDE and create a new project, ensuring git is installed
 6. Run ```git clone copied-git-url``` in the terminal to finish
+_Repeat these steps for the [moonshot-api](https://github.com/ndsurgenor/moonshot-api) repo if required, as described in backend README_
 
 ## Credits & Acknowledgements
 - All photos taken from [Pexels](https://www.pexels.com/) website and directly accredited to the following users (links point to specific photos):
