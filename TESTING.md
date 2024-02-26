@@ -20,7 +20,6 @@ _Note: this document only contains testing info for the moonshot frontend site_
 <!-- - [Automated Testing](#automated-testing) -->
 - [Validator Testing](#validator-testing)
     - [W3C](#w3c)
-    - [PEP8](#pep8)
     - [JSHint](#jshint)
 - [Accessibility & Performance](#accessibility--performance)
     - [WAVE](#wave)
@@ -140,6 +139,7 @@ User can delete their own comment|[5.4](README.md#milestone-5---home--profile-pa
 -----|:-----:|-----|-----|:-----:
 
 
+
 #### Gear Detail Tests
 
 **Test**|**Ref(s)**|**Steps**|**Expected**|**Result**
@@ -152,24 +152,23 @@ User can delete their own comment|[5.4](README.md#milestone-5---home--profile-pa
 -----|:-----:|-----|-----|:-----:
 
 
-## Automated Testing
+<!-- ## Automated Testing
 
 A number of automated tests have been written to provide additional validation alongside those manual tests which check for a user's ability to view the booking section, depending on whether or not they are authenticated, as well as attempts to update/delete bookings which do not belong to a user.
 
 All of these tests are found within the [tests.py](booking_sys/tests.py) file in the repository.
 
-![Automated](static/images/testing/testing-automated.png)
+![Automated](static/images/testing/testing-automated.png) -->
 
 ## Validator Testing
 
 ### W3C
-All pages have been passed through the [W3C HTML Validator](https://validator.w3.org/) successfully save for a few minor issues which have been left 'as is' as attempts to correct them proved unsuccessful and lead to results which devalued the user experience. Specifically, these were:
+HTML copied from the page source of the deployed frontened has been passed through [W3C HTML Validator](https://validator.w3.org/) and shows 8 info comments regarding trailing slahes but no errors.
 
-- The use of a 'background' attribute in the body tag of base.html. The validator suggested to replace this with CSS but attempts to do so meant the background image failed to load
-- The use of iframe styling attributes on the location.html page. Again, the validator suggested CSS replacements but these caused the map to display incorrectly and almost be unreadable
+All CSS files have been passed through Jigsaw, the [W3C CSS Validator](https://jigsaw.w3.org/css-validator/) and have also been found to be without any errors
 
-### PEP8
-All Python files in the booking_sys and eaststreet apps, as well env.py and manage.py, have been passed through the [Code Institute PEP8 Linter](https://pep8ci.herokuapp.com/). The only warnings given were for the settings.py file which contains a small number of long lines (i.e. greater than 80 characters) under AUTH_PASSWORD_VALIDATORS; as this is code implemented by Django itself at setup, these lines will be left unchanged. 
+<!-- ### PEP8
+All Python files in the booking_sys and eaststreet apps, as well env.py and manage.py, have been passed through the [Code Institute PEP8 Linter](https://pep8ci.herokuapp.com/). The only warnings given were for the settings.py file which contains a small number of long lines (i.e. greater than 80 characters) under AUTH_PASSWORD_VALIDATORS; as this is code implemented by Django itself at setup, these lines will be left unchanged.  -->
 
 ### JSHint
 The small JavaScript snippet under the footer of base.html has been passed through [JShint](https://jshint.com/) without issue.

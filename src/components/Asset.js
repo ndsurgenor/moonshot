@@ -9,7 +9,7 @@ const Asset = ({ spinner, src, message }) => {
         <div className={assetStyles.Asset}>
             {spinner && <Spinner animation="grow" />}
             {src && <img src={src} alt={message} />}
-            {message && <p>{message}</p>}          
+            {message && <p>{message}</p>}
         </div>
     )
 }

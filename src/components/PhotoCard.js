@@ -143,16 +143,16 @@ const PhotoCard = (props) => {
 
       {/* Owner: always shown on Home Page, but only
       shown on Photo Page when user is not owner */}
-          {(!photoPage || (!is_owner && photoPage)) &&
-            <Link to={`/user-profiles/${user_id}`}>
-              <Container className="d-flex g-0">
-                <Card.Subtitle className={styles.PhotoOwner}>
-                  <span className="me-1">{user}</span>
-                  <Avatar src={user_avatar} height={30} />
-                </Card.Subtitle>
-              </Container>
-            </Link>
-          }
+      {(!photoPage || (!is_owner && photoPage)) &&
+        <Link to={`/user-profiles/${user_id}`}>
+          <Container className="d-flex g-0">
+            <Card.Subtitle className={styles.PhotoOwner}>
+              <span className="me-1">{user}</span>
+              <Avatar src={user_avatar} height={30} />
+            </Card.Subtitle>
+          </Container>
+        </Link>
+      }
 
       {/* Photo */}
       <Link
@@ -160,7 +160,7 @@ const PhotoCard = (props) => {
         to={!photoPage ? `/photos/${id}` : "#"}
       >
         <Card.Img src={image} alt="Photo" />
-      </Link>      
+      </Link>
 
       {/* Stars & Comments */}
       <Container className={styles.PhotoInteractions}>

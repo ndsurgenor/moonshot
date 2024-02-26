@@ -44,7 +44,7 @@ function App() {
           <Route exact path="/photos/:id/edit" render={() => <PhotoEditForm />} />
           <Route exact path="/photos/:id" render={() => <PhotoDetail />} />
           <Route exact path="/user-profiles/:id" render={() => (
-            <PhotoFeed message="No results" user_profile/>
+            <PhotoFeed message="No results" user_profile />
           )} />
           <Route exact path="/equipment-profiles/:id" render={() => <GearEditForm />} />
           <Route exact path="/user-profiles/edit/:id" render={() => <AccountEditForm />} />
