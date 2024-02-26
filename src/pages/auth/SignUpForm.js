@@ -27,7 +27,7 @@ const SignUpForm = () => {
     const { username, password1, password2 } = signUpData;
 
     const sucessNotify = () => toast.success(
-        "Sign-up successful. Welcome to moonshot!"
+        "Sign-up successful - welcome! Please take a moment to sign in"
     );
     const errorNotify = () => toast.error(
         "An error occured during sign-up. Please alter details and try again"
@@ -47,7 +47,7 @@ const SignUpForm = () => {
         e.preventDefault();
         try {
             await axios.post('/dj-rest-auth/registration/', signUpData);
-            history.push('/');
+            history.push("/signin/");
             sucessNotify();
         } catch (err) {
             setErrors(err.response?.data);

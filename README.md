@@ -21,7 +21,6 @@ _Note: to open links in a new tab, hold CTRL + Click_
 - [Scope](#scope)
 - [Structure](#structure)
 - [Skeleton](#skeleton)
-  - [Wireframe Models](#wireframe-models)
 - [Surface](#surface)
   - [Design & Typography](#design--typography)
   - [Features Implemented](#features-implemented)
