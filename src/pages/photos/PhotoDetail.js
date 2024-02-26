@@ -94,7 +94,10 @@ function PhotoDetail() {
             <span>No comments yet. Be the first.</span>
           ) : (
             <span>
-              No comments yet. <Link to="/signin">Sign in</Link> to add the first one!
+              No comments yet.
+              <Link className={styles.CommentLink} to="/signup">Sign up</Link>
+              or<Link className={styles.CommentLink} to="/signin">sign in</Link>
+              to add the first one!
             </span>
           )}
         </Container>
