@@ -223,7 +223,7 @@ const PhotoCard = (props) => {
                 </p>
               </Col>
               <Col sm={6}>
-                <p className="m-auto">Lens: {lens_used}</p>
+                <p className="m-auto">Scope/Lens: {lens_used}</p>
                 <p className="m-auto">Camera: {camera_used}</p>
                 <p className="m-auto">Other: {other_equipment_used}</p>
               </Col>
