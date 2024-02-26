@@ -20,9 +20,8 @@ _Note: this document only contains testing info for the moonshot frontend site_
 <!-- - [Automated Testing](#automated-testing) -->
 - [Validator Testing](#validator-testing)
     - [W3C](#w3c)
-    - [JSHint](#jshint)
+    - [Quick lint JS](#quick-lint-js)
 - [Accessibility & Performance](#accessibility--performance)
-    - [WAVE](#wave)
     - [Lighthouse](#lighthouse)
 - [Bugs](#bugs)
 
@@ -170,18 +169,14 @@ All CSS files have been passed through Jigsaw, the [W3C CSS Validator](https://j
 <!-- ### PEP8
 All Python files in the booking_sys and eaststreet apps, as well env.py and manage.py, have been passed through the [Code Institute PEP8 Linter](https://pep8ci.herokuapp.com/). The only warnings given were for the settings.py file which contains a small number of long lines (i.e. greater than 80 characters) under AUTH_PASSWORD_VALIDATORS; as this is code implemented by Django itself at setup, these lines will be left unchanged.  -->
 
-### JSHint
-The small JavaScript snippet under the footer of base.html has been passed through [JShint](https://jshint.com/) without issue.
+### Quick Lint JS
+JSX code and JavaScript files have been checked throughout this workspace with [Quick Lint JS](https://quick-lint-js.com/) and no issues have been found.
 
 ## Accessibility & Performance
 
-### WAVE
-The site has been tested using the [WAVE Evaluation Tool](https://wave.webaim.org/report#/https://east-street-bc0671035c95.herokuapp.com/) to ensure best practices have been followed regarding aria labels, heading hierarchy, and contrast between page elements. An initial valuation revealed that the 'Sign Up'/'Sign In' forms had a minor contrast issue with links so this has been corrected for better readability.
-
-### Lighthouse
 [Lighthouse](https://developer.chrome.com/docs/lighthouse/overview/) was used to used to produce reports on performance and accessibility for both desktop and mobile versions of the site. The image below shows results for the Home page on desktop and mobile respectively while sitewide results are provided in the table. In all cases the SEO score was 100 which was achieved after adding meta 'keyword' and 'description' tags to the base.html head section.
 
-![Lighthouse](static/images/testing/testing-lighthouse.png)
+![Lighthouse](docs/tst-lighthouse.png)
 
 | | |**Desktop**| | |**Mobile**| |
 :-----|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:
