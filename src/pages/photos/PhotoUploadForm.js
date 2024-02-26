@@ -159,14 +159,14 @@ function PhotoUploadForm() {
           value={main_feature}
           onChange={handleChange}
         >
-          <option value="Unspecified">(please select an option)</option>
+          <option value="Unspecified">(Select an option)</option>
           <option value="aurora">Aurora</option>
           <option value="deep-sky">Deep-sky</option>
           <option value="moon">Moon</option>
           <option value="nightscape">Nightscape</option>
           <option value="planet">Planet</option>
           <option value="stars">Stars</option>
-          <option value="other">(Other)</option>
+          <option value="other">[Other]</option>
         </Form.Select>
       </FloatingLabel>
       {errors.main_feature?.map((message, idx) => (
@@ -190,7 +190,11 @@ function PhotoUploadForm() {
         </Alert>
       ))}
 
-      <FloatingLabel className="d-inline-flex w-50 mb-1" label="Date Taken*" controlId="photo_date">
+      <FloatingLabel
+        className={formStyles.FormDateTime}
+        label="Date Taken*"
+        controlId="photo_date"
+      >
         <Form.Control
           type="date"
           placeholder="date"
@@ -200,7 +204,11 @@ function PhotoUploadForm() {
         />
       </FloatingLabel>
 
-      <FloatingLabel className="d-inline-flex w-50 mb-1" label="Time Taken*" controlId="photo_time">
+      <FloatingLabel
+        className={formStyles.FormDateTime}
+        label="Time Taken*"
+        controlId="photo_time"
+      >
         <Form.Control
           type="time"
           placeholder="time"
@@ -313,7 +321,7 @@ function PhotoUploadForm() {
                   className={formStyles.FormLink}
                   htmlFor="photo-upload"
                 >
-                    <Asset src={Upload} />
+                  <Asset src={Upload} />
                 </Form.Label>
                 <p>Preview appears above once photo is chosen.
                   Photos must be between 500-7680px in width/height

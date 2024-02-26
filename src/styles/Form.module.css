@@ -16,9 +16,22 @@
     cursor: pointer;
 }
 
+.FormDateTime {
+    display: inline-flex;
+    width: 50%;
+    margin-bottom: 0.1rem;
+}
+
 
 @media only screen and (max-width: 767px) {
     .Form {
         width: 98%;
     }
-  }
+}
+
+@media only screen and (max-width: 575px) {
+    .FormDateTime {
+        width: 100%;
+        margin-bottom: 0.75rem;
+    }
+}
