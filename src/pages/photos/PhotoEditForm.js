@@ -18,7 +18,7 @@ import buttonStyles from '../../styles/Button.module.css';
 function PhotoEditForm() {
     const [uploadData, setUploadData] = useState({
         title: '',
-        main_feature: '',        
+        main_feature: '',
         location: '',
         photo_date: '',
         photo_time: '',
@@ -30,7 +30,7 @@ function PhotoEditForm() {
     });
     const {
         title,
-        main_feature,        
+        main_feature,
         location,
         photo_date,
         photo_time,
@@ -60,7 +60,7 @@ function PhotoEditForm() {
                 const { data } = await axiosReq.get(`/photos/${id}/`);
                 const {
                     title,
-                    main_feature,                    
+                    main_feature,
                     location,
                     photo_date,
                     photo_time,
@@ -73,7 +73,7 @@ function PhotoEditForm() {
                 } = data;
                 is_owner ? setUploadData({
                     title,
-                    main_feature,                    
+                    main_feature,
                     location,
                     photo_date,
                     photo_time,
@@ -102,7 +102,7 @@ function PhotoEditForm() {
         const formData = new FormData();
 
         formData.append('title', title)
-        formData.append('main_feature', main_feature)        
+        formData.append('main_feature', main_feature)
         formData.append('location', location)
         formData.append('photo_date', photo_date)
         formData.append('photo_time', photo_time)
@@ -182,7 +182,11 @@ function PhotoEditForm() {
                 </Alert>
             ))}
 
-            <FloatingLabel className="d-inline-flex w-50" label="Date Taken*" controlId="photo_date">
+            <FloatingLabel
+                className={formStyles.FormDateTime}
+                label="Date Taken*"
+                controlId="photo_date"
+            >
                 <Form.Control
                     type="date"
                     placeholder="date"
@@ -192,7 +196,11 @@ function PhotoEditForm() {
                 />
             </FloatingLabel>
 
-            <FloatingLabel className="d-inline-flex w-50" label="Time Taken*" controlId="photo_time">
+            <FloatingLabel
+                className={formStyles.FormDateTime}
+                label="Time Taken*"
+                controlId="photo_time"
+            >
                 <Form.Control
                     type="time"
                     placeholder="time"

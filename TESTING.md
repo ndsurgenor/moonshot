@@ -12,6 +12,11 @@ _Note: this document only contains testing info for the moonshot frontend site_
     - [Responsiveness](#responsiveness)
     - [Authentication](#authentication)
     - [GPPD (CRUD) Functionality](#get-post-put--delete-crud-functionality)
+        -[Photo Tests](#photo-tests)
+        -[Comment Tests](#comment-tests)
+        -[Star Tests](#star-tests)
+        -[Gear Detail Tests](#gear-detail-tests)
+        -[Account Detail Tests](#account-detail-tests)
 <!-- - [Automated Testing](#automated-testing) -->
 - [Validator Testing](#validator-testing)
     - [W3C](#w3c)
@@ -29,7 +34,6 @@ The following sections list a number of manual tests undertaken to ensure the si
 ### Navigation
 
 These tests ensure that a user can successfully navigate the site using the provided navbar links, text links, images, and username tags. Many areas of the site require a username and password for full access; as such, the  username _testname_ and password _test#123_ have specifically been created for testing purposes; specifics around this access are tested below under [Authentication](#authentication). Note that the tests below require 'signed out' status unless otherwise specified.
-<!-- Note that navigation specific to user-made bookings - i.e. page access using 'Update' and 'Delete' buttons - is covered under [CRUD Functionality](#crud-functionality). -->
 
 **Test**|**Ref(s)**|**Steps**|**Expected**|**Result**
 -----|:-----:|-----|-----|:-----:
@@ -90,22 +94,27 @@ User cannot sign in unless a valid username is entered[2.4](README.md#milestone-
 User cannot sign in unless a valid password is entered|[2.4](README.md#milestone-2---frontend-navigation "As a Site User I want to easily access a sign in page so I can use the full functionality of the site")<br>[3.3](README.md#milestone-3---user-access "As a Site Visitor/User I want have a clear indication as to whether or not I am signed in/signed out so I can easily discern if I need to sign up/sign in before accessing certain pages")|<ol><li>Click 'Sign Out' if already signed in</li><li>Click 'Sign In' in the navbar</li><li>Complete all fields with Username as _testname_ and ensure Password IS NOT _test#123_</li><li>Click 'Sign In' button</li></ol>|<ul><li>Sign-in form will not submit</li><li>Error toast and alert messages inform user of the problem</li></ul>|Pass
 User can sign out from the site|[3.2](README.md#milestone-3---user-access "As a Site User I want to remain logged in to the site until I choose otherwise so that my experience is not interuppted by having to continously re-enter my username and password")<br>[3.3](README.md#milestone-3---user-access "As a Site Visitor/User I want have a clear indication as to whether or not I am signed in/signed out so I can easily discern if I need to sign up/sign in before accessing certain pages")<br>[3.4](README.md#milestone-3---user-access "As a Site User I want to be able to sign out from my account so that I know my account cannot be accessed by unauthorised persons")|<ol><li>If required, sign in using preregistered details e.g. username: testname, password: test#123</li><li>Click 'Sign Out'</li></ol>|<ul><li>User directed to 'Home' page</li><li>Success toast informs user that sign out was successful</li></ul>|Pass
 
-### GET, POST, PUT & DELETE (CRUD) Functionality
+### Get, Post, Put & Delete (CRUD) Functionality
 
-These tests determine if a user is able to successfully create, view, update and/or delete a booking, or not as the case may be, through the front-end capabilities of the site. In all test cases, **one must first sign in** to the booking area of the site before completing any of the other steps listed (the username _testname_ and password _test#123_ have specifically been registered for this purpose), while the descriptor 'valid details' indicates that the following is expected:
+These tests determine if a user is able to successfully - or otherwise - create (post), view (get), update (put) and/or delete photos, stars, comments, or gear/account info through the front-end capabilities of the site. In all test cases, **one must first sign in** to the site before completing any of the other steps listed (the username _testname_ and password _test#123_ have specifically been registered for this purpose), while the descriptor 'valid details' indicates that the following is expected:
 
-- 'Date' is not left blank
-- 'Date' is not set earlier than tomorrow's date
-- 'Date' is not set to Monday/Tuesday
-- 'Time' is not left blank
+- Required fields (*) are not left blank
+- Invalid values/formats have not been added to a field
+
+#### Photo Tests
 
 **Test**|**Ref(s)**|**Steps**|**Expected**|**Result**
 -----|:-----:|-----|-----|:-----:
-User can make a booking|[4.1](README.md#milestone-4---crud-functionality "As a Site User I want to make an online booking so that I can secure a table for a particular date, time & group size")<br>[5.2](README.md#milestone-5---additional-coding "As a Site User I want to have on-screen confirmation during the authorisation/booking process so that I know my input has been recorded correctly")|<ol><li>Navigate to 'New Booking' page</li><li>Complete all fields with valid details</li><li>Click 'Submit'</li></ol>|<ul><li>User directed to 'Current Bookings' page</li><li>Submitted details reflected on displayed list</li><li>Alert message confirms booking submitted successfully</li></ul>|Pass
-User cannot make a booking unless a date is entered|[4.1](README.md#milestone-4---crud-functionality "As a Site User I want to make an online booking so that I can secure a table for a particular date, time & group size")|<ol><li>Navigate to 'New Booking' page</li><li>Leave 'Date' blank but complete all other fields with valid details</li><li>Click 'Submit'</li></ol>|<ul><li>Booking form will not submit</li><li>Warning prompt alerts user to the problem</li></ul>|Pass
-User cannot make a booking unless a time is selected|[4.1](README.md#milestone-4---crud-functionality "As a Site User I want to make an online booking so that I can secure a table for a particular date, time & group size")|<ol><li>Navigate to 'New Booking' page</li><li>Leave 'Time' blank but complete all other fields with valid details</li><li>Click 'Submit'</li></ol>|<ul><li>Booking form will not submit</li><li>Warning prompt alerts user to the problem</li></ul>|Pass
-User cannot make a booking on today's date or before|[5.1](README.md#milestone-5---additional-coding "As a Site Admin I want to prevent bookings being made for unavailable dates/times so that bookings are not made when the restaurant is closed")|<ol><li>Navigate to 'New Booking' page</li><li>Set 'Date' earlier than tomorrow's date but complete all other fields with valid details</li><li>Click 'Submit'</li></ul>|<ul><li>Booking form will not submit</li><li>Text displays saying "A booking cannot be made any earlier than tomorrow"</li></ul>|Pass
-User cannot make a booking on a Monday or Tuesday|[5.1](README.md#milestone-5---additional-coding "As a Site Admin I want to prevent bookings being made for unavailable dates/times so that bookings are not made when the restaurant is closed")|<ol><li>Navigate to 'New Booking' page</li><li>Set 'Date' to Monday/Tuesday some time after tomorrow's date but complete all other fields with valid details</li><li>Click 'Submit'</li></ul>|<ul><li>Booking form will not submit</li><li>Text displays saying "Sorry, the restaurant is closed on a Monday/Tuesday"</li></ul>|Pass
+User can upload a photo|[4.1](README.md#milestone-4---photo-uploads "As a Site User I want to be able to upload my own astrological photos to the site so that they are shared on the home page and commented on/upvoted by others")<br>[4.2](README.md#milestone-4---photo-uploads "As a Site User I want to include specific details such as keywords, date, time, location etc. with my uploaded photos so that those details can be displayed alongside the photo for the benefit of other users")|<ol><li>Navigate to 'Upload' page</li><li>Add image and complete all fields with valid details</li><li>Click 'Submit' button</li></ol>|<ul><li>User directed to Photo detail page</li><li>Submitted details reflected on Photo detail page</li><li>Uploading and Success toasts inform user that photo upload was successful</li></ul>|Pass
+User cannot submit if photo is not selected |[4.1](README.md#milestone-4---photo-uploads "As a Site User I want to be able to upload my own astrological photos to the site so that they are shared on the home page and commented on/upvoted by others")<br>[4.2](README.md#milestone-4---photo-uploads "As a Site User I want to include specific details such as keywords, date, time, location etc. with my uploaded photos so that those details can be displayed alongside the photo for the benefit of other users")|<ol><li>Navigate to 'Upload' page</li><li>Complete all fields with valid details but DO NOT add image</li><li>Click 'Submit' button</li></ol>|<ul><li>Upload form will not submit</li><li>Error toast and alert messages inform user of the problem</li></ul>|Pass
+User cannot submit if non-image file is selected |[4.1](README.md#milestone-4---photo-uploads "As a Site User I want to be able to upload my own astrological photos to the site so that they are shared on the home page and commented on/upvoted by others")<br>[4.2](README.md#milestone-4---photo-uploads "As a Site User I want to include specific details such as keywords, date, time, location etc. with my uploaded photos so that those details can be displayed alongside the photo for the benefit of other users")|<ol><li>Navigate to 'Upload' page</li><li>Complete all fields with valid details but ensure the uploaded file IS NOT an image file</li><li>Click 'Submit' button</li></ol>|<ul><li>Upload form will not submit</li><li>Error toast and alert messages inform user of the problem</li></ul>|Pass
+User cannot submit if Title field is blank |[4.1](README.md#milestone-4---photo-uploads "As a Site User I want to be able to upload my own astrological photos to the site so that they are shared on the home page and commented on/upvoted by others")<br>[4.2](README.md#milestone-4---photo-uploads "As a Site User I want to include specific details such as keywords, date, time, location etc. with my uploaded photos so that those details can be displayed alongside the photo for the benefit of other users")|<ol><li>Navigate to 'Upload' page</li><li>Complete all fields with valid details but leave 'Title' blank</li><li>Click 'Submit' button</li></ol>|<ul><li>Upload form will not submit</li><li>Error toast and alert messages inform user of the problem</li></ul>|Pass
+User cannot submit if Main Feature field is left as "(Select an option)" |[4.1](README.md#milestone-4---photo-uploads "As a Site User I want to be able to upload my own astrological photos to the site so that they are shared on the home page and commented on/upvoted by others")<br>[4.2](README.md#milestone-4---photo-uploads "As a Site User I want to include specific details such as keywords, date, time, location etc. with my uploaded photos so that those details can be displayed alongside the photo for the benefit of other users")|<ol><li>Navigate to 'Upload' page</li><li>Complete all fields with valid details but leave 'Main Feature' as "(Select an option)"</li><li>Click 'Submit' button</li></ol>|<ul><li>Upload form will not submit</li><li>Error toast and alert messages inform user of the problem</li></ul>|Pass
+User cannot submit if Location field is blank |[4.1](README.md#milestone-4---photo-uploads "As a Site User I want to be able to upload my own astrological photos to the site so that they are shared on the home page and commented on/upvoted by others")<br>[4.2](README.md#milestone-4---photo-uploads "As a Site User I want to include specific details such as keywords, date, time, location etc. with my uploaded photos so that those details can be displayed alongside the photo for the benefit of other users")|<ol><li>Navigate to 'Upload' page</li><li>Complete all fields with valid details but leave 'Location' blank</li><li>Click 'Submit' button</li></ol>|<ul><li>Upload form will not submit</li><li>Error toast and alert messages inform user of the problem</li></ul>|Pass
+
+User cannot submit if Location field is blank |[4.1](README.md#milestone-4---photo-uploads "As a Site User I want to be able to upload my own astrological photos to the site so that they are shared on the home page and commented on/upvoted by others")<br>[4.2](README.md#milestone-4---photo-uploads "As a Site User I want to include specific details such as keywords, date, time, location etc. with my uploaded photos so that those details can be displayed alongside the photo for the benefit of other users")|<ol><li>Navigate to 'Upload' page</li><li>Complete all fields with valid details but leave 'Location' blank</li><li>Click 'Submit' button</li></ol>|<ul><li>Upload form will not submit</li><li>Error toast and alert messages inform user of the problem</li></ul>|Pass
+
+
 User can view their previously made bookings|[4.2](README.md#milestone-4---crud-functionality "As a Site User I want to view my booking(s) so that I can see if it has been recorded correctly and remind myself of its details")|<ol><li>Navigate to 'Current Bookings' page</li></ol>|<ul><li>'Current Bookings' page displays user-made bookings</li><li>'Update' buttons appear beside all entries not marked as 'Cancelled'</li><li>'Delete' buttons appear beside all entries</li></ul>|Pass
 User can update a booking|[4.3](README.md#milestone-4---crud-functionality "As a Site User I want to access/adjust my booking(s) so that I can correct an error/make necessary changes")<br>[5.2](README.md#milestone-5---additional-coding "As a Site User I want to have on-screen confirmation during the authorisation/booking process so that I know my input has been recorded correctly")|<ol><li>Navigate to 'Current Bookings' page</li><li>Click 'Update' beside any listed booking</li><li>Complete all fields on Update Form with valid details</li><li>Click 'Confirm & Update'</li></ol>|<ul><li>User directed to 'Current Bookings' page</li><li>Updated details reflected on displayed list</li><li>Alert message confirms booking updated successfully</li></ul>|Pass
 User cannot update a booking unless a date is entered|[4.3](README.md#milestone-4---crud-functionality "As a Site User I want to access/adjust my booking(s) so that I can correct an error/make necessary changes")|<ol><li>Navigate to 'Current Bookings' page</li><li>Click 'Update' beside any listed booking</li><li>Make 'Date' blank but leave all other fields with valid details</li><li>Click 'Submit'</li></ol>|<ul><li>Update form will not submit</li><li>Warning prompt alerts user to the problem</li></ul>|Pass
@@ -117,6 +126,30 @@ Bookings marked as 'Confirmed' change to 'Pending' when updated|[4.3](README.md#
 User can delete a booking|[4.4](README.md#milestone-4---crud-functionality "As a Site User I want to cancel my booking(s) so that it/they no longer appear(s) on the system")<br>[5.2](README.md#milestone-5---additional-coding "As a Site User I want to have on-screen confirmation during the authorisation/booking process so that I know my input has been recorded correctly")|<ol><li>Navigate to 'Current Bookings' page</li><li>Click 'Delete' beside any listed booking</li><li>Click 'Confirm & Delete'</li></ol>|<ul><li>User directed to 'Current Bookings' page</li><li>Appropriate details removed from displayed list</li><li>Alert message confirms booking deleted successfully</li></ul>|Pass
 User cannot delete other users' bookings|[5.3](README.md#milestone-5---additional-coding "Set up 404, 403 and 500 pages to correctly handle access/server issues when the site is in use")|<ol><li>Navigate to 'Current Bookings' page</li><li>Click 'Delete' beside any listed booking</li><li>In the page URL, change the digit given before '/delete' to '10' so the URL reads https://east-street-bc0671035c95.herokuapp.com/10/delete/</li><li>Hit 'Enter'</li></ol>|<ul><li>Deletion form for this entry not displayed to user</li><li>User redirected to 403 Error page</li>|Pass
 Admin can change status of bookings made by users|[4.5](#milestone-4---crud-functionality "As a Site Admin I want to have the ability to accept/reject new bookings so that I can manage customer numbers within the restaurant")|<ol><li>Navigate to Admin site</li><li>Sign in using superuser details (_not provided here for security purposes_)</li><li>Click 'Bookings' in the left-hand menu</li><li>Select an individual booking from the list displayed</li><li>Adjust the value under 'Status' and click 'SAVE'</li></ol>|<ul><li>Admin directed back to list of bookings</li><li>Success message displayed at top of screen</li>|Pass
+
+#### Comment Tests
+
+**Test**|**Ref(s)**|**Steps**|**Expected**|**Result**
+-----|:-----:|-----|-----|:-----:
+
+
+#### Star Tests
+
+**Test**|**Ref(s)**|**Steps**|**Expected**|**Result**
+-----|:-----:|-----|-----|:-----:
+
+
+#### Gear Detail Tests
+
+**Test**|**Ref(s)**|**Steps**|**Expected**|**Result**
+-----|:-----:|-----|-----|:-----:
+
+
+#### Account Detail Tests
+
+**Test**|**Ref(s)**|**Steps**|**Expected**|**Result**
+-----|:-----:|-----|-----|:-----:
+
 
 ## Automated Testing
 
@@ -153,19 +186,20 @@ The site has been tested using the [WAVE Evaluation Tool](https://wave.webaim.or
 | | |**Desktop**| | |**Mobile**| |
 :-----|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:
 **Page**|**Performance**|**Accessibility**|**Best Practices**|**Performance**|**Accessibility**|**Best Practices**
-**Home**|94|100|95|92|97|95
-**Menu**|99|100|95|92|100|95
-**Location**|97|97|91|92|97|91
-**New Bookings**|98|100|91|92|100|95
-**Current Bookings**|98|100|95|91|100|91
-**Sign In**|98|100|95|92|100|95
-**Sign Up**|98|100|95|92|100|95
-**Sign Out**|98|100|95|92|100|95
+**Home (signed-out)**|x|x|x|x|x|x
+**Sign Up**|x|x|x|x|x|x
+**Sign In**|x|x|x|x|x|x
+**Home (signed-in)**|x|x|x|x|x|x
+**Upload**|x|x|x|x|x|x
+**Photo Detail**|x|x|x|x|x|x
+**Profile**|x|x|x|x|x|x
+**Gear**|x|x|x|x|x|x
+**Account**|x|x|x|x|x|x
 **_Averages_**|**_98_**|**_100_**|**_94_**|**_92_**|**_99_**|**_94_**
 
 ## Bugs
 
-There are no known bugs in the current deployment of the site. A number of bugs were found, added to the [Kanban workflow](https://github.com/users/ndsurgenor/projects/5), and corrected during development. A brief summary of these bugs is provided below:
+There are no known bugs in the current deployment of the site. A number of bugs were found, added to the [Kanban workflow](https://github.com/users/ndsurgenor/projects/9), and corrected during development. A brief summary of these bugs is provided below:
 
 **Type**|**Issue**|**Detail**|**Solution**|**Result**
 -----|-----|-----|-----|:-----:
