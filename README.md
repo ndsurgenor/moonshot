@@ -513,12 +513,14 @@ _Repeat these steps for the [moonshot-api](https://github.com/ndsurgenor/moonsho
 
 ## Credits & Acknowledgements
 - All photos taken from [Pexels](https://www.pexels.com/) website and directly accredited to the following users (links point to specific photos):
+  - [Alex Andrews](https://www.pexels.com/photo/phases-of-the-moon-1983032/)
   - [Ave Calvar Martinez](https://www.pexels.com/photo/lighthouse-glowing-on-starry-sky-4954713/)
   - [Benjamin Suter](https://www.pexels.com/photo/blue-and-green-sky-and-mountain-3617500/)
   - [Eberhard Grossgasteiger](https://www.pexels.com/photo/mountain-rock-and-moon-1366835/)
   - [Faik Akmd](https://www.pexels.com/photo/photo-of-night-sky-1025469/)
   - [Flavien Beauvais](https://www.pexels.com/photo/stars-in-the-sky-at-night-14596641/)
   - [Frank Cone](https://www.pexels.com/photo/super-moon-over-snowcapped-mountain-2361600/)
+  - [James Wheeler](https://www.pexels.com/photo/leafless-trees-under-starry-night-sky-1542493/)
   - [Marco Milanesi](https://www.pexels.com/photo/photo-of-mountain-under-starry-night-sky-2670898/)
   - [Neale LaSalle](https://www.pexels.com/photo/silhouette-of-trees-during-nighttime-631477/)  
   - [Rakicevic Nenad](https://www.pexels.com/photo/creative-photo-of-person-holding-glass-mason-jar-under-a-starry-sky-1274260/)
@@ -529,7 +531,7 @@ _Repeat these steps for the [moonshot-api](https://github.com/ndsurgenor/moonsho
   - [Son Tung Tran](https://www.pexels.com/photo/full-blood-moon-in-an-evening-sky-6540589/)
   - [Stein Egil Liland](https://www.pexels.com/photo/aurora-borealis-photo-1933317/)
   - ['Pixabay'](https://www.pexels.com/photo/great-sphinx-of-giza-under-blue-starry-sky-262780/)
-  - ['Visit Greenland'](https://www.pexels.com/photo/aurora-borealis-360912/)  
+  - ['Visit Greenland'](https://www.pexels.com/photo/aurora-borealis-360912/)
 - `useViewportWidth()` hook adapted from [code by Ferdinand Steenkamp](https://forum.rescript-lang.org/t/addeventlistener-for-window-resize/1254/3)
 - README.md and TESTING.md structure/outline adapted from [Asia Wi](https://github.com/AsiaWi/snap-it-up-frontend)
 - Many thanks to my Code Institute tutor [Daisy McGirr](https://www.linkedin.com/in/daisy-mcgirr-4a3671173/) for her guidance, support, and strong effort in helping me to build this project
