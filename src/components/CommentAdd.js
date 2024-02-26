@@ -66,7 +66,9 @@ function CommentAdd(props) {
                     />
                 </FloatingLabel>
                 <Button
-                    className={`${styles.CommentButton} ${buttonStyles.Button}`}
+                    className={
+                        `${styles.CommentButton} ${buttonStyles.Button}`
+                    }
                     disabled={!content.trim()}
                     type="submit"
                 >

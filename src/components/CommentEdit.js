@@ -55,15 +55,15 @@ function CommentEditForm(props) {
             <Container className="d-flex justify-content-end g-0">
                 <span
                     className={`${styles.CommentLink} me-1`}
-                    onClick={() => setShowEditForm(false)}
-                >
-                    Cancel
-                </span>|
-                <span
-                    className={`${styles.CommentLink} ms-1`}
                     onClick={handleSubmit}
                 >
                     Save
+                </span>|
+                <span
+                    className={`${styles.CommentLink} ms-1`}
+                    onClick={() => setShowEditForm(false)}
+                >
+                    Cancel
                 </span>
             </Container>
         </Form>
