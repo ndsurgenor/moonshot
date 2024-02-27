@@ -1,7 +1,7 @@
 # moonshot
 _Please note that this README file outlines the frontend development of this application; if you require info on backend development please navigate to [the README for moonshot-api](https://github.com/ndsurgenor/moonshot-api/blob/main/README.md)_
 
-Moonshot (stylised completely in lowercase) is a web application built for the sharing and discussion around amateur astrophtography. This site has been designed to allow imagined users and visitors the ability to view photos uploaded by registered users of the site; registered users will also be able to create a personal profile and 'star' (that is, like) and comment on other users' posts.
+Moonshot (stylised completely in lowercase) is a web application built for the sharing and discussion around amateur astrophotography. This site has been designed to allow imagined users and visitors the ability to view photos uploaded by registered users of the site; registered users will also be able to create a personal profile and 'star' (that is, like) and comment on other users' posts.
 
 [LIVE LINK to Application](https://moonshot-13d14b7a6fbd.herokuapp.com/)<br>
 [LIVE LINK to API](https://moonshot-api-ff76437bf02f.herokuapp.com/)<br>
@@ -35,7 +35,7 @@ _Note: to open links in a new tab, hold CTRL + Click_
 
 ## UX Design
 
-The site is aimed at helping users to easily upload their personal photos of the nightsky alongside relevant info such as what the photo shows, where/when it was taken, and what equipment was used. It also aims to give users the ability to view, star, and comment on the photos uploaded by other users of the site.
+The site is aimed at helping users to easily upload their personal photos of the night sky alongside relevant info such as what the photo shows, where/when it was taken, and what equipment was used. It also aims to give users the ability to view, star, and comment on the photos uploaded by other users of the site.
 
 ## Strategy
 
@@ -57,12 +57,12 @@ This project was developed with 6 milestones (epics) in mind. From each of these
 #### Milestone 2 - Frontend Navigation
 - 2.1 - Dev Goal: set up ReactJS and its supporting libraries via the IDE and create an early  deployment to Heroku in for frontend development to begin and to ensure all is working from the very start
 - 2.2 - User Story: as a Site Visitor/User I want access to navigation links at the top of every page so I can easily move between different areas of the site
-- 2.3 - User Story: as a Site Visitor I want to easily access a sign up page so I can become a registered user and upload my own content/directly particpate with other users of the site
+- 2.3 - User Story: as a Site Visitor I want to easily access a sign up page so I can become a registered user and upload my own content/directly participate with other users of the site
 - 2.4 - User Story: as a Site User I want to easily access a sign in page so I can use the full functionality of the site
 
 #### Milestone 3 - User Access
 - 3.1 - User Story: as a Site User I want view additional navigational links so that I can access those areas of the site only available to registered users
-- 3.2 - User Story: as a Site User I want to remain logged in to the site until I choose otherwise so that my experience is not interuppted by having to continously re-enter my username and password
+- 3.2 - User Story: as a Site User I want to remain logged in to the site until I choose otherwise so that my experience is not interrupted by having to continuously re-enter my username and password
 - 3.3 - User Story: as a Site Visitor/User I want have a clear indication as to whether or not I am logged in/logged out so I can easily discern if I need to sign up/sign in before accessing certain pages
 - 3.4 - User Story: as a Site User I want to be able to sign out from my account so that I know my account cannot be accessed by unauthorised persons
 
@@ -75,7 +75,7 @@ This project was developed with 6 milestones (epics) in mind. From each of these
 
 #### Milestone 5 - Home & Profile Pages
 - 5.1 - User Story: as a Site Visitor/User I want to view all user photos from the home page so I can see the latest content when first accessing the site
-- 5.2 - User Story: as a Site User I want to be able to continously scroll through photos so that I don't have to navigate between and reload multiple pages
+- 5.2 - User Story: as a Site User I want to be able to continuously scroll through photos so that I don't have to navigate between and reload multiple pages
 - 5.3 - User Story: as a Site User I want to be able to search photos with keywords (title, feature, user, etc.) so I can view content specifically related to those keywords
 - 5.4 - User Story: as a Site User I want to be able to select an individual photo from the feed so I can view details, comments, and upvotes directly associated with that photo
 - 5.5 - User Story: as a Site User I want to be able to access a personalised profile page so that I can add an avatar, personal bio and equipment details
@@ -103,13 +103,13 @@ Using these milestones, goals, and stories to guide my thinking, the following w
   - Account* (logged-in)
   - Sign Out* (logged-in)
 - Features appearing on the site as appropriate:
-  - Gallery with 'masonary' layout for photo feeds (Home, Profile)
-  - Infite scroll on photo feeds (Home, Profile)
+  - Gallery with 'masonry' layout for photo feeds (Home, Profile)
+  - Infinite scroll on photo feeds (Home, Profile)
   - Ability to search for photos using filters/search bar (Home signed-in, Profile)
   - Ability to star (like)/comment on other users' photos
   - User avatar appearing in navbar
   - Pages marked * above in dropdown menu when viewed on medium/large screens
-- Stylised 404 papge
+- Stylised 404 page
 
 ## Structure
 
@@ -127,13 +127,13 @@ API|[1.4](#milestone-1---api--admin-functionality "As a Site Admin I want to be 
 API|[1.5](#milestone-1---api--admin-functionality "As a Site Admin I want to be able to review and edit Comments for so I can allow and control comments on the frontend")|User Story|<ul><li>Create Comment model</li><li>Create Comment serializer</li><li>Create Comment GET, POST, PUT and DELETE functionality</li><li>Implement permissions for editing</li></ul>
 API|[1.6](#milestone-1---api--admin-functionality "As a Site Admin I want to be able to review and edit Star ratings (photo ratings) by users so I can allow and control star ratings on the frontend")|User Story|<ul><li>Create Star model</li><li>Create Star serializer</li><li>Create Star GET, POST, PUT and DELETE views</li><li>Implement permissions for editing</li></ul>
 API|[1.7](#milestone-1---api--admin-functionality "As a Site Admin I want to have access to search and filtering tools on the backend so I can find and edit particular data more easily")|User Story|<ul><li>Install django-filter module</li><li>Add search and filter features to User Profiles</li><li>Add search and filter features to Photos</li><li>Add search and filter features to Comments</li></ul>
-API|[1.8](#milestone-1---api--admin-functionality "Create an early API deployment to Heroku to ensure all is working from the very start and allow continuous testing throughout production")|Dev Goal|<ul><li>Install django-rest-auth, all-auth and simpleJWT libraries</li><li>Update settings.py and urls.py and migrate changes</li><li>Migrate to PostgreSQL</li><li>Deply to Heroku</li></ul>
+API|[1.8](#milestone-1---api--admin-functionality "Create an early API deployment to Heroku to ensure all is working from the very start and allow continuous testing throughout production")|Dev Goal|<ul><li>Install django-rest-auth, all-auth and simpleJWT libraries</li><li>Update settings.py and urls.py and migrate changes</li><li>Migrate to PostgreSQL</li><li>Deploy to Heroku</li></ul>
 Navigation|[2.1](#milestone-2---frontend-navigation "set up ReactJS and its supporting libraries via the IDE and create an early deployment to Heroku in for frontend development to begin and to ensure all is working from the very start")|Dev Goal|<ul><li>Set up GitPod workspace and install npm</li><li>Install Bootstrap for React</li><li>Test App.js with h1 text and Button component</li><li>Deploy to Heroku</li></ul>
 Navigation|[2.2](#milestone-2---frontend-navigation "As a Site Visitor/User I want access to navigation links at the top of every page so I can easily move between different areas of the site")|User Story|<ul><li>Create NavBar.js component</li><li>Create Home, Sign Up and Sign In links</li><li>Add Bootstrap styling and icons</li></ul>
-Navigation|[2.3](#milestone-2---frontend-navigation "As a Site Visitor I want to easily access a sign up page so I can become a registered user and upload my own content/directly particpate with other users of the site")|User Story|<ul><li>Connect frontend to moonshot-api using axios</li><li>Add basic structure including Form component</li><li>Add code to handle form events and errors</li><li>Add custom styles using CSS</li></ul>
+Navigation|[2.3](#milestone-2---frontend-navigation "As a Site Visitor I want to easily access a sign up page so I can become a registered user and upload my own content/directly participate with other users of the site")|User Story|<ul><li>Connect frontend to moonshot-api using axios</li><li>Add basic structure including Form component</li><li>Add code to handle form events and errors</li><li>Add custom styles using CSS</li></ul>
 Navigation|[2.4](#milestone-2---frontend-navigation "As a Site User I want to easily access a sign in page so I can use the full functionality of the site")|User Story|<ul><li>Add basic structure including Form component</li><li>Add code to handle form events and errors</li><li>Connect custom styles coded using CSS</li></ul>
 Access |[3.1](#milestone-3---user-access "As a Site User I want view additional navigational links so that I can access those areas of the site only available to registered users")|User Story|<ul><li>Add Upload, Profile, and Sign Out links</li><li>Add code to set currentUser and related queries</li><li>Add code to only show links when signed in</li></ul>
-Access |[3.2](#milestone-3---user-access "As a Site User I want to remain logged in to the site until I choose otherwise so that my experience is not interrupted by having to continously re-enter my username and password")|User Story|<ul><li>Add axios request interceptor</li><li>Add axios response interceptor</li></ul>
+Access |[3.2](#milestone-3---user-access "As a Site User I want to remain logged in to the site until I choose otherwise so that my experience is not interrupted by having to continuously re-enter my username and password")|User Story|<ul><li>Add axios request interceptor</li><li>Add axios response interceptor</li></ul>
 Access |[3.3](#milestone-3---user-access "As a Site Visitor/User I want have a clear indication as to whether or not I am logged in/logged out so I can easily discern if I need to sign up/sign in before accessing certain pages")|User Story|<ul><li>Create Avatar component and styling</li><li>Display username and avatar in navbar</li></ul>
 Access |[3.4](#milestone-3---user-access "As a Site User I want to be able to sign out from my account so that I know my account cannot be accessed by unauthorised persons")|Dev Goal|<ul><li>Add code to Sign Out link</li></ul>
 Photos|[4.1](#milestone-4---photo-uploads "As a Site User I want to be able to upload my own astrological photos to the site so that they are shared on the home page and can be commented on/upvoted by other users")|User Story|<ul><li>Create form with relevant fields</li><li>Add code showing photo preview</li><li>Connect form to API</li><li>Add alerts for errors</li><li>Style form to display correctly</li></ul>
@@ -142,7 +142,7 @@ Photos|[4.3](#milestone-4---photo-uploads "As a Site User I want to be able to u
 Photos|[4.4](#milestone-4---photo-uploads "As a Site User I want to be able to delete any photo I have added so that I can remove my photos from the site if I so desire")|User Story|<ul><li>Create delete button only visible to photo owner</li><li>Create confirmation modal to ensure deletion is wanted</li><li>Add code to remove photo from the database</li><li>Style created components</li></ul>
 Photos|[4.5](#milestone-4---photo-uploads "Write defensive code to prevent anyone from accessing the ability to update/delete posts which were not specifically uploaded by them")|Dev Goal|<ul><li>Create useRedirect hook</li><li>Add hook to relevant pages to redirect users</li></ul>
 Pages|[5.1](#milestone-5---home--profile-pages "As a Site Visitor/User I want to view all user posts from the home page so I can see the latest content when first accessing the site")|User Story|<ul><li>Add photo feed to display user photos</li><li>Add infinite scroll to photos</li><li>Style photo feed using react-responsive-masonry</li></ul>
-Pages|[5.2](#milestone-5---home--profile-pages "As a Site User I want to be able to continously scroll through posts so that I don't have to navigate between and reload multiple pages")|User Story|<ul><li>Install react-infinite-scroll-component</li><li>Add Infinite Scroll component to PhotoFeed</li><li>Create reusable getMoreData utility and add to infinite scroll</li></ul>
+Pages|[5.2](#milestone-5---home--profile-pages "As a Site User I want to be able to continuously scroll through posts so that I don't have to navigate between and reload multiple pages")|User Story|<ul><li>Install react-infinite-scroll-component</li><li>Add Infinite Scroll component to PhotoFeed</li><li>Create reusable getMoreData utility and add to infinite scroll</li></ul>
 Pages|[5.3](#milestone-5---home--profile-pages "As a Site User I want to be able to search photos for keywords (title, feature, user etc.) so I can view content specifically related to those keywords")|User Story|<ul><li>Add search bar to photo feed</li><li>Add code to connect input field to API</li><li>Style search bar</li></ul>
 Pages|[5.4](#milestone-5---home--profile-pages "As a Site User I want to be able to select an individual photo from the feed so I can view details, comments, and upvotes directly associated with that photo")|User Story|<ul><li>Add link to photos in Home Page feed</li><li>Display selected photo on its own page</li><li>Display full details not shown on the Home Page feed</li><li>Display Edit & Delete buttons for owner of the photo</li></ul>
 Pages|[5.5](#milestone-5---home--profile-pages "As a Site User I want to be able to access a personalised profile page so that I can add an avatar, personal bio and equipment details")|User Story|<ul><li>Dedicated profile page for user</li><li>Display of user's photos</li><li>Details regarding user</li><li>Gear page to edit and update details</li><li>Account page to edit and update details</li></ul>
@@ -161,7 +161,7 @@ Now that specific features had been decided upon, a wireframing tool was used to
 - Sign Up
 - Sign In
 
-![Home-Intial](docs/wf-home-initial.png)
+![Home-Initial](docs/wf-home-initial.png)
 ![Sign-Up](docs/wf-signup.png)
 ![Sign-In](docs/wf-signin.png)
 
@@ -177,13 +177,6 @@ Now that specific features had been decided upon, a wireframing tool was used to
 ![Photo-Detail](docs/wf-photo-detail.png)
 ![Profile](docs/wf-user-profile.png)
 ![Profile-edit](docs/wf-profile-edit.png)
-
-<!-- ### Database Model
-!!! MOVE THIS TO API README !!!
-
-The [database model](TO BE ADDED) was designed on the basis of django-allauth handling data for authorised users, while the booking model would be coded by myself. The diagram below shows the relationship of various tables within the project, but central to this is the relationship between the 'auth_user' and 'booking_sys_booking' tables; specifically, a one-to-many by connection of the user_id and contact_id fields i.e. a single user can create many bookings, but each booking can only belong to one user.
-
-![Database](TO BE ADDED) -->
 
 ## Surface
 
@@ -208,7 +201,7 @@ Each of the following implementations was added in response to the user stories 
 
 #### Navbar & Toggler
 > &bull; 2.2 - User Story: as a Site Visitor/User I want access to navigation links at the top of every page so I can easily move between different areas of the site   
-&bull; 2.3 - User Story: as a Site Visitor I want to easily access a sign up page so I can become a registered user and upload my own content/directly particpate with other users of the site  
+&bull; 2.3 - User Story: as a Site Visitor I want to easily access a sign up page so I can become a registered user and upload my own content/directly participate with other users of the site  
 &bull; 2.4 - User Story: as a Site User I want to easily access a sign in page so I can use the full functionality of the site   
 &bull; 3.1 - User Story: as a Site User I want view additional navigational links so that I can access those areas of the site only available to registered users    
 &bull; 3.3 - User Story: as a Site Visitor/User I want have a clear indication as to whether or not I am logged in/logged out so I can easily discern if I need to sign up/sign in before accessing certain pages    
@@ -223,12 +216,12 @@ Each of the following implementations was added in response to the user stories 
 - Navbar dropdown appears when signed-in and viewing 767px+ width to display links neatly
 - Navbar toggler appears at screen sizes <767px to preserve well-formatted layout
 - Navbar displays username and reusable Avatar component on dropdown when user is signed-in
-- Signout link restyled on toggler to continue displaying the username
-- Reusable Avatar component is hideen at screen <315px to preserve good formatting
+- Sign Out link restyled on toggler to continue displaying the username
+- Reusable Avatar component is hidden at screen <315px to preserve good formatting
 
 #### Home Page
 > &bull; 5.1 - User Story: as a Site Visitor/User I want to view all user photos from the home page so I can see the latest content when first accessing the site  
-&bull; 5.2 - User Story: as a Site User I want to be able to continously scroll through photos so that I don't have to navigate between and reload multiple pages  
+&bull; 5.2 - User Story: as a Site User I want to be able to continuously scroll through photos so that I don't have to navigate between and reload multiple pages  
 &bull; 5.3 - User Story: as a Site User I want to be able to search photos with keywords (title, feature, user, etc.) so I can view content specifically related to those keywords  
 &bull; 5.4 - User Story: as a Site User I want to be able to select an individual photo from the feed so I can view details, comments, and upvotes directly associated with that photo   
 &bull; 6.1 User Story: as a Site User I want to be able to upvote other users photos so that I can show my appreciation for their photography  
@@ -238,9 +231,9 @@ Each of the following implementations was added in response to the user stories 
 ![Home](docs/fts-home.png)
 
 - Signed-out users will see a welcome message displayed as the page's header
-- Signed-in users will see feed filters and a desciption as the page's header
-- Both views use the adaptible Photo Feed page which can be called with different filters for different views
-- Anytime the photo feed is called it displays using a reponsive 'masonry' layout and infinite scroll component
+- Signed-in users will see feed filters and a description as the page's header
+- Both views use the adaptable Photo Feed page which can be called with different filters for different views
+- Anytime the photo feed is called it displays using a responsive 'masonry' layout and infinite scroll component
 - The reusable Asset component is called while photos are loading in the form of a 'loading-dot' animation along with text of 'Loading images...' 
 - The Photo Feed page also renders a search bar just below the page header
 - Further filtering is achieved with the Filters component in the signed-in view
@@ -248,14 +241,14 @@ Each of the following implementations was added in response to the user stories 
 - Each photo can be clicked directly to direct the user to an individual page for the image outlining photo details (see [Photo Details](#photo-details) below)
 
 #### Sign Up/In
-> &bull; 2.3 - User Story: as a Site Visitor I want to easily access a sign up page so I can become a registered user and upload my own content/directly particpate with other users of the site    
+> &bull; 2.3 - User Story: as a Site Visitor I want to easily access a sign up page so I can become a registered user and upload my own content/directly participate with other users of the site    
 &bull; 2.4 - User Story: as a Site User I want to easily access a sign in page so I can use the full functionality of the site    
-&bull; 3.2 - User Story: as a Site User I want to remain logged in to the site until I choose otherwise so that my experience is not interuppted by having to continously re-enter my username and password  
+&bull; 3.2 - User Story: as a Site User I want to remain logged in to the site until I choose otherwise so that my experience is not interrupted by having to continuously re-enter my username and password  
 
 ![SignUpIn](docs/fts-signup-signin.png)
 
 - Simple forms allow the user to quickly enter details and sign up/sign in to the site
-- Links below each form help redirect the user if they have initially selected the inccorect access form 
+- Links below each form help redirect the user if they have initially selected the incorrect access form 
 - Stylised success/error messages ('toasts') appear on clicking 'Submit' to provide immediate feedback from the form to the user
 - Field specific alerts let the user know of any specific issue with the data they have entered
 - JWTs are used to prevent the user from having to log in every 5 minutes or so 
@@ -269,8 +262,8 @@ Each of the following implementations was added in response to the user stories 
 
 - Image placeholder implemented with reusable Asset component to allow preview once image is selected by user
 - Different field types (file, text, textarea, date, time) direct the user as to what input to provide
-- Fields relating to equipment autofill according to details added by the user in the gear proile (see [Gear/Account Detail Forms](#gearaccount-detail-forms) below)
-- Edit form prevents user fomr changing image, only details, so that stars and commments remain relevant
+- Fields relating to equipment autofill according to details added by the user in the gear profile (see [Gear/Account Detail Forms](#gearaccount-detail-forms) below)
+- Edit form prevents user from changing image, only details, so that stars and comments remain relevant
 - Stylised success/upload/error messages ('toasts') appear on clicking 'Submit' to provide immediate feedback from the form to the user
 - Field specific alerts let the user know of any specific issue with the data they have entered
 
@@ -294,7 +287,7 @@ Each of the following implementations was added in response to the user stories 
 
 ![PhotoComments](docs/fts-photo-comments.png)
 
-- The resuable Comment component renders a comment form and all user comments below the related image
+- The reusable Comment component renders a comment form and all user comments below the related image
 - Clicking the 'add' button is not possible until text has actually been added to the form
 - Adding a comment causes a Comment component with the relevant info to immediately display below the Add Comment form
 - Comments are displayed with the reusable Avatar component allowing access to that user's profile
@@ -405,12 +398,11 @@ Manual and automated testing undertaken for this project can be viewed in the se
     - [Responsiveness](TESTING.md#responsiveness)
     - [Authentication](TESTING.md#authentication)
     - [GPPD (CRUD) Functionality](TESTING.md#get-post-put--delete-crud-functionality)
-        -[Photo Tests](TESTING.md#photo-tests)
-        -[Comment Tests](TESTING.md#comment-tests)
-        -[Star Tests](TESTING.md#star-tests)
-        -[Gear & Account Detail Tests](TESTING.md#gear--account-detail-tests)
-        -[Filter Tests](TESTING.md#filter-tests)
-<!-- - [Automated Testing](#automated-testing) -->
+        - [Photo Tests](TESTING.md#photo-tests)
+        - [Comment Tests](TESTING.md#comment-tests)
+        - [Star Tests](TESTING.md#star-tests)
+        - [Gear & Account Detail Tests](TESTING.md#gear--account-detail-tests)
+        - [Filter Tests](TESTING.md#filter-tests)
 - [Validator Testing](TESTING.md#validator-testing)
     - [W3C](TESTING.md#w3c)
     - [Quick lint JS](TESTING.md#quick-lint-js)
@@ -463,19 +455,19 @@ This site was deployed to and is currently [hosted on the Heroku platform](https
   16. Navigate to [Heroku](https://heroku.com) and create an account/log in
   17. Click 'New' in the top right and select 'Create New App'
   18. Enter an App name (must be unique), choose a region, and then click 'Create app'
-  19. Select 'Settings' in the menubar
+  19. Select 'Settings' in the menu bar
   20. Click 'Reveal Config Vars' and add the following:<br>
     - CLOUDINARY_URL: the CLOUDINARY_URL copied from Cloudinary<br>
     - DATABASE_URL: the DATABASE_URL copied from ElephantSQL<br>
     - SECRET_KEY: The SECRET_KEY string you created<br>
     - PORT: 8000
-  21. Click 'Deploy' in the menubar tab then 'GitHub' under 'Deployment method'
+  21. Click 'Deploy' in the menu bar tab then 'GitHub' under 'Deployment method'
   22. Select the repository you want to deploy and click 'Connect'
   23. Scroll down and click 'Deploy Branch' to complete the process (note the deployed URL)
 
 #### Frontend Setup
   24. In the project workspace, navigate to/create a file named 'Procfile' (remember the capital 'P') and add the code `web: serve -s build`
-  25. Install axios (if not already done) using the command `npm install axios`and create a folder/file called axios/axiosDefaults under src
+  25. Install axios (if not already done) using the command `npm install axios` and create a folder/file called axios/axiosDefaults under src
   26. Add the following code, replacing `<myapiurl>` with the deployed API URL from step 23:
     ``` JSX
       import axios from 'axios';
@@ -487,13 +479,13 @@ This site was deployed to and is currently [hosted on the Heroku platform](https
       export const axiosReq = axios.create();
       export const axiosRes = axios.create();
     ```
-  27. Import this file to App.js before saving, commiting and pushing changes to repo
+  27. Import this file to App.js before saving, committing and pushing changes to repo
 
 #### Frontend Heroku Setup
   28. Navigate to [Heroku](https://heroku.com) and log in
   29. Click 'New' in the top right and select 'Create New App'
   30. Enter an App name (must be unique), choose a region, and then click 'Create app'
-  31. Click 'Deploy' in the menubar tab then 'GitHub' under 'Deployment method'
+  31. Click 'Deploy' in the menu bar tab then 'GitHub' under 'Deployment method'
   32. Select the repository you want to deploy and click 'Connect'
   33. Scroll down and click 'Deploy Branch' to complete the process
 
