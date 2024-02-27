@@ -145,23 +145,24 @@ User cannot add stars while signed-out|[6.2](README.md#milestone-6---community-i
 
 **Test**|**Ref(s)**|**Steps**|**Expected**|**Result**
 -----|:-----:|-----|-----|:-----:
-
-User can edit their gear profile
-User can cancel gear edit
-User can update their avatar
-User can edit Name and Personal Details
-User can cancel account edit
+User can edit their gear profile|[5.5](README.md#milestone-5---home--profile-pages "As a Site User I want to be able to access a personalised profile page so that I can add an avatar, personal bio and equipment details")|<ol><li>Navigate to 'Gear' page</li><li>Update form fields with any valid data</li><li>Click 'Save' button</li></ol>|<ul><li>Success toast informs user that update was successful</li><li>User redirected to their Profile page</li><li>Items under 'Main Gear' updated with new values</li></ul>|Pass
+User can cancel gear edit|[5.5](README.md#milestone-5---home--profile-pages "As a Site User I want to be able to access a personalised profile page so that I can add an avatar, personal bio and equipment details")|<ol><li>Navigate to 'Gear' page</li><li>Update form fields with any valid data</li><li>Click 'Cancel' button</li></ol>|<ul><li>User redirected to their Profile page</li><li>Details under 'Main Gear' remain unchanged</li></ul>|Pass
+User can update their avatar|[5.5](README.md#milestone-5---home--profile-pages "As a Site User I want to be able to access a personalised profile page so that I can add an avatar, personal bio and equipment details")|<ol><li>Navigate to 'Account' page</li><li>Click 'Choose File' button</li><li>Select a valid image file</li><li>Click 'Save' button</li></ol>|<ul><li>User redirected to their Profile page</li><li>Avatar displayed with updated image</li></ul>|Pass
+User cannot save if avatar is not image file|[5.5](README.md#milestone-5---home--profile-pages "As a Site User I want to be able to access a personalised profile page so that I can add an avatar, personal bio and equipment details")|<ol><li>Navigate to 'Account' page</li><li>Click 'Choose File' button</li><li>Select a non-image file</li><li>Click 'Save' button</li></ol>|<ul><li>Error toast informs user of the problem</li></ul>|Pass
+User can edit Name and Personal Details|[5.5](README.md#milestone-5---home--profile-pages "As a Site User I want to be able to access a personalised profile page so that I can add an avatar, personal bio and equipment details")|<ol><li>Navigate to 'Account' page</li><li>Update 'Name' and 'Personal Detail' fields with any valid data</li><li>Click 'Save' button</li></ol>|<ul><li>Success toast informs user that update was successful</li><li>User redirected to their Profile page</li><li>Updated details displayed beside avatar</li></ul>|Pass
+User can cancel account edit|[5.5](README.md#milestone-5---home--profile-pages "As a Site User I want to be able to access a personalised profile page so that I can add an avatar, personal bio and equipment details")|<ol><li>Navigate to 'Account' page</li><li>Update avatar/form fields with any valid data</li><li>Click 'Cancel' button</li></ol>|<ul><li>User redirected to their Profile page</li><li>Details under Profile remain unchanged</li></ul>|Pass
 
 ### Filter Tests
 
+These tests ensure that a user can successfully filter photos on the signed-in Home page using either the provided buttons or the search bar facility. As such, **one must first sign in** to the site before completing any of the other steps listed below (the username _testname_ and password _test#123_ have specifically been registered for this purpose).
+
 **Test**|**Ref(s)**|**Steps**|**Expected**|**Result**
 -----|:-----:|-----|-----|:-----:
-
-All photos
-User only
-Stars
-Comments
-Search bar
+User can view all photos|[5.1](README.md#milestone-5---home--profile-pages "As a Site Visitor/User I want to view all user photos from the home page so I can see the latest content when first accessing the site")<br>[5.3](README.md#milestone-5---home--profile-pages "As a Site User I want to be able to search photos with keywords (title, feature, user, etc.) so I can view content specifically related to those keywords")|<ol><li>Navigate to 'Home' page</li><li>Select 'Your photos', 'Stars given' or 'Comments given' filter button</li><li>Click 'All photos' filter button</li></ol>|<ul><li>Photo feed updates to show photos by all site users</li></ul>|Pass
+User can view only their own photos|[4.1](README.md#milestone-4---photo-uploads "as a Site User I want to be able to upload my own astrological photos to the site so that they are shared on the home page and commented on/upvoted by others")<br>[5.1](README.md#milestone-5---home--profile-pages "As a Site Visitor/User I want to view all user photos from the home page so I can see the latest content when first accessing the site")|<ol><li>Navigate to 'Home' page</li><li>Click 'Your photos' filter button</li></ol>|<ul><li>Photo feed updates to only show photos by uploaded by signed-in user</li><li>'No results' message/image shows if user has not made any uploads</li></ul>|Pass
+User can view only photos they have given a star to|[5.1](README.md#milestone-5---home--profile-pages "As a Site Visitor/User I want to view all user photos from the home page so I can see the latest content when first accessing the site")<br>[6.3](README.md#milestone-6---community-interaction "As a Site User I want to view a feed of those photos I've upvoted so I have easy access to those posts I've shown a particular interest in")|<ol><li>Navigate to 'Home' page</li><li>Click 'Stars given' filter button</li></ol>|<ul><li>Photo feed updates to only show photos given a star by signed-in user</li><li>'No results' message/image shows if user has not given any stars</li></ul>|Pass
+User can view only photos they have commented on|[5.1](README.md#milestone-5---home--profile-pages "As a Site Visitor/User I want to view all user photos from the home page so I can see the latest content when first accessing the site")<br>[6.4](README.md#milestone-6---community-interaction "As a Site User I want to view a feed of those photos I've commented on so I have easy access to posts where I am involved in a discussion thread")|<ol><li>Navigate to 'Home' page</li><li>Click 'Stars given' filter button</li></ol>|<ul><li>Photo feed updates to only show photos commented on by signed-in user</li><li>'No results' message/image shows if user has not made any comments</li></ul>|Pass
+User can filter photo results using search bar|[5.1](README.md#milestone-5---home--profile-pages "As a Site Visitor/User I want to view all user photos from the home page so I can see the latest content when first accessing the site")<br>[5.3](README.md#milestone-5---home--profile-pages "As a Site User I want to be able to search photos with keywords (title, feature, user, etc.) so I can view content specifically related to those keywords")|<ol><li>Navigate to 'Home' page</li><li>Enter a valid word/phrase/username etc. into the search bar</li></ol>|<ul><li>Photo feed updates to show photos whose title, description, owner etc. contains search term(s)</li><li>'No results' message/image shows if no matching results are found</li></ul>|Pass
 
 <!-- ## Automated Testing
 

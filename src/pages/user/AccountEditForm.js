@@ -120,7 +120,11 @@ const AccountEditForm = () => {
     const avatarFields = (
         < Container>
 
-            <FloatingLabel className="mb-3" label="Name" controlId="name">
+            <FloatingLabel
+                className="mb-3"
+                label="Name"
+                controlId="name"
+            >
                 <Form.Control
                     type="text"
                     placeholder="name"
@@ -130,7 +134,11 @@ const AccountEditForm = () => {
                 />
             </FloatingLabel>
 
-            <FloatingLabel className="mb-3" label="Personal Details" controlId="details">
+            <FloatingLabel
+                className="mb-3"
+                label="Personal Details"
+                controlId="details"
+            >
                 <Form.Control
                     type="text"
                     placeholder="details"
@@ -166,11 +174,16 @@ const AccountEditForm = () => {
                     <Form.Control
                         className="mb-2"
                         type="file"
-                        id="image-upload"
+                        id="photo-upload"
                         ref={imageFile}
                         accept="image/*"
                         onChange={handleChangeAvatar}
                     />
+                    {errors?.image?.map((message, idx) => (
+                        <Alert variant="warning" key={idx}>
+                            {message}
+                        </Alert>
+                    ))}
                     <Form.Group>
                         {avatar && (
                             <Form.Label
@@ -183,12 +196,6 @@ const AccountEditForm = () => {
                                 />
                             </Form.Label>
                         )}
-                        {errors?.image?.map((message, idx) => (
-                            <Alert variant="warning" key={idx}>
-                                {message}
-                            </Alert>
-                        ))}
-
                     </Form.Group>
                     {avatarFields}
                 </Col>
