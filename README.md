@@ -394,28 +394,31 @@ In order to code and design these features and components the following technolo
 - [Code Institute](https://codeinstitute.net/) course materials and walkthrough projects provided many reference points for implementing features of this project
 - Resources used are directly referenced within code where appropriate
 
-## Testing  !!! TO BE UPDATED !!!
+## Testing
 
 Manual and automated testing undertaken for this project can be viewed in the separate [TESTING.md file](TESTING.md) (_Use CTRL + Click to this or any of the following links in a new tab/window_). You can also navigate to a specific area of the file by selecting one of the headings below:
 
-### Testing Contents  !!! TO BE UPDATED !!!
-- [Introduction](TESTING.md#eastst---testing)
+### Frontend Testing Contents
+- [Introduction](TESTING.md#moonshot--frontend-testing)
 - [Manual Testing](TESTING.md#manual-testing)
     - [Navigation](TESTING.md#navigation)
     - [Responsiveness](TESTING.md#responsiveness)
     - [Authentication](TESTING.md#authentication)
-    - [CRUD Functionality](TESTING.md#crud-functionality)
-<!-- - [Automated Testing](TESTING.md#automated-testing) -->
+    - [GPPD (CRUD) Functionality](TESTING.md#get-post-put--delete-crud-functionality)
+        -[Photo Tests](TESTING.md#photo-tests)
+        -[Comment Tests](TESTING.md#comment-tests)
+        -[Star Tests](TESTING.md#star-tests)
+        -[Gear & Account Detail Tests](TESTING.md#gear--account-detail-tests)
+        -[Filter Tests](TESTING.md#filter-tests)
+<!-- - [Automated Testing](#automated-testing) -->
 - [Validator Testing](TESTING.md#validator-testing)
     - [W3C](TESTING.md#w3c)
-    - [PEP8](TESTING.md#pep8)
-    - [JSHint](TESTING.md#jshint)
+    - [Quick lint JS](TESTING.md#quick-lint-js)
 - [Accessibility & Performance](TESTING.md#accessibility--performance)
-    - [WAVE](TESTING.md#wave)
     - [Lighthouse](TESTING.md#lighthouse)
-- [Bugs](TESTING.md#bugs) -->
+- [Bugs](TESTING.md#bugs)
 
-## Deployment  !!! TO BE UPDATED !!!
+## Deployment
 
 ### Heroku Deployment (frontend & backend)
 This site was deployed to and is currently [hosted on the Heroku platform](https://moonshot-13d14b7a6fbd.herokuapp.com/). The steps for deploying to Heroku, using ElephantSQL as the database host, are as follows:
@@ -533,4 +536,5 @@ _Repeat these steps for the [moonshot-api](https://github.com/ndsurgenor/moonsho
   - ['Visit Greenland'](https://www.pexels.com/photo/aurora-borealis-360912/)
 - `useViewportWidth()` hook adapted from [code by Ferdinand Steenkamp](https://forum.rescript-lang.org/t/addeventlistener-for-window-resize/1254/3)
 - README.md and TESTING.md structure/outline adapted from [Asia Wi](https://github.com/AsiaWi/snap-it-up-frontend)
-- Many thanks to my Code Institute tutor [Daisy McGirr](https://www.linkedin.com/in/daisy-mcgirr-4a3671173/) for her guidance, support, and strong effort in helping me to build this project
+- Many thanks to [Kelly Hutchinson](https://github.com/quiltingcode) from the Code Institute Slack channel for her help in working through bugs encountered during development 
+- Many thanks to my Code Institute tutor [Daisy McGirr](https://www.linkedin.com/in/daisy-mcgirr-4a3671173/) for her guidance, support, debugging, and every other effort in helping me to build this project

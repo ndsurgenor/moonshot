@@ -194,7 +194,9 @@ const PhotoCard = (props) => {
         )}
         <p>{star_count}</p>
         <Link to={`/photos/${id}`}>
-          <span><CgComment className={styles.PhotoIcon} /></span>
+          <span>
+            <CgComment className={styles.PhotoIcon} />
+          </span>
         </Link>
         <p>{comment_count}</p>
       </Container>

@@ -6,7 +6,7 @@ _Note: this document only contains testing info for the moonshot frontend site_
 - _If you require full documentation please [click here to access the README.md](README.md) file_
 
 ## Table Of Contents
-- [Introduction](#eastst---testing)
+- [Introduction](#moonshot--frontend-testing)
 - [Manual Testing](#manual-testing)
     - [Navigation](#navigation)
     - [Responsiveness](#responsiveness)
