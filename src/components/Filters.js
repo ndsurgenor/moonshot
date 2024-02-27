@@ -1,10 +1,10 @@
-import React from 'react'
+import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
 import Container from 'react-bootstrap/Container';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
-import styles from '../styles/Filters.module.css'
+import styles from '../styles/Filters.module.css';
 
 import { CgComment } from 'react-icons/cg';
 import { FaCameraRetro, FaStar } from 'react-icons/fa';

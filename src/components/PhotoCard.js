@@ -5,7 +5,7 @@ import { axiosRes } from '../api/axiosDefaults';
 
 import { useCurrentUser } from '../contexts/CurrentUserContext';
 
-import Avatar from './Avatar'
+import Avatar from './Avatar';
 
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
@@ -15,8 +15,8 @@ import Modal from 'react-bootstrap/Modal';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Row from 'react-bootstrap/Row';
 import Tooltip from 'react-bootstrap/Tooltip';
-import styles from '../styles/PhotoCard.module.css'
-import buttonStyles from '../styles/Button.module.css'
+import styles from '../styles/PhotoCard.module.css';
+import buttonStyles from '../styles/Button.module.css';
 
 import { CgComment } from 'react-icons/cg';
 import { FaEdit, FaRegStar, FaRegTrashAlt, FaStar } from 'react-icons/fa';

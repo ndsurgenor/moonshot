@@ -1,6 +1,6 @@
-import React from 'react'
+import React from 'react';
 
-import styles from '../styles/Avatar.module.css'
+import styles from '../styles/Avatar.module.css';
 
 
 const Avatar = ({ src, height = 44 }) => {

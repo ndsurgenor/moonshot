@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { axiosRes } from '../api/axiosDefaults';
 
-import { useCurrentUser } from '../contexts/CurrentUserContext'
+import { useCurrentUser } from '../contexts/CurrentUserContext';
 
 import Avatar from './Avatar';
 import CommentEditForm from './CommentEdit';

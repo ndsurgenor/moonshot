@@ -16,4 +16,4 @@ const useViewportWidth = () => {
     return { width };
 };
 
-export default useViewportWidth
+export default useViewportWidth;
