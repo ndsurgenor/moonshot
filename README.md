@@ -95,21 +95,31 @@ Using these milestones, goals, and stories to guide my thinking, the following w
   - Toggle menu for navbar links at smaller sizes
 - Home page displaying the latest uploads and links appropriate to logged-out/in status (for * see below):
   - Home (available to all users)
-  - Sign Up  (logged-out)
-  - Sign In  (logged-out)
-  - Upload  (logged-in)
+  - Sign Up (logged-out)
+  - Sign In (logged-out)
+  - Upload (logged-in)
   - Profile* (logged-in)
   - Gear* (logged-in)
   - Account* (logged-in)
   - Sign Out* (logged-in)
-- Features appearing on the site as appropriate:
+- Features appearing throughout the site:
+  - Routing to prevent complete page reload, espeically with filters on photo pages
   - Gallery with 'masonry' layout for photo feeds (Home, Profile)
   - Infinite scroll on photo feeds (Home, Profile)
   - Ability to search for photos using filters/search bar (Home signed-in, Profile)
   - Ability to star (like)/comment on other users' photos
-  - User avatar appearing in navbar
-  - Pages marked * above in dropdown menu when viewed on medium/large screens
-- Stylised 404 page
+  - Pages marked * above in a navbar dropdown menu when viewed on medium/large screens
+  - Stylised 404 page
+- Reusable components used to build the site:
+  - Navbar component at the top of every page to guide the user through the site
+  - Asset component for image placeholding on forms and as a photo loading icon
+  - Photo Card component to display photos on the home page and their individual pages
+  - Filter component used in conjunction with Routes to produce filtered photo views
+  - Comment component which can be reimplemented everytime a user leaves a comment
+  - Avatar component appearing in the navbar, comments section, and on user photos/profiles
+  - Redirect hook used to handle defensive navigation for account assets
+  - Wiewport Width hook used to handle responsiveness logic on various pages
+  - Context code used to fetch the status/details of the currently signed-in user throughout the site
 
 ## Structure
 
@@ -353,6 +363,10 @@ In order to code and design these features and components the following technolo
   - web-vitals: 1.1.2
 - [Node](https://nodejs.org/en)
   - Used as package manager to install dependencies
+- [Axios](https://axios-http.com/docs/intro)
+  - Used as the HTTP Client for the browser and Node.js
+- [JWTDecode](https://www.npmjs.com/package/jwt-decode)
+  - Used to decode JSON web tokens setn between frontend and backend
 - [ReactJS](https://react.dev/)
   - Used as the JavaScript library in the development of this project
 - [Heroku](https://heroku.com)
