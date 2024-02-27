@@ -138,7 +138,6 @@ User can delete their own comment|[5.4](README.md#milestone-5---home--profile-pa
 -----|:-----:|-----|-----|:-----:
 
 
-
 #### Gear Detail Tests
 
 **Test**|**Ref(s)**|**Steps**|**Expected**|**Result**
@@ -174,32 +173,30 @@ JSX code and JavaScript files have been checked throughout this workspace with [
 
 ## Accessibility & Performance
 
-[Lighthouse](https://developer.chrome.com/docs/lighthouse/overview/) was used to used to produce reports on performance and accessibility for both desktop and mobile versions of the site. The image below shows results for the Home page on desktop and mobile respectively while sitewide results are provided in the table. In all cases the SEO score was 100 which was achieved after adding meta 'keyword' and 'description' tags to the base.html head section.
-
-![Lighthouse](docs/tst-lighthouse.png)
+[Lighthouse](https://developer.chrome.com/docs/lighthouse/overview/) was used to used to produce reports on performance and accessibility for both desktop and mobile versions of the site; results are provided in the table. In all cases the SEO score was 100 which was achieved after adding meta 'keyword' and 'description' tags to the index.html head section.
 
 | | |**Desktop**| | |**Mobile**| |
 :-----|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:
 **Page**|**Performance**|**Accessibility**|**Best Practices**|**Performance**|**Accessibility**|**Best Practices**
-**Home (signed-out)**|x|x|x|x|x|x
-**Sign Up**|x|x|x|x|x|x
-**Sign In**|x|x|x|x|x|x
-**Home (signed-in)**|x|x|x|x|x|x
-**Upload**|x|x|x|x|x|x
-**Photo Detail**|x|x|x|x|x|x
-**Profile**|x|x|x|x|x|x
-**Gear**|x|x|x|x|x|x
-**Account**|x|x|x|x|x|x
-**_Averages_**|**_98_**|**_100_**|**_94_**|**_92_**|**_99_**|**_94_**
+**Home (signed-out)**|56|85|95|43|86|95
+**Sign Up**|99|93|95|90|93|95
+**Sign In**|99|94|95|91|94|95
+**Home (signed-in)**|25|85|95|49|91|91
+**Upload**|96|82|95|76|81|91
+**Photo Detail**|59|88|95|48|94|95
+**Profile**|82|83|95|67|89|95
+**Gear**|97|93|95|91|100|95
+**Account**|96|91|95|91|100|95
+**_Averages_**|**_79_**|**_88_**|**_95_**|**_71_**|**_92_**|**_94_**
+
+The performance on both desktop and mobile produced the lowest scores as longer loading times come from images loading on to the screen. In future development it would be advisable to look at quicker ways of retreiving image data in order to improve these scores.
 
 ## Bugs
 
-There are no known bugs in the current deployment of the site. A number of bugs were found, added to the [Kanban workflow](https://github.com/users/ndsurgenor/projects/9), and corrected during development. A brief summary of these bugs is provided below:
+There are no known bugs in the current deployment of the site. A number of bugs were found, added to the [Kanban workflow](https://github.com/users/ndsurgenor/projects/9), and corrected during development. A brief summary of the frontend bugs are provided below:
 
 **Type**|**Issue**|**Detail**|**Solution**|**Result**
 -----|-----|-----|-----|:-----:
-Style|Bootstrap/CSS styling not displaying correctly|Heroku deployment not displaying the Bootstrap/CSS styling as implemented in the code. Running a server using ```python3 manage.py runserver``` displays all styling correctly|<ul><li>Connect style.css by correcting typo of 'STATIC\_DIRS' to 'STATICFILES\_DIRS' in settings.py</li><li>Set images to load from static links rather than external sources</li></ul>|Fixed
-Style|Pages not scrolling correctly|On smaller screen heights the contents of the page will not scroll correctly to show content hidden behind the footer|<ul><li>Add margin-bottom to body under media query</li><li>Add margin-bottom divs on relevant pages where required e.g. Menu page</li></ul>|Fixed
-Style|Sign up/sign in form not displaying correctly on iphone/iPad|Form is rendering correctly but input fields are extending beyond the form border|<ul><li>Relevant input id tags added to style.css</li><li>Width set to 50%</li></ul>|Fixed
-Data|Booking form not recording submissions on database|Form is rendering correctly as a functional object but not storing data to the database|<ul><li>'Status' included on form as a hidden field to ensure this present when form is submitted</li><li>Code added to form_valid to automatically set contact info (form.instance.contact_id = self.request.user.id)as this was also missing from the form</li></ul>|Fixed
-Deployment|Site failed to deploy to Heroku|Heroku build log displaying error ```Could not build wheels for backports.zoneinfo, which is required to install pyproject.toml-based projects```|<ul><li>[Stack Overflow](https://stackoverflow.com/questions/71712258/error-could-not-build-wheels-for-backports-zoneinfo-which-is-required-to-insta) referenced for solution</li><li>requirements.txt updated with ```backports.zoneinfo==0.2.1;python_version<"3.9"```</li></ul>|Fixed
+Data|Photo Edit Form not applying updates|When the 'Save' button is clicked the page appears to be unresponsive. Accessing the console displays a number of errors regarding null vales and uncontrolled elements|<ul><li>Remove line const `photoInput = useRef(null);` from code</li><li>Remove all code related to this line</li></ul>|Fixed
+Data|Photo Card details in wrong format|On the Photo Detail page, the text under the image is displaying in the incorrect format for the Main Feature, Date, and Time labels|<ul><li>Main Feature: convert value to string and apply `toUpperCase()` and `slice()` as follows: `String(main_feature)[0].toUpperCase() + String(main_feature).slice(1)`</li><li>Date: install react-moment to apply dd-mm-yyyy format using package</li><li>Time: use react-moment to parse and apply HH;mm format</li></ul>|Fixed
+Structure|Nested link error|The PhotoCard component is producing a nested link error in the console because the link for user profile link has been placed inside the link for the Photo Detail page|<ul><li>Move owner link outside of image link and delete Image Overlay</li><li>Style component with negative margin to overlay on photo and prevent style errors</li></ul>|Fixed
